@@ -12,9 +12,6 @@ lib.headerdata.geo.value(
 )
 
 
-
-
-
 ##### HEADERDATA #####
 
 # IE Addon
@@ -55,43 +52,6 @@ lib.pagesubtitle.stdWrap {
 lib.pagetitle.wrap = <h1>|</h1>
 
 
-
-
-
-##### CONTENT #####
-
-# get content - stuff in middle column
-
-
-lib.content = CONTENT
-lib.content {
-	table = tt_content
-	select.languageField = sys_language_uid
-	select.orderBy = sorting
-	select.where = colPos = 0
-}
-
-
-
-
-
-##### INFOBOX #####
-
-# get content - stuff in right column
-
-
-lib.infobox = CONTENT
-lib.infobox {
-	table = tt_content
-	select.languageField = sys_language_uid
-	select.orderBy = sorting
-	select.where = colPos = 2
-}
-
-
-
-
-
 ##### SYSLASTCHANGE #####
 
 # return time string when page was last changed
@@ -105,9 +65,6 @@ lib.syslastchange.strftime = %Y-%m-%d
 [global]
 
 
-
-
-
 ##### CURRENTYEAR #####
 
 # return the current year
@@ -118,18 +75,6 @@ lib.currentyear {
 	data = date:U
 	strftime = %Y
 }
-
-
-
-
-
-##### whatever that is... #####
-
-
-lib.url = TEXT
-
-
-
 
 
 ##### CURRENTDATE #####
@@ -896,53 +841,16 @@ lib.ttaddress.name.wrap = :&nbsp;|
 
 
 lib.rssFeedLinks = COA
-#lib.rssFeedLinks.10 = TEXT
-#lib.rssFeedLinks.10.value = <link rel="alternate" type="application/rss+xml" title="{$translation.news.rss.all.title.de}" href="?type=100">
-#[globalVar = GP:L = 1]
-#lib.rssFeedLinks.10.value = <link rel="alternate" type="application/rss+xml" title="{$translation.news.rss.all.title.en}" href="?type=100&L=1">
-#[global]
-#[globalVar = GP:L = 2]
-#lib.rssFeedLinks.10.value = <link rel="alternate" type="application/rss+xml" title="{$translation.news.rss.all.title.fr}" href="?type=100&L=2">
-#[global]
-#[globalVar = GP:L = 3]
-#lib.rssFeedLinks.10.value = <link rel="alternate" type="application/rss+xml" title="{$translation.news.rss.all.title.it}" href="?type=100&L=3">
-#[global]
-#[globalVar = GP:L = 4]
-#lib.rssFeedLinks.10.value = <link rel="alternate" type="application/rss+xml" title="{$translation.news.rss.all.title.es}" href="?type=100&L=4">
-#[global]
-#[globalVar = GP:L = 5]
-#lib.rssFeedLinks.10.value = <link rel="alternate" type="application/rss+xml" title="{$translation.news.rss.all.title.czn}" href="?type=100&L=5">
-#[global]
 
 lib.rssFeedLinks.20 = TEXT
 lib.rssFeedLinks.20.value = <link rel="alternate" type="application/rss+xml" title="Deutsche Inschriften des Mittelalters" href="?type=101">
 lib.rssFeedLinks.21 = TEXT
 lib.rssFeedLinks.21.value = <link rel="alternate" type="application/rss+xml" title="(EN) Deutsche Inschriften des Mittelalters" href="?type=101&L=1">
 
-#lib.rssFeedLinks.30 = TEXT
-#lib.rssFeedLinks.30.value = <link rel="alternate" type="application/rss+xml" title="Deutsches Wörterbuch von Jacob Grimm und Wilhelm Grimm" href="?type=102">
-#lib.rssFeedLinks.31 = TEXT
-#lib.rssFeedLinks.31.value = <link rel="alternate" type="application/rss+xml" title="(EN) Deutsches Wörterbuch von Jacob Grimm und Wilhelm Grimm" href="?type=102&L=1">
-
-#lib.rssFeedLinks.40 = TEXT
-#lib.rssFeedLinks.40.value = <link rel="alternate" type="application/rss+xml" title="Pressemitteilungen" href="?type=103">
-#lib.rssFeedLinks.41 = TEXT
-#lib.rssFeedLinks.41.value = <link rel="alternate" type="application/rss+xml" title="(EN) Pressemitteilungen" href="?type=103&L=1">
-
 lib.rssFeedLinks.50 = TEXT
 lib.rssFeedLinks.50.value = <link rel="alternate" type="application/rss+xml" title="Germania Sacra" href="?type=104">
 lib.rssFeedLinks.51 = TEXT
 lib.rssFeedLinks.51.value = <link rel="alternate" type="application/rss+xml" title="(EN) Germania Sacra" href="?type=104&L=1">
-
-#lib.rssFeedLinks.60 = TEXT
-#lib.rssFeedLinks.60.value = <link rel="alternate" type="application/rss+xml" title="Runische Schriftlichkeit in den germanischen Sprachen" href="?type=105">
-#lib.rssFeedLinks.61 = TEXT
-#lib.rssFeedLinks.61.value = <link rel="alternate" type="application/rss+xml" title="(EN) Runische Schriftlichkeit in den germanischen Sprachen" href="?type=105&L=1">
-
-#lib.rssFeedLinks.70 = TEXT
-#lib.rssFeedLinks.70.value = <link rel="alternate" type="application/rss+xml" title="Teaser-News" href="?type=106">
-#lib.rssFeedLinks.71 = TEXT
-#lib.rssFeedLinks.71.value = <link rel="alternate" type="application/rss+xml" title="(EN) Teaser-News" href="?type=106&L=1">
 
 lib.rssFeedLinks.80 = TEXT
 lib.rssFeedLinks.80.value = <link rel="alternate" type="application/rss+xml" title="Residenzstädte im Alten Reich (1300-1800)" href="?type=107">
@@ -1086,19 +994,6 @@ lib.teaser.select.where = (hidden != 1 AND deleted != 1 AND sys_language_uid = 0
 	lib.teaser.select.where = (hidden != 1 AND deleted != 1 AND sys_language_uid = 5)
 [global]
 
-
-#lib.teaser.renderObj = COA
-#lib.teaser.renderObj.10 = TEXT
-#lib.teaser.renderObj.10.field = header
-#lib.teaser.renderObj.10.wrap = <h2>|</h2>
-
-#lib.teaser.renderObj.20 = CONTENT
-#lib.teaser.renderObj.20.table = tt_content
-#lib.teaser.renderObj.20.select.pidInList = 388
-
-#lib.teaser.renderObj.20 = TEXT
-#lib.teaser.renderObj.20.field = bodytext
-#lib.teaser.renderObj.20.wrap = <p>|</p>
 lib.teaser.wrap = <div class="teaser-head">|</div>
 
 
@@ -1144,5 +1039,5 @@ lib.logo_dini = TEXT
 lib.logo_dini.value = 
 [globalVar = LIT:0 != {$show_logo_dini}]
 lib.logo_dini = TEXT
-lib.logo_dini.value = <div class="logo_dini"><a href="http://www.dini.de/dini-zertifikat/" target="_blank"><img src="./EXT:tmpl_adw/Resources/Public/Images/logo_dini_zertifikat.gif" /></a></div>
+lib.logo_dini.value = <div class="logo_dini"><a href="http://www.dini.de/dini-zertifikat/" target="_blank"><img src="typo3conf/ext/tmpl_adw/Resources/Public/Images/logo_dini_zertifikat.gif" /></a></div>
 [global]

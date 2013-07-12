@@ -8,8 +8,7 @@ config {
 	language = de
 	locale_all = de_DE
 	prefixLocalAnchors = all
-	doctype = <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-	xhtml_cleaning = all
+	doctype = html5
 	xmlprologue = none
 	removeDefaultJS = 0
 	disablePrefixComment = 1
@@ -34,32 +33,8 @@ tt_content.stdWrap.prefixComment >
 
 tt_content.stdWrap.prepend >
 
-# zeigt uebersetze Inhalte wenn vorhanden, ansonsten default
-# das hatten wir zu beginn des Tests
-#config.sys_language_overlay = 1
-
-
-# zeigt nur uebersetzte inhalte
-#config.sys_language_overlay = 1
-
-
-
-# zeigt unuebersetze und uebersetze Inhalte, aber keine EN-only
-#config.sys_language_mode = content_fallback;0,1
-#config.sys_language_overlay = 1
-
-#
-#config.sys_language_mode = content_fallback;5,4,3,2,1,0
-#config.sys_language_fallBackOrder = 5,4,3,2,1,0
-
-
-#test
-
 config.sys_language_mode =
 config.sys_language_overlay = content_fallback;1,0
-#config.sys_language_overlay = hideNonTranslated
-#config.sys_language_fallBackOrder = 5,4,3,2,1
-
 
 [globalVar = GP:L = 1]
 config.sys_language_uid = 1
