@@ -34,13 +34,13 @@ page {
 			searchPageId.value = {$ids.search}
 
 			siteMapId = TEXT
-			siteMapId = {$ids.sitemap}
+			siteMapId.value = {$ids.sitemap}
 
 			contactId = TEXT
-			contactId = {$ids.contact}
+			contactId.value = {$ids.contact}
 
 			imprintId = TEXT
-			imprintId = {$ids.imprint}
+			imprintId.value = {$ids.imprint}
 
 
 			TRANSLATIONNOTE < lib.translationnote
