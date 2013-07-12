@@ -1,0 +1,283 @@
+page = PAGE
+page {
+	typeNum = 0
+	shortcutIcon = EXT:tmpl_adw/Resources/Public/Images/favicon.ico
+	config {
+		index_enable = 1
+	}
+	includeJS {
+		file1 = EXT:tmpl_adw/Resources/Public/JavaScript/libs/modernizr-2.0.6.min.js
+		file2 = EXT:tmpl_adw/Resources/Public/JavaScript/script.js
+		file3 = EXT:tmpl_adw/Resources/Public/JavaScript/plugins.js
+	}
+	includeJSFooterlibs {
+		fancybox = EXT:tmpl_adw/Resources/Public/JavaScript/fancybox.js
+	}
+	includeCSS {
+		file1 = EXT:tmpl_adw/Resources/Public/Css/style.css
+		file1.media = screen
+		file2 = EXT:tmpl_adw/Resources/Public/Css/960.css
+		file2.media = screen
+		file3 = EXT:tmpl_adw/Resources/Public/Css/print.css
+		file3.media = print
+		file4 = EXT:tmpl_adw/Resources/Public/Css/csc.css
+		file4.media = screen
+		file5 = EXT:tmpl_adw/Resources/Public/Css/adw.css
+		file5.media = screen
+		file6 = EXT:tmpl_adw/Resources/Public/Css/fancybox.css
+		file6.media = screen
+	}
+	meta {
+		description = {$translation.meta.description.de}
+		keywords = {$translation.meta.keywords.de}
+	}
+	10 = TEMPLATE
+	10 {
+		template < lib.tmpl
+		workOnSubPart = DOCUMENT
+		marks {
+			TRANSLATIONNOTE < lib.translationnote
+			TOOLS_LANGUAGE_SWITCH < lib.tools_language_switch
+			TOOLS_TEXTONLY_SWITCH < lib.tools_textonly_switch
+			TOOLS_SEARCH_FIELD < lib.tools_search_field
+			LOGO < lib.header_logo
+			TITLE < lib.header_title
+			CLAIM < lib.header_claim
+			MENU < lib.menu
+			ROOTLINE < lib.rootline
+			CONTENT < lib.content
+			INFOBOX < styles.content.getRight
+			PIWIK < lib.piwik
+			WEBSITELINKS < lib.websitelinks
+			FOOTERLINKS < lib.footerlinks
+			FOOTER < lib.footer
+			SEARCHBOX < lib.searchbox
+			SEARCHLINK < lib.searchlink
+			PAGETITLE < lib.pagetitle
+			PAGESUBTITLE < lib.pagesubtitle
+			TEASER < lib.teaser
+			PAGENAVITITLE < lib.pagenavititle
+			LOGODINI < lib.logo_dini
+		}
+	}
+}
+
+##### TMPL #####
+
+# depending on content in col 1 a different template is used
+
+
+lib.tmpl = COA
+lib.tmpl {
+	10 = COA
+	if.isTrue.numRows < styles.content.getRight
+	10 = TEMPLATE
+	10 {
+		template = FILE
+		template.file = EXT:tmpl_adw/Resources/Private/Templates/page.tmpl.html
+	}
+	20 = COA
+	20 {
+		if.isFalse.numRows < styles.content.getRight
+		10 = TEMPLATE
+		10 {
+			template = FILE
+			template.file = EXT:tmpl_adw/Resources/Private/Templates/page_singleCol.tmpl.html
+		}
+	}
+}
+
+[globalVar = GP:L = 1]
+page.meta.description = {$translation.meta.description.en}
+page.meta.keywords = {$translation.meta.keywords.en}
+[global]
+[globalVar = GP:L = 2]
+page.meta.description = {$translation.meta.description.fr}
+page.meta.keywords = {$translation.meta.keywords.fr}
+[global]
+[globalVar = GP:L = 3]
+page.meta.description = {$translation.meta.description.it}
+page.meta.keywords = {$translation.meta.keywords.it}
+[global]
+[globalVar = GP:L = 4]
+page.meta.description = {$translation.meta.description.es}
+page.meta.keywords = {$translation.meta.keywords.es}
+[global]
+[globalVar = GP:L = 5]
+page.meta.description = {$translation.meta.description.cz}
+page.meta.keywords = {$translation.meta.keywords.cz}
+[global]
+page.meta.description.override.field = description
+page.meta.keywords.override.field = keywords
+
+page.headerData = COA
+page.headerData.10 < lib.titlePrefix
+page.headerData.40 = TEXT
+page.headerData.40.data = TSFE:page|title
+[globalVar = GP:tx_wtdirectory_pi1|show > 0]
+page.headerData.52 < lib.ttaddress.name
+[global]
+
+page.headerData.100 < lib.titlePostfix
+page.headerData.110 < lib.rssFeedLinks
+page.headerData.200 < lib.headerdata.geo
+page.headerData.300 < lib.headerdata.ie
+page.headerData.400 < lib.headerdata.googlewebmaster
+page.headerData.500 = TEXT
+page.headerData.500.value (
+<!--[if lt IE 9]>
+	<link rel="stylesheet" type="text/css" href="EXT:tmpl_adw/Resources/Public/Css/ie.css" media="all" />
+<![endif]-->
+<!--[if lte IE 8]>
+	<link rel="stylesheet" type="text/css" href="EXT:tmpl_adw/Resources/Public/Css/ie.css" media="all" />
+<![endif]-->
+)
+
+
+page.bodyTag = <body class="js-off subpage">
+[globalVar = TSFE:id=2]
+page.bodyTag = <body class="js-off index">
+[global]
+
+
+textonly < page
+textonly.typeNum = 2
+textonly.includeCSS >
+textonly.includeCSS {
+	file1 = EXT:tmpl_adw/Resources/Public/Css/reset.css
+	file1.media = screen,print
+	file2 = EXT:tmpl_adw/Resources/Public/Css/text.css
+	file2.media = screen
+	file3 = EXT:tmpl_adw/Resources/Public/Css/print.css
+	file3.media = print
+}
+textonly.10.template >
+textonly.10.template = FILE
+textonly.10.template.file = fileadmin/tmpl/text.tmpl.html
+textonly.10.marks.LINKHOME < lib.linkHome
+textonly.10.marks.LINKMENU < lib.linkMenu
+
+
+
+print < page
+print.typeNum = 3
+print.includeCSS >
+print.includeCSS {
+	file1 = EXT:tmpl_adw/Resources/Public/Css/reset.css
+	file1.media = screen,print
+	file2 = EXT:tmpl_adw/Resources/Public/Css/print.css
+	file2.media = screen,print
+}
+print.10.template >
+print.10.template = FILE
+print.10.template.file = fileadmin/tmpl/print.tmpl.html
+
+
+rssnewsall.config.disableAllHeaderCode = 1
+rssnewsall.config.additionalHeaders = Content-type:text/xml
+rssnewsall.config.no_cache = 1
+rssnewsall.config.xhtml_cleaning = 0
+rssnewsall.config.linkVars = L
+rssnewsall.config.sys_language_uid = 0
+[globalVar = GP:L = 1]
+rssnewsall.config.sys_language_uid = 1
+[global]
+
+
+# Deutsche Inschriften des Mittelalters
+rssnewsvorhaben1 = PAGE
+rssnewsvorhaben1.typeNum = 101
+rssnewsvorhaben1.10 >
+rssnewsvorhaben1.10 < plugin.tt_news
+rssnewsvorhaben1.10.pid_list >
+rssnewsvorhaben1.10.pid_list = {$plugin.tt_news.pid_list}
+rssnewsvorhaben1.10.categoryMode = 1
+rssnewsvorhaben1.10.categorySelection = 2
+rssnewsvorhaben1.10.singlePid = 521
+rssnewsvorhaben1.10.defaultCode = XML
+rssnewsvorhaben1.10.displayXML.xmlTitle = Deutsche Inschriften des Mittelalters
+rssnewsvorhaben1.10.displayXML.xmlDesc = Deutsche Inschriften des Mittelalters
+[globalVar = GP:L = 1]
+rssnewsvorhaben1.10.displayXML.xmlTitle = Deutsche Inschriften des Mittelalters
+rssnewsvorhaben1.10.displayXML.xmlDesc = Deutsche Inschriften des Mittelalters
+rssnewsvorhaben1.10.displayXML.xmlLang = en
+[global]
+rssnewsvorhaben1.config < rssnewsall.config
+
+# Germania Sacra
+rssnewsvorhaben4 = PAGE
+rssnewsvorhaben4.typeNum = 104
+rssnewsvorhaben4.10 >
+rssnewsvorhaben4.10 < plugin.tt_news
+rssnewsvorhaben4.10.pid_list >
+rssnewsvorhaben4.10.pid_list = {$plugin.tt_news.pid_list}
+rssnewsvorhaben4.10.categoryMode = 1
+rssnewsvorhaben4.10.categorySelection = 7
+rssnewsvorhaben4.10.singlePid = 297
+rssnewsvorhaben4.10.defaultCode = XML
+rssnewsvorhaben4.10.displayXML.xmlTitle = Germania Sacra
+rssnewsvorhaben4.10.displayXML.xmlDesc = Germania Sacra
+[globalVar = GP:L = 1]
+rssnewsvorhaben4.10.displayXML.xmlTitle = Germania Sacra
+rssnewsvorhaben4.10.displayXML.xmlDesc = Germania Sacra
+rssnewsvorhaben4.10.displayXML.xmlLang = en
+[global]
+rssnewsvorhaben4.config < rssnewsall.config
+
+# Residenzstädte im Alten Reich (1300-1800)
+rssnewsvorhaben7 = PAGE
+rssnewsvorhaben7.typeNum = 107
+rssnewsvorhaben7.10 >
+rssnewsvorhaben7.10 < plugin.tt_news
+rssnewsvorhaben7.10.pid_list >
+rssnewsvorhaben7.10.pid_list = {$plugin.tt_news.pid_list}
+rssnewsvorhaben7.10.categoryMode = 1
+rssnewsvorhaben7.10.categorySelection = 10
+rssnewsvorhaben7.10.singlePid = 453
+rssnewsvorhaben7.10.defaultCode = XML
+rssnewsvorhaben7.10.displayXML.xmlTitle = Residenzstädte im Alten Reich (1300-1800)
+rssnewsvorhaben7.10.displayXML.xmlDesc = Residenzstädte im Alten Reich (1300-1800)
+[globalVar = GP:L = 1]
+rssnewsvorhaben7.10.displayXML.xmlTitle = (EN) Residenzstädte im Alten Reich (1300-1800)
+rssnewsvorhaben7.10.displayXML.xmlDesc = (EN) Residenzstädte im Alten Reich (1300-1800)
+rssnewsvorhaben7.10.displayXML.xmlLang = en
+[global]
+rssnewsvorhaben7.config < rssnewsall.config
+
+# EDFU
+rssnewsvorhaben9 = PAGE
+rssnewsvorhaben9.typeNum = 109
+rssnewsvorhaben9.10 >
+rssnewsvorhaben9.10 < plugin.tt_news
+rssnewsvorhaben9.10.pid_list >
+rssnewsvorhaben9.10.pid_list = {$plugin.tt_news.pid_list}
+rssnewsvorhaben9.10.categoryMode = 1
+rssnewsvorhaben9.10.categorySelection = 17
+rssnewsvorhaben9.10.singlePid = 483
+rssnewsvorhaben9.10.defaultCode = XML
+rssnewsvorhaben9.10.displayXML.xmlTitle = EDFU
+rssnewsvorhaben9.10.displayXML.xmlDesc = EDFU
+[globalVar = GP:L = 1]
+rssnewsvorhaben9.10.displayXML.xmlTitle = The inscriptions of the ptolemaic temple of Edfu
+rssnewsvorhaben9.10.displayXML.xmlDesc = The inscriptions of the ptolemaic temple of Edfu
+rssnewsvorhaben9.10.displayXML.xmlLang = en
+[global]
+rssnewsvorhaben9.config < rssnewsall.config
+
+# Septuaginta
+rssnewsvorhaben10 = PAGE
+rssnewsvorhaben10.typeNum = 110
+rssnewsvorhaben10.10 >
+rssnewsvorhaben10.10 < plugin.tt_news
+rssnewsvorhaben10.10.pid_list >
+rssnewsvorhaben10.10.pid_list = {$plugin.tt_news.pid_list}
+rssnewsvorhaben10.10.categoryMode = 1
+rssnewsvorhaben10.10.categorySelection = 20
+rssnewsvorhaben10.10.singlePid = 539
+rssnewsvorhaben10.10.defaultCode = XML
+rssnewsvorhaben10.10.displayXML.xmlTitle = Septuaginta
+rssnewsvorhaben10.10.displayXML.xmlDesc = Septuaginta
+[globalVar = GP:L = 1]
+rssnewsvorhaben10.10.displayXML.xmlLang = en
+[global]
+rssnewsvorhaben10.config < rssnewsall.config

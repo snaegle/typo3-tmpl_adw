@@ -82,7 +82,7 @@ a:hover, a:active {
   height: 39px; }
 
 .main {
-  background: #f9f9f5 url("../img/noise1.png") repeat;
+  background: #f9f9f5 url("../Images/noise1.png") repeat;
   min-height: 100%;
   /*temp*/ }
 
@@ -90,7 +90,7 @@ a:hover, a:active {
  * 	
 
 .main {
-	background-image: url("../img/960grid.png"),url("../img/noise1.png");
+	background-image: url("../Images/960grid.png"),url("../Images/noise1.png");
 	background-repeat: repeat-y, repeat;
 	background-position: 50% 0, 0 0;
 }
@@ -100,12 +100,12 @@ a:hover, a:active {
 
 .search {
   background-color: #c90230;
-  background: url("../img/search-devider.png"), -moz-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-  background: url("../img/search-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c90230), color-stop(95%, #ac001e), color-stop(100%, #a20019));
-  background: url("../img/search-devider.png"), -webkit-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-  background: url("../img/search-devider.png"), -o-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-  background: url("../img/search-devider.png"), -ms-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-  background: url("../img/search-devider.png"), linear-gradient(to bottom, #c90230 0%, #ac001e 95%, #a20019 100%);
+  background: url("../Images/search-devider.png"), -moz-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
+  background: url("../Images/search-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c90230), color-stop(95%, #ac001e), color-stop(100%, #a20019));
+  background: url("../Images/search-devider.png"), -webkit-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
+  background: url("../Images/search-devider.png"), -o-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
+  background: url("../Images/search-devider.png"), -ms-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
+  background: url("../Images/search-devider.png"), linear-gradient(to bottom, #c90230 0%, #ac001e 95%, #a20019 100%);
   background-repeat: no-repeat;
   background-position: 0 50%;
   height: 39px;
@@ -114,7 +114,7 @@ a:hover, a:active {
   top: 0;
   width: 130px; }
   .search a {
-    background: transparent url("../img/ico-sprite-search.png") no-repeat 55% 8px;
+    background: transparent url("../Images/ico-sprite-search.png") no-repeat 55% 8px;
     display: block;
     line-height: 19px;
     padding: 10px 0 10px 2px;
@@ -125,12 +125,12 @@ a:hover, a:active {
 
 .language {
   background-color: #000;
-  background-image: url("../img/search-devider.png"), -moz-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-  background-image: url("../img/search-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555555), color-stop(50%, #333333), color-stop(50%, black), color-stop(100%, black));
-  background-image: url("../img/search-devider.png"), -webkit-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-  background-image: url("../img/search-devider.png"), -o-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-  background-image: url("../img/search-devider.png"), -ms-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-  background-image: url("../img/search-devider.png"), linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+  background-image: url("../Images/search-devider.png"), -moz-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+  background-image: url("../Images/search-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555555), color-stop(50%, #333333), color-stop(50%, black), color-stop(100%, black));
+  background-image: url("../Images/search-devider.png"), -webkit-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+  background-image: url("../Images/search-devider.png"), -o-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+  background-image: url("../Images/search-devider.png"), -ms-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+  background-image: url("../Images/search-devider.png"), linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
   background-repeat: no-repeat;
   background-position: 0 0;
   margin: 0;
@@ -161,12 +161,12 @@ a:hover, a:active {
     background-color: #000; }
   .language h2 {
     background-color: #000;
-    background-image: url("../img/language-devider.png"), -moz-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-    background-image: url("../img/language-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555555), color-stop(50%, #333333), color-stop(50%, black), color-stop(100%, black));
-    background-image: url("../img/language-devider.png"), -webkit-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-    background-image: url("../img/language-devider.png"), -o-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-    background-image: url("../img/language-devider.png"), -ms-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-    background-image: url("../img/language-devider.png"), linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+    background-image: url("../Images/language-devider.png"), -moz-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+    background-image: url("../Images/language-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555555), color-stop(50%, #333333), color-stop(50%, black), color-stop(100%, black));
+    background-image: url("../Images/language-devider.png"), -webkit-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+    background-image: url("../Images/language-devider.png"), -o-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+    background-image: url("../Images/language-devider.png"), -ms-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+    background-image: url("../Images/language-devider.png"), linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
     background-repeat: no-repeat;
     background-position: 100% 0;
     background-size: auto 39px;
@@ -177,7 +177,7 @@ a:hover, a:active {
     cursor: pointer;
     text-transform: uppercase; }
     .language h2 span {
-      background: transparent url("../img/arrow-down.png") no-repeat 85% 50%;
+      background: transparent url("../Images/arrow-down.png") no-repeat 85% 50%;
       display: block;
       padding: 10px;
       cursor: pointer; }
@@ -231,7 +231,7 @@ p.back {
   margin: 0;
   padding: 0; }
   p.back a {
-    background: transparent url("../img/arrow-left.png") no-repeat 0 50%;
+    background: transparent url("../Images/arrow-left.png") no-repeat 0 50%;
     border-bottom: 1px solid #fff;
     border-top: 1px solid #aaa;
     color: #282828;
@@ -270,7 +270,7 @@ p.back {
     padding: 6px 4px 2px;
     width: 58px; }
   .search-block .search-submit {
-    background: transparent url("../img/ico-sprite-search.png") no-repeat 50% -100px;
+    background: transparent url("../Images/ico-sprite-search.png") no-repeat 50% -100px;
     display: inline-block;
     padding: 0;
     text-indent: -9999px;
@@ -300,7 +300,7 @@ p.back {
   width: 89px;
   text-align: right; }
 .nav-breadcrumb a {
-  background: #c90230 url("../img/breadcrumb-sprite.png") no-repeat 0 -39px;
+  background: #c90230 url("../Images/breadcrumb-sprite.png") no-repeat 0 -39px;
   color: #fff;
   display: block;
   font-weight: bold;
@@ -312,15 +312,15 @@ p.back {
 .nav-breadcrumb a:hover, .nav-breadcrumb a:active, .nav-breadcrumb a:focus {
   text-decoration: underline; }
 .nav-breadcrumb li:first-child a {
-  background: #c90230 url("../img/breadcrumb-sprite.png") no-repeat 0 0;
+  background: #c90230 url("../Images/breadcrumb-sprite.png") no-repeat 0 0;
   font-weight: bold;
   height: 23px;
   padding: 8px 10px 8px 15px; }
 .nav-breadcrumb li.cur a {
-  background: #c90230 url("../img/breadcrumb-sprite.png") no-repeat 0 -78px;
+  background: #c90230 url("../Images/breadcrumb-sprite.png") no-repeat 0 -78px;
   padding: 0 5px 0 25px; }
 .nav-breadcrumb:after {
-  content: url("../img/breadcrumb-end.png");
+  content: url("../Images/breadcrumb-end.png");
   display: block;
   height: 40px;
   width: 160px;
@@ -378,7 +378,7 @@ p.back {
   font-weight: normal; }
 
 .teaser-head {
-	background: transparent url("../img/teaser-head-bg_mini.png") no-repeat;
+	background: transparent url("../Images/teaser-head-bg_mini.png") no-repeat;
 	padding: 15px 25px 40px;
 	width: 128px;
 	height: 137px;
@@ -432,7 +432,7 @@ p.back {
   margin: 0;
   padding: 0; }
   .csc-default .linklist li a, .csc-default .csc-menu li a {
-    background: transparent url("../img/arrow-right.png") no-repeat 100% 50%;
+    background: transparent url("../Images/arrow-right.png") no-repeat 100% 50%;
     color: #282828;
     display: block;
     padding: 11px 18px 11px 0;
@@ -492,7 +492,7 @@ p.back {
   .column-linklist li:first-child {
     margin: 0; }
   .column-linklist a {
-    background: transparent url("../img/arrow-right.png") no-repeat 100% 50%;
+    background: transparent url("../Images/arrow-right.png") no-repeat 100% 50%;
     color: #282828;
     display: block;
     padding: 11px 18px 11px 0;
@@ -587,7 +587,7 @@ p.back {
     margin: 0;
     padding: 0; }
   .wtdirectory_list a {
-    background: transparent url("../img/arrow-right.png") no-repeat 100% 50%;
+    background: transparent url("../Images/arrow-right.png") no-repeat 100% 50%;
     color: #282828;
     display: block;
     padding: 11px 18px 11px 0;
@@ -662,7 +662,7 @@ p.back {
     font: normal 1em/1.2 Cambria, Georgia, serif;
     display: inline; }
   .results-list li {
-    background: transparent url("../img/arrow-right.png") no-repeat 100% 50%;
+    background: transparent url("../Images/arrow-right.png") no-repeat 100% 50%;
     border-top: 1px solid #fff;
     border-bottom: 1px solid #aaa;
     margin: 0;
@@ -716,11 +716,11 @@ p.back {
   margin: -2px 0 0; }
 
 .lof-slider_5 .lof-main-outer .lof-next {
-  background: transparent url("../img/arrow-right-white.png") no-repeat right center;
+  background: transparent url("../Images/arrow-right-white.png") no-repeat right center;
   right: 16px; }
 
 .lof-slider_5 .lof-main-outer .lof-previous {
-  background: transparent url("../img/arrow-left-white.png") no-repeat left center;
+  background: transparent url("../Images/arrow-left-white.png") no-repeat left center;
   left: 16px; }
 
 .lof-slider_5 .lof-css3 {

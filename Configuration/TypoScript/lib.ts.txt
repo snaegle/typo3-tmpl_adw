@@ -824,31 +824,6 @@ lib.linkHome.value = <a href="#menu" title="{$translation.gotomenu.en}">{$transl
 lib.linkHome.value = <a href="#menu" title="{$translation.gotomenu.cz}">{$translation.gotomenu.cz}</a>
 [global]
 
-
-
-
-
-##### TMPL #####
-
-# depending on content in col 1 a different template is used
-
-
-lib.tmpl = COA
-lib.tmpl.10 = COA
-lib.tmpl.10.if.isTrue.numRows < styles.content.getRight
-lib.tmpl.10.10 = TEMPLATE
-lib.tmpl.10.10.template = FILE
-lib.tmpl.10.10.template.file = fileadmin/tmpl/page.tmpl.html
-lib.tmpl.20 = COA
-lib.tmpl.20.if.isFalse.numRows < styles.content.getRight
-lib.tmpl.20.10 = TEMPLATE
-lib.tmpl.20.10.template = FILE
-lib.tmpl.20.10.template.file = fileadmin/tmpl/page_singleCol.tmpl.html
-
-
-
-
-
 ##### TITLEPREFIX #####
 
 
