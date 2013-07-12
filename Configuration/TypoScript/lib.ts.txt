@@ -847,71 +847,6 @@ lib.rssFeedLinks.111.value = <link rel="alternate" type="application/rss+xml" ti
 
 
 
-##### SEARCHBOX #####
-
-
-lib.searchbox = COA
-lib.searchbox.10 = TEXT
-lib.searchbox.10.value = {$translation.search.de}
-[globalVar = GP:L = 1]
-lib.searchbox.10.value = {$translation.search.en}
-[global]
-[globalVar = GP:L = 2]
-lib.searchbox.10.value = {$translation.search.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.searchbox.10.value = {$translation.search.it}
-[global]
-[globalVar = GP:L = 4]
-lib.searchbox.10.value = {$translation.search.es}
-[global]
-[globalVar = GP:L = 5]
-lib.searchbox.10.value = {$translation.search.cz}
-[global]
-lib.searchbox.10.wrap = <h2 class="visuallyhidden">|</h2>
-lib.searchbox.20 = COA
-lib.searchbox.20.10 = TEXT
-lib.searchbox.20.10.value = <input class="search-text" type="text" name="tx_solr[q]" aria-autocomplete="list" aria-haspopup="true" value="" />
-lib.searchbox.20.20 = TEXT
-lib.searchbox.20.20.value = <input type="hidden" value="{$ids.search}" name="id"><input type="hidden" value="0" name="L">
-[globalVar = GP:L = 1]
-lib.searchbox.20.20.value = <input type="hidden" value="{$ids.search}" name="id"><input type="hidden" value="1" name="L">
-[global]
-[globalVar = GP:L = 2]
-lib.searchbox.20.20.value = <input type="hidden" value="{$ids.search}" name="id"><input type="hidden" value="2" name="L">
-[global]
-[globalVar = GP:L = 3]
-lib.searchbox.20.20.value = <input type="hidden" value="{$ids.search}" name="id"><input type="hidden" value="3" name="L">
-[global]
-[globalVar = GP:L = 4]
-lib.searchbox.20.20.value = <input type="hidden" value="{$ids.search}" name="id"><input type="hidden" value="4" name="L">
-[global]
-[globalVar = GP:L = 5]
-lib.searchbox.20.20.value = <input type="hidden" value="{$ids.search}" name="id"><input type="hidden" value="5" name="L">
-[global]
-lib.searchbox.20.30 = TEXT
-lib.searchbox.20.30.value = {$translation.search.de}
-[globalVar = GP:L = 1]
-lib.searchbox.20.30.value = {$translation.search.en}
-[global]
-[globalVar = GP:L = 2]
-lib.searchbox.20.30.value = {$translation.search.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.searchbox.20.30.value = {$translation.search.it}
-[global]
-[globalVar = GP:L = 4]
-lib.searchbox.20.30.value = {$translation.search.es}
-[global]
-[globalVar = GP:L = 5]
-lib.searchbox.20.30.value = {$translation.search.cz}
-[global]
-lib.searchbox.20.30.wrap = <input class="search-submit ir" type="submit" value="|" />
-lib.searchbox.20.wrap = <div class="search-block">|</div>
-
-
-
-
 
 ##### SEARCHLINK #####
 
@@ -938,8 +873,6 @@ lib.searchlink.wrap = <a href="?id={$ids.search}" id="searchlink">|</a>
 
 
 
-
-
 ##### TEASER #####
 
 
@@ -947,7 +880,6 @@ lib.teaser = CONTENT
 lib.teaser.table = tt_content
 lib.teaser.select.pidInList = 401
 lib.teaser.select.max = 1
-#lib.teaser.select.orderBy = datetime DESC
 lib.teaser.select.orderBy = sorting ASC
 lib.teaser.select.where = (hidden != 1 AND deleted != 1 AND sys_language_uid = 0)
 [globalVar = GP:L = 1]

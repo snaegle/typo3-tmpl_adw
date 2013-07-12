@@ -7,9 +7,7 @@
 		<!-- breadcrumb end -->
 		<!-- search/language -->
 		<div class="search">
-			<form class="globalsearch" action="/">
-				{SEARCHBOX -> f:format.raw()}
-			</form>
+			<f:render partial="SearchBox" />
 		</div>
 		<div class="language">{TOOLS_LANGUAGE_SWITCH -> f:format.raw()}</div>
 		<!-- search/language end -->

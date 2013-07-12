@@ -23,6 +23,10 @@
 				<source>The contents of this page are unfortunately not available in your language.</source>
 				<target>The contents of this page are unfortunately not available in your language.</target>
 			</trans-unit>
+			<trans-unit id="search" xml:space="preserve" approved="yes">
+				<source>Search</source>
+				<source>Suche</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
