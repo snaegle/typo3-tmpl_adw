@@ -21,6 +21,19 @@ config {
 }
 
 
+# remove stupid p tag within table td
+lib.parseFunc_RTE.externalBlocks.table.HTMLtableCells {
+	default >
+	default.stdWrap.parseFunc =< lib.parseFunc
+}
+
+# remove HTML comments
+lib.stdheader.5.prefixComment >
+lib.stdheader.stdWrap.prefixComment >
+tt_content.stdWrap.prefixComment >
+
+tt_content.stdWrap.prepend >
+
 # zeigt uebersetze Inhalte wenn vorhanden, ansonsten default
 # das hatten wir zu beginn des Tests
 #config.sys_language_overlay = 1

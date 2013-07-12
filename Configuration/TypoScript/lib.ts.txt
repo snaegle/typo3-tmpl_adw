@@ -44,15 +44,6 @@ lib.pagesubtitle.stdWrap {
 	required = 1
 }
 
-#lib.pagesubtitle.wrap = <p class="subtitle">|</p>
-
-
-#[globalVar = TSFE:id=2]
-#lib.pagetitle.wrap = <h1 class="visuallyhidden">|</h1>
-#[global]
-#[globalVar = TSFE:id=23] && [globalVar = GP:tx_wtdirectory_pi1|show > 0]
-#lib.pagetitle.wrap = <h1 class="visuallyhidden">|</h1>
-#[global]
 [globalVar = TSFE:id=23] && [globalVar = GP:tx_wtdirectory_pi1|show > 0]
 	lib.pagetitle.data >
 	lib.pagetitle.value = Ordentliches Mitglied
@@ -199,9 +190,9 @@ lib.rootline.30.value = {$translation.provider.es}
 [globalVar = GP:L = 5]
 lib.rootline.30.value = {$translation.provider.cz}
 [global]
-lib.rootline.30.wrap = <li class="first"><a href="/startseite/" title="|"><img alt="home" src="fileadmin/tmpl/img/ico-home.png" /></a></li><span class="visuallyhidden"> ▶ </span>
+lib.rootline.30.wrap = <li class="first"><a href="/startseite/" title="|"><img alt="home" src="EXT:tmpl_adw/Resources/Public/Images/ico-home.png" /></a></li><span class="visuallyhidden"> ▶ </span>
 [globalVar = GP:L = 1]
-lib.rootline.30.wrap = <li class="first"><a href="/en/home/" title="|"><img alt="home" src="fileadmin/tmpl/img/ico-home.png" /></a></li><span class="visuallyhidden"> ▶ </span>
+lib.rootline.30.wrap = <li class="first"><a href="/en/home/" title="|"><img alt="home" src="EXT:tmpl_adw/Resources/Public/Images/ico-home.png" /></a></li><span class="visuallyhidden"> ▶ </span>
 [global]
 lib.rootline.40 = HMENU
 lib.rootline.40.special = rootline
@@ -378,14 +369,14 @@ lib.tools_textonly_switch.typolink.additionalParams = &type=0
 ##### HEADER_LOGO #####
 
 #lib.header_logo = TEXT
-#lib.header_logo.value = <a href="/" title="Home"><img src="fileadmin/tmpl/img/logo-akademie-goettingen.png" alt="Logo" /></a>
+#lib.header_logo.value = <a href="/" title="Home"><img src="EXT:tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" /></a>
 
 lib.header_logo = TEXT
 lib.header_logo.value = /startseite/
 [globalVar = GP:L = 1]
 lib.header_logo.value = /en/home/
 [global]
-lib.header_logo.wrap = <a href="|" title="Home"><img src="fileadmin/tmpl/img/logo-akademie-goettingen.png" alt="Logo" /></a>
+lib.header_logo.wrap = <a href="|" title="Home"><img src="EXT:tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" /></a>
 
 
 
@@ -1157,5 +1148,5 @@ lib.logo_dini = TEXT
 lib.logo_dini.value = 
 [globalVar = LIT:0 != {$show_logo_dini}]
 lib.logo_dini = TEXT
-lib.logo_dini.value = <div class="logo_dini"><a href="http://www.dini.de/dini-zertifikat/" target="_blank"><img src="./fileadmin/tmpl/img/logo_dini_zertifikat.gif" /></a></div>
+lib.logo_dini.value = <div class="logo_dini"><a href="http://www.dini.de/dini-zertifikat/" target="_blank"><img src="./EXT:tmpl_adw/Resources/Public/Images/logo_dini_zertifikat.gif" /></a></div>
 [global]
