@@ -1,6 +1,6 @@
-/**
- * 	variables
- */
+@import '_Includes/Settings';
+@import '_Includes/csc';
+@import '_Includes/Print';
 
 body {
 	background-color: #fff;
@@ -45,7 +45,7 @@ h4, .h4 {
 }
 
 h5, .h5 {
-	color: #c90230;
+	color: $link-color;
 	font: bold 1em / 1.2 Helvetica, Arial, sans-serif;
 	margin: 0.25em 0 1em;
 }
@@ -67,13 +67,13 @@ h4 + address {
  */
 
 a {
-	color: #c90230;
+	color: $link-color;
 	text-decoration: none;
 	&:visited {
-		color: #c90230;
+		color: $link-color;
 	}
 	&:hover {
-		color: #c90230;
+		color: $link-color;
 		text-decoration: underline;
 	}
 	&:focus {
@@ -89,18 +89,18 @@ a {
 /* Improve readability when focused and hovered in all browsers: h5bp.com/h */
 
 .top-container {
-	background-color: #c90230;
-	background: -moz-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c90230), color-stop(95%, #ac001e), color-stop(100%, #a20019));
-	background: -webkit-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-	background: -o-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-	background: -ms-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-	background: linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
+	background-color: $link-color;
+	background: -moz-linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $link-color), color-stop(95%, #ac001e), color-stop(100%, #a20019));
+	background: -webkit-linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
+	background: -o-linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
+	background: -ms-linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
+	background: linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
 	height: 39px;
 }
 
 .main {
-	background: #f9f9f5 url("../Images/noise1.png") repeat;
+	background: #f9f9f5 url($image-path + "noise1.png") repeat;
 	min-height: 100%;
 	/*temp*/
 }
@@ -110,13 +110,13 @@ a {
 }
 
 .search {
-	background-color: #c90230;
-	background: url("../Images/search-devider.png"), -moz-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-	background: url("../Images/search-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c90230), color-stop(95%, #ac001e), color-stop(100%, #a20019));
-	background: url("../Images/search-devider.png"), -webkit-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-	background: url("../Images/search-devider.png"), -o-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-	background: url("../Images/search-devider.png"), -ms-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-	background: url("../Images/search-devider.png"), linear-gradient(to bottom, #c90230 0%, #ac001e 95%, #a20019 100%);
+	background-color: $link-color;
+	background: url($image-path + "search-devider.png"), -moz-linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
+	background: url($image-path + "search-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, $link-color), color-stop(95%, #ac001e), color-stop(100%, #a20019));
+	background: url($image-path + "search-devider.png"), -webkit-linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
+	background: url($image-path + "search-devider.png"), -o-linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
+	background: url($image-path + "search-devider.png"), -ms-linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
+	background: url($image-path + "search-devider.png"), linear-gradient(to bottom, $link-color 0%, #ac001e 95%, #a20019 100%);
 	background-repeat: no-repeat;
 	background-position: 0 50%;
 	height: 39px;
@@ -125,7 +125,7 @@ a {
 	top: 0;
 	width: 130px;
 	a {
-		background: transparent url("../Images/ico-sprite-search.png") no-repeat 55% 8px;
+		background: transparent url($image-path + "ico-sprite-search.png") no-repeat 55% 8px;
 		display: block;
 		line-height: 19px;
 		padding: 10px 0 10px 2px;
@@ -139,12 +139,12 @@ a {
 
 .language {
 	background-color: #000;
-	background-image: url("../Images/search-devider.png"), -moz-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-	background-image: url("../Images/search-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555555), color-stop(50%, #333333), color-stop(50%, black), color-stop(100%, black));
-	background-image: url("../Images/search-devider.png"), -webkit-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-	background-image: url("../Images/search-devider.png"), -o-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-	background-image: url("../Images/search-devider.png"), -ms-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-	background-image: url("../Images/search-devider.png"), linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+	background-image: url($image-path + "search-devider.png"), -moz-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+	background-image: url($image-path + "search-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555555), color-stop(50%, #333333), color-stop(50%, black), color-stop(100%, black));
+	background-image: url($image-path + "search-devider.png"), -webkit-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+	background-image: url($image-path + "search-devider.png"), -o-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+	background-image: url($image-path + "search-devider.png"), -ms-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+	background-image: url($image-path + "search-devider.png"), linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
 	background-repeat: no-repeat;
 	background-position: 0 0;
 	margin: 0;
@@ -178,12 +178,12 @@ a {
 	}
 	h2 {
 		background-color: #000;
-		background-image: url("../Images/language-devider.png"), -moz-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-		background-image: url("../Images/language-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555555), color-stop(50%, #333333), color-stop(50%, black), color-stop(100%, black));
-		background-image: url("../Images/language-devider.png"), -webkit-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-		background-image: url("../Images/language-devider.png"), -o-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-		background-image: url("../Images/language-devider.png"), -ms-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-		background-image: url("../Images/language-devider.png"), linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+		background-image: url($image-path + "language-devider.png"), -moz-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+		background-image: url($image-path + "language-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555555), color-stop(50%, #333333), color-stop(50%, black), color-stop(100%, black));
+		background-image: url($image-path + "language-devider.png"), -webkit-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+		background-image: url($image-path + "language-devider.png"), -o-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+		background-image: url($image-path + "language-devider.png"), -ms-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+		background-image: url($image-path + "language-devider.png"), linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
 		background-repeat: no-repeat;
 		background-position: 100% 0;
 		background-size: auto 39px;
@@ -194,7 +194,7 @@ a {
 		cursor: pointer;
 		text-transform: uppercase;
 		span {
-			background: transparent url("../Images/arrow-down.png") no-repeat 85% 50%;
+			background: transparent url($image-path + "arrow-down.png") no-repeat 85% 50%;
 			display: block;
 			padding: 10px;
 			cursor: pointer;
@@ -255,7 +255,7 @@ p {
 		margin: 0;
 		padding: 0;
 		a {
-			background: transparent url("../Images/arrow-left.png") no-repeat 0 50%;
+			background: transparent url($image-path + "arrow-left.png") no-repeat 0 50%;
 			border-bottom: 1px solid #fff;
 			border-top: 1px solid #aaa;
 			color: #282828;
@@ -272,7 +272,7 @@ p {
 
 .index {
 	.subline {
-		color: #c90230;
+		color: $link-color;
 	}
 	h1 {
 		margin: 75px 0 40px;
@@ -303,7 +303,7 @@ p {
 		width: 58px;
 	}
 	.search-submit {
-		background: transparent url("../Images/ico-sprite-search.png") no-repeat 50% -100px;
+		background: transparent url($image-path + "ico-sprite-search.png") no-repeat 50% -100px;
 		display: inline-block;
 		padding: 0;
 		text-indent: -9999px;
@@ -343,7 +343,7 @@ p {
 		text-align: right;
 	}
 	a {
-		background: #c90230 url("../Images/breadcrumb-sprite.png") no-repeat 0 -39px;
+		background: $link-color url($image-path + "breadcrumb-sprite.png") no-repeat 0 -39px;
 		color: #fff;
 		display: block;
 		font-weight: bold;
@@ -358,7 +358,7 @@ p {
 	}
 	li {
 		&.first a {
-			background: #c90230 url("../Images/breadcrumb-sprite.png") no-repeat 0 0;
+			background: $link-color url($image-path + "breadcrumb-sprite.png") no-repeat 0 0;
 			font-weight: bold;
 			height: 23px;
 			padding: 8px 10px 8px 15px;
@@ -367,12 +367,12 @@ p {
 			}
 		}
 		&.cur a {
-			background: #c90230 url("../Images/breadcrumb-sprite.png") no-repeat 0 -78px;
+			background: $link-color url($image-path + "breadcrumb-sprite.png") no-repeat 0 -78px;
 			padding: 0 5px 0 25px;
 		}
 	}
 	&:after {
-		content: url("../Images/breadcrumb-end.png");
+		content: url($image-path + "breadcrumb-end.png");
 		display: block;
 		height: 40px;
 		width: 160px;
@@ -424,11 +424,11 @@ p {
 		}
 	}
 	.cur {
-		color: #c90230;
+		color: $link-color;
 		font-size: 16px;
 		list-style-type: disc;
 		> a {
-			color: #c90230;
+			color: $link-color;
 			display: block;
 			font-weight: bold;
 			padding: 0.8em 0 0.8em;
@@ -436,18 +436,18 @@ p {
 	}
 	.act {
 		> a {
-			color: #c90230;
+			color: $link-color;
 			padding: 0.8em 0 0.8em;
 		}
 		.cur a {
-			color: #c90230;
+			color: $link-color;
 			font-weight: normal;
 		}
 	}
 }
 
 .teaser-head {
-	background: transparent url("../Images/teaser-head-bg_mini.png") no-repeat;
+	background: transparent url($image-path + "teaser-head-bg_mini.png") no-repeat;
 	padding: 15px 25px 40px;
 	width: 128px;
 	height: 137px;
@@ -523,7 +523,7 @@ p {
 		padding: 0;
 	}
 	.linklist li a, .csc-menu li a {
-		background: transparent url("../Images/arrow-right.png") no-repeat 100% 50%;
+		background: transparent url($image-path + "arrow-right.png") no-repeat 100% 50%;
 		color: #282828;
 		display: block;
 		padding: 11px 18px 11px 0;
@@ -545,7 +545,7 @@ p {
 
 .csc-sitemap {
 	ul {
-		color: #c90230;
+		color: $link-color;
 		list-style-type: disc;
 		padding: 0 0 0 30px;
 		ul {
@@ -554,7 +554,7 @@ p {
 		}
 	}
 	li {
-		color: #c90230;
+		color: $link-color;
 		font: bold 16px / 22px Helvetica, Arial, sans-serif;
 		li {
 			font: normal 16px / 22px Helvetica, Arial, sans-serif;
@@ -570,7 +570,7 @@ p {
 		display: none;
 	}
 	#link-compactversion {
-		color: #c90230;
+		color: $link-color;
 		font: bold 13px / 22px Helvetica, Arial, sans-serif;
 	}
 }
@@ -606,7 +606,7 @@ p {
 		}
 	}
 	a {
-		background: transparent url("../Images/arrow-right.png") no-repeat 100% 50%;
+		background: transparent url($image-path + "arrow-right.png") no-repeat 100% 50%;
 		color: #282828;
 		display: block;
 		padding: 11px 18px 11px 0;
@@ -728,7 +728,7 @@ p {
 		padding: 0;
 	}
 	a {
-		background: transparent url("../Images/arrow-right.png") no-repeat 100% 50%;
+		background: transparent url($image-path + "arrow-right.png") no-repeat 100% 50%;
 		color: #282828;
 		display: block;
 		padding: 11px 18px 11px 0;
@@ -807,7 +807,7 @@ p {
 }
 
 .results-list {
-	color: #c90230;
+	color: $link-color;
 	list-style-position: inside;
 	border-bottom: 1px solid #fff;
 	border-top: 2px solid #000;
@@ -818,7 +818,7 @@ p {
 		display: inline;
 	}
 	li {
-		background: transparent url("../Images/arrow-right.png") no-repeat 100% 50%;
+		background: transparent url($image-path + "arrow-right.png") no-repeat 100% 50%;
 		border-top: 1px solid #fff;
 		border-bottom: 1px solid #aaa;
 		margin: 0;
@@ -894,11 +894,11 @@ p {
 .lof-slider_5 {
 	.lof-main-outer {
 		.lof-next {
-			background: transparent url("../Images/arrow-right-white.png") no-repeat right center;
+			background: transparent url($image-path + "arrow-right-white.png") no-repeat right center;
 			right: 16px;
 		}
 		.lof-previous {
-			background: transparent url("../Images/arrow-left-white.png") no-repeat left center;
+			background: transparent url($image-path + "arrow-left-white.png") no-repeat left center;
 			left: 16px;
 		}
 	}
@@ -950,7 +950,7 @@ p {
 		color: #282828;
 	}
 	.news-list-morelink a {
-		color: #c90230;
+		color: $link-color;
 	}
 }
 
@@ -983,13 +983,13 @@ ul {
 		font-weight: bold;
 		margin: 0 4px;
 		padding: 4px 8px;
-		background-color: #c90230;
-		background: -moz-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c90230), color-stop(95%, #ac001e), color-stop(100%, #a20019));
-		background: -webkit-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-		background: -o-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-		background: -ms-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-		background: linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
+		background-color: $link-color;
+		background: -moz-linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $link-color), color-stop(95%, #ac001e), color-stop(100%, #a20019));
+		background: -webkit-linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
+		background: -o-linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
+		background: -ms-linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
+		background: linear-gradient(top, $link-color 0%, #ac001e 95%, #a20019 100%);
 		border: 1px solid #790013;
 		border-radius: 4px;
 		min-width: 20px;
@@ -1000,7 +1000,7 @@ ul {
 	}
 	&.dspaceconnect-paramorder {
 		.highlight, a:hover {
-			background-color: #c90230;
+			background-color: $link-color;
 			background: -moz-linear-gradient(top, #970124 0%, #850019 95%, #790013 100%);
 			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #970124), color-stop(95%, #850019), color-stop(100%, #790013));
 			background: -webkit-linear-gradient(top, #970124 0%, #850019 95%, #790013 100%);
@@ -1012,7 +1012,7 @@ ul {
 	}
 	&.dspaceconnect-paramperpage {
 		.highlight, a:hover {
-			background-color: #c90230;
+			background-color: $link-color;
 			background: -moz-linear-gradient(top, #970124 0%, #850019 95%, #790013 100%);
 			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #970124), color-stop(95%, #850019), color-stop(100%, #790013));
 			background: -webkit-linear-gradient(top, #970124 0%, #850019 95%, #790013 100%);

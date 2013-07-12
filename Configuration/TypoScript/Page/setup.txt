@@ -18,10 +18,6 @@ page {
 		file1.media = screen
 		file2 = EXT:tmpl_adw/Resources/Public/Css/960.css
 		file2.media = screen
-		file3 = EXT:tmpl_adw/Resources/Public/Css/print.css
-		file3.media = print
-		file4 = EXT:tmpl_adw/Resources/Public/Css/csc.css
-		file4.media = screen
 		file5 = EXT:tmpl_adw/Resources/Public/Css/adw.css
 		file5.media = screen
 		file6 = EXT:tmpl_adw/Resources/Public/Css/fancybox.css
