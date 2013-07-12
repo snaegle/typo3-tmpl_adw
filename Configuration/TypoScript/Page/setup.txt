@@ -30,6 +30,9 @@ page {
 	10 = FLUIDTEMPLATE
 	10 {
 		file = EXT:tmpl_adw/Resources/Private/Templates/Page.html
+		extbase.controllerExtensionName = tmpl_adw
+		partialRootPath = EXT:tmpl_adw/Resources/Private/Templates/Partials/
+		layoutRootPath = EXT:tmpl_adw/Resources/Private/Templates/Layouts/
 		variables {
 			TRANSLATIONNOTE < lib.translationnote
 			TOOLS_LANGUAGE_SWITCH < lib.tools_language_switch

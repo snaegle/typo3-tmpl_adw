@@ -1,14 +1,12 @@
 plugin.tt_news {
-	templateFile = fileadmin/tmpl/news/news.tmpl.html
+	templateFile = typo3conf/ext/tmpl_adw/Resources/Private/Templates/Extensions/TtNews/news.tmpl.html
 }
 
 plugin.tt_news {
 	sys_language_mode = ignore
 	displayXML {
-#    rss2_tmplFile = EXT:tt_news/res/rss_2.tmpl
-		rss2_tmplFile = fileadmin/tmpl/news/rss_2.html
+		rss2_tmplFile = typo3conf/ext/tmpl_adw/Resources/Private/Templates/Extensions/TtNews/rss_2.html
 		xmlFormat = rss2
-#    xmlIcon = fileadmin/tt_news_article.gif
 		title_stdWrap.htmlSpecialChars = 1
 		title_stdWrap.htmlSpecialChars.preserveEntities = 1
 		subheader_stdWrap.stripHtml = 1

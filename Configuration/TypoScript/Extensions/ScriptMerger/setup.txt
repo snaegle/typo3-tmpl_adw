@@ -14,7 +14,7 @@ plugin.tx_scriptmerger {
     }
   }
   javascript {
-    enable = 1
+    enable = 0
     compress {
       enable = 1
       ignore = \.gz\.

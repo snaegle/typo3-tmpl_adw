@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-07-12T09:46:27Z" product-name="tmpl_adw">
+		<header/>
+		<body>
+			<trans-unit id="more" xml:space="preserve" approved="yes">
+				<source>more</source>
+				<target>mehr</target>
+			</trans-unit>
+			<trans-unit id="linkToTop" xml:space="preserve" approved="yes">
+				<source>Zum Seitenanfang</source>
+				<target>Zum Seitenanfang</target>
+			</trans-unit>
+			<trans-unit id="meta.description" xml:space="preserve" approved="yes">
+				<source>Darstellung der Akademie der Wissenschaften zu Göttingen und ihrer Langzeitprojekte im Akademienprogramm sowie Zugang zur digitalen Bibliothek der geisteswissenschaftlichen Forschungsvorhaben.</source>
+				<target>Darstellung der Akademie der Wissenschaften zu Göttingen und ihrer Langzeitprojekte im Akademienprogramm sowie Zugang zur digitalen Bibliothek der geisteswissenschaftlichen Forschungsvorhaben.</target>
+			</trans-unit>
+			<trans-unit id="meta.keywords" xml:space="preserve" approved="yes">
+				<source>Akademie, Forschung, Wissenschaft, Geisteswissenschaft, Naturwissenschaft, Langzeitprojekte, Forschungskommission, Ringvorlesung, Wissenschaftspreise, digitale Bibliothek, Wörterbücher, Wörterbuch Projekte, Inschriften, Edition, Geschichte, Urkunden, Sprachwissenschaft, Mittelalter, Nachwuchsförderung, Akademienprogramm</source>
+				<target>Akademie, Forschung, Wissenschaft, Geisteswissenschaft, Naturwissenschaft, Langzeitprojekte, Forschungskommission, Ringvorlesung, Wissenschaftspreise, digitale Bibliothek, Wörterbücher, Wörterbuch Projekte, Inschriften, Edition, Geschichte, Urkunden, Sprachwissenschaft, Mittelalter, Nachwuchsförderung, Akademienprogramm</target>
+			</trans-unit>
+			<trans-unit id="note" xml:space="preserve" approved="yes">
+				<source>The contents of this page are unfortunately not available in your language.</source>
+				<target>The contents of this page are unfortunately not available in your language.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

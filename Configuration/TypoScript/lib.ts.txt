@@ -1010,6 +1010,22 @@ lib.pagenavititle.wrap = <div class="pagenavititle">|</div>
 lib.logo_dini = TEXT
 lib.logo_dini.value = 
 [globalVar = LIT:0 != {$show_logo_dini}]
-lib.logo_dini = TEXT
-lib.logo_dini.value = <div class="logo_dini"><a href="http://www.dini.de/dini-zertifikat/" target="_blank"><img src="typo3conf/ext/tmpl_adw/Resources/Public/Images/logo_dini_zertifikat.gif" /></a></div>
+lib.logo_dini = IMAGE
+lib.logo_dini {
+	file = GIFBUILDER
+	file {
+		XY = 130,130
+		transparentBackground = 1
+		10 = IMAGE
+		10 {
+			file = typo3conf/ext/tmpl_adw/Resources/Public/Images/logo_dini_zertifikat.gif
+		}
+	}
+	stdWrap {
+		typolink {
+			parameter = http://www.dini.de/dini-zertifikat/
+			extTarget = _blank
+			wrap = <div class="logo_dini">|</div>
+	}
+}
 [global]

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2013-07-12T09:46:27Z" product-name="tmpl_adw">
+		<header/>
+		<body>
+			<trans-unit id="more" xml:space="preserve" approved="yes">
+				<source>more</source>
+				<target>more</target>
+			</trans-unit>
+			<trans-unit id="note" xml:space="preserve" approved="yes">
+				<source>The contents of this page are unfortunately not available in your language.</source>
+				<target>The contents of this page are unfortunately not available in your language.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
