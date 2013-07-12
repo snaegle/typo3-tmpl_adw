@@ -101,15 +101,6 @@ a:hover, a:active {
   /*temp*/
 }
 
-/**
- *
-
-.main {
-	background-image: url("../Images/960grid.png"),url("../Images/noise1.png");
-	background-repeat: repeat-y, repeat;
-	background-position: 50% 0, 0 0;
-}
-*/
 .container_16 {
   position: relative;
 }

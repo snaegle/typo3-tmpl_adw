@@ -512,34 +512,6 @@ lib.footerlinks.30.typolink.title = {$translation.imprint.cz}
 [global]
 lib.footerlinks.30.wrap = <li>|</li>
 
-lib.footerlinks.40 = TEXT
-lib.footerlinks.40.value = {$translation.print.de}
-lib.footerlinks.40.typolink.title = {$translation.print.de}
-[globalVar = GP:L = 1]
-lib.footerlinks.40.value = {$translation.print.en}
-lib.footerlinks.40.typolink.title = {$translation.print.en}
-[global]
-[globalVar = GP:L = 2]
-lib.footerlinks.40.value = {$translation.print.fr}
-lib.footerlinks.40.typolink.title = {$translation.print.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.footerlinks.40.value = {$translation.print.it}
-lib.footerlinks.40.typolink.title = {$translation.print.it}
-[global]
-[globalVar = GP:L = 4]
-lib.footerlinks.40.value = {$translation.print.es}
-lib.footerlinks.40.typolink.title = {$translation.print.es}
-[global]
-[globalVar = GP:L = 5]
-lib.footerlinks.40.value = {$translation.print.cz}
-lib.footerlinks.40.typolink.title = {$translation.print.cz}
-[global]
-lib.footerlinks.40.typolink.parameter.field = uid
-lib.footerlinks.40.typolink.additionalParams = &type=3
-lib.footerlinks.40.typolink.addQueryString = 1
-lib.footerlinks.40.wrap = <li>|</li>
-
 lib.footerlinks.wrap = <ul class="clearfix">|</ul>
 
 

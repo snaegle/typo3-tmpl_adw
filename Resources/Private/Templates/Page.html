@@ -1,4 +1,3 @@
-<!-- WRAP -->
 <div class="top-container" id="top">
 	<div class="container_16">
 		<!-- breadcrumb -->
@@ -45,30 +44,42 @@
 				<!-- main navi end -->
 				{LOGODINI -> f:format.raw()}
 			</div>
-			<div class="grid_9">
-				{TRANSLATIONNOTE -> f:format.raw()}
-				<!-- main content -->
-				<!-- TYPO3SEARCH_begin -->
-				{CONTENT -> f:format.raw()}
-				<!-- TYPO3SEARCH_end -->
-				<!-- main content end -->
-			</div>
-			<div class="grid_4 aside">
-				<!-- aside (right) -->
-				<hr />
-				{INFOBOX -> f:format.raw()}
-				<hr />
-				<!-- aside (right) end -->
-			</div>
+			<f:if condition="{INFOBOX}">
+				<f:then>
+					<div class="grid_9">
+						{TRANSLATIONNOTE -> f:format.raw()}
+						<!-- main content -->
+						<!-- TYPO3SEARCH_begin -->
+						{CONTENT -> f:format.raw()}
+						<!-- TYPO3SEARCH_end -->
+						<!-- main content end -->
+					</div>
+					<div class="grid_4 aside">
+						<!-- aside (right) -->
+						<hr />
+						{INFOBOX -> f:format.raw()}
+						<hr />
+						<!-- aside (right) end -->
+					</div>
+				</f:then>
+				<f:else>
+					<div class="grid_13">
+						{TRANSLATIONNOTE -> f:format.raw()}
+						<!-- main content -->
+						<!-- TYPO3SEARCH_begin -->
+						{CONTENT -> f:format.raw()}
+						<!-- TYPO3SEARCH_end -->
+						<!-- main content end -->
+					</div>
+				</f:else>
+			</f:if>
 			<p class="totop"><a class="toplink" href="#top">Zum Seitenanfang</a></p>
 		</div>
 	</div>
-</div> <!--! end of container -->
+</div>
 <footer class="footer">
 	<div class="container_16">
-		<!-- footer -->
 		{FOOTERLINKS -> f:format.raw()}
 		<p class="small">{FOOTER -> f:format.raw()}</p>
-		<!-- footer end -->
 	</div>
 </footer>

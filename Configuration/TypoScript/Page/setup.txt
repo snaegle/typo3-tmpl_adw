@@ -61,31 +61,6 @@ page {
 	}
 }
 
-##### TMPL #####
-
-# depending on content in col 1 a different template is used
-
-
-lib.tmpl = COA
-lib.tmpl {
-	10 = COA
-	if.isTrue.numRows < styles.content.getRight
-	10 = TEMPLATE
-	10 {
-		template = FILE
-		template.file = EXT:tmpl_adw/Resources/Private/Templates/page.tmpl.html
-	}
-	20 = COA
-	20 {
-		if.isFalse.numRows < styles.content.getRight
-		10 = TEMPLATE
-		10 {
-			template = FILE
-			template.file = EXT:tmpl_adw/Resources/Private/Templates/page_singleCol.tmpl.html
-		}
-	}
-}
-
 [globalVar = GP:L = 1]
 page.meta.description = {$translation.meta.description.en}
 page.meta.keywords = {$translation.meta.keywords.en}
@@ -137,39 +112,6 @@ page.bodyTag = <body class="js-off subpage">
 [globalVar = TSFE:id=2]
 page.bodyTag = <body class="js-off index">
 [global]
-
-
-textonly < page
-textonly.typeNum = 2
-textonly.includeCSS >
-textonly.includeCSS {
-	file1 = EXT:tmpl_adw/Resources/Public/Css/reset.css
-	file1.media = screen,print
-	file2 = EXT:tmpl_adw/Resources/Public/Css/text.css
-	file2.media = screen
-	file3 = EXT:tmpl_adw/Resources/Public/Css/print.css
-	file3.media = print
-}
-textonly.10.template >
-textonly.10.template = FILE
-textonly.10.template.file = fileadmin/tmpl/text.tmpl.html
-textonly.10.marks.LINKHOME < lib.linkHome
-textonly.10.marks.LINKMENU < lib.linkMenu
-
-
-
-print < page
-print.typeNum = 3
-print.includeCSS >
-print.includeCSS {
-	file1 = EXT:tmpl_adw/Resources/Public/Css/reset.css
-	file1.media = screen,print
-	file2 = EXT:tmpl_adw/Resources/Public/Css/print.css
-	file2.media = screen,print
-}
-print.10.template >
-print.10.template = FILE
-print.10.template.file = fileadmin/tmpl/print.tmpl.html
 
 
 rssnewsall.config.disableAllHeaderCode = 1
