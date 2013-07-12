@@ -190,9 +190,9 @@ lib.rootline.30.value = {$translation.provider.es}
 [globalVar = GP:L = 5]
 lib.rootline.30.value = {$translation.provider.cz}
 [global]
-lib.rootline.30.wrap = <li class="first"><a href="/startseite/" title="|"><img alt="home" src="EXT:tmpl_adw/Resources/Public/Images/ico-home.png" /></a></li><span class="visuallyhidden"> ▶ </span>
+lib.rootline.30.wrap = <li class="first"><a href="/startseite/" title="|"><img alt="home" src="typo3conf/ext/tmpl_adw/Resources/Public/Images/ico-home.png" /></a></li><span class="visuallyhidden"> ▶ </span>
 [globalVar = GP:L = 1]
-lib.rootline.30.wrap = <li class="first"><a href="/en/home/" title="|"><img alt="home" src="EXT:tmpl_adw/Resources/Public/Images/ico-home.png" /></a></li><span class="visuallyhidden"> ▶ </span>
+lib.rootline.30.wrap = <li class="first"><a href="/en/home/" title="|"><img alt="home" src="typo3conf/ext/tmpl_adw/Resources/Public/Images/ico-home.png" /></a></li><span class="visuallyhidden"> ▶ </span>
 [global]
 lib.rootline.40 = HMENU
 lib.rootline.40.special = rootline
@@ -369,14 +369,14 @@ lib.tools_textonly_switch.typolink.additionalParams = &type=0
 ##### HEADER_LOGO #####
 
 #lib.header_logo = TEXT
-#lib.header_logo.value = <a href="/" title="Home"><img src="EXT:tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" /></a>
+#lib.header_logo.value = <a href="/" title="Home"><img src="typo3conf/ext/tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" /></a>
 
 lib.header_logo = TEXT
 lib.header_logo.value = /startseite/
 [globalVar = GP:L = 1]
 lib.header_logo.value = /en/home/
 [global]
-lib.header_logo.wrap = <a href="|" title="Home"><img src="EXT:tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" /></a>
+lib.header_logo.wrap = <a href="|" title="Home"><img src="typo3conf/ext/tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" /></a>
 
 
 
@@ -1103,10 +1103,6 @@ lib.teaser.wrap = <div class="teaser-head">|</div>
 
 
 [globalVar = LIT:0 != {$set_logo}]
-	# old
-	#lib.teaser = TEXT
-	#lib.teaser.value = <img class="vorhaben-logo" src="fileadmin/bilder/vorhabenlogos/{$set_logo}.png" alt="logo" />
-	# old (end)
 	lib.teaser = COA
 	lib.teaser.10 = IMAGE
 	lib.teaser.10.file = fileadmin/bilder/vorhabenlogos/{$set_logo}.png

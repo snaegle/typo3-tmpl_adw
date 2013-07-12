@@ -1,20 +1,18 @@
-<!-- ###DOCUMENT### -->
 <!-- WRAP -->
-###TEST###
 <div class="top-container" id="top">
 	<div class="container_16">
 		<!-- breadcrumb -->
 		<div class="nav-breadcrumb">
-			###ROOTLINE###
+			{ROOTLINE -> f:format.raw()}
 		</div>
 		<!-- breadcrumb end -->
 		<!-- search/language -->
 		<div class="search">
 			<form class="globalsearch" action="/">
-				###SEARCHBOX###
+				{SEARCHBOX -> f:format.raw()}
 			</form>
 		</div>
-		<div class="language">###TOOLS_LANGUAGE_SWITCH###</div>
+		<div class="language">{TOOLS_LANGUAGE_SWITCH -> f:format.raw()}</div>
 		<!-- search/language end -->
 	</div>
 </div><!--! end of top-container -->
@@ -23,42 +21,42 @@
 		<div class="header clearfix">
 			<div class="grid_3">
 				<!-- logo -->
-				<div class="logo">###LOGO###</div>
+				<div class="logo">{LOGO -> f:format.raw()}</div>
 				<!-- logo end -->
 			</div>
 			<div class="grid_9 headlines">
 				<!-- headline/subline -->
-				###TITLE###
-				###PAGENAVITITLE###
-				###PAGETITLE###
-				###PAGESUBTITLE###
+				{TITLE -> f:format.raw()}
+				{PAGENAVITITLE -> f:format.raw()}
+				{PAGETITLE -> f:format.raw()}
+				{PAGESUBTITLE -> f:format.raw()}
 				<!-- headline/subline end -->
 			</div>
 			<div class="grid_4">
 				<!-- little teaser -->
-				###TEASER###
+				{TEASER -> f:format.raw()}
 				<!-- little teaser end -->
 			</div>
 		</div>
 		<div class="content clearfix">
 			<div class="grid_3 nav" id="menu">
 				<!-- main navi -->
-				###MENU###
+				{MENU -> f:format.raw()}
 				<!-- main navi end -->
-				###LOGODINI###
+				{LOGODINI -> f:format.raw()}
 			</div>
 			<div class="grid_9">
-				###TRANSLATIONNOTE###
+				{TRANSLATIONNOTE -> f:format.raw()}
 				<!-- main content -->
 				<!-- TYPO3SEARCH_begin -->
-				###CONTENT###
+				{CONTENT -> f:format.raw()}
 				<!-- TYPO3SEARCH_end -->
 				<!-- main content end -->
 			</div>
 			<div class="grid_4 aside">
 				<!-- aside (right) -->
 				<hr />
-				###INFOBOX###
+				{INFOBOX -> f:format.raw()}
 				<hr />
 				<!-- aside (right) end -->
 			</div>
@@ -69,9 +67,8 @@
 <div class="footer">
 	<div class="container_16">
 		<!-- footer -->
-		###FOOTERLINKS###
-		<p class="small">###FOOTER###</p>
+		{FOOTERLINKS -> f:format.raw()}
+		<p class="small">{FOOTER -> f:format.raw()}</p>
 		<!-- footer end -->
 	</div>
 </div>
-<!-- ###DOCUMENT### -->

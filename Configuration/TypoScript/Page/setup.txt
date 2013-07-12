@@ -31,11 +31,10 @@ page {
 		description = {$translation.meta.description.de}
 		keywords = {$translation.meta.keywords.de}
 	}
-	10 = TEMPLATE
+	10 = FLUIDTEMPLATE
 	10 {
-		template < lib.tmpl
-		workOnSubPart = DOCUMENT
-		marks {
+		file = EXT:tmpl_adw/Resources/Private/Templates/Page.html
+		variables {
 			TRANSLATIONNOTE < lib.translationnote
 			TOOLS_LANGUAGE_SWITCH < lib.tools_language_switch
 			TOOLS_TEXTONLY_SWITCH < lib.tools_textonly_switch
@@ -45,7 +44,7 @@ page {
 			CLAIM < lib.header_claim
 			MENU < lib.menu
 			ROOTLINE < lib.rootline
-			CONTENT < lib.content
+			CONTENT < styles.content.get
 			INFOBOX < styles.content.getRight
 			PIWIK < lib.piwik
 			WEBSITELINKS < lib.websitelinks
