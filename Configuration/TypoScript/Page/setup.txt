@@ -34,6 +34,9 @@ page {
 		partialRootPath = EXT:tmpl_adw/Resources/Private/Templates/Partials/
 		layoutRootPath = EXT:tmpl_adw/Resources/Private/Templates/Layouts/
 		variables {
+			searchPageId = TEXT
+			searchPageId.value = {$ids.search}
+
 			TRANSLATIONNOTE < lib.translationnote
 			TOOLS_LANGUAGE_SWITCH < lib.tools_language_switch
 			TOOLS_TEXTONLY_SWITCH < lib.tools_textonly_switch

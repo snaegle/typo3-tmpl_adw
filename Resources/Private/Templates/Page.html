@@ -7,7 +7,7 @@
 		<!-- breadcrumb end -->
 		<!-- search/language -->
 		<div class="search">
-			<f:render partial="SearchBox" />
+			<f:render partial="SearchBox" arguments="{searchPageId: searchPageId}"/>
 		</div>
 		<div class="language">{TOOLS_LANGUAGE_SWITCH -> f:format.raw()}</div>
 		<!-- search/language end -->

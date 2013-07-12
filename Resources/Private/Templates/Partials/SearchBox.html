@@ -1,9 +1,8 @@
-<form class="globalsearch" action="/">
+<form class="globalsearch" action="{f:uri.page(pageUid:searchPageId)}">
 	<h2 class="visuallyhidden"></h2>
 	<div class="search-block">
 	<f:translate id="search" />
 		<input class="search-text" type="text" name="tx_solr[q]" aria-autocomplete="list" aria-haspopup="true" value="" />
-		<input type="hidden" value="{$ids.search}" name="id">
 		<input type="hidden" value="0" name="L">
 		<input class="search-submit ir" type="submit" value="{f.translate(id:'search')}" />
 	</div>
