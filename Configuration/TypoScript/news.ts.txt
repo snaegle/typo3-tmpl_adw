@@ -1,0 +1,30 @@
+plugin.tt_news {
+	templateFile = fileadmin/tmpl/news/news.tmpl.html
+}
+
+plugin.tt_news {
+	sys_language_mode = ignore
+	displayXML {
+#    rss2_tmplFile = EXT:tt_news/res/rss_2.tmpl
+		rss2_tmplFile = fileadmin/tmpl/news/rss_2.html
+		xmlFormat = rss2
+#    xmlIcon = fileadmin/tt_news_article.gif
+		title_stdWrap.htmlSpecialChars = 1
+		title_stdWrap.htmlSpecialChars.preserveEntities = 1
+		subheader_stdWrap.stripHtml = 1
+		subheader_stdWrap.htmlSpecialChars = 1
+		subheader_stdWrap.htmlSpecialChars.preserveEntities = 1
+		subheader_stdWrap.crop = 100 | ... | 1
+		subheader_stdWrap.ifEmpty.field = bodytext
+		xmlLastBuildDate = 1
+		xmlTitle = {$translation.provider.de}
+		xmlLink = {$base_url}
+		xmlDesc = {$translation.provider.de}
+		xmlLang = de
+	}
+}
+
+plugin.tt_news.displayList.subheader_stdWrap {
+	crop = 230 | &nbsp;... | 1
+	append.wrap = &nbsp;<span class="news-list-morelink">|</span>
+}

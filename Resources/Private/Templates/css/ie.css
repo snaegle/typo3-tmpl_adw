@@ -1,0 +1,48 @@
+.top-container {
+	background: #c90230 url("../img/topper.png") repeat-x;
+	position: relative;
+	z-index: 111;
+}
+.main {
+	position: relative;
+	z-index: 1;
+}
+.search {
+	background: #c90230 url("../img/search-bg.png") no-repeat;
+}
+.language {
+	background-image: url("../img/lang-bg.png");
+	z-index: 10;
+}
+.language h2 {
+	background-image: url("../img/lang-bg.png");
+}
+
+*+html ol {
+	padding: 0 0 0 24px;
+}
+*+html .search-block .search-submit {
+	font-size: 0;
+	line-height: 0;
+}
+
+*+html .column-linklist li {
+	margin: 0 0 0 3%;
+}
+.tx-pagebrowse-pi1 li {
+	display: inline;
+}
+
+.headlines p {
+	padding: 1em 0;
+}
+
+*+html h2 {
+	margin: 0 0 24px;
+}
+*+html h3 {
+	margin: 0 0 24px;
+}
+*+html h4 {
+	margin: 0 0 24px;
+}

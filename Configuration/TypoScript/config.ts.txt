@@ -1,0 +1,101 @@
+config {
+	no_cache = {$no_cache}
+	cache_clearAtMidnight = {$clearAtMidnight}
+	sendCacheHeaders = 1
+	uniqueLinkVars = 1
+	linkVars = L(0-5),type(0-99999)
+	sys_language_uid = 0
+	language = de
+	locale_all = de_DE
+	prefixLocalAnchors = all
+	doctype = <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	xhtml_cleaning = all
+	xmlprologue = none
+	removeDefaultJS = 0
+	disablePrefixComment = 1
+	simulateStaticDocuments = 0
+	baseURL = {$base_url}
+	tx_realurl_enable = 1
+	htmlTag_langKey = de
+	index_enable = 1
+}
+
+
+# zeigt uebersetze Inhalte wenn vorhanden, ansonsten default
+# das hatten wir zu beginn des Tests
+#config.sys_language_overlay = 1
+
+
+# zeigt nur uebersetzte inhalte
+#config.sys_language_overlay = 1
+
+
+
+# zeigt unuebersetze und uebersetze Inhalte, aber keine EN-only
+#config.sys_language_mode = content_fallback;0,1
+#config.sys_language_overlay = 1
+
+#
+#config.sys_language_mode = content_fallback;5,4,3,2,1,0
+#config.sys_language_fallBackOrder = 5,4,3,2,1,0
+
+
+#test
+
+config.sys_language_mode =
+config.sys_language_overlay = content_fallback;1,0
+#config.sys_language_overlay = hideNonTranslated
+#config.sys_language_fallBackOrder = 5,4,3,2,1
+
+
+[globalVar = GP:L = 1]
+config.sys_language_uid = 1
+config.locale_all = en_GB
+config.language = en
+config.htmlTag_langKey = en
+[global]
+
+[globalVar = GP:L = 2]
+config.sys_language_uid = 2
+config.locale_all = fr
+config.language = fr
+config.htmlTag_langKey = fr_FR
+[global]
+
+[globalVar = GP:L = 3]
+config.sys_language_uid = 3
+config.locale_all = it
+config.language = it
+config.htmlTag_langKey = it_IT
+[global]
+
+[globalVar = GP:L = 4]
+config.sys_language_uid = 4
+config.locale_all = es
+config.language = es
+config.htmlTag_langKey = es_ES
+[global]
+
+[globalVar = GP:L = 5]
+config.sys_language_uid = 5
+config.locale_all = cz
+config.language = cz
+config.htmlTag_langKey = cz_CZ
+[global]
+
+config.noPageTitle = 2
+
+fluidAjaxWidgetResponse.config.no_cache = 0
+FedFrameworkBridge.config.no_cache = 0
+FedPDFBridge.config.no_cache = 0
+FedSandboxBridge.config.no_cache = 0
+
+tt_content.image.20.1.imageLinkWrap {
+	JSwindow = 0
+	directImageLink = 1
+	linkParams.ATagParams { 
+		dataWrap = class = "lightbox" rel="lightbox{field:uid}"
+	}
+}
+tt_content.image.20.1.imageLinkWrap.height =
+tt_content.image.20.1.imageLinkWrap.width =

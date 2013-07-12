@@ -1,0 +1,28 @@
+a { color: #000000; }
+
+/*
+#content a:link:after,
+#content a:visited:after { content:" <" attr(href) "> "; font-size:90%; }
+*/
+
+#piwik,
+#tools,
+#tools2,
+#menu { display: none; }
+
+
+#content ul,
+#content ul ul { margin: 0 0 0 15px; }
+#content ol,
+#content ol ol { margin: 0 0 0 20px; }
+#content ul li { list-style-type: circle; }
+
+.footer .container_16 ul,
+.logo,
+.teaser-head,
+.language,
+.totop,
+.search,
+.nav-breadcrumb h2 { display: none; }
+
+.nav-breadcrumb ul li { display: inline; }

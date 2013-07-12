@@ -1,0 +1,34 @@
+plugin.tx_scriptmerger {
+  css {
+    enable = 0
+    minify {
+      enable = 1
+      ignore = \.min\.
+    }
+    compress {
+      enable = 1
+      ignore = \.gz\.
+    }
+    merge {
+      enable = 1
+    }
+  }
+  javascript {
+    enable = 1
+    compress {
+      enable = 1
+      ignore = \.gz\.
+    }
+    minify {
+      enable = 1
+      ignore = \.min\.
+    }
+    merge {
+      enable = 1
+      ignore = jslidernews\.js
+    }
+  }
+}
+[globalVar = GP:id = 25]
+plugin.tx_scriptmerger.enable = 0
+[global]

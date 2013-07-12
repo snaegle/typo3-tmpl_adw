@@ -1,0 +1,12 @@
+body { margin: 10px; }
+
+#content ul,
+#content ul ul { margin: 0 0 0 15px; }
+#content ul li { list-style-type: circle; }
+#content ol,
+#content ol ol { margin: 0 0 0 20px; }
+
+
+#menu ul ul { margin: 0 0 0 15px; }
+#menu li { list-style-type: none; }
+#tools2 li { list-style-type: none; display: inline; }

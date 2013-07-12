@@ -1,0 +1,21 @@
+* { font-size: 16px; line-height: 150%; }
+
+h1 { font-size: 150%; }
+h2 { font-size: 140%; }
+h3 { font-size: 130%; }
+h4 { font-size: 120%; }
+h5 { font-size: 110%; }
+h6 { font-size: 100%; }
+
+#tools2 li { list-style-type: none; display: inline; }
+#piwik, #footer { font-size: 85%; }
+
+#menu ul ul { margin: 0 0 0 15px; }
+#menu li { list-style-type: none; }
+
+#content ul,
+#content ul ul { margin: 0 0 0 15px; }
+#content ol,
+#content ol ol { margin: 0 0 0 20px; }
+#content ul li { list-style-type: circle; }
+#content a { border-bottom: 1px solid #000000; }

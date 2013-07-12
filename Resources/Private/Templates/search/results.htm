@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Template for the search results view for EXT:solr</title>
+</head>
+<body>
+
+<!-- ###SOLR_SEARCH### begin -->
+
+<div id="tx-solr-search">
+	<!-- ###SOLR_SEARCH_FORM### begin -->
+	###FORM.SUGGEST_URL###
+	<form id="tx-solr-search-form-pi-results" action="###FORM.ACTION###" method="get" accept-charset="###FORM.ACCEPT-CHARSET###">
+		###LLL:searchWord### <input type="text" class="tx-solr-q" name="###SOLR.PREFIX###[q]" value="###FORM.Q###" />
+		<input type="hidden" name="id" value="###FORM.ACTION_ID###" />
+		<input type="hidden" name="###FORM.ACTION_LANGUAGE_PARAMETER###" value="###FORM.ACTION_LANGUAGE###" />
+		<input type="submit" value="###LLL:submit###" />
+	</form>
+	<!-- ###SOLR_SEARCH_FORM### end -->
+
+
+
+	<!-- ###SOLR_SEARCH_FORM_ADVANCED### begin -->
+
+	<!-- ###SOLR_SEARCH_FORM_ADVANCED### end -->
+
+
+
+	<!-- ###SOLR_SEARCH_ERRORS### begin -->
+
+	<div class="tx-solr-search-form-errors">
+		###LLL:error_errors###
+		<!-- ###LOOP:ERRORS### begin -->
+		<ul class="tx-solr-search-form-error-list">
+		<!-- ###LOOP_CONTENT### -->
+			<li>
+			###ERROR.MESSAGE###
+			</li>
+		<!-- ###LOOP_CONTENT### -->
+		</ul>
+		<!-- ###LOOP:ERRORS### end -->
+	</div>
+
+	<!-- ###SOLR_SEARCH_ERRORS### end -->
+
+
+
+	<!-- ###SOLR_SEARCH_RESULTS### begin -->
+
+	###RESULTS.SEARCHED_FOR###
+	###RESULTS.FOUND###
+	###RESULTS.RANGE###
+
+	###RESULTS.PAGEBROWSER###
+
+	<!-- ###RESULTS_PER_PAGE_SWITCH### beginn -->
+	<form action="###FORM.ACTION###" method="post">
+		###LLL:results_per_page###<select onchange="this.form.submit()" name="###SOLR.PREFIX###[resultsPerPage]">
+			<!-- ###LOOP:OPTIONS### begin -->
+			<!-- ###LOOP_CONTENT### -->
+			<option value="###OPTION.VALUE###" ###OPTION.SELECTED###>###OPTION.VALUE###</option>
+			<!-- ###LOOP_CONTENT### -->
+			<!-- ###LOOP:OPTIONS### end -->
+		</select>
+	</form>
+	<!-- ###RESULTS_PER_PAGE_SWITCH### end -->
+
+	<ol start="###RESULTS.OFFSET###" class="results-list">
+		<!-- ###LOOP:RESULT_DOCUMENTS### begin -->
+		<!-- ###LOOP_CONTENT### -->
+		<li class="results-entry">
+			<h5 class="results-topic"><a href="###RESULT_DOCUMENT.URL###">###RESULT_DOCUMENT.TITLE###</a></h5>
+			<div class="results-teaser">
+				<p>###CROP:###RESULT_DOCUMENT.CONTENT###|250###</p>
+				<!--<p>
+					Score: <em>###RESULT_DOCUMENT.SCORE###</em><br />
+					Document ID: <em>###RESULT_DOCUMENT.ID###</em>
+				</p>-->
+				<!--###RELEVANCE_BAR:###RESULT_DOCUMENT.SCORE######-->
+				<p class="solr-relevance">
+				###LLL:relevance###: ###RELEVANCE:###RESULT_DOCUMENT.SCORE######%
+				</p>
+
+				<!-- ###IF:###RESULT_DOCUMENT.TYPE###|==|tx_solr_file### begin -->
+				<p>
+					###LLL:file_mimetype###: ###RESULT_DOCUMENT.fileMimeType###<br />
+					###LLL:file_referenced###: ###LINK:###RESULT_DOCUMENT.fileReferenceTitle###|###RESULT_DOCUMENT.fileReferenceUrl######
+				</p>
+				<!-- ###IF:###RESULT_DOCUMENT.TYPE###|==|tx_solr_file### end -->
+
+				###RESULT_DOCUMENT.SCORE_ANALYSIS###
+			</div>
+		</li>
+		<!-- ###LOOP_CONTENT### -->
+		<!-- ###LOOP:RESULT_DOCUMENTS### end -->
+	</ol>
+
+	###RESULTS.PAGEBROWSER###
+
+	<!-- ###SOLR_SEARCH_RESULTS### end -->
+
+
+
+	<!-- ###SOLR_SEARCH_NO_RESULTS### begin -->
+	###NO_RESULTS.NOTHING_FOUND###
+	###NO_RESULTS.SUGGESTION###
+	<!-- ###SOLR_SEARCH_NO_RESULTS### end -->
+</div>
+
+<div id="tx-solr-search-functions">
+	<!-- ###SOLR_SEARCH_FACETING### begin -->
+	<div id="tx-solr-faceting">
+		<!-- ###USED_FACETS### begin -->
+		<h3>###LLL:faceting_narrowSearch###</h3>
+		<div id="tx-solr-facets-in-use">
+			<h4>###LLL:faceting_resultsNarrowedBy###</h4>
+			<ul>
+				<!-- ###LOOP:FACETS_IN_USE### begin -->
+				<!-- ###LOOP_CONTENT### -->
+				<li>
+					<a href="###REMOVE_FACET.url###">###REMOVE_FACET.text###</a>
+				</li>
+				<!-- ###LOOP_CONTENT### -->
+				<!-- ###LOOP:FACETS_IN_USE### end -->
+
+				<li>
+					<a href="###REMOVE_ALL_FACETS.url###">###REMOVE_ALL_FACETS.text###</a>
+				</li>
+			</ul>
+		</div>
+		<!-- ###USED_FACETS### end -->
+
+		<!-- ###AVAILABLE_FACETS### begin -->
+		<div id="tx-solr-facets-available">
+			<h4>###LLL:faceting_narrowSearch###</h4>
+			<ul class="facets">
+				<!-- ###SINGLE_FACET### begin -->
+				<li class="facet facet-###FACET.name###">
+					<h5>###FACET.label###</h5>
+					<ul>
+						<!-- ###SINGLE_FACET_OPTION### begin -->
+						<!-- ###LOOP:FACET_LINKS### begin -->
+						<!-- ###LOOP_CONTENT### -->
+						<li class="###FACET_LINK.HIDDEN###">
+							###FACET_LINK.LINK### ###FACET_LINK.COUNT###
+						</li>
+						<!-- ###LOOP_CONTENT### -->
+						<!-- ###LOOP:FACET_LINKS### end -->
+						<!-- ###SINGLE_FACET_OPTION### end -->
+						###FACET.showAllLink###
+					</ul>
+				</li>
+				<!-- ###SINGLE_FACET### end -->
+			</ul>
+		</div>
+		<!-- ###AVAILABLE_FACETS### end -->
+	</div>
+	<!-- ###SOLR_SEARCH_FACETING### end -->
+
+
+
+	<!-- ###SOLR_SEARCH_SORTING### begin -->
+	<div id="tx-solr-sorting">
+		<h3>###LLL:sorting_sortBy###</h3>
+		<ul>
+			<!-- ###LOOP:SORT### begin -->
+			<!-- ###LOOP_CONTENT### -->
+			<li>
+				###SORT_INDICATOR:###SORT.CURRENT_DIRECTION###### ###SORT.LINK###
+			</li>
+			<!-- ###LOOP_CONTENT### -->
+			<!-- ###LOOP:SORT### end -->
+		</ul>
+	</div>
+
+	<!-- ###SOLR_SEARCH_SORTING### end -->
+
+
+	<!-- ###SOLR_SEARCH_LASTSEARCHES### end -->
+	<div id="tx-solr-lastsearches">
+		<h3>###LLL:lastSearches###</h3>
+		<ul>
+			<!-- ###LOOP:LASTSEARCHES### begin -->
+			<!-- ###LOOP_CONTENT### -->
+			<li>
+				###LINK:###LASTSEARCH.Q###|###LASTSEARCH.PID###|###LASTSEARCH.PARAMETERS######
+			</li>
+			<!-- ###LOOP_CONTENT### -->
+			<!-- ###LOOP:LASTSEARCHES### end -->
+		</ul>
+	</div>
+	<!-- ###SOLR_SEARCH_LASTSEARCHES### end -->
+
+	<!-- ###SOLR_SEARCH_COMMONTERMS### begin -->
+	<div id="tx-solr-common-terms">
+		<h3>###LLL:commonTerms###</h3>
+		<ul>
+			<!-- ###LOOP:COMMONTERMS### begin -->
+			<!-- ###LOOP_CONTENT### -->
+			<li class="###TERM.CLASS###">###LINK:###TERM.TERM###|###TERM.PID###|###TERM.PARAMETERS######</li>
+			<!-- ###LOOP_CONTENT### -->
+			<!-- ###LOOP:COMMONTERMS### end -->
+		</ul>
+	</div>
+	<!-- ###SOLR_SEARCH_COMMONTERMS### end -->
+
+</div>
+
+<!-- ###SOLR_SEARCH### end -->
+
+
+
+<!-- ###SOLR_SEARCH_UNAVAILABLE### begin -->
+	###LLL:searchUnavailable###
+<!-- ###SOLR_SEARCH_UNAVAILABLE### end -->
+
+<!-- ###SOLR_SEARCH_ERROR### begin -->
+	###LLL:searchFailed###
+<!-- ###SOLR_SEARCH_ERROR### end -->
+
+</body>
+</html>

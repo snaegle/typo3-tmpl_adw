@@ -1,0 +1,16 @@
+plugin.tx_wtdirectory_pi1 {
+	list {
+		perPage = 20
+		links.detaillink.useGoogleMapLink = 0
+	}
+	detail.field {
+		image.split.1.10.file.width = 150
+		www.20.typolink.parameter.cObject = TEXT
+		www.20.typolink.parameter.cObject.field = www
+		www.20.typolink.parameter.cObject.noTrimWrap = | |" "_blank|
+	}
+	_LOCAL_LANG {
+		en.wtdirectory_ll_back = back
+		de.wtdirectory_ll_back = zurück
+	}
+}

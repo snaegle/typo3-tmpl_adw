@@ -1,0 +1,204 @@
+plugin.tx_solr.suggest = 1
+
+plugin.tx_solr.logging {
+	query {
+		filters = 1
+		searchWords = 1
+		queryString = 1
+		rawPost = 1
+		rawGet = 1
+	}
+	indexing = 1
+	indexing.indexQueuePageIndexerGetData = 1
+}
+
+plugin.tx_solr.search {
+	highlighting = 1
+	results.resultsPerPageSwitchOptions = 10, 25, 50
+	lastSearches = 1
+	lastSearches.mode = global
+}
+
+plugin.tx_solr.index {
+	enablePageIndexing = 0
+	enableIndexingWhileBeUserLoggedIn = 0
+	enableFileIndexing = 0
+}
+
+
+# index pages
+
+plugin.tx_solr.index.queue.pages = 1
+
+# index tt_address and send search results to generic details page
+
+
+
+plugin.tx_solr.index.queue.member = 1
+plugin.tx_solr.index.queue.member {
+	table = tt_address
+	fields {
+		content = TEXT
+		content {
+			field = description
+			stripHtml = 1
+    	}
+		uid = uid
+		title = name
+		url = TEXT
+		url {
+			typolink {
+				parameter = {$solr.index.member.target}
+				useCacheHash = 1
+				additionalParams = &tx_wtdirectory_pi1[show]={field:uid}
+				additionalParams.insertData = 1
+				returnLast = url
+			}
+		}
+	}
+}
+
+
+# index tt_news and send search results to generic details page
+
+plugin.tx_solr.index.queue.news = 1
+plugin.tx_solr.index.queue.news {
+	table = tt_news
+	fields {
+		title = title
+		author = author
+		changed = tstamp
+		content = TEXT
+		content {
+			field = bodytext
+			stripHtml = 1
+		}
+		uid = uid
+		url = TEXT
+		url {
+			typolink {
+				parameter = {$solr.index.news.target}
+				useCacheHash = 1
+				additionalParams = &tx_ttnews[tt_news]={field:uid}
+				additionalParams.insertData = 1
+				returnLast = url
+			}
+		}
+	}
+}
+
+
+# random testing stuff from here on
+
+#plugin.tx_solr.index.queue.generalNews = 1
+#plugin.tx_solr.index.queue.generalNews {
+#  table = tt_news
+#  additionalWhereClause = tt_news.pid = 64
+#  fields {
+#    author = author
+#    changed = tstamp
+#    content = TEXT
+#    content {
+#      field = bodytext
+#      stripHtml = 1
+#    }
+#    created = crdate
+#    pid = 64
+#    title = title
+#    uid = uid
+#    url = TEXT
+#    url {
+#      typolink {
+#        parameter = 57
+#        useCacheHash = 1
+#        additionalParams = &tx_ttnews[tt_news]={field:uid}
+#        additionalParams.insertData = 1
+#        returnLast = url
+#      }
+#    }
+#  }
+#}
+#plugin.tx_solr.index.queue.vorhaben1News < plugin.tx_solr.index.queue.generalNews
+#plugin.tx_solr.index.queue.vorhaben1News {
+#  additionalWhereClause = tt_news.pid = 65
+#  fields.url.typolink.parameter = 63
+#  fields.pid = 65
+#}
+#plugin.tx_solr.index.queue.vorhaben2News < plugin.tx_solr.index.queue.generalNews
+#plugin.tx_solr.index.queue.vorhaben2News {
+#  additionalWhereClause = tt_news.pid = 66
+#  fields.url.typolink.parameter = 69
+#  fields.pid = 66
+#}
+
+# create List of tt_news UIDs with tt_news_cat UID = 4
+#test = CONTENT
+#test {
+#  table = tt_news
+#  select {
+#    join = tt_news_cat_mm   
+#    pidInList = 71
+#    where = tt_news_cat_mm.uid_local = tt_news.uid
+#    andWhere = tt_news_cat_mm.uid_foreign = 4
+#  }
+#  renderObj = TEXT
+#  renderObj.field = uid
+#  renderObj.wrap = |,
+#}
+#test.wrap = FIND_IN_SET(tt_news.uid,'|')
+
+#test = COA
+#test.10 = TEXT
+#test.10.value = FIND_IN_SET(tt_news.uid,'
+#test.20 = CONTENT
+#test.20 {
+#  table = tt_news
+#  select {
+#    join = tt_news_cat_mm    
+#    pidInList = 71
+#    where = tt_news_cat_mm.uid_local = tt_news.uid
+#    andWhere = tt_news_cat_mm.uid_foreign = 4
+#  }
+#  renderObj = TEXT
+#  renderObj.field = uid
+#  renderObj.wrap = |,
+#  stdWrap.substring = 0,-1
+#}
+#test.30 = TEXT
+#test.30.value = ')
+
+#lib.asdf = TEXT
+#lib.asdf.value < test
+
+#foo = CONTENT
+#foo {
+#  table = tt_news
+#  select {
+#    join = tt_news_cat_mm    
+#    pidInList = 71
+#    where = tt_news_cat_mm.uid_local = tt_news.uid
+#    andWhere = tt_news_cat_mm.uid_foreign = 4
+#  }
+#  renderObj = TEXT
+#  renderObj.field = uid
+#  renderObj.wrap = |,
+#  stdWrap.substring = 0,-1
+#}
+
+#asdf = TEXT
+#asdf.value < foo
+#asdf.wrap = FIND_IN_SET(tt_news.uid,'|')
+
+#plugin.tx_solr.index.queue.test1News < plugin.tx_solr.index.queue.generalNews
+#plugin.tx_solr.index.queue.test1News {
+# additionalWhereClause >
+#  additionalWhereClause = FIND_IN_SET(tt_news.uid,'9,10')
+#  additionalWhereClause < lib.asdf
+#  fields.url.typolink.parameter = 57
+#  fields.pid = 71
+#}
+
+plugin.tx_solr {
+  addDefaultCss = 0
+  templateFile.results = fileadmin/tmpl/search/results.htm
+}

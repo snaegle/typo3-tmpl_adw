@@ -1,0 +1,40 @@
+# TT_ADDRESS / WT_DIRECTORY
+
+plugin.tx_wtdirectory_pi1 {
+  enable.vCardForDetail = 0
+  list {
+  orderby = last_name
+  perPage = 9999
+  }
+}
+
+plugin.tx_ttaddress_pi1.pidList = {$tt_address.pidList}
+
+plugin.tx_wtdirectory_pi1.template.list = fileadmin/tmpl/addresses/tmpl_list.html
+plugin.tx_wtdirectory_pi1.template.detail = fileadmin/tmpl/addresses/tmpl_detail.html
+
+plugin.tx_wtdirectory_pi1.list.field.name.wrap = |
+
+plugin.tx_wtdirectory_pi1.detail.field.title.wrap = <h3>|
+plugin.tx_wtdirectory_pi1.detail.field.name.wrap = |</h3>
+
+plugin.tx_wtdirectory_pi1.detail.field.phone.wrap = |<br />
+plugin.tx_wtdirectory_pi1.detail.field.fax.wrap = |<br />
+plugin.tx_wtdirectory_pi1.detail.field.mobile.wrap = |<br />
+plugin.tx_wtdirectory_pi1.detail.field.address.wrap = |<br />
+plugin.tx_wtdirectory_pi1.detail.field.city.wrap = |<br />
+plugin.tx_wtdirectory_pi1.detail.field.company = COA
+plugin.tx_wtdirectory_pi1.detail.field.company {
+  if.isTrue.field = company
+  10 = TEXT
+  10.field = company
+  10.wrap = |<br />
+}
+plugin.tx_wtdirectory_pi1.detail.field.country = COA
+plugin.tx_wtdirectory_pi1.detail.field.country {
+  if.isTrue.field = country
+  10 = TEXT
+  10.field = country
+  10.wrap = |<br />
+}
+plugin.tx_wtdirectory_pi1.detail.field.email.wrap = |<br />
