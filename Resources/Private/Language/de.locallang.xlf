@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <xliff version="1.0">
 	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-07-12T09:46:27Z" product-name="tmpl_adw">
 		<header/>
@@ -25,8 +25,24 @@
 			</trans-unit>
 			<trans-unit id="search" xml:space="preserve" approved="yes">
 				<source>Search</source>
-				<source>Suche</source>
+				<target state="signed-off">Suchen</target><source>Suche</source>
 			</trans-unit>
+			<trans-unit id="youarehere" xml:space="preserve" approved="yes">
+				<source>You are here:</source>
+				<target state="signed-off">Sie sind hier:</target><source>Sie sind hier:</source>
+			</trans-unit>
+			<trans-unit id="provider" xml:space="preserve" approved="yes">
+				<source>Akademie der Wissenschaften zu Göttingen</source>
+				<target state="signed-off">Akademie der Wissenschaften zu Göttingen</target></trans-unit>
+			<trans-unit id="sitemap" xml:space="preserve" approved="yes">
+							<source>Sitemap</source>
+			<target state="signed-off">Seitenübersicht	</target></trans-unit>
+			<trans-unit id="contact" xml:space="preserve" approved="yes">
+				<source>Contact</source>
+			<target state="signed-off">Kontakt</target></trans-unit>
+			<trans-unit id="imprint" xml:space="preserve" approved="yes">
+				<source>Imprint</source>
+			<target state="signed-off">Impressum</target></trans-unit>
 		</body>
 	</file>
 </xliff>

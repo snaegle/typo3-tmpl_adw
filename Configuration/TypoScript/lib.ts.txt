@@ -15,8 +15,6 @@ lib.headerdata.geo.value(
 ##### HEADERDATA #####
 
 # IE Addon
-
-
 lib.headerdata.ie = TEXT
 lib.headerdata.ie.value = <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
@@ -96,89 +94,22 @@ lib.currentdate.strftime = %Y/%m/%d
 
 ##### ROOTLINE #####
 
-
-lib.rootline = COA
-lib.rootline.10 = TEXT
-lib.rootline.10.value = {$translation.youarehere.de}
-[globalVar = GP:L = 1]
-lib.rootline.10.value = {$translation.youarehere.en}
-[global]
-[globalVar = GP:L = 2]
-lib.rootline.10.value = {$translation.youarehere.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.rootline.10.value = {$translation.youarehere.it}
-[global]
-[globalVar = GP:L = 4]
-lib.rootline.10.value = {$translation.youarehere.es}
-[global]
-[globalVar = GP:L = 5]
-lib.rootline.10.value = {$translation.youarehere.cz}
-[global]
-lib.rootline.10.wrap = <h2>|</h2>
-lib.rootline.20 = TEXT
-lib.rootline.20.value = <ul class="clearfix">
-lib.rootline.30 = TEXT
-lib.rootline.30.value = {$translation.provider.de}
-[globalVar = GP:L = 1]
-lib.rootline.30.value = {$translation.provider.en}
-[global]
-[globalVar = GP:L = 2]
-lib.rootline.30.value = {$translation.provider.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.rootline.30.value = {$translation.provider.it}
-[global]
-[globalVar = GP:L = 4]
-lib.rootline.30.value = {$translation.provider.es}
-[global]
-[globalVar = GP:L = 5]
-lib.rootline.30.value = {$translation.provider.cz}
-[global]
-lib.rootline.30.wrap = <li class="first"><a href="/startseite/" title="|"><img alt="home" src="typo3conf/ext/tmpl_adw/Resources/Public/Images/ico-home.png" /></a></li><span class="visuallyhidden"> ▶ </span>
-[globalVar = GP:L = 1]
-lib.rootline.30.wrap = <li class="first"><a href="/en/home/" title="|"><img alt="home" src="typo3conf/ext/tmpl_adw/Resources/Public/Images/ico-home.png" /></a></li><span class="visuallyhidden"> ▶ </span>
-[global]
-lib.rootline.40 = HMENU
-lib.rootline.40.special = rootline
-lib.rootline.40.special.range = 1|-1
-lib.rootline.40.excludeUidList = {$ids.excludeFromRootline}
-lib.rootline.40.1 = TMENU
-lib.rootline.40.1.noBlur = 1
-lib.rootline.40.1.NO.allWrap = |
-lib.rootline.40.1.NO.ATagTitle.field = title
-lib.rootline.40.1.NO.linkWrap = <li>|<span class="visuallyhidden"> ▶ </span></li> |*| <li>|<span class="visuallyhidden"> ▶ </span></li> |*| <li class="cur">|</li>
-lib.rootline.50 = TEXT
-lib.rootline.50.value = </ul>
-
-
-
-
-
-##### TOOLS_SEARCH_FIELD #####
-
-
-lib.tools_search_field = TEXT
-lib.tools_search_field.value = {$translation.search.de}
-[globalVar = GP:L = 1]
-lib.tools_search_field.value = {$translation.search.en}
-[global]
-[globalVar = GP:L = 2]
-lib.tools_search_field.value = {$translation.search.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.tools_search_field.value = {$translation.search.it}
-[global]
-[globalVar = GP:L = 4]
-lib.tools_search_field.value = {$translation.search.es}
-[global]
-[globalVar = GP:L = 5]
-lib.tools_search_field.value = {$translation.search.cz}
-[global]
-
-
-
-
+lib.rootline = HMENU
+lib.rootline {
+	special = rootline
+	special {
+		range = 1|-1
+	}
+	excludeUidList = {$ids.excludeFromRootline}
+	1 = TMENU
+	1 {
+		NO {
+			allWrap = |
+			ATagTitle.field = title
+			linkWrap = <li>|<span class="visuallyhidden"> ▶ </span></li> |*| <li>|<span class="visuallyhidden"> ▶ </span></li> |*| <li class="cur">|</li>
+		}
+	}
+}
 
 ##### TOOLS_LANGUAGE_SWITCH #####
 
@@ -249,84 +180,6 @@ lib.tools_language_switch.20.60.wrap = <li>|</li>
 lib.tools_language_switch.20.wrap = <ul>|</ul>
 
 
-
-
-
-##### TOOLS_TEXTONLY_SWITCH #####
-
-
-lib.tools_textonly_switch = TEXT
-
-# stay on current page
-lib.tools_textonly_switch.typolink.parameter.field = uid
-lib.tools_textonly_switch.value = {$translation.text.text.de}
-[globalVar = GP:L = 1]
-lib.tools_textonly_switch.value = {$translation.text.text.en}
-[global]
-[globalVar = GP:L = 2]
-lib.tools_textonly_switch.value = {$translation.text.text.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.tools_textonly_switch.value = {$translation.text.text.it}
-[global]
-[globalVar = GP:L = 4]
-lib.tools_textonly_switch.value = {$translation.text.text.es}
-[global]
-[globalVar = GP:L = 5]
-lib.tools_textonly_switch.value = {$translation.text.text.cz}
-[global]
-
-# change to text only view
-lib.tools_textonly_switch.typolink.additionalParams = &type=2
-# if de and text only view
-[globalVar = GP:type = 2, GP:L = 0]
-lib.tools_textonly_switch.value = {$translation.text.screen.de}
-[global]
-# if en and text only view
-[globalVar = GP:type = 2] && [globalVar = GP:L = 1]
-lib.tools_textonly_switch.value = {$translation.text.screen.en}
-[global]
-# if fr and text only view
-[globalVar = GP:type = 2] && [globalVar = GP:L = 2]
-lib.tools_textonly_switch.value = {$translation.text.screen.fr}
-[global]
-# if it and text only view
-[globalVar = GP:type = 2] && [globalVar = GP:L = 3]
-lib.tools_textonly_switch.value = {$translation.text.screen.it}
-[global]
-# if es and text only view
-[globalVar = GP:type = 2] && [globalVar = GP:L = 4]
-lib.tools_textonly_switch.value = {$translation.text.screen.es}
-[global]
-# if cz and text only view
-[globalVar = GP:type = 2] && [globalVar = GP:L = 5]
-lib.tools_textonly_switch.value = {$translation.text.screen.cz}
-[global]
-# set type parameter to normal view if text only view is set
-[globalVar = GP:type = 2]
-lib.tools_textonly_switch.typolink.additionalParams = &type=0
-[global]
-
-
-
-
-
-##### HEADER_LOGO #####
-
-#lib.header_logo = TEXT
-#lib.header_logo.value = <a href="/" title="Home"><img src="typo3conf/ext/tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" /></a>
-
-lib.header_logo = TEXT
-lib.header_logo.value = /startseite/
-[globalVar = GP:L = 1]
-lib.header_logo.value = /en/home/
-[global]
-lib.header_logo.wrap = <a href="|" title="Home"><img src="typo3conf/ext/tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" /></a>
-
-
-
-
-
 ##### HEADER_TITLE #####
 
 
@@ -361,48 +214,7 @@ lib.header_title.10 = TEXT
 lib.header_title.10.value = 
 [global]
 
-
-
-##### HEADER_CLAIM #####
-
-
-lib.header_claim = TEXT
-lib.header_claim.value = {$translation.claim.de}
-[globalVar = GP:L = 1]
-lib.header_claim.value = {$translation.claim.en}
-[global]
-[globalVar = GP:L = 2]
-lib.header_claim.value = {$translation.claim.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.header_claim.value = {$translation.claim.it}
-[global]
-[globalVar = GP:L = 4]
-lib.header_claim.value = {$translation.claim.es}
-[global]
-[globalVar = GP:L = 5]
-lib.header_claim.value = {$translation.claim.cz}
-[global]
-
-lib.header_claim.value = 
-
-
-
-
-
-##### PIWIK #####
-
-
-lib.piwik = TEXT
-lib.piwik.value = Piwik
-
-
-
-
-
 ##### MENU #####
-
-
 lib.menu = HMENU
 lib.menu.excludeUidList = {$ids.excludeFromMenu}
 lib.menu.special = directory
@@ -425,97 +237,6 @@ lib.menu {
 	2.ACT < .1.ACT
 	2.wrap = <ul>|</ul>
 }
-
-
-
-
-
-##### FOOTERLINKS #####
-
-
-lib.footerlinks = COA
-lib.footerlinks.10 = TEXT
-lib.footerlinks.10.value = {$translation.sitemap.de}
-lib.footerlinks.10.typolink.parameter = {$ids.sitemap}
-lib.footerlinks.10.typolink.title = {$translation.sitemap.de}
-[globalVar = GP:L = 1]
-lib.footerlinks.10.value = {$translation.sitemap.en}
-lib.footerlinks.10.typolink.title = {$translation.sitemap.en}
-[global]
-[globalVar = GP:L = 2]
-lib.footerlinks.10.value = {$translation.sitemap.fr}
-lib.footerlinks.10.typolink.title = {$translation.sitemap.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.footerlinks.10.value = {$translation.sitemap.it}
-lib.footerlinks.10.typolink.title = {$translation.sitemap.it}
-[global]
-[globalVar = GP:L = 4]
-lib.footerlinks.10.value = {$translation.sitemap.es}
-lib.footerlinks.10.typolink.title = {$translation.sitemap.es}
-[global]
-[globalVar = GP:L = 5]
-lib.footerlinks.10.value = {$translation.sitemap.cz}
-lib.footerlinks.10.typolink.title = {$translation.sitemap.cz}
-[global]
-lib.footerlinks.10.wrap = <li>|</li>
-
-lib.footerlinks.20 = TEXT
-lib.footerlinks.20.value = {$translation.contact.de}
-lib.footerlinks.20.typolink.parameter = {$ids.contact}
-lib.footerlinks.20.typolink.title = {$translation.contact.de}
-[globalVar = GP:L = 1]
-lib.footerlinks.20.value = {$translation.contact.en}
-lib.footerlinks.20.typolink.title = {$translation.contact.en}
-[global]
-[globalVar = GP:L = 2]
-lib.footerlinks.20.value = {$translation.contact.fr}
-lib.footerlinks.20.typolink.title = {$translation.contact.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.footerlinks.20.value = {$translation.contact.it}
-lib.footerlinks.20.typolink.title = {$translation.contact.it}
-[global]
-[globalVar = GP:L = 4]
-lib.footerlinks.20.value = {$translation.contact.es}
-lib.footerlinks.20.typolink.title = {$translation.contact.es}
-[global]
-[globalVar = GP:L = 5]
-lib.footerlinks.20.value = {$translation.contact.cz}
-lib.footerlinks.20.typolink.title = {$translation.contact.cz}
-[global]
-lib.footerlinks.20.wrap = <li>|</li>
-
-lib.footerlinks.30 = TEXT
-lib.footerlinks.30.value = {$translation.imprint.de}
-lib.footerlinks.30.typolink.parameter = {$ids.imprint}
-lib.footerlinks.30.typolink.title = {$translation.imprint.de}
-[globalVar = GP:L = 1]
-lib.footerlinks.30.value = {$translation.imprint.en}
-lib.footerlinks.30.typolink.title = {$translation.imprint.en}
-[global]
-[globalVar = GP:L = 2]
-lib.footerlinks.30.value = {$translation.imprint.fr}
-lib.footerlinks.30.typolink.title = {$translation.imprint.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.footerlinks.30.value = {$translation.imprint.it}
-lib.footerlinks.30.typolink.title = {$translation.imprint.it}
-[global]
-[globalVar = GP:L = 4]
-lib.footerlinks.30.value = {$translation.imprint.es}
-lib.footerlinks.30.typolink.title = {$translation.imprint.es}
-[global]
-[globalVar = GP:L = 5]
-lib.footerlinks.30.value = {$translation.imprint.cz}
-lib.footerlinks.30.typolink.title = {$translation.imprint.cz}
-[global]
-lib.footerlinks.30.wrap = <li>|</li>
-
-lib.footerlinks.wrap = <ul class="clearfix">|</ul>
-
-
-
 
 
 ##### PAGELINKS #####
@@ -693,23 +414,6 @@ lib.footer.20.wrap = &copy;&nbsp;|&nbsp;{$translation.provider.es}
 lib.footer.20.wrap = &copy;&nbsp;|&nbsp;{$translation.provider.cz}
 [global]
 
-
-
-
-
-##### LINKHOME #####
-
-
-lib.linkHome = TEXT
-lib.linkHome.value = <a href="/" title="Startseite">Startseite</a>
-[globalVar = GP:L = 1]
-lib.linkHome.value = <a href="/" title="Homepage">Homepage</a>
-[global]
-
-
-
-
-
 ##### LINKMENU #####
 
 
@@ -843,35 +547,6 @@ lib.rssFeedLinks.110 = TEXT
 lib.rssFeedLinks.110.value = <link rel="alternate" type="application/rss+xml" title="Septuaginta" href="?type=110">
 lib.rssFeedLinks.111 = TEXT
 lib.rssFeedLinks.111.value = <link rel="alternate" type="application/rss+xml" title="(EN) Septuaginta" href="?type=110&L=1">
-
-
-
-
-
-##### SEARCHLINK #####
-
-
-lib.searchlink = COA
-lib.searchlink.10 = TEXT
-lib.searchlink.10.value = {$translation.search.de}
-[globalVar = GP:L = 1]
-lib.searchlink.10.value = {$translation.search.en}
-[global]
-[globalVar = GP:L = 2]
-lib.searchlink.10.value = {$translation.search.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.searchlink.10.value = {$translation.search.it}
-[global]
-[globalVar = GP:L = 4]
-lib.searchlink.10.value = {$translation.search.es}
-[global]
-[globalVar = GP:L = 5]
-lib.searchlink.10.value = {$translation.search.cz}
-[global]
-lib.searchlink.wrap = <a href="?id={$ids.search}" id="searchlink">|</a>
-
-
 
 ##### TEASER #####
 

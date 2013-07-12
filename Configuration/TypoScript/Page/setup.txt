@@ -15,13 +15,9 @@ page {
 	}
 	includeCSS {
 		file1 = EXT:tmpl_adw/Resources/Public/Css/style.css
-		file1.media = screen
 		file2 = EXT:tmpl_adw/Resources/Public/Css/960.css
-		file2.media = screen
 		file5 = EXT:tmpl_adw/Resources/Public/Css/adw.css
-		file5.media = screen
 		file6 = EXT:tmpl_adw/Resources/Public/Css/fancybox.css
-		file6.media = screen
 	}
 	meta {
 		description = {$translation.meta.description.de}
@@ -37,23 +33,28 @@ page {
 			searchPageId = TEXT
 			searchPageId.value = {$ids.search}
 
+			siteMapId = TEXT
+			siteMapId = {$ids.sitemap}
+
+			contactId = TEXT
+			contactId = {$ids.contact}
+
+			imprintId = TEXT
+			imprintId = {$ids.imprint}
+
+
 			TRANSLATIONNOTE < lib.translationnote
 			TOOLS_LANGUAGE_SWITCH < lib.tools_language_switch
 			TOOLS_TEXTONLY_SWITCH < lib.tools_textonly_switch
-			TOOLS_SEARCH_FIELD < lib.tools_search_field
-			LOGO < lib.header_logo
 			TITLE < lib.header_title
-			CLAIM < lib.header_claim
 			MENU < lib.menu
 			ROOTLINE < lib.rootline
 			CONTENT < styles.content.get
 			INFOBOX < styles.content.getRight
-			PIWIK < lib.piwik
 			WEBSITELINKS < lib.websitelinks
 			FOOTERLINKS < lib.footerlinks
 			FOOTER < lib.footer
 			SEARCHBOX < lib.searchbox
-			SEARCHLINK < lib.searchlink
 			PAGETITLE < lib.pagetitle
 			PAGESUBTITLE < lib.pagesubtitle
 			TEASER < lib.teaser

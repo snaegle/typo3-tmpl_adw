@@ -1,9 +1,7 @@
 <div class="top-container" id="top">
 	<div class="container_16">
 		<!-- breadcrumb -->
-		<div class="nav-breadcrumb">
-			{ROOTLINE -> f:format.raw()}
-		</div>
+		<f:render partial="BreadCrumb" arguments="{ROOTLINE: ROOTLINE}"/>
 		<!-- breadcrumb end -->
 		<!-- search/language -->
 		<div class="search">
@@ -18,7 +16,12 @@
 		<div class="header clearfix">
 			<div class="grid_3">
 				<!-- logo -->
-				<div class="logo">{LOGO -> f:format.raw()}</div>
+				<div class="logo">
+					<f:link.page pageUid="1" title="{f:translate(id:'provider')}">
+						<f:image src="EXT:tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" />
+					</f:link.page>
+
+					{LOGO -> f:format.raw()}</div>
 				<!-- logo end -->
 			</div>
 			<div class="grid_9 headlines">
@@ -77,7 +80,11 @@
 </div>
 <footer class="footer">
 	<div class="container_16">
-		{FOOTERLINKS -> f:format.raw()}
+		<ul class="clearfix">
+			<li><f:link.page pageUid="{siteMapId}"><f:translate id="sitemap" /></f:link.page></li>
+			<li><f:link.page pageUid="{contactId}"><f:translate id="contact" /></f:link.page></li>
+			<li><f:link.page pageUid="{imprintId}"><f:translate id="imprint" /></f:link.page></li>
+		</ul>
 		<p class="small">{FOOTER -> f:format.raw()}</p>
 	</div>
 </footer>
