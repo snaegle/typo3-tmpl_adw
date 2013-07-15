@@ -45,14 +45,12 @@ page {
 
 			TRANSLATIONNOTE < lib.translationnote
 			TOOLS_LANGUAGE_SWITCH < lib.tools_language_switch
-			TOOLS_TEXTONLY_SWITCH < lib.tools_textonly_switch
 			TITLE < lib.header_title
 			MENU < lib.menu
 			ROOTLINE < lib.rootline
 			CONTENT < styles.content.get
 			INFOBOX < styles.content.getRight
 			WEBSITELINKS < lib.websitelinks
-			FOOTERLINKS < lib.footerlinks
 			FOOTER < lib.footer
 			SEARCHBOX < lib.searchbox
 			PAGETITLE < lib.pagetitle
