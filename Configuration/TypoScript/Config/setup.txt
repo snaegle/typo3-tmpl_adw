@@ -73,11 +73,6 @@ config.htmlTag_langKey = cz_CZ
 
 #config.noPageTitle = 2
 
-fluidAjaxWidgetResponse.config.no_cache = 0
-FedFrameworkBridge.config.no_cache = 0
-FedPDFBridge.config.no_cache = 0
-FedSandboxBridge.config.no_cache = 0
-
 tt_content.image.20.1.imageLinkWrap {
 	JSwindow = 0
 	directImageLink = 1
