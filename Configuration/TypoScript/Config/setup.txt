@@ -19,7 +19,6 @@ config {
 	index_enable = 1
 }
 
-
 # remove stupid p tag within table td
 lib.parseFunc_RTE.externalBlocks.table.HTMLtableCells {
 	default >

@@ -42,7 +42,6 @@ page {
 			imprintId = TEXT
 			imprintId.value = {$ids.imprint}
 
-
 			TRANSLATIONNOTE < lib.translationnote
 			TOOLS_LANGUAGE_SWITCH < lib.tools_language_switch
 			TITLE < lib.header_title

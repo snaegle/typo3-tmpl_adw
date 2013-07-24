@@ -552,29 +552,17 @@ lib.rssFeedLinks.111.value = <link rel="alternate" type="application/rss+xml" ti
 
 
 lib.teaser = CONTENT
-lib.teaser.table = tt_content
-lib.teaser.select.pidInList = 401
-lib.teaser.select.max = 1
-lib.teaser.select.orderBy = sorting ASC
-lib.teaser.select.where = (hidden != 1 AND deleted != 1 AND sys_language_uid = 0)
-[globalVar = GP:L = 1]
-	lib.teaser.select.where = (hidden != 1 AND deleted != 1 AND sys_language_uid = 1)
-[global]
-[globalVar = GP:L = 2]
-	lib.teaser.select.where = (hidden != 1 AND deleted != 1 AND sys_language_uid = 2)
-[global]
-[globalVar = GP:L = 3]
-	lib.teaser.select.where = (hidden != 1 AND deleted != 1 AND sys_language_uid = 3)
-[global]
-[globalVar = GP:L = 4]
-	lib.teaser.select.where = (hidden != 1 AND deleted != 1 AND sys_language_uid = 4)
-[global]
-[globalVar = GP:L = 5]
-	lib.teaser.select.where = (hidden != 1 AND deleted != 1 AND sys_language_uid = 5)
-[global]
-
-lib.teaser.wrap = <div class="teaser-head">|</div>
-
+lib.teaser {
+	table = tt_content
+	select {
+		pidInList = 401
+		max = 1
+		orderBy = sorting ASC
+		where = (hidden != 1 AND deleted != 1)
+		languageField = sys_language_uid
+	}
+	wrap = <div class="teaser-head">|</div>
+}
 
 [globalVar = LIT:0 != {$set_logo}]
 	lib.teaser = COA
