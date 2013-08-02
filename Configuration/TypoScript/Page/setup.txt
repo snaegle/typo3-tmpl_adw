@@ -11,7 +11,7 @@ page {
 		file3 = EXT:tmpl_adw/Resources/Public/JavaScript/plugins.js
 	}
 	includeJSFooterlibs {
-		fancybox = EXT:tmpl_adw/Resources/Public/JavaScript/fancybox.js
+		fancybox = EXT:tmpl_adw/Resources/Public/JavaScript/libs/jquery.fancybox.pack.js
 	}
 	includeCSS {
 		file1 = EXT:tmpl_adw/Resources/Public/Css/style.css

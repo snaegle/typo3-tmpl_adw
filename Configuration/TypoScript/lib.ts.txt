@@ -2,7 +2,6 @@
 
 # add geo code in header
 
-
 lib.headerdata.geo = TEXT
 lib.headerdata.geo.value(
 <meta name="geo.region" content="{$meta.geo.region}" />
@@ -22,12 +21,9 @@ lib.headerdata.googlewebmaster = TEXT
 lib.headerdata.googlewebmaster.value = <meta name="google-site-verification" content="uWft1UIF6XdrsFD9fLcVT0IIVc8MpWq-15pJ3WG3z6Y" />
 
 
-
 ##### PAGETITLE #####
 
 # set page title
-
-
 lib.pagetitle = TEXT
 lib.pagetitle.data = TSFE:page|title
 
@@ -87,9 +83,6 @@ lib.currentdate.strftime = %d.%m.%Y
 [globalVar = GP:L = 1]
 lib.currentdate.strftime = %Y/%m/%d
 [global]
-
-
-
 
 
 ##### ROOTLINE #####
