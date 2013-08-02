@@ -17,7 +17,7 @@ page {
 		file1 = EXT:tmpl_adw/Resources/Public/Css/style.css
 		file2 = EXT:tmpl_adw/Resources/Public/Css/960.css
 		file5 = EXT:tmpl_adw/Resources/Public/Css/adw.css
-		file6 = EXT:tmpl_adw/Resources/Public/Css/fancybox.css
+		file6 = EXT:tmpl_adw/Resources/Public/Css/jquery.fancybox.css
 	}
 	meta {
 		description = {$translation.meta.description.de}
