@@ -366,54 +366,6 @@ lib.changedate.strftime = %d.%m.%Y
 lib.changedate.strftime = %Y.%d.%m
 [global]
 
-
-
-
-
-##### FOOTER #####
-
-
-lib.footer = COA
-[globalVar = TSFE:page|tx_subshowlastchangedate = 1]
-lib.footer.10 = COA
-lib.footer.10.10 = TEXT
-lib.footer.10.10.value = {$translation.changed.de}:&nbsp;
-[globalVar = GP:L = 1]
-lib.footer.10.10.value = {$translation.changed.en}:&nbsp;
-[global]
-[globalVar = GP:L = 2]
-lib.footer.10.10.value = {$translation.changed.fr}:&nbsp;
-[global]
-[globalVar = GP:L = 3]
-lib.footer.10.10.value = {$translation.changed.it}:&nbsp;
-[global]
-[globalVar = GP:L = 4]
-lib.footer.10.10.value = {$translation.changed.es}:&nbsp;
-[global]
-[globalVar = GP:L = 5]
-lib.footer.10.10.value = {$translation.changed.cz}:&nbsp;
-[global]
-lib.footer.10.20 < lib.changedate
-lib.footer.10.wrap = |&nbsp;
-[global]
-lib.footer.20 < lib.currentyear
-lib.footer.20.wrap = &copy;&nbsp;|&nbsp;{$translation.provider.de}
-[globalVar = GP:L = 1]
-lib.footer.20.wrap = &copy;&nbsp;|&nbsp;{$translation.provider.en}
-[global]
-[globalVar = GP:L = 2]
-lib.footer.20.wrap = &copy;&nbsp;|&nbsp;{$translation.provider.fr}
-[global]
-[globalVar = GP:L = 3]
-lib.footer.20.wrap = &copy;&nbsp;|&nbsp;{$translation.provider.it}
-[global]
-[globalVar = GP:L = 4]
-lib.footer.20.wrap = &copy;&nbsp;|&nbsp;{$translation.provider.es}
-[global]
-[globalVar = GP:L = 5]
-lib.footer.20.wrap = &copy;&nbsp;|&nbsp;{$translation.provider.cz}
-[global]
-
 ##### LINKMENU #####
 
 

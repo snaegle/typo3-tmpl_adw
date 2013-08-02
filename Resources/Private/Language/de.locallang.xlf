@@ -43,6 +43,12 @@
 			<trans-unit id="imprint" xml:space="preserve" approved="yes">
 				<source>Imprint</source>
 			<target state="signed-off">Impressum</target></trans-unit>
+			<trans-unit id="lastchanged" xml:space="preserve" approved="yes">
+				<source>Last changed</source>
+			<target state="signed-off">Zuletzt aktualisiert</target></trans-unit>
+			<trans-unit id="provider" xml:space="preserve" approved="yes">
+				<source>Akademie der Wissenschaften zu Göttingen</source>
+		<target state="signed-off">Akademie der Wissenschaften zu Göttingen</target></trans-unit>
 		</body>
 	</file>
 </xliff>
