@@ -1158,9 +1158,6 @@ figcaption.csc-textpic-caption {
   margin: 0 3px;
 }
 
-/**
- * 	temp
- */
 .tx-pagebrowse-pi1 + form {
   display: none;
 }
