@@ -1,0 +1,52 @@
+.tx-pagebrowse-pi1 {
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #aaa;
+	ul {
+		border-bottom: 1px solid #aaa;
+		border-top: 1px solid #fff;
+		width: 100%;
+		display: inline-block;
+		list-style-type: none;
+		margin: 0;
+		padding: 0.3em 0;
+	}
+	ol {
+		display: inline-block;
+		list-style-type: none;
+		margin: 0;
+		padding: 0.3em 0;
+	}
+	li {
+		display: inline-block;
+		font: 0.813em / 1.2 Helvetica, Arial, sans-serif;
+		margin: 0 0 0 2.8em;
+		text-align: center;
+		vertical-align: middle;
+		&:first-child {
+			margin: 0 0 0 0;
+		}
+	}
+}
+
+.tx-pagebrowse-pages ol {
+	margin: -12px 0 0;
+	li {
+		margin: 12px 0 0 1.8em;
+	}
+	.tx-pagebrowse-current {
+		font: 2.75em / 1.2 Cambria, Georgia, serif;
+		margin: 0 3px;
+	}
+}
+
+/**
+ * 	temp
+ */
+
+.tx-pagebrowse-pi1 + form {
+	display: none;
+}
+
+.results-list + .tx-pagebrowse-pi1 {
+	margin: -2px 0 0;
+}

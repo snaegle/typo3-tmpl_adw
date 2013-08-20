@@ -1,0 +1,44 @@
+.tx-solr {
+	#tx-solr-search {
+		width: 69%;
+		float: left;
+	}
+	#tx-solr-search-functions {
+		width: 25%;
+		float: right;
+	}
+	.results-list {
+		color: $link-color;
+		list-style-position: inside;
+		border-bottom: 1px solid #fff;
+		border-top: 2px solid #000;
+		margin: -1px 0 0 !important;
+		padding: 0;
+		h5 {
+			font: normal 1em / 1.2 Cambria, Georgia, serif;
+			display: inline;
+		}
+		li {
+			background: transparent url($image-path + "arrow-right.png") no-repeat 100% 50%;
+			border-top: 1px solid #fff;
+			border-bottom: 1px solid #aaa;
+			margin: 0;
+			padding: 1em 0;
+		}
+		p {
+			color: #282828;
+			padding: 0 2.5em 0 1.5em;
+			margin: 0 !important;
+			+ p {
+				display: none;
+			}
+		}
+	}
+	.tx-solr-relevance-bar {
+		display: none;
+	}
+	.tx-solr form {
+		clear: both;
+		padding: 1em 0;
+	}
+}

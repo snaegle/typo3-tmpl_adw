@@ -1,0 +1,21 @@
+.news-latest-container .news-latest-item {
+	margin: 1em 0;
+	h2, p, span {
+		font-size: 0.813em;
+		margin: 0;
+	}
+	h2 a {
+		cursor: default;
+		text-decoration: none;
+		&:hover {
+			cursor: default;
+			text-decoration: none;
+		}
+	}
+	a {
+		color: #282828;
+	}
+	.news-list-morelink a {
+		color: $link-color;
+	}
+}

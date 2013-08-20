@@ -149,10 +149,3 @@ td { vertical-align: top; }
 
 /* Hide visually and from screenreaders, but maintain layout */
 .invisible { visibility: hidden; }
-
-/* Contain floats: h5bp.com/q */
-.csc-default:before, .clearfix:before, 
-.csc-default:after, .clearfix:after { content: ""; display: table; }
-.csc-default:after, .clearfix:after { clear: both; }
-.csc-default, .clearfix { *zoom: 1; }
-

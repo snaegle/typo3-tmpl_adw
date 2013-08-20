@@ -130,3 +130,128 @@
 
 	/* Fix for unordered and ordered list with image "In text, left" */
 	.csc-textpic-intext-left ol, .csc-textpic-intext-left ul {padding-left: 40px; overflow: auto; }
+
+.csc-default {
+	p, ol, ul {
+		font: 1em / 22px Cambria, Georgia, serif;
+		margin: 22px 0;
+	}
+	li {
+		font: 1em / 22px Cambria, Georgia, serif;
+		margin: 22px 0;
+		margin: 0;
+	}
+	address {
+		font: 1em / 22px Cambria, Georgia, serif;
+	}
+	:first-child h3 {
+		margin: 0;
+	}
+	p:first-child {
+		margin: 0 0 22px;
+	}
+	a img {
+		margin: 0 12px 12px 0;
+		-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+		-moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+		box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+	}
+	img {
+		// margin: 12px 12px 12px 0
+
+	}
+	hr + ul {
+		margin: 16px 0;
+		> li {
+			margin: 16px 0;
+		}
+	}
+	a.toplink {
+		font: bold 0.813em / 1.2 Helvetica, Arial, serif;
+	}
+	.linklist, .csc-menu {
+		border-bottom: 1px solid #fff;
+		border-top: 1px solid #aaa;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	.linklist li, .csc-menu li {
+		border-top: 1px solid #fff;
+		border-bottom: 1px solid #aaa;
+		margin: 0;
+		padding: 0;
+	}
+	.linklist li a, .csc-menu li a {
+		background: transparent url($image-path + "arrow-right.png") no-repeat 100% 50%;
+		color: #282828;
+		display: block;
+		padding: 11px 18px 11px 0;
+		font: 1em / 1.2 Cambria, Georgia, serif;
+		line-height: 22px;
+		text-decoration: none;
+	}
+	.linklist li a {
+		&:hover, &:active, &:focus {
+			background-color: rgba(201, 2, 48, 0.05);
+		}
+	}
+	.csc-menu li a {
+		&:hover, &:active, &:focus {
+			background-color: rgba(201, 2, 48, 0.05);
+		}
+	}
+}
+
+.csc-sitemap {
+	ul {
+		color: $link-color;
+		list-style-type: disc;
+		padding: 0 0 0 30px;
+		ul {
+			list-style-type: none;
+			margin: 0;
+		}
+	}
+	li {
+		color: $link-color;
+		font: bold 16px / 22px Helvetica, Arial, sans-serif;
+		li {
+			font: normal 16px / 22px Helvetica, Arial, sans-serif;
+			li {
+				font: normal 13px / 22px Helvetica, Arial, sans-serif;
+			}
+		}
+	}
+	.li-count {
+		color: #282828;
+	}
+	.subset {
+		display: none;
+	}
+	#link-compactversion {
+		color: $link-color;
+		font: bold 13px / 22px Helvetica, Arial, sans-serif;
+	}
+}
+
+.csc-textpic a img {
+	-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+	-moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.csc-textpic-caption {
+	font-size: 0.75em;
+	line-height: 14px;
+	padding: 5px 0;
+	display: block;
+}
+figcaption.csc-textpic-caption {
+	display: block;
+}
+
+.csc-default:before, .clearfix:before,
+.csc-default:after, .clearfix:after { content: ""; display: table; }
+.csc-default:after, .clearfix:after { clear: both; }
+.csc-default, .clearfix { *zoom: 1; }

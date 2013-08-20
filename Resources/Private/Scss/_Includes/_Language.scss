@@ -1,0 +1,78 @@
+.language {
+	background-color: #000;
+	background-image: url($image-path + "search-devider.png"), -moz-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+	background-image: url($image-path + "search-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555555), color-stop(50%, #333333), color-stop(50%, black), color-stop(100%, black));
+	background-image: url($image-path + "search-devider.png"), -webkit-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+	background-image: url($image-path + "search-devider.png"), -o-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+	background-image: url($image-path + "search-devider.png"), -ms-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+	background-image: url($image-path + "search-devider.png"), linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	margin: 0;
+	padding: 0;
+	height: auto;
+	position: absolute;
+	top: 0;
+	right: 10px;
+	width: 50px;
+	z-index: 10;
+	&:hover ul, &:active ul, &:focus ul {
+		display: block;
+	}
+	ul {
+		background-color: #000;
+		border: 1px solid #797979;
+		border-top: none;
+		font: normal 13px / 22px Helvetica, Arial, sans-serif;
+		margin: 0 0 0 1px;
+		padding: 0;
+		list-style-type: none;
+		display: none;
+		-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+		-moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+		box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+		width: 80px;
+	}
+	li {
+		width: 80px;
+		background-color: #000;
+	}
+	h2 {
+		background-color: #000;
+		background-image: url($image-path + "language-devider.png"), -moz-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+		background-image: url($image-path + "language-devider.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555555), color-stop(50%, #333333), color-stop(50%, black), color-stop(100%, black));
+		background-image: url($image-path + "language-devider.png"), -webkit-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+		background-image: url($image-path + "language-devider.png"), -o-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+		background-image: url($image-path + "language-devider.png"), -ms-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+		background-image: url($image-path + "language-devider.png"), linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
+		background-repeat: no-repeat;
+		background-position: 100% 0;
+		background-size: auto 39px;
+		margin: 0 0 0 2px;
+		color: #ccc;
+		/*#999;*/
+		font: bold 0.75em / 19px Helvetica, Arial, sans-serif;
+		cursor: pointer;
+		text-transform: uppercase;
+		span {
+			background: transparent url($image-path + "arrow-down.png") no-repeat 85% 50%;
+			display: block;
+			padding: 10px;
+			cursor: pointer;
+		}
+	}
+	a {
+		background-color: #000;
+		color: #ccc;
+		/*#999;*/
+		display: block;
+		font-weight: bold;
+		line-height: 19px;
+		padding: 10px 9px 10px 13px;
+		text-decoration: none;
+		width: 60px;
+		&:hover, &:active, &:focus {
+			color: #fff;
+		}
+	}
+}

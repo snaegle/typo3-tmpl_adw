@@ -1,0 +1,66 @@
+/**
+ * Navigation
+ */
+
+.nav {
+	ul {
+		border-bottom: 1px solid #fff;
+		border-top: 1px solid #aaa;
+		margin: 0;
+		padding: 0;
+	}
+	li {
+		border-top: 1px solid #fff;
+		border-bottom: 1px solid #aaa;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	a {
+		color: #282828;
+		display: block;
+		font-size: 1em;
+		font-weight: bold;
+		line-height: 1.3;
+		padding: 0.8em 0;
+		text-decoration: none;
+		&:hover, &:active, &:focus {
+			text-decoration: underline;
+		}
+	}
+	ul ul {
+		border-top: none;
+		border-bottom: none;
+		li {
+			border-top: none;
+			border-bottom: none;
+		}
+		a, .cur a {
+			color: #000;
+			font-size: 0.813em;
+			font-weight: normal;
+			padding: 0.5em 0;
+		}
+	}
+	.cur {
+		color: $link-color;
+		font-size: 16px;
+		list-style-type: disc;
+		> a {
+			color: $link-color;
+			display: block;
+			font-weight: bold;
+			padding: 0.8em 0 0.8em;
+		}
+	}
+	.act {
+		> a {
+			color: $link-color;
+			padding: 0.8em 0 0.8em;
+		}
+		.cur a {
+			color: $link-color;
+			font-weight: normal;
+		}
+	}
+}
