@@ -11,13 +11,17 @@
 
 <div id="tx-solr-search">
 	<!-- ###SOLR_SEARCH_FORM### begin -->
-	###FORM.SUGGEST_URL###
-	<form id="tx-solr-search-form-pi-results" action="###FORM.ACTION###" method="get" accept-charset="###FORM.ACCEPT-CHARSET###">
-		###LLL:searchWord### <input type="text" class="tx-solr-q" name="###SOLR.PREFIX###[q]" value="###FORM.Q###" />
-		<input type="hidden" name="id" value="###FORM.ACTION_ID###" />
-		<input type="hidden" name="###FORM.ACTION_LANGUAGE_PARAMETER###" value="###FORM.ACTION_LANGUAGE###" />
-		<input type="submit" value="###LLL:submit###" />
-	</form>
+	<div class="tx-solr-search-form">
+		###FORM.SUGGEST_URL###
+		<form id="tx-solr-search-form-pi-results" action="###FORM.ACTION###" method="get" accept-charset="###FORM.ACCEPT-CHARSET###">
+			<input type="text" class="tx-solr-q" name="###TX_SOLR.QUERY_PARAMETER###" value="###FORM.Q###" />
+			<input type="hidden" name="id" value="###FORM.ACTION_ID###" />
+			<input type="hidden" name="###FORM.ACTION_LANGUAGE_PARAMETER###" value="###FORM.ACTION_LANGUAGE###" />
+			<input type="submit" class="tx-solr-submit" value="###LLL:submit###" />
+			
+			###FORM.HIDDEN_PARAMETER_FIELDS###
+		</form>
+	</div>
 	<!-- ###SOLR_SEARCH_FORM### end -->
 
 
@@ -53,35 +57,42 @@
 	###RESULTS.FOUND###
 	###RESULTS.RANGE###
 
-	###RESULTS.PAGEBROWSER###
+	<div id="tx-solr-pagination">
+		<!-- ###SOLR_SEARCH_RESULTSPERPAGESWITCH### begin -->
+		<div id="tx-solr-pagination-results-per-page">
+		<form action="###FORM.ACTION###" method="post">
+			###LLL:results_per_page###<select onchange="this.form.submit()" name="###TX_SOLR.PREFIX###[resultsPerPage]">
+				<!-- ###LOOP:OPTIONS### begin -->
+				<!-- ###LOOP_CONTENT### -->
+				<option value="###OPTION.VALUE###" ###OPTION.SELECTED###>###OPTION.VALUE###</option>
+				<!-- ###LOOP_CONTENT### -->
+				<!-- ###LOOP:OPTIONS### end -->
+			</select>
+		</form>
+		</div>
+		<!-- ###SOLR_SEARCH_RESULTSPERPAGESWITCH### end -->
 
-	<!-- ###RESULTS_PER_PAGE_SWITCH### beginn -->
-	<form action="###FORM.ACTION###" method="post">
-		###LLL:results_per_page###<select onchange="this.form.submit()" name="###SOLR.PREFIX###[resultsPerPage]">
-			<!-- ###LOOP:OPTIONS### begin -->
-			<!-- ###LOOP_CONTENT### -->
-			<option value="###OPTION.VALUE###" ###OPTION.SELECTED###>###OPTION.VALUE###</option>
-			<!-- ###LOOP_CONTENT### -->
-			<!-- ###LOOP:OPTIONS### end -->
-		</select>
-	</form>
-	<!-- ###RESULTS_PER_PAGE_SWITCH### end -->
+		###RESULTS.PAGEBROWSER###
+	</div>
 
 	<ol start="###RESULTS.OFFSET###" class="results-list">
 		<!-- ###LOOP:RESULT_DOCUMENTS### begin -->
 		<!-- ###LOOP_CONTENT### -->
 		<li class="results-entry">
+			<!--
+			Score: ###RESULT_DOCUMENT.SCORE###
+			Document ID:  ###RESULT_DOCUMENT.ID###
+			-->
+
 			<h5 class="results-topic"><a href="###RESULT_DOCUMENT.URL###">###RESULT_DOCUMENT.TITLE###</a></h5>
 			<div class="results-teaser">
-				<p>###CROP:###RESULT_DOCUMENT.CONTENT###|250###</p>
-				<!--<p>
-					Score: <em>###RESULT_DOCUMENT.SCORE###</em><br />
-					Document ID: <em>###RESULT_DOCUMENT.ID###</em>
-				</p>-->
-				<!--###RELEVANCE_BAR:###RESULT_DOCUMENT.SCORE######-->
-				<p class="solr-relevance">
-				###LLL:relevance###: ###RELEVANCE:###RESULT_DOCUMENT.SCORE######%
-				</p>
+				<div class="relevance">
+					<div class="relevance-label">###LLL:relevance###: </div>
+					<div class="relevance-bar">###RELEVANCE_BAR:###RESULT_DOCUMENT######</div>
+					<div class="relevance-percent">###RELEVANCE:###RESULT_DOCUMENT######%</div>
+				</div>
+
+				<p class="result-content">###RESULT_DOCUMENT.CONTENT###</p>
 
 				<!-- ###IF:###RESULT_DOCUMENT.TYPE###|==|tx_solr_file### begin -->
 				<p>
@@ -104,28 +115,51 @@
 
 
 	<!-- ###SOLR_SEARCH_NO_RESULTS### begin -->
-	###NO_RESULTS.NOTHING_FOUND###
-	###NO_RESULTS.SUGGESTION###
+	<div class="tx-solr-search-no-results">
+		###NO_RESULTS.NOTHING_FOUND###
+		###NO_RESULTS.SUGGESTION###
+	</div>
 	<!-- ###SOLR_SEARCH_NO_RESULTS### end -->
 </div>
 
 <div id="tx-solr-search-functions">
+
+	<!-- ###SOLR_SEARCH_SORTING### begin -->
+	<div id="tx-solr-sorting" class="secondaryContentSection">
+		<div class="csc-header">
+			<h3 class="csc-firstHeader">###LLL:sorting_sortBy###</h3>
+		</div>
+		<ul>
+			<!-- ###LOOP:SORT### begin -->
+			<!-- ###LOOP_CONTENT### -->
+			<li>
+				###SORT_INDICATOR:###SORT.CURRENT_DIRECTION###### ###SORT.LINK###
+			</li>
+			<!-- ###LOOP_CONTENT### -->
+			<!-- ###LOOP:SORT### end -->
+		</ul>
+	</div>
+
+	<!-- ###SOLR_SEARCH_SORTING### end -->
+
+
 	<!-- ###SOLR_SEARCH_FACETING### begin -->
 	<div id="tx-solr-faceting">
 		<!-- ###USED_FACETS### begin -->
-		<h3>###LLL:faceting_narrowSearch###</h3>
-		<div id="tx-solr-facets-in-use">
-			<h4>###LLL:faceting_resultsNarrowedBy###</h4>
+		<div id="tx-solr-facets-in-use" class="secondaryContentSection">
+			<div class="csc-header">
+				<h3 class="csc-firstHeader">###LLL:faceting_resultsNarrowedBy###</h3>
+			</div>
 			<ul>
 				<!-- ###LOOP:FACETS_IN_USE### begin -->
 				<!-- ###LOOP_CONTENT### -->
 				<li>
-					<a href="###REMOVE_FACET.url###">###REMOVE_FACET.text###</a>
+					- <a href="###REMOVE_FACET.url###">###REMOVE_FACET.text###</a>
 				</li>
 				<!-- ###LOOP_CONTENT### -->
 				<!-- ###LOOP:FACETS_IN_USE### end -->
 
-				<li>
+				<li class="facets-remove-all">
 					<a href="###REMOVE_ALL_FACETS.url###">###REMOVE_ALL_FACETS.text###</a>
 				</li>
 			</ul>
@@ -133,18 +167,20 @@
 		<!-- ###USED_FACETS### end -->
 
 		<!-- ###AVAILABLE_FACETS### begin -->
-		<div id="tx-solr-facets-available">
-			<h4>###LLL:faceting_narrowSearch###</h4>
+		<div id="tx-solr-facets-available" class="secondaryContentSection">
+			<div class="csc-header">
+				<h3 class="csc-firstHeader">###LLL:faceting_narrowSearch###</h3>
+			</div>
 			<ul class="facets">
 				<!-- ###SINGLE_FACET### begin -->
-				<li class="facet facet-###FACET.name###">
-					<h5>###FACET.label###</h5>
-					<ul>
+				<li class="facet facet-###FACET.name### facet-type-###FACET.type###">
+					<h5 class="facet-label csc-header">###FACET.label###</h5>
+					<ul class="facet-option-list">
 						<!-- ###SINGLE_FACET_OPTION### begin -->
 						<!-- ###LOOP:FACET_LINKS### begin -->
 						<!-- ###LOOP_CONTENT### -->
-						<li class="###FACET_LINK.HIDDEN###">
-							###FACET_LINK.LINK### ###FACET_LINK.COUNT###
+						<li class="facet-option ###FACET_LINK.HIDDEN###">
+							+ ###FACET_LINK.LINK### <span class="facet-result-count">(###FACET_LINK.COUNT###)</span>
 						</li>
 						<!-- ###LOOP_CONTENT### -->
 						<!-- ###LOOP:FACET_LINKS### end -->
@@ -160,32 +196,16 @@
 	<!-- ###SOLR_SEARCH_FACETING### end -->
 
 
-
-	<!-- ###SOLR_SEARCH_SORTING### begin -->
-	<div id="tx-solr-sorting">
-		<h3>###LLL:sorting_sortBy###</h3>
-		<ul>
-			<!-- ###LOOP:SORT### begin -->
-			<!-- ###LOOP_CONTENT### -->
-			<li>
-				###SORT_INDICATOR:###SORT.CURRENT_DIRECTION###### ###SORT.LINK###
-			</li>
-			<!-- ###LOOP_CONTENT### -->
-			<!-- ###LOOP:SORT### end -->
-		</ul>
-	</div>
-
-	<!-- ###SOLR_SEARCH_SORTING### end -->
-
-
 	<!-- ###SOLR_SEARCH_LASTSEARCHES### end -->
-	<div id="tx-solr-lastsearches">
-		<h3>###LLL:lastSearches###</h3>
+	<div id="tx-solr-lastsearches" class="secondaryContentSection">
+		<div class="csc-header">
+			<h3 class="csc-firstHeader">###LLL:lastSearches###</h3>
+		</div>
 		<ul>
 			<!-- ###LOOP:LASTSEARCHES### begin -->
 			<!-- ###LOOP_CONTENT### -->
 			<li>
-				###LINK:###LASTSEARCH.Q###|###LASTSEARCH.PID###|###LASTSEARCH.PARAMETERS######
+				###LINK:###LASTSEARCH.Q###|###LASTSEARCH.PID###|###LASTSEARCH.PARAMETERS###|0|rel="nofollow"###
 			</li>
 			<!-- ###LOOP_CONTENT### -->
 			<!-- ###LOOP:LASTSEARCHES### end -->
@@ -193,18 +213,20 @@
 	</div>
 	<!-- ###SOLR_SEARCH_LASTSEARCHES### end -->
 
-	<!-- ###SOLR_SEARCH_COMMONTERMS### begin -->
-	<div id="tx-solr-common-terms">
-		<h3>###LLL:commonTerms###</h3>
+	<!-- ###SOLR_SEARCH_FREQUENTSEARCHES### begin -->
+	<div id="tx-solr-frequent-searches" class="secondaryContentSection">
+		<div class="csc-header">
+			<h3 class="csc-firstHeader">###LLL:frequentSearches###</h3>
+		</div>
 		<ul>
-			<!-- ###LOOP:COMMONTERMS### begin -->
+			<!-- ###LOOP:FREQUENTSEARCHES### begin -->
 			<!-- ###LOOP_CONTENT### -->
-			<li class="###TERM.CLASS###">###LINK:###TERM.TERM###|###TERM.PID###|###TERM.PARAMETERS######</li>
+			<li class="###TERM.CLASS###">###LINK:###TERM.TERM###|###TERM.PID###|###TERM.PARAMETERS###|0|rel="nofollow"###</li>
 			<!-- ###LOOP_CONTENT### -->
-			<!-- ###LOOP:COMMONTERMS### end -->
+			<!-- ###LOOP:FREQUENTSEARCHES### end -->
 		</ul>
 	</div>
-	<!-- ###SOLR_SEARCH_COMMONTERMS### end -->
+	<!-- ###SOLR_SEARCH_FREQUENTSEARCHES### end -->
 
 </div>
 

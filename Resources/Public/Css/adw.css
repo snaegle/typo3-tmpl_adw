@@ -258,6 +258,15 @@ DIV.csc-textpic DIV.csc-textpic-imagerow-last {
   overflow: auto;
 }
 
+.tx-solr #tx-solr-search {
+  width: 69%;
+  float: left;
+}
+.tx-solr #tx-solr-search-functions {
+  width: 25%;
+  float: right;
+}
+
 @media print {
   * {
     background: transparent !important;
@@ -1098,37 +1107,6 @@ figcaption.csc-textpic-caption {
 .tx-solr form {
   clear: both;
   padding: 1em 0;
-}
-
-#tx-solr-search {
-  width: 520px;
-  display: inline;
-  float: left;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-#tx-solr-search-functions {
-  width: 200px;
-  display: inline;
-  float: left;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-#tx-solr-search-functions h4 {
-  margin: 0 0 0.25em;
-}
-#tx-solr-search-functions ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-#tx-solr-search-functions li {
-  margin: 0;
-}
-#tx-solr-search-functions a {
-  display: block;
-  padding: 0.25em 0;
 }
 
 .results-list {
