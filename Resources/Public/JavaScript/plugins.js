@@ -30,16 +30,16 @@ window.log = function() {
 
 // place any jQuery/helper plugins in here, instead of separate, slower script files.
 
-$(document).ready(function() {
-	var thumb = $('.wtdirectory-img img').attr('src');
-	var image = $('.wtdirectory-img a').attr('href');
-	$('.wtdirectory-img a').remove();
-	$('.wtdirectory-img').append('<a href="' + thumb + '" class="lightbox"><img src="' + thumb + '" /></a>');
+jQuery(document).ready(function() {
+	var thumb = jQuery('.wtdirectory-img img').attr('src');
+	var image = jQuery('.wtdirectory-img a').attr('href');
+	jQuery('.wtdirectory-img a').remove();
+	jQuery('.wtdirectory-img').append('<a href="' + thumb + '" class="lightbox"><img src="' + thumb + '" /></a>');
 });
 
 //jQuery.noConflict(); 
-$(document).ready(function() {
-	$('a.lightbox').fancybox({
+jQuery(document).ready(function() {
+	jQuery('a.lightbox').fancybox({
 								 'titlePosition': 'inside',
 								 'overlayColor': '#000',
 								 'overlayOpacity': '0.6',
