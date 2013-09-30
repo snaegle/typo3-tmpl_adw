@@ -22,6 +22,7 @@ plugin.tx_solr {
 		highlighting = 1
 		results.resultsPerPageSwitchOptions = 10, 25, 50
 		lastSearches = 0
+		sorting = 0
 	}
 	index {
 		enablePageIndexing = 0
