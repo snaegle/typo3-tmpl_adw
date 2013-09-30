@@ -1,6 +1,8 @@
 plugin.tx_solr {
 	suggest = 1
 	addDefaultCss = 0
+	enableDebugMode = 0
+	statistics = 0
 	templateFile {
 		results = EXT:tmpl_adw/Resources/Private/Templates/Extensions/Solr/results.htm
 		pagebrowser = EXT:tmpl_adw/Resources/Private/Templates/Extensions/Solr/pagebrowser.htm
@@ -20,9 +22,15 @@ plugin.tx_solr {
 	}
 	search {
 		highlighting = 1
-		results.resultsPerPageSwitchOptions = 10, 25, 50
+		faceting = 1
 		lastSearches = 0
 		sorting = 0
+		frequentSearches = 0
+		results {
+			showDocumentScoreAnalysis = 0
+			resultsHighlighting = 1
+			resultsPerPageSwitchOptions = 10, 25, 50
+		}
 	}
 	index {
 		enablePageIndexing = 0
