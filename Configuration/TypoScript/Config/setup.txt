@@ -17,6 +17,7 @@ config {
 	tx_realurl_enable = 1
 	htmlTag_langKey = de
 	index_enable = 1
+	baseURL = {$base_url}
 }
 
 # remove stupid p tag within table td
