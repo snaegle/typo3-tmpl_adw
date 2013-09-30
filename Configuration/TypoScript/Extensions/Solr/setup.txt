@@ -17,73 +17,75 @@ plugin.tx_solr {
 		indexing {
 			indexQueuePageIndexerGetData = 1
 		}
-	}
-	search {
-		highlighting = 1
-		results.resultsPerPageSwitchOptions = 10, 25, 50
-		lastSearches = 0
-	}
-	index {
-		enablePageIndexing = 0
-		enableIndexingWhileBeUserLoggedIn = 0
-		enableFileIndexing = 0
-		queue {
-			pages = 1
-			pages {
-				fields {
-					type = TEXT
-					type.value = Seiteninhalte
-				}
+		}
+}
+
+plugin.tx_solr.search {
+	highlighting = 1
+	results.resultsPerPageSwitchOptions = 10, 25, 50
+	lastSearches = 0
+}
+
+plugin.tx_solr.index {
+	enablePageIndexing = 0
+	enableIndexingWhileBeUserLoggedIn = 0
+	enableFileIndexing = 0
+}
+
+
+# index pages
+
+plugin.tx_solr.index.queue.pages = 1
+
+# index tt_address and send search results to generic details page
+plugin.tx_solr.index.queue.member = 1
+plugin.tx_solr.index.queue.member {
+	table = tt_address
+	fields {
+		content = TEXT
+		content {
+			field = description
+			stripHtml = 1
+    	}
+		uid = uid
+		title = name
+		url = TEXT
+		url {
+			typolink {
+				parameter = {$solr.index.member.target}
+				useCacheHash = 1
+				additionalParams = &tx_wtdirectory_pi1[show]={field:uid}
+				additionalParams.insertData = 1
+				returnLast = url
 			}
-			member = 1
-			member {
-				table = tt_address
-				fields {
-					type = TEXT
-					type.value = Personen
-					content = TEXT
-					content {
-						field = description
-						stripHtml = 1
-					}
-					uid = uid
-					title = name
-					url = TEXT
-					url {
-						typolink {
-							parameter = {$solr.index.member.target}
-							useCacheHash = 1
-							additionalParams = &tx_wtdirectory_pi1[show]={field:uid}
-							additionalParams.insertData = 1
-							returnLast = url
-						}
-					}
-				}
-			}
-			news = 1
-			news {
-				table = tt_news
-				fields {
-					title = title
-					author = author
-					changed = tstamp
-					content = TEXT
-					content {
-						field = bodytext
-						stripHtml = 1
-					}
-					uid = uid
-					url = TEXT
-					url {
-						typolink {
-							parameter = {$solr.index.news.target}
-							useCacheHash = 1
-							additionalParams = &tx_ttnews[tt_news]={field:uid}
-							additionalParams.insertData = 1
-							returnLast = url
-						}
-					}
-				}
+		}
+	}
+}
+
+
+# index tt_news and send search results to generic details page
+
+plugin.tx_solr.index.queue.news = 1
+plugin.tx_solr.index.queue.news {
+	table = tt_news
+	fields {
+		title = title
+		author = author
+		changed = tstamp
+		content = TEXT
+		content {
+			field = bodytext
+			stripHtml = 1
+		}
+		uid = uid
+		url = TEXT
+		url {
+			typolink {
+				parameter = {$solr.index.news.target}
+				useCacheHash = 1
+				additionalParams = &tx_ttnews[tt_news]={field:uid}
+				additionalParams.insertData = 1
+				returnLast = url
 			}
 		}
 	}
