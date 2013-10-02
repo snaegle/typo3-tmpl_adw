@@ -413,6 +413,389 @@ a:hover, a:active {
   text-decoration: underline;
 }
 
+/* Captions */
+DIV.csc-textpic-caption-c .csc-textpic-caption {
+  text-align: center;
+}
+
+DIV.csc-textpic-caption-r .csc-textpic-caption {
+  text-align: right;
+}
+
+DIV.csc-textpic-caption-l .csc-textpic-caption {
+  text-align: left;
+}
+
+/* Needed for noRows setting */
+DIV.csc-textpic DIV.csc-textpic-imagecolumn {
+  float: left;
+  display: inline;
+}
+
+/* Border just around the image */
+DIV.csc-textpic-border DIV.csc-textpic-imagewrap .csc-textpic-image IMG, DIV.csc-textpic-border DIV.csc-textpic-single-image IMG {
+  border: 2px solid black;
+  padding: 0px 0px;
+}
+
+DIV.csc-textpic-imagewrap {
+  padding: 0;
+}
+
+DIV.csc-textpic IMG {
+  border: none;
+}
+
+/* DIV: This will place the images side by side */
+DIV.csc-textpic DIV.csc-textpic-imagewrap DIV.csc-textpic-image {
+  float: left;
+}
+
+/* UL: This will place the images side by side */
+DIV.csc-textpic DIV.csc-textpic-imagewrap UL {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+DIV.csc-textpic DIV.csc-textpic-imagewrap UL LI {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+/* DL: This will place the images side by side */
+DIV.csc-textpic DIV.csc-textpic-imagewrap DL.csc-textpic-image {
+  float: left;
+}
+
+DIV.csc-textpic DIV.csc-textpic-imagewrap DL.csc-textpic-image DT {
+  float: none;
+}
+
+DIV.csc-textpic DIV.csc-textpic-imagewrap DL.csc-textpic-image DD {
+  float: none;
+}
+
+DIV.csc-textpic DIV.csc-textpic-imagewrap DL.csc-textpic-image DD IMG {
+  border: none;
+}
+
+/* FE-Editing Icons */
+DL.csc-textpic-image {
+  margin: 0;
+}
+
+DL.csc-textpic-image DT {
+  margin: 0;
+  display: inline;
+}
+
+DL.csc-textpic-image DD {
+  margin: 0;
+}
+
+/* Clearer */
+DIV.csc-textpic-clear {
+  clear: both;
+}
+
+/* Margins around images: */
+/* Pictures on left, add margin on right */
+DIV.csc-textpic-left DIV.csc-textpic-imagewrap .csc-textpic-image,
+DIV.csc-textpic-intext-left-nowrap DIV.csc-textpic-imagewrap .csc-textpic-image,
+DIV.csc-textpic-intext-left DIV.csc-textpic-imagewrap .csc-textpic-image {
+  display: inline;
+  /* IE fix for double-margin bug */
+  margin-right: 10px;
+}
+
+/* Pictures on right, add margin on left */
+DIV.csc-textpic-right DIV.csc-textpic-imagewrap .csc-textpic-image,
+DIV.csc-textpic-intext-right-nowrap DIV.csc-textpic-imagewrap .csc-textpic-image,
+DIV.csc-textpic-intext-right DIV.csc-textpic-imagewrap .csc-textpic-image {
+  display: inline;
+  /* IE fix for double-margin bug */
+  margin-left: 10px;
+}
+
+/* Pictures centered, add margin on left */
+DIV.csc-textpic-center DIV.csc-textpic-imagewrap .csc-textpic-image {
+  display: inline;
+  /* IE fix for double-margin bug */
+  margin-left: 10px;
+}
+
+DIV.csc-textpic DIV.csc-textpic-imagewrap .csc-textpic-image .csc-textpic-caption {
+  margin: 0;
+}
+
+DIV.csc-textpic DIV.csc-textpic-imagewrap .csc-textpic-image IMG {
+  margin: 0;
+  vertical-align: bottom;
+}
+
+/* Space below each image (also in-between rows) */
+DIV.csc-textpic DIV.csc-textpic-imagewrap .csc-textpic-image {
+  margin-bottom: 10px;
+}
+
+DIV.csc-textpic-equalheight DIV.csc-textpic-imagerow {
+  margin-bottom: 10px;
+  display: block;
+}
+
+DIV.csc-textpic DIV.csc-textpic-imagerow {
+  clear: both;
+}
+
+DIV.csc-textpic DIV.csc-textpic-single-image IMG {
+  margin-bottom: 10px;
+}
+
+/* IE7 hack for margin between image rows */
+* + html DIV.csc-textpic DIV.csc-textpic-imagerow .csc-textpic-image {
+  margin-bottom: 0;
+}
+
+* + html DIV.csc-textpic DIV.csc-textpic-imagerow {
+  margin-bottom: 10px;
+}
+
+/* No margins around the whole image-block */
+DIV.csc-textpic DIV.csc-textpic-imagewrap .csc-textpic-firstcol {
+  margin-left: 0px !important;
+}
+
+DIV.csc-textpic DIV.csc-textpic-imagewrap .csc-textpic-lastcol {
+  margin-right: 0px !important;
+}
+
+/* Add margin from image-block to text (in case of "Text w/ images") */
+DIV.csc-textpic-intext-left DIV.csc-textpic-imagewrap,
+DIV.csc-textpic-intext-left-nowrap DIV.csc-textpic-imagewrap {
+  margin-right: 10px !important;
+}
+
+DIV.csc-textpic-intext-right DIV.csc-textpic-imagewrap,
+DIV.csc-textpic-intext-right-nowrap DIV.csc-textpic-imagewrap {
+  margin-left: 10px !important;
+}
+
+/* Positioning of images: */
+/* Above */
+DIV.csc-textpic-above DIV.csc-textpic-text {
+  clear: both;
+}
+
+/* Center (above or below) */
+DIV.csc-textpic-center {
+  text-align: center;
+  /* IE-hack */
+}
+
+DIV.csc-textpic-center DIV.csc-textpic-imagewrap {
+  margin: 0 auto;
+}
+
+DIV.csc-textpic-center DIV.csc-textpic-imagewrap .csc-textpic-image {
+  text-align: left;
+  /* Remove IE-hack */
+}
+
+DIV.csc-textpic-center DIV.csc-textpic-text {
+  text-align: left;
+  /* Remove IE-hack */
+}
+
+/* Right (above or below) */
+DIV.csc-textpic-right DIV.csc-textpic-imagewrap {
+  float: right;
+}
+
+DIV.csc-textpic-right DIV.csc-textpic-text {
+  clear: right;
+}
+
+/* Left (above or below) */
+DIV.csc-textpic-left DIV.csc-textpic-imagewrap {
+  float: left;
+}
+
+DIV.csc-textpic-left DIV.csc-textpic-text {
+  clear: left;
+}
+
+/* Left (in text) */
+DIV.csc-textpic-intext-left DIV.csc-textpic-imagewrap {
+  float: left;
+}
+
+/* Right (in text) */
+DIV.csc-textpic-intext-right DIV.csc-textpic-imagewrap {
+  float: right;
+}
+
+/* Right (in text, no wrap around) */
+DIV.csc-textpic-intext-right-nowrap DIV.csc-textpic-imagewrap {
+  float: right;
+  clear: both;
+}
+
+/* Hide from IE5-mac. Only IE-win sees this. \*/
+* html DIV.csc-textpic-intext-right-nowrap .csc-textpic-text {
+  height: 1%;
+}
+
+/* End hide from IE5/mac */
+/* Left (in text, no wrap around) */
+DIV.csc-textpic-intext-left-nowrap DIV.csc-textpic-imagewrap {
+  float: left;
+  clear: both;
+}
+
+/* Hide from IE5-mac. Only IE-win sees this. \*/
+* html DIV.csc-textpic-intext-left-nowrap .csc-textpic-text,
+* html .csc-textpic-intext-left ol,
+* html .csc-textpic-intext-left ul {
+  height: 1%;
+}
+
+/* End hide from IE5/mac */
+DIV.csc-textpic DIV.csc-textpic-imagerow-last {
+  margin-bottom: 0;
+}
+
+/* Browser fixes: */
+/* Fix for unordered and ordered list with image "In text, left" */
+.csc-textpic-intext-left ol, .csc-textpic-intext-left ul {
+  padding-left: 40px;
+  overflow: auto;
+}
+
+.csc-default p, .csc-default ol, .csc-default ul {
+  font: 1em / 22px Cambria, Georgia, serif;
+  margin: 22px 0;
+}
+.csc-default li {
+  font: 1em / 22px Cambria, Georgia, serif;
+  margin: 22px 0;
+  margin: 0;
+}
+.csc-default address {
+  font: 1em / 22px Cambria, Georgia, serif;
+}
+.csc-default :first-child h3 {
+  margin: 0;
+}
+.csc-default p:first-child {
+  margin: 0 0 22px;
+}
+.csc-default a img {
+  margin: 0 12px 12px 0;
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+.csc-default hr + ul {
+  margin: 16px 0;
+}
+.csc-default hr + ul > li {
+  margin: 16px 0;
+}
+.csc-default a.toplink {
+  font: bold 0.813em / 1.2 Helvetica, Arial, serif;
+}
+.csc-default .linklist, .csc-default .csc-menu {
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #aaa;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.csc-default .linklist li, .csc-default .csc-menu li {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #aaa;
+  margin: 0;
+  padding: 0;
+}
+.csc-default .linklist li a, .csc-default .csc-menu li a {
+  background: transparent url("../Images/arrow-right.png") no-repeat 100% 50%;
+  color: #282828;
+  display: block;
+  padding: 11px 18px 11px 0;
+  font: 1em / 1.2 Cambria, Georgia, serif;
+  line-height: 22px;
+  text-decoration: none;
+}
+.csc-default .linklist li a:hover, .csc-default .linklist li a:active, .csc-default .linklist li a:focus {
+  background-color: rgba(201, 2, 48, 0.05);
+}
+.csc-default .csc-menu li a:hover, .csc-default .csc-menu li a:active, .csc-default .csc-menu li a:focus {
+  background-color: rgba(201, 2, 48, 0.05);
+}
+
+.csc-sitemap ul {
+  color: #c90230;
+  list-style-type: disc;
+  padding: 0 0 0 30px;
+}
+.csc-sitemap ul ul {
+  list-style-type: none;
+  margin: 0;
+}
+.csc-sitemap li {
+  color: #c90230;
+  font: bold 16px / 22px Helvetica, Arial, sans-serif;
+}
+.csc-sitemap li li {
+  font: normal 16px / 22px Helvetica, Arial, sans-serif;
+}
+.csc-sitemap li li li {
+  font: normal 13px / 22px Helvetica, Arial, sans-serif;
+}
+.csc-sitemap .li-count {
+  color: #282828;
+}
+.csc-sitemap .subset {
+  display: none;
+}
+.csc-sitemap #link-compactversion {
+  color: #c90230;
+  font: bold 13px / 22px Helvetica, Arial, sans-serif;
+}
+
+.csc-textpic a img {
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.csc-textpic-caption {
+  font-size: 0.75em;
+  line-height: 14px;
+  padding: 5px 0;
+  display: block;
+}
+
+figcaption.csc-textpic-caption {
+  display: block;
+}
+
+.csc-default:before, .clearfix:before,
+.csc-default:after, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.csc-default:after, .clearfix:after {
+  clear: both;
+}
+
+.csc-default, .clearfix {
+  *zoom: 1;
+}
+
 .nav-breadcrumb ul {
   list-style-type: none;
   height: 39px;
