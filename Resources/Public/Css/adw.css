@@ -257,7 +257,7 @@ input:invalid, textarea:invalid {
 }
 
 table {
-  font: 1em/22px Cambria,Georgia,serif
+  font: 1em/22px Cambria,Georgia,serif;
   border-collapse: collapse;
   border-spacing: 0;
 }
