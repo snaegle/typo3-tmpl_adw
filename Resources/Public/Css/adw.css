@@ -780,7 +780,7 @@ DIV.csc-textpic DIV.csc-textpic-imagerow-last {
 }
 
 figcaption.csc-textpic-caption {
-  display: block;
+  width: 100%;
 }
 
 .csc-default:before, .clearfix:before,
