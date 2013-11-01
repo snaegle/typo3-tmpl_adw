@@ -568,4 +568,5 @@ lib.logo_dini {
 			wrap = <div class="logo_dini">|</div>
 	}
 }
+}
 [global]
