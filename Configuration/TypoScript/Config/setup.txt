@@ -3,7 +3,7 @@ config {
 	cache_clearAtMidnight = {$clearAtMidnight}
 	sendCacheHeaders = 1
 	uniqueLinkVars = 1
-	linkVars = L(0-5),type(0-99999)
+	linkVars = L(0-5),type(0-2000000000)
 	sys_language_uid = 0
 	language = de
 	locale_all = de_DE
