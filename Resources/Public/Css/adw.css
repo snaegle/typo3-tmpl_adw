@@ -2204,3 +2204,9 @@ p.back a:hover, p.back a:active, p.back a:focus {
 .teaser-logo {
   text-align: center;
 }
+
+
+/* fix h2 positioning in tx_find */
+#tx_find h2 {
+	margin: 0;
+}
