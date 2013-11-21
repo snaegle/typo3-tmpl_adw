@@ -73,6 +73,8 @@ plugin.tx_solr {
 			news {
 				table = tt_news
 				fields {
+					type = TEXT
+					type.value = News
 					title = title
 					author = author
 					changed = tstamp
