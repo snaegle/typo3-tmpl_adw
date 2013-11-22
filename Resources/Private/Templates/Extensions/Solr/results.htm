@@ -55,25 +55,6 @@
 
 	###RESULTS.SEARCHED_FOR###
 	###RESULTS.FOUND###
-	###RESULTS.RANGE###
-
-	<div id="tx-solr-pagination">
-		<!-- ###SOLR_SEARCH_RESULTSPERPAGESWITCH### begin -->
-		<div id="tx-solr-pagination-results-per-page">
-		<form action="###FORM.ACTION###" method="post">
-			###LLL:results_per_page###<select onchange="this.form.submit()" name="###TX_SOLR.PREFIX###[resultsPerPage]">
-				<!-- ###LOOP:OPTIONS### begin -->
-				<!-- ###LOOP_CONTENT### -->
-				<option value="###OPTION.VALUE###" ###OPTION.SELECTED###>###OPTION.VALUE###</option>
-				<!-- ###LOOP_CONTENT### -->
-				<!-- ###LOOP:OPTIONS### end -->
-			</select>
-		</form>
-		</div>
-		<!-- ###SOLR_SEARCH_RESULTSPERPAGESWITCH### end -->
-
-		###RESULTS.PAGEBROWSER###
-	</div>
 
 	<ol start="###RESULTS.OFFSET###" class="results-list">
 		<!-- ###LOOP:RESULT_DOCUMENTS### begin -->
