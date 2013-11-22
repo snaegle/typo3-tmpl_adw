@@ -99,3 +99,8 @@ plugin.tx_solr {
 		}
 	}
 }
+
+plugin.tx_solr_pi_results._LOCAL_LANG.de {
+  results_searched_for = Es wurde nach "@searchWord" gesucht 
+  results_found = (@resultsTotal Treffer).
+}
