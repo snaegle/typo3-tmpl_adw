@@ -371,3 +371,11 @@ p {
 	@include hyphens(auto);
 	text-align: justify;
 }
+
+table {
+	font: 1em/22px Cambria,Georgia,serif;
+}
+
+#tx_find h2 {
+	margin: 0;
+}
