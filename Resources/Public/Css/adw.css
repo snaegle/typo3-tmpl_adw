@@ -296,8 +296,9 @@ h1, .h1 {
   margin: 1em 0; }
 
 h2, .h2 {
-  font: bold 1em / 18px Cambria, Georgia, serif;
-  margin: 24px 0; }
+  font: bold 1.1em / 18px Cambria, Georgia, serif;
+  margin: 24px 0;
+}
 
 h3, .h3 {
   font: bold 1em / 18px Cambria, Georgia, serif;
