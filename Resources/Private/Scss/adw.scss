@@ -369,4 +369,5 @@ p {
 .align-justify {
 	@include word-break(break-word);
 	@include hyphens(auto);
+	text-align: justify;
 }

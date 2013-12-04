@@ -1775,4 +1775,5 @@ p.back {
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
-  hyphens: auto; }
+  hyphens: auto;
+  text-align: justify; }
