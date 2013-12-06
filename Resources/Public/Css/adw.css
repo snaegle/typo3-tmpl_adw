@@ -433,7 +433,9 @@ DIV.csc-textpic-center DIV.csc-textpic-imagewrap .csc-textpic-image {
   margin-left: 10px; }
 
 DIV.csc-textpic DIV.csc-textpic-imagewrap .csc-textpic-image .csc-textpic-caption {
-  margin: 0; }
+  margin: 0;
+  width: 95%;
+}
 
 DIV.csc-textpic DIV.csc-textpic-imagewrap .csc-textpic-image IMG {
   margin: 0;
