@@ -211,7 +211,9 @@ input:invalid, textarea:invalid {
 
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+  font: 1em / 22px Cambria, Georgia, serif;
+}
 
 td {
   vertical-align: top; }
