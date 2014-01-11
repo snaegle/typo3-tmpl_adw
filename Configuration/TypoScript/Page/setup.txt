@@ -102,9 +102,6 @@ page.headerData.500.value (
 <!--[if lt IE 9]>
 	<link rel="stylesheet" type="text/css" href="EXT:tmpl_adw/Resources/Public/Css/ie.css" media="all" />
 <![endif]-->
-<!--[if lte IE 8]>
-	<link rel="stylesheet" type="text/css" href="EXT:tmpl_adw/Resources/Public/Css/ie.css" media="all" />
-<![endif]-->
 )
 
 
