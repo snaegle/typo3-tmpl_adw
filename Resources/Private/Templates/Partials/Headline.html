@@ -1,0 +1,13 @@
+<div class="top-container" id="top">
+	<div class="container_16">
+		<!-- breadcrumb -->
+		<f:render partial="BreadCrumb" arguments="{ROOTLINE: ROOTLINE}"/>
+		<!-- breadcrumb end -->
+		<!-- search/language -->
+		<div class="search">
+			<f:render partial="SearchBox" arguments="{searchPageId: searchPageId}"/>
+		</div>
+		<div class="language">{TOOLS_LANGUAGE_SWITCH -> f:format.raw()}</div>
+		<!-- search/language end -->
+	</div>
+</div><!--! end of top-container -->

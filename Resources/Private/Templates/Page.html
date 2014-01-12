@@ -1,16 +1,5 @@
-<div class="top-container" id="top">
-	<div class="container_16">
-		<!-- breadcrumb -->
-		<f:render partial="BreadCrumb" arguments="{ROOTLINE: ROOTLINE}"/>
-		<!-- breadcrumb end -->
-		<!-- search/language -->
-		<div class="search">
-			<f:render partial="SearchBox" arguments="{searchPageId: searchPageId}"/>
-		</div>
-		<div class="language">{TOOLS_LANGUAGE_SWITCH -> f:format.raw()}</div>
-		<!-- search/language end -->
-	</div>
-</div><!--! end of top-container -->
+<f:render partial="Headline" arguments="{_all}"/>
+
 <div id="main" role="main" class="main clearfix">
 	<div class="container_16">
 		<div class="header clearfix">
@@ -78,13 +67,5 @@
 		</div>
 	</div>
 </div>
-<footer class="footer">
-	<div class="container_16">
-		<ul class="clearfix">
-			<li><f:link.page pageUid="{siteMapId}"><f:translate id="sitemap" /></f:link.page></li>
-			<li><f:link.page pageUid="{contactId}"><f:translate id="contact" /></f:link.page></li>
-			<li><f:link.page pageUid="{imprintId}"><f:translate id="imprint" /></f:link.page></li>
-		</ul>
-		<p class="small"><f:translate id="lastchanged" /> <f:cObject typoscriptObjectPath="lib.changedate" /> &copy; <f:cObject typoscriptObjectPath="lib.currentyear" /> <f:translate id="provider" /></p>
-	</div>
-</footer>
+
+<f:render partial="Footer" arguments="{_all}"/>
