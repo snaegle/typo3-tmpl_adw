@@ -42,6 +42,30 @@ page {
 			imprintId = TEXT
 			imprintId.value = {$ids.imprint}
 
+			homepageId = TEXT
+			homepageId.value = {$ids.homepage}
+
+			aboutusId = TEXT
+			aboutusId.value = {$ids.aboutus}
+
+			pressId = TEXT
+			pressId.value = {$ids.press}
+
+			eventsId = TEXT
+			eventsId.value = {$ids.events}
+
+			membersId = TEXT
+			membersId.value = {$ids.members}
+
+			scienceId = TEXT
+			scienceId.value = {$ids.science}
+
+			awardsId = TEXT
+			awardsId.value = {$ids.awards}
+
+			digitallibraryId = TEXT
+			digitallibraryId.value = {$ids.digitallibrary}
+
 			TRANSLATIONNOTE < lib.translationnote
 			TOOLS_LANGUAGE_SWITCH < lib.tools_language_switch
 			TITLE < lib.header_title

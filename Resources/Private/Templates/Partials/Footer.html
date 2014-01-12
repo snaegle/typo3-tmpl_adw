@@ -8,9 +8,21 @@
 				</div>
 				<div class="grid_10">
 					<ul>
-						<li>asdf
-						<li>asdf
+						<li><f:link.page pageUid="{homepageId}"><f:translate id="homepage" /></f:link.page></li>
+						<li><f:link.page pageUid="{aboutusId}"><f:translate id="aboutus" /></f:link.page></li>
+						<li><f:link.page pageUid="{pressId}"><f:translate id="press" /></f:link.page></li>
+						<li><f:link.page pageUid="{eventsId}"><f:translate id="events" /></f:link.page></li>
+						<li><f:link.page pageUid="{membersId}"><f:translate id="members" /></f:link.page></li>
+						<li><f:link.page pageUid="{scienceId}"><f:translate id="science" /></f:link.page></li>
+						<li><f:link.page pageUid="{awardsId}"><f:translate id="awards" /></f:link.page></li>
+						<li><f:link.page pageUid="{digitallibraryId}"><f:translate id="digitallibrary" /></f:link.page></li>
 					</ul>
+					<ul>
+						<li><f:link.page pageUid="{siteMapId}"><f:translate id="sitemap" /></f:link.page></li>
+						<li><f:link.page pageUid="{contactId}"><f:translate id="contact" /></f:link.page></li>
+						<li><f:link.page pageUid="{imprintId}"><f:translate id="imprint" /></f:link.page></li>
+					</ul>
+					<p class="small"><f:translate id="lastchanged" /> <f:cObject typoscriptObjectPath="lib.changedate" /> &copy; <f:cObject typoscriptObjectPath="lib.currentyear" /> <f:translate id="provider" /></p>
 				</div>
 				<div class="grid_3">
 					{TEASER -> f:format.raw()}
