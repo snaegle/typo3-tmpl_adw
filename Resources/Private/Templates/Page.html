@@ -2,31 +2,38 @@
 
 <div id="main" role="main" class="main clearfix">
 	<div class="container_16">
-		<div class="header clearfix">
-			<div class="grid_3">
-				<!-- logo -->
-				<div class="logo">
-					<f:link.page pageUid="1" title="{f:translate(id:'provider')}">
-						<f:image src="EXT:tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" />
-					</f:link.page>
+		<f:if condition="{TOOLMODE}">
+			<f:then>
+			</f:then>
+			<f:else>
+				<div class="header clearfix">
+					<div class="grid_3">
+						<!-- logo -->
+						<div class="logo">
+							<f:link.page pageUid="1" title="{f:translate(id:'provider')}">
+								<f:image src="EXT:tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" />
+							</f:link.page>
 
-					{LOGO -> f:format.raw()}</div>
-				<!-- logo end -->
-			</div>
-			<div class="grid_9 headlines">
-				<!-- headline/subline -->
-				{TITLE -> f:format.raw()}
-				{PAGENAVITITLE -> f:format.raw()}
-				{PAGETITLE -> f:format.raw()}
-				{PAGESUBTITLE -> f:format.raw()}
-				<!-- headline/subline end -->
-			</div>
-			<div class="grid_4">
-				<!-- little teaser -->
-				{TEASER -> f:format.raw()}
-				<!-- little teaser end -->
-			</div>
-		</div>
+							{LOGO -> f:format.raw()}</div>
+						<!-- logo end -->
+					</div>
+					<div class="grid_9 headlines">
+						<!-- headline/subline -->
+						{TITLE -> f:format.raw()}
+						{PAGENAVITITLE -> f:format.raw()}
+						{PAGETITLE -> f:format.raw()}
+						{PAGESUBTITLE -> f:format.raw()}
+						<!-- headline/subline end -->
+					</div>
+					<div class="grid_4">
+						<!-- little teaser -->
+						{TEASER -> f:format.raw()}
+						<!-- little teaser end -->
+					</div>
+				</div>
+			</f:else>
+		</f:if>
+
 		<div class="content clearfix">
 			<div class="grid_3 nav" id="menu">
 				<!-- main navi -->
