@@ -57,6 +57,7 @@ page {
 			TEASER < lib.teaser
 			PAGENAVITITLE < lib.pagenavititle
 			LOGODINI < lib.logo_dini
+			TOOLMODE < lib.toolMode
 		}
 	}
 }

@@ -1,3 +1,11 @@
+# get toolMode var
+
+[globalVar = LIT:0<{$toolMode}]
+lib.toolMode = TEXT
+lib.toolMode.value = {$toolMode}
+[global]
+
+
 ##### HEADERDATA #####
 
 # add geo code in header
