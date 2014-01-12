@@ -3,11 +3,17 @@
 		<!-- breadcrumb -->
 		<f:render partial="BreadCrumb" arguments="{ROOTLINE: ROOTLINE}"/>
 		<!-- breadcrumb end -->
-		<!-- search/language -->
-		<div class="search">
-			<f:render partial="SearchBox" arguments="{searchPageId: searchPageId}"/>
-		</div>
-		<div class="language">{TOOLS_LANGUAGE_SWITCH -> f:format.raw()}</div>
-		<!-- search/language end -->
+		<f:if condition="{TOOLMODE}">
+			<f:then>
+			</f:then>
+			<f:else>
+				<!-- search/language -->
+				<div class="search">
+					<f:render partial="SearchBox" arguments="{searchPageId: searchPageId}"/>
+				</div>
+				<div class="language">{TOOLS_LANGUAGE_SWITCH -> f:format.raw()}</div>
+				<!-- search/language end -->
+			</f:else>
+		</f:if>
 	</div>
 </div><!--! end of top-container -->
