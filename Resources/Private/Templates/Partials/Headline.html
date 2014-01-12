@@ -5,14 +5,18 @@
 		<!-- breadcrumb end -->
 		<f:if condition="{TOOLMODE}">
 			<f:then>
+			<!-- Tool Mode | start -->
+			<!-- Tool Mode | end -->
 			</f:then>
 			<f:else>
+				<!-- default | start -->
 				<!-- search/language -->
 				<div class="search">
 					<f:render partial="SearchBox" arguments="{searchPageId: searchPageId}"/>
 				</div>
 				<div class="language">{TOOLS_LANGUAGE_SWITCH -> f:format.raw()}</div>
 				<!-- search/language end -->
+				<!-- default | end -->
 			</f:else>
 		</f:if>
 	</div>

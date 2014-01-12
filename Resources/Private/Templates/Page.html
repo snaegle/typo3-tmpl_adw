@@ -1,11 +1,15 @@
+<!-- Headline?! >> ../Partials/Headline.html -->
 <f:render partial="Headline" arguments="{_all}"/>
 
 <div id="main" role="main" class="main clearfix">
 	<div class="container_16">
+		<!-- header - sort of | start -->
 		<f:if condition="{TOOLMODE}">
 			<f:then>
+				<!-- show no header if in tool mode -->
 			</f:then>
 			<f:else>
+				<!-- default | start -->
 				<div class="header clearfix">
 					<div class="grid_3">
 						<!-- logo -->
@@ -31,8 +35,10 @@
 						<!-- little teaser end -->
 					</div>
 				</div>
+				<!-- default | end -->
 			</f:else>
 		</f:if>
+		<!-- header - sort of | end -->
 
 		<div class="content clearfix">
 			<div class="grid_3 nav" id="menu">
@@ -75,4 +81,5 @@
 	</div>
 </div>
 
+<!-- Footer?! >> ../Partials/Footer.html -->
 <f:render partial="Footer" arguments="{_all}"/>
