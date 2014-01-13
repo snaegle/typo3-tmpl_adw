@@ -99,4 +99,12 @@ jQuery(function() {
 
 	jQuery('.external-link-new-window').attr('target', '_blank');
 
+	jQuery('.tool-mode__menubutton').mouseenter(function() {
+		jQuery('.tool-mode__pagenav ul').show();
+	});
+
+	jQuery('.tool-mode__pagenav ul').mouseleave(function() {
+		jQuery('.tool-mode__pagenav ul').hide();
+	});
+
 });

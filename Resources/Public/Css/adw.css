@@ -1878,6 +1878,49 @@ body {
   margin-top: -50px;
 }
 
+.tool-mode__pagenav ul {
+  margin-top: 0px;
+  padding: 15px 15px 0 15px;
+  position: absolute;
+  z-index: 9999;
+  background-color: green;
+  display: none;
+  background-color: white;
+  border: 1px solid grey;
+  border-top: none;
+}
+.tool-mode__pagenav ul li {
+  list-style-type: none;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #AAAAAA;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.tool-mode__pagenav ul li a {
+  color: black;
+  display: block;
+}
+.tool-mode__pagenav ul li:last-child {
+  border-bottom: none;
+  padding-bottom: none;
+}
+
+.tool-mode__menubutton {
+  display: block;
+  width: 100%;
+  color: white;
+  height: 39px;
+  vertical-align: middle;
+  background: none;
+  border: none;
+}
+.tool-mode__menubutton:hover {
+  text-decoration: underline;
+}
+.tool-mode__menubutton:active {
+  color: blue;
+}
+
 /*!
  *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)

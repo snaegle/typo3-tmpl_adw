@@ -1,12 +1,35 @@
-<div class="nav-breadcrumb">
-	<h2><f:translate id="youarehere" /></h2>
-	<ul class="clearfix">
-		<li class="first">
-			<f:link.page pageUid="1" title="{f:translate(id:'provider')}">
-				<f:image alt="home" src="EXT:tmpl_adw/Resources/Public/Images/ico-home.png" />
-			</f:link.page>
-		</li>
-		<span class="visuallyhidden"> ▶ </span>
-		{ROOTLINE -> f:format.raw()}
-	</ul>
-</div>
+<f:if condition="{TOOLMODE}">
+	<f:then>
+		<div class="grid_2 alpha">
+			<button class="tool-mode__menubutton"><i class="fa fa-bars"></i> Menü</button>
+			<div class="tool-mode__pagenav">
+				{MENU -> f:format.raw()}
+			</div>
+		</div>
+		<div class="nav-breadcrumb grid_14">
+			<ul class="">
+				<li class="first">
+					<f:link.page pageUid="1" title="{f:translate(id:'provider')}">
+						<f:image alt="home" src="EXT:tmpl_adw/Resources/Public/Images/ico-home.png" />
+					</f:link.page>
+				</li>
+				<span class="visuallyhidden"> ▶ </span>
+				{ROOTLINE -> f:format.raw()}
+			</ul>
+		</div>
+	</f:then>
+	<f:else>
+		<div class="nav-breadcrumb">
+			<h2><f:translate id="youarehere" /></h2>
+			<ul class="clearfix">
+				<li class="first">
+					<f:link.page pageUid="1" title="{f:translate(id:'provider')}">
+						<f:image alt="home" src="EXT:tmpl_adw/Resources/Public/Images/ico-home.png" />
+					</f:link.page>
+				</li>
+				<span class="visuallyhidden"> ▶ </span>
+				{ROOTLINE -> f:format.raw()}
+			</ul>
+		</div>
+	</f:else>
+</f:if>
