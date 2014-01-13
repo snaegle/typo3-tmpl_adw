@@ -26,8 +26,8 @@ $EM_CONF[$_EXTKEY] = array (
 	'modify_tables' => '',
 	'clearcacheonload' => 1,
 	'lockType' => '',
-	'author' => 'Ingo Pfennigstorf',
-	'author_email' => 'pfennigstorf@sub.uni-goettingen.de',
+	'author' => 'Ingo Pfennigstorf, Nils Windisch',
+	'author_email' => 'pfennigstorf@sub.uni-goettingen.de, windisch@sub.uni-goettingen.de',
 	'author_company' => 'www.sub.uni-goettingen.de',
 	'constraints' =>
 	array (
