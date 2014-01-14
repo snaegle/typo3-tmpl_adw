@@ -1897,7 +1897,7 @@ body {
   margin-bottom: 10px;
 }
 .tool-mode__pagenav ul li a {
-  color: black;
+  color: #282828;
   display: block;
 }
 .tool-mode__pagenav ul li:last-child {
@@ -1913,9 +1913,6 @@ body {
   vertical-align: middle;
   background: none;
   border: none;
-}
-.tool-mode__menubutton:hover {
-  text-decoration: underline;
 }
 .tool-mode__menubutton:active {
   color: blue;
