@@ -70,6 +70,7 @@ page {
 			TOOLS_LANGUAGE_SWITCH < lib.tools_language_switch
 			TITLE < lib.header_title
 			MENU < lib.menu
+			MENU_1LEVELONLY < lib.menu_1levelonly
 			ROOTLINE < lib.rootline
 			CONTENT < styles.content.get
 			INFOBOX < styles.content.getRight
