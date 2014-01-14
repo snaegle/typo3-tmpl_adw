@@ -108,6 +108,9 @@ page.headerData.500.value (
 
 
 page.bodyTag = <body class="js-off subpage">
+[globalVar = LIT:0<{$toolMode}]
+page.bodyTag = <body class="js-off subpage tool-mode">
+[global]
 [globalVar = TSFE:id=2]
 page.bodyTag = <body class="js-off index">
 [global]
