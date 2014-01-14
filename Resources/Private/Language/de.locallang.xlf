@@ -55,38 +55,6 @@
 				<source>Akademie der Wissenschaften zu Göttingen</source>
 				<target state="signed-off">Akademie der Wissenschaften zu Göttingen</target>
 			</trans-unit>
-			<trans-unit id="homepage" xml:space="preserve" approved="yes">
-				<source>Homepage</source>
-				<target state="signed-off">Startseite</target>
-			</trans-unit>
-			<trans-unit id="aboutus" xml:space="preserve" approved="yes">
-				<source>About Us</source>
-				<target state="signed-off">Über uns</target>
-			</trans-unit>
-			<trans-unit id="press" xml:space="preserve" approved="yes">
-				<source>Press</source>
-				<target state="signed-off">Presse</target>
-			</trans-unit>
-			<trans-unit id="events" xml:space="preserve" approved="yes">
-				<source>Events</source>
-				<target state="signed-off">Veranstaltungen</target>
-			</trans-unit>
-			<trans-unit id="members" xml:space="preserve" approved="yes">
-				<source>Members</source>
-				<target state="signed-off">Mitglieder</target>
-			</trans-unit>
-			<trans-unit id="science" xml:space="preserve" approved="yes">
-				<source>Science</source>
-				<target state="signed-off">Forschung</target>
-			</trans-unit>
-			<trans-unit id="awards" xml:space="preserve" approved="yes">
-				<source>Awards</source>
-				<target state="signed-off">Preise</target>
-			</trans-unit>
-			<trans-unit id="digitallibrary" xml:space="preserve" approved="yes">
-				<source>Digital Library</source>
-				<target state="signed-off">Digitale Bibliothek</target>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>
