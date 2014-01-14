@@ -1886,7 +1886,7 @@ body {
   background-color: green;
   display: none;
   background-color: white;
-  border: 1px solid grey;
+  border: 1px solid #c90230;
   border-top: none;
 }
 .tool-mode__pagenav ul li {
