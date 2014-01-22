@@ -6,12 +6,7 @@ page {
 		index_enable = 1
 	}
 	includeJS {
-		file1 = EXT:tmpl_adw/Resources/Public/JavaScript/libs/modernizr.js
-		file2 = EXT:tmpl_adw/Resources/Public/JavaScript/script.js
-		file3 = EXT:tmpl_adw/Resources/Public/JavaScript/plugins.js
-	}
-	includeJSFooterlibs {
-		fancybox = EXT:tmpl_adw/Resources/Public/JavaScript/libs/jquery.fancybox.js
+		file1 = EXT:tmpl_adw/Resources/Public/JavaScript/libs/production.min.js
 	}
 	includeCSS {
 		file1 = EXT:tmpl_adw/Resources/Public/Css/style.css
