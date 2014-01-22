@@ -699,6 +699,9 @@ DIV.csc-textpic DIV.csc-textpic-imagerow-last {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
   width: 95%;
 }
+.csc-default .rss-feed a img {
+  width: inherit;
+}
 .csc-default hr + ul {
   margin: 16px 0;
 }
