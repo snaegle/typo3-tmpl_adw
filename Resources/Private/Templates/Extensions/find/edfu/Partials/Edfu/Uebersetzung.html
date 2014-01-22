@@ -1,0 +1,21 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+<f:comment>
+	Renders the uebersetzung field.
+
+	First uses highlighting and then uses regular expressions to insert markup
+	for displaying the special transliteration brackets (ö…Ä pairs and %…& pairs)
+	in the transliteration font.
+</f:comment>
+<span class="field-uebersetzung">
+	<s:format.regexp match="\bö([^öÄ]*)Ä\b" replace="<span class='transliteration'>ö</span>\\1<span class='transliteration'>Ä</span>" useMBEreg="true">
+		<s:format.regexp match="/%([^%&]*)&amp;/u" replace="<span class='transliteration'>%</span>\\1<span class='transliteration'>&amp;</span>">
+			<s:format.regexp match="/<((?!\/?em)[^>]*)>/u" replace="&lt;\\1&gt;">
+				<s:find.highlightField
+					field="{f:if(condition:field, then:field, else:'uebersetzung')}"
+					document="{document}"
+					results="{results}"
+				/>
+			</s:format.regexp>
+		</s:format.regexp>
+	</s:format.regexp>
+</span>

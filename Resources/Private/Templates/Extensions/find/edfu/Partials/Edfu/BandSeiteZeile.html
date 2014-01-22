@@ -1,0 +1,15 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+<f:comment>
+	Renders the bandseitezeile field.
+
+	If there is a single occurrence, just displays the field. For multiple occurences,
+	adds the CSS class »multiple« and add the complete field content in the tag’s
+	title attribute.
+</f:comment>
+<f:if condition="{f:count(subject:document.fields.bandseitezeile) > 0}">
+	<f:alias map="{multiple:\"{f:if(condition:'{f:count(subject:document.fields.bandseitezeile)} > 1', then: 1, else:0)}\"}">
+		<span class="bandseitezeile{f:if(condition:multiple, then:' multiple', else:'')}" {f:if(condition:multiple, then:'title="{s:format.join(array:document.fields.bandseitezeile, separator:\'; \')}"')}>
+			{document.fields.bandseitezeile.0}
+		</span>
+	</f:alias>
+</f:if>
