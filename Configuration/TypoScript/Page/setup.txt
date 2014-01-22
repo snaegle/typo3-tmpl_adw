@@ -6,7 +6,7 @@ page {
 		index_enable = 1
 	}
 	includeJS {
-		file1 = EXT:tmpl_adw/Resources/Public/JavaScript/libs/modernizr-2.0.6.min.js
+		file1 = EXT:tmpl_adw/Resources/Public/JavaScript/libs/modernizr.js
 		file2 = EXT:tmpl_adw/Resources/Public/JavaScript/script.js
 		file3 = EXT:tmpl_adw/Resources/Public/JavaScript/plugins.js
 	}
