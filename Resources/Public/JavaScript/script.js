@@ -1,10 +1,3 @@
-/* Author:
-
- */
-
-/**
- * jquery stuff
- */
 jQuery(function() {
 	jQuery("body").removeClass("js-off").addClass("js-on");
 
@@ -36,7 +29,7 @@ jQuery(function() {
 			jQuery(".nav-breadcrumb li.cur").css('width', 820 - limit - 1)
 		}
 	});
-
+	/* breadcrumb | End */
 
 	jQuery("#searchlink").click(function(e) {
 		e.preventDefault();
@@ -83,21 +76,29 @@ jQuery(function() {
 		}
 	});
 
-
+	/* hide abc nav from wtdirectory list display */
 	jQuery('.wtdirectory_abc_letter_all').hide();
 
+	/* hide a node from wtdirectory filter */
 	jQuery('.wtdirectory_filter_abc')
-			.contents()
-			.filter(function() {
-						return this.nodeType == 3;
-					})
-			.remove();
+		.contents()
+		.filter(function() {
+			return this.nodeType == 3;
+			})
+		.remove();
 
+	/* open pdf links in _blank */
 	jQuery('a[href$=".pdf"]').attr('target', '_blank');
 
+	/* open img in news item in lightbox */
 	jQuery('.news-single-item a[href$=".jpg"]').attr('class', 'lightbox');
 
+	/* open links with class external-link-new-window in _blank */
 	jQuery('.external-link-new-window').attr('target', '_blank');
+
+	/**
+	 * Tool mode stuff
+	 */
 
 	jQuery('.tool-mode__menubutton').mouseenter(function() {
 		jQuery('.tool-mode__pagenav ul').show();
@@ -106,5 +107,7 @@ jQuery(function() {
 	jQuery('.tool-mode__pagenav ul').mouseleave(function() {
 		jQuery('.tool-mode__pagenav ul').hide();
 	});
+
+	/* Tool mode | End */
 
 });
