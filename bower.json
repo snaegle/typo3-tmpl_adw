@@ -12,9 +12,9 @@
     "tests"
   ],
   "dependencies": {
-    "fancybox": "~2.1.5",
-    "modernizr": "~2.7.1",
-    "font-awesome": "~4.0.3",
+    "fancybox": "~2.1",
+    "modernizr": "~2.7",
+    "font-awesome": "~4.0",
     "960-grid-system": "*"
   }
 }
