@@ -39,6 +39,30 @@ module.exports = function(grunt) {
         },
 
         /**
+         * compass
+         */
+        compass: {
+            dev: {
+                options: {
+                    outputStyle: 'expanded',
+                    noLineComments: false,
+                    debugInfo: true,
+                    trace: true,
+                    sassDir: '../Resources/Private/Scss',
+                    cssDir: '../Resources/Public/Css',
+                }
+            },
+            dist: {
+                options: {
+                    outputStyle: 'compressed',
+                    noLineComments: true,
+                    sassDir: '../Resources/Private/Scss',
+                    cssDir: '../Resources/Public/Css',
+                }
+            }
+        },
+
+        /**
          * runs compass compile with various parameters
          */
         shell: {
@@ -55,6 +79,7 @@ module.exports = function(grunt) {
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-shell');
 
     // Default task(s).
