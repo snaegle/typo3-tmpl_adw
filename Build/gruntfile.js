@@ -66,6 +66,18 @@ module.exports = function(grunt) {
          * runs compass compile with various parameters
          */
         shell: {
+            preFileCleanUp: {
+                command: 'rm -rf .sass-cache & rm ../Resources/Public/Css/adw.css & rm -rf ../Resources/Public/JavaScript/libs & rm ../Resources/Public/JavaScript/production.js',
+                options: {
+                    stdout: true
+                }
+            },
+            postFileCleanUp: {
+                command: 'rm -rf ../Resources/Public/JavaScript/libs & rm ../Resources/Public/JavaScript/production.js',
+                options: {
+                    stdout: true
+                }
+            },
             compassDeploy: {
                 command: 'compass compile -c compass.rb -s compressed --time',
                 options: {
@@ -83,6 +95,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
 
     // Default task(s).
-    grunt.registerTask('default', ['concat', 'uglify', 'shell:compassDeploy']);
+    grunt.registerTask('dev', ['shell:preFileCleanUp', 'concat', 'uglify', 'compass:dev']);
+    grunt.registerTask('dist', ['shell:preFileCleanUp', 'concat', 'uglify', 'compass:dist', 'shell:postFileCleanUp']);
 
 };
