@@ -18,8 +18,8 @@ module.exports = function(grunt) {
                 src: [
                     'bower_components/modernizr/modernizr.js',
                     'bower_components/fancybox/source/jquery.fancybox.js',
-                    '../Resources/Public/JavaScript/plugins.js',
-                    '../Resources/Public/JavaScript/script.js'
+                    '../Resources/Private/JavaScript/plugins.js',
+                    '../Resources/Private/JavaScript/script.js'
                 ],
                 dest: '../Resources/Public/JavaScript/production.js'
             }
