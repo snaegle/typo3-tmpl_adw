@@ -18,10 +18,10 @@ module.exports = function(grunt) {
                 src: [
                     'bower_components/modernizr/modernizr.js',
                     'bower_components/fancybox/source/jquery.fancybox.js',
-                    'Resources/Public/JavaScript/plugins.js',
-                    'Resources/Public/JavaScript/script.js'
+                    '../Resources/Public/JavaScript/plugins.js',
+                    '../Resources/Public/JavaScript/script.js'
                 ],
-                dest: 'Resources/Public/JavaScript/production.js'
+                dest: '../Resources/Public/JavaScript/production.js'
             }
         },
 
@@ -30,8 +30,8 @@ module.exports = function(grunt) {
          */
         uglify: {
             deploy: {
-                src: ['Resources/Public/JavaScript/production.js'],
-                dest: 'Resources/Public/JavaScript/production.min.js',
+                src: ['../Resources/Public/JavaScript/production.js'],
+                dest: '../Resources/Public/JavaScript/production.min.js',
                 options: {
                     report: 'min'
                 }                
