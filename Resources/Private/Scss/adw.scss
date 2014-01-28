@@ -12,11 +12,12 @@
 @import '_Includes/_Extensions/Pagebrowse';
 @import '_Includes/_Extensions/DSpaceConnect';
 @import '_Includes/_Extensions/News';
-@import '_Includes/960';
 @import '_Includes/Print';
 @import '_Includes/tool_mode';
 
-@import 'Libs/Fontawesome/font-awesome';
+@import '../../../build/bower_components/font-awesome/scss/font-awesome';
+@import 'libs';
+
 
 /* Improve readability when focused and hovered in all browsers: h5bp.com/h */
 

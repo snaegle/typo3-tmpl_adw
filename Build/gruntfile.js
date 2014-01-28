@@ -14,7 +14,7 @@ module.exports = function(grunt) {
          * loads various js files and concats them
          */
         concat: {
-            deploy: {
+            js: {
                 src: [
                     'bower_components/modernizr/modernizr.js',
                     'bower_components/fancybox/source/jquery.fancybox.js',
@@ -22,6 +22,13 @@ module.exports = function(grunt) {
                     '../Resources/Private/JavaScript/script.js'
                 ],
                 dest: '../Resources/Public/JavaScript/production.js'
+            },
+            css: {
+                src: [
+                    'bower_components/fancybox/source/jquery.fancybox.css',
+                    'bower_components/960-grid-system/code/css/960.css',
+                ],
+                dest: '../Resources/Private/Scss/_libs.scss'
             }
         },
 
@@ -86,7 +93,7 @@ module.exports = function(grunt) {
                 }
             },
             postFileCleanUp: {
-                command: 'rm -rf ../Resources/Public/JavaScript/libs & rm ../Resources/Public/JavaScript/production.js',
+                command: 'rm -rf ../Resources/Private/Scss/_libs.scss & rm -rf ../Resources/Public/JavaScript/libs & rm ../Resources/Public/JavaScript/production.js',
                 options: {
                     stdout: true
                 }
@@ -109,7 +116,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
 
     // Default task(s).
-    grunt.registerTask('dev', ['shell:preFileCleanUp', 'copy', 'concat', 'uglify', 'compass:dev', 'shell:postFileCleanUp']);
-    grunt.registerTask('dist', ['shell:preFileCleanUp', 'copy', 'concat', 'uglify', 'compass:dist', 'shell:postFileCleanUp']);
+    grunt.registerTask('dev', ['shell:preFileCleanUp', 'copy', 'concat:js', 'concat:css', 'uglify', 'compass:dev', 'shell:postFileCleanUp']);
+    grunt.registerTask('dist', ['shell:preFileCleanUp', 'copy', 'concat:js', 'concat:css', 'uglify', 'compass:dist', 'shell:postFileCleanUp']);
 
 };
