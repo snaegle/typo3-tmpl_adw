@@ -63,11 +63,24 @@ module.exports = function(grunt) {
         },
 
         /**
+         *
+         */
+        copy: {
+            main: {
+                expand: true,
+                cwd: 'bower_components/font-awesome/fonts/',
+                src: ['**'],
+                dest: '../Resources/Public/Fonts/',
+                filter: 'isFile'
+            }
+        },
+
+        /**
          * runs compass compile with various parameters
          */
         shell: {
             preFileCleanUp: {
-                command: 'rm -rf .sass-cache & rm ../Resources/Public/Css/adw.css & rm -rf ../Resources/Public/JavaScript/libs & rm ../Resources/Public/JavaScript/production.js',
+                command: 'rm -rf ../Resources/Public/Fonts & rm -rf .sass-cache & rm ../Resources/Public/Css/adw.css & rm -rf ../Resources/Public/JavaScript/libs & rm ../Resources/Public/JavaScript/production.js',
                 options: {
                     stdout: true
                 }
@@ -92,10 +105,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-shell');
 
     // Default task(s).
-    grunt.registerTask('dev', ['shell:preFileCleanUp', 'concat', 'uglify', 'compass:dev']);
-    grunt.registerTask('dist', ['shell:preFileCleanUp', 'concat', 'uglify', 'compass:dist', 'shell:postFileCleanUp']);
+    grunt.registerTask('dev', ['shell:preFileCleanUp', 'copy', 'concat', 'uglify', 'compass:dev', 'shell:postFileCleanUp']);
+    grunt.registerTask('dist', ['shell:preFileCleanUp', 'copy', 'concat', 'uglify', 'compass:dist', 'shell:postFileCleanUp']);
 
 };
