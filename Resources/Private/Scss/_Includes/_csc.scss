@@ -282,7 +282,7 @@ DIV.csc-textpic DIV.csc-textpic-imagerow-last {
 		-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 		-moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 		box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-		width: 95%;
+		max-width: 95%;
 	}
 	.rss-feed a img {
 		width: inherit;

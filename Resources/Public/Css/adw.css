@@ -697,7 +697,7 @@ DIV.csc-textpic DIV.csc-textpic-imagerow-last {
   -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-  width: 95%;
+  max-width: 95%;
 }
 .csc-default .rss-feed a img {
   width: inherit;
@@ -933,7 +933,7 @@ figcaption.csc-textpic-caption {
   background-image: url("../Images/search-devider.png"), -webkit-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
   background-image: url("../Images/search-devider.png"), -o-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
   background-image: url("../Images/search-devider.png"), -ms-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-  background-image: url("../Images/search-devider.png"), linear-gradient(to bottom, #555555 0%, #333333 50%, #000000 50%, #000000 100%);
+  background-image: url("../Images/search-devider.png"), linear-gradient(top, #555555 0%, #333333 50%, #000000 50%, #000000 100%);
   background-repeat: no-repeat;
   background-position: 0 0;
   margin: 0;
@@ -973,7 +973,7 @@ figcaption.csc-textpic-caption {
   background-image: url("../Images/language-devider.png"), -webkit-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
   background-image: url("../Images/language-devider.png"), -o-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
   background-image: url("../Images/language-devider.png"), -ms-linear-gradient(top, #555555 0%, #333333 50%, black 50%, black 100%);
-  background-image: url("../Images/language-devider.png"), linear-gradient(to bottom, #555555 0%, #333333 50%, #000000 50%, #000000 100%);
+  background-image: url("../Images/language-devider.png"), linear-gradient(top, #555555 0%, #333333 50%, #000000 50%, #000000 100%);
   background-repeat: no-repeat;
   background-position: 100% 0;
   background-size: auto 39px;
@@ -1203,7 +1203,7 @@ ul.dspaceconnect-paramorder a, ul.dspaceconnect-paramperpage a {
   background: -webkit-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
   background: -o-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
   background: -ms-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-  background: linear-gradient(to bottom, #c90230 0%, #ac001e 95%, #a20019 100%);
+  background: linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
   border: 1px solid #790013;
   border-radius: 4px;
   min-width: 20px;
@@ -1219,7 +1219,7 @@ ul.dspaceconnect-paramorder .highlight, ul.dspaceconnect-paramorder a:hover {
   background: -webkit-linear-gradient(top, #970124 0%, #850019 95%, #790013 100%);
   background: -o-linear-gradient(top, #970124 0%, #850019 95%, #790013 100%);
   background: -ms-linear-gradient(top, #970124 0%, #850019 95%, #790013 100%);
-  background: linear-gradient(to bottom, #970124 0%, #850019 95%, #790013 100%);
+  background: linear-gradient(top, #970124 0%, #850019 95%, #790013 100%);
   text-decoration: none;
 }
 ul.dspaceconnect-paramperpage .highlight, ul.dspaceconnect-paramperpage a:hover {
@@ -1229,7 +1229,7 @@ ul.dspaceconnect-paramperpage .highlight, ul.dspaceconnect-paramperpage a:hover 
   background: -webkit-linear-gradient(top, #970124 0%, #850019 95%, #790013 100%);
   background: -o-linear-gradient(top, #970124 0%, #850019 95%, #790013 100%);
   background: -ms-linear-gradient(top, #970124 0%, #850019 95%, #790013 100%);
-  background: linear-gradient(to bottom, #970124 0%, #850019 95%, #790013 100%);
+  background: linear-gradient(top, #970124 0%, #850019 95%, #790013 100%);
   text-decoration: none;
 }
 
@@ -1823,7 +1823,8 @@ body {
 
   @page {
     margin: 0.5cm;
-  }
+}
+
   p, h2, h3 {
     orphans: 3;
     widows: 3;
@@ -1885,7 +1886,7 @@ body {
   background: -webkit-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
   background: -o-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
   background: -ms-linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
-  background: linear-gradient(to bottom, #c90230 0%, #ac001e 95%, #a20019 100%);
+  background: linear-gradient(top, #c90230 0%, #ac001e 95%, #a20019 100%);
   height: 39px;
 }
 
@@ -2216,10 +2217,10 @@ p.back a:hover, p.back a:active, p.back a:focus {
 }
 
 .align-justify {
+  -ms-word-break: break-word;
   word-break: break-word;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
   -webkit-hyphens: auto;
+  -moz-hyphens: auto;
   hyphens: auto;
   text-align: justify;
 }
