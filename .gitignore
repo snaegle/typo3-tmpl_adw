@@ -1,4 +1,3 @@
-.sass-cache
-.arcconfig
-node_modules
-bower_components
+Build/.sass-cache
+Build/bower_components
+Build/node_modules
