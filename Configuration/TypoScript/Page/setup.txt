@@ -6,7 +6,7 @@ page {
 		index_enable = 1
 	}
 	includeJS {
-		file1 = EXT:tmpl_adw/Resources/Public/JavaScript/libs/production.min.js
+		file = EXT:tmpl_adw/Resources/Public/JavaScript/production.min.js
 	}
 	includeCSS {
 		file1 = EXT:tmpl_adw/Resources/Public/Css/style.css
