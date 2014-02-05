@@ -100,12 +100,53 @@ jQuery(function() {
 	 * Tool mode stuff
 	 */
 
+	 /* closes the tool mode menu */
+	function closeToolMenu() {
+		jQuery('.tool-mode__pagenav ul').hide();
+	}
+
+	/** 
+	 * opens the tool mode menu if the menu button is clicked
+	 * required for mouse and touch devices
+	 */
 	jQuery('.tool-mode__menubutton').mouseenter(function() {
 		jQuery('.tool-mode__pagenav ul').show();
 	});
 
+	/**
+	 * closes the tool mode menu if the main page content is clicked
+	 * required for touch devices
+	 */
+	jQuery('.main').click(function(){
+		closeToolMenu();
+	});
+
+	/**
+	 * closes the tool mode menu if the breadcrumb is clicked
+	 * required for touch devices
+	 */
+	jQuery('.nav-breadcrumb').click(function(){
+		closeToolMenu();
+	});	
+
+	/**
+	 * closes the tool mode menu if mouse leaves the tool mode menu 
+	 * required for mouse devices
+	 */
 	jQuery('.tool-mode__pagenav ul').mouseleave(function() {
-		jQuery('.tool-mode__pagenav ul').hide();
+		closeToolMenu();
+	});
+
+	/**
+	 * open/closes the tool mode menu
+	 * required for mouse and touch devices
+	 */
+	jQuery('.tool-mode__menubutton').click(function() {
+		if (jQuery('.tool-mode__pagenav ul').is(':visible')) {
+			closeToolMenu();
+		} else {
+			jQuery('.tool-mode__pagenav ul').show();
+		}
 	});
 
 	/* Tool mode | End */
