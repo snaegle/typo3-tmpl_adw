@@ -27,6 +27,7 @@ module.exports = function(grunt) {
                 src: [
                     'bower_components/fancybox/source/jquery.fancybox.css',
                     'bower_components/960-grid-system/code/css/960.css',
+                    '../Resources/Private/Templates/Extensions/find/germaniasacra/Resources/sass/find.scss'
                 ],
                 dest: '../Resources/Private/Scss/_libs.scss'
             }
