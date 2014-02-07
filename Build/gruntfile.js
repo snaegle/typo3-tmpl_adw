@@ -119,5 +119,6 @@ module.exports = function(grunt) {
     // Default task(s).
     grunt.registerTask('dev', ['shell:preFileCleanUp', 'copy', 'concat:js', 'concat:css', 'uglify', 'compass:dev', 'shell:postFileCleanUp']);
     grunt.registerTask('dist', ['shell:preFileCleanUp', 'copy', 'concat:js', 'concat:css', 'uglify', 'compass:dist', 'shell:postFileCleanUp']);
+    grunt.registerTask('devCss', ['concat:css', 'compass:dev']);
 
 };
