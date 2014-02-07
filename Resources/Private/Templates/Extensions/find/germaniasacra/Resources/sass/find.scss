@@ -65,20 +65,27 @@ $tabSelected: #263476;
 		}
 
 		.fieldContainer {
-			float: left;
-			clear: left;
+			// float: left;
+			// clear: left;
+
+			.alternate {
+				padding-left: 145px;
+				padding-top: 5px;
+				display: block;
+			}
 
 			.fieldLabel {
 				display: block;
 				float: left;
-				width: 110px;
+				width: 140px;
 				text-align: right;
+				padding-right: 5px;
 			}
 			
 			.inputContainer {
 				display: block;
 				// margin-left: 125px;
-				margin-bottom: 2px;
+				// margin-bottom: 2px;
 				line-height: 133%;
 			}
 			
@@ -108,7 +115,7 @@ $tabSelected: #263476;
 			}
 
 			input {
-				width: 400px;
+				width: 100%;
 				height: 30px;
 				margin: 0px 6px 2px 0px;
 				padding: 4px;
@@ -141,8 +148,8 @@ $tabSelected: #263476;
 		}
 
 		.submit {
-			display: block;
-			float: left;
+			// display: block;
+			// float: left;
 			height: 30px;
 			// background: url(../button_shade_large.png) repeat-x scroll 0 100% $backgroundB;
 			background-color: #C90230;
@@ -379,7 +386,7 @@ $tabSelected: #263476;
 	.listPager {
 		margin-right: 220px;
 		text-align: center;
-
+		margin-top: 1em;
 
 		* {
 			margin: 0;
@@ -482,4 +489,8 @@ $tabSelected: #263476;
 	display: none;
 	position: absolute;
 	background: #fff;
+}
+
+.fieldContainer {
+	margin-bottom: 15px;
 }
