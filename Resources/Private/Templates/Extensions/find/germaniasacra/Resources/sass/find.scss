@@ -84,14 +84,11 @@ $tabSelected: #263476;
 			
 			.inputContainer {
 				display: block;
-				// margin-left: 125px;
-				// margin-bottom: 2px;
 				line-height: 133%;
 			}
 			
 			input {
 				padding: 2px;
-				// border-color: $borderA1 $borderA2 $borderA2 $borderA1;
 				border-color: #C90230;
 				border-style: solid;
 				border-width: 1px;
@@ -148,18 +145,14 @@ $tabSelected: #263476;
 		}
 
 		.submit {
-			// display: block;
-			// float: left;
 			height: 42px;
 			width: 100%;
-			// background: url(../button_shade_large.png) repeat-x scroll 0 100% $backgroundB;
 			background-color: #C90230;
 			border-style: solid;
 			border-width: 1px;
 			border-color:  $borderB1 $borderB2 $borderB2 $borderB1;
 			border-radius: 3px 3px 3px 3px;
 			border-right: 1px solid $borderB2;
-			// color: $textB;
 			color: white;
 			font-weight: bold;
 			line-height: 133%;
@@ -167,7 +160,6 @@ $tabSelected: #263476;
 			margin-top: -1px;
 			text-align: center;
 			text-decoration: none;
-			//text-shadow: 0 1px rgba(255, 255, 255, 0.75);
 			text-transform: uppercase;
 		}
 
@@ -212,7 +204,6 @@ $tabSelected: #263476;
 	.results {
 		position: relative;
 		clear: left;
-		/* padding-top: 2em; */
 		
 		.navigation {
 			margin-bottom: 2em;
@@ -290,11 +281,9 @@ $tabSelected: #263476;
 		.facetActive {
 			display: block;
 			background: $highlight;
-			//border-radius: 5px;
 			border: 1px solid $highlightBorder;
 			line-height: 150%;
 			font-weight: bold;
-			//text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
 		}
 
 		.facetList .facetActive {
@@ -359,7 +348,6 @@ $tabSelected: #263476;
 			li {
 				display: inline-block;
 				margin: 0;
-				//border-radius: 10px 10px 0 0;
 				border: 0px none;
 
 				a {
@@ -370,7 +358,6 @@ $tabSelected: #263476;
 
 			li.facetActive {
 				@extend li;
-				//background: $tabSelected;
 				background-color: #C90230;
 				color: $textInverted;
 
