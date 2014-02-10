@@ -23,14 +23,17 @@
 		</p>
 	</f:if>
 
+	<!-- <div class="results grid_16"> -->
 	<div class="results">
-		<div class="navigation top"/>
+
 		<f:render partial="Form/Form" arguments="{_all}"/>
+
+		<div class="navigation top grid_16"/>
 			<f:render partial="Components/ResultCount" arguments="{_all}"/>
 			<f:render partial="Pager/ListPager" arguments="{_all}"/>
 		</div>
 
-		<section class="facets-typ">
+		<section class="facets-typ grid_16">
 			<f:render
 				partial="Facets/Facet"
 				arguments="{
@@ -42,13 +45,13 @@
 		
 		<f:render partial="Facets/Facets" arguments="{_all}"/>
 
-		<ol id="c{config.uid}-resultList" class="resultList" start="{config.counterStart}">
+		<ol id="c{config.uid}-resultList" class="resultList grid_12" start="{config.counterStart}">
 			<f:for each="{results.documents}" as="document">
 				<f:render partial="Edfu/Result" arguments="{_all}"/>
 			</f:for>
 		</ol>
 
-		<div class="navigation bottom"/>
+		<div class="navigation bottom grid_16"/>
 			<f:render partial="Pager/ListPager" arguments="{_all}"/>
 		</div>
 	</div>
