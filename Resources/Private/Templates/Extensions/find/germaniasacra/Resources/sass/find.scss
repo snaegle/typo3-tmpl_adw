@@ -61,7 +61,7 @@ $tabSelected: #263476;
 		line-height: 150%;
 
 		.formFields {
-			float: left;
+			//float: left;
 		}
 
 		.fieldContainer {
@@ -139,7 +139,7 @@ $tabSelected: #263476;
 		}
 
 		.controls {
-			float: left;
+			//float: left;
 			bottom: 0px;
 		}
 
@@ -150,7 +150,8 @@ $tabSelected: #263476;
 		.submit {
 			// display: block;
 			// float: left;
-			height: 30px;
+			height: 42px;
+			width: 100%;
 			// background: url(../button_shade_large.png) repeat-x scroll 0 100% $backgroundB;
 			background-color: #C90230;
 			border-style: solid;
@@ -220,7 +221,7 @@ $tabSelected: #263476;
 		
 		ol.resultList {
 			margin: 0 220px 0 0;
-			padding-left: 3em;
+			padding-left: 2em;
 
 			h1 {
 				margin: 0;
@@ -289,11 +290,11 @@ $tabSelected: #263476;
 		.facetActive {
 			display: block;
 			background: $highlight;
-			border-radius: 5px;
+			//border-radius: 5px;
 			border: 1px solid $highlightBorder;
 			line-height: 150%;
 			font-weight: bold;
-			text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
+			//text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
 		}
 
 		.facetList .facetActive {
@@ -358,18 +359,19 @@ $tabSelected: #263476;
 			li {
 				display: inline-block;
 				margin: 0;
-				border-radius: 10px 10px 0 0;
+				//border-radius: 10px 10px 0 0;
 				border: 0px none;
 
 				a {
-					padding: 1em 0.5em 0em 0.5em;
+					padding: 0.1em 0.5em 0em 0.5em;
 					display: inline-block;
 				}
 			}
 
 			li.facetActive {
 				@extend li;
-				background: $tabSelected;
+				//background: $tabSelected;
+				background-color: #C90230;
 				color: $textInverted;
 
 				.facetCount {
