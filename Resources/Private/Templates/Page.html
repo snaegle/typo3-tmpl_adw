@@ -1,90 +1,96 @@
-<div class="top-container" id="top">
-	<div class="container_16">
-		<!-- breadcrumb -->
-		<f:render partial="BreadCrumb" arguments="{ROOTLINE: ROOTLINE}"/>
-		<!-- breadcrumb end -->
-		<!-- search/language -->
-		<div class="search">
-			<f:render partial="SearchBox" arguments="{searchPageId: searchPageId}"/>
-		</div>
-		<div class="language">{TOOLS_LANGUAGE_SWITCH -> f:format.raw()}</div>
-		<!-- search/language end -->
-	</div>
-</div><!--! end of top-container -->
+<!-- Headline?! >> ../Partials/Headline.html -->
+<f:render partial="Headline" arguments="{_all}"/>
+
 <div id="main" role="main" class="main clearfix">
 	<div class="container_16">
-		<div class="header clearfix">
-			<div class="grid_3">
-				<!-- logo -->
-				<div class="logo">
-					<f:link.page pageUid="1" title="{f:translate(id:'provider')}">
-						<f:image src="EXT:tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" />
-					</f:link.page>
+		<!-- header - sort of | start -->
+		<f:if condition="{TOOLMODE}">
+			<f:then>
+				<!-- show no header if in tool mode -->
+			</f:then>
+			<f:else>
+				<!-- default | start -->
+				<div class="header clearfix">
+					<div class="grid_3">
+						<!-- logo -->
+						<div class="logo">
+							<f:link.page pageUid="1" title="{f:translate(id:'provider')}">
+								<f:image src="EXT:tmpl_adw/Resources/Public/Images/logo-akademie-goettingen.png" alt="Logo" />
+							</f:link.page>
 
-					{LOGO -> f:format.raw()}</div>
-				<!-- logo end -->
-			</div>
-			<div class="grid_9 headlines">
-				<!-- headline/subline -->
-				{TITLE -> f:format.raw()}
-				{PAGENAVITITLE -> f:format.raw()}
-				{PAGETITLE -> f:format.raw()}
-				{PAGESUBTITLE -> f:format.raw()}
-				<!-- headline/subline end -->
-			</div>
-			<div class="grid_4">
-				<!-- little teaser -->
-				{TEASER -> f:format.raw()}
-				<!-- little teaser end -->
-			</div>
-		</div>
+							{LOGO -> f:format.raw()}</div>
+						<!-- logo end -->
+					</div>
+					<div class="grid_9 headlines">
+						<!-- headline/subline -->
+						{TITLE -> f:format.raw()}
+						{PAGENAVITITLE -> f:format.raw()}
+						{PAGETITLE -> f:format.raw()}
+						{PAGESUBTITLE -> f:format.raw()}
+						<!-- headline/subline end -->
+					</div>
+					<div class="grid_4">
+						<!-- little teaser -->
+						{TEASER -> f:format.raw()}
+						<!-- little teaser end -->
+					</div>
+				</div>
+				<!-- default | end -->
+			</f:else>
+		</f:if>
+		<!-- header - sort of | end -->
+
 		<div class="content clearfix">
-			<div class="grid_3 nav" id="menu">
-				<!-- main navi -->
-				{MENU -> f:format.raw()}
-				<!-- main navi end -->
-				{LOGODINI -> f:format.raw()}
-			</div>
-			<f:if condition="{INFOBOX}">
+			<f:if condition="{TOOLMODE}">
 				<f:then>
-					<div class="grid_9">
-						{TRANSLATIONNOTE -> f:format.raw()}
-						<!-- main content -->
-						<!-- TYPO3SEARCH_begin -->
-						{CONTENT -> f:format.raw()}
-						<!-- TYPO3SEARCH_end -->
-						<!-- main content end -->
-					</div>
-					<div class="grid_4 aside">
-						<!-- aside (right) -->
-						<hr />
-						{INFOBOX -> f:format.raw()}
-						<hr />
-						<!-- aside (right) end -->
-					</div>
+					<!-- main content -->
+					<!-- TYPO3SEARCH_begin -->
+					{CONTENT -> f:format.raw()}
+					<!-- TYPO3SEARCH_end -->
+					<!-- main content end -->
 				</f:then>
 				<f:else>
-					<div class="grid_13">
-						{TRANSLATIONNOTE -> f:format.raw()}
-						<!-- main content -->
-						<!-- TYPO3SEARCH_begin -->
-						{CONTENT -> f:format.raw()}
-						<!-- TYPO3SEARCH_end -->
-						<!-- main content end -->
+					<div class="grid_3 nav" id="menu">
+						<!-- main navi -->
+						{MENU -> f:format.raw()}
+						<!-- main navi end -->
+						{LOGODINI -> f:format.raw()}
 					</div>
+					<f:if condition="{INFOBOX}">
+						<f:then>
+							<div class="grid_9">
+								{TRANSLATIONNOTE -> f:format.raw()}
+								<!-- main content -->
+								<!-- TYPO3SEARCH_begin -->
+								{CONTENT -> f:format.raw()}
+								<!-- TYPO3SEARCH_end -->
+								<!-- main content end -->
+							</div>
+							<div class="grid_4 aside">
+								<!-- aside (right) -->
+								<hr />
+								{INFOBOX -> f:format.raw()}
+								<hr />
+								<!-- aside (right) end -->
+							</div>
+						</f:then>
+						<f:else>
+							<div class="grid_13">
+								{TRANSLATIONNOTE -> f:format.raw()}
+								<!-- main content -->
+								<!-- TYPO3SEARCH_begin -->
+								{CONTENT -> f:format.raw()}
+								<!-- TYPO3SEARCH_end -->
+								<!-- main content end -->
+							</div>
+						</f:else>
+					</f:if>
+					<p class="totop"><a class="toplink" href="#top"><f:translate id="linkToTop" /></a></p>
 				</f:else>
 			</f:if>
-			<p class="totop"><a class="toplink" href="#top"><f:translate id="linkToTop" /></a></p>
 		</div>
 	</div>
 </div>
-<footer class="footer">
-	<div class="container_16">
-		<ul class="clearfix">
-			<li><f:link.page pageUid="{siteMapId}"><f:translate id="sitemap" /></f:link.page></li>
-			<li><f:link.page pageUid="{contactId}"><f:translate id="contact" /></f:link.page></li>
-			<li><f:link.page pageUid="{imprintId}"><f:translate id="imprint" /></f:link.page></li>
-		</ul>
-		<p class="small"><f:translate id="lastchanged" /> <f:cObject typoscriptObjectPath="lib.changedate" /> &copy; <f:cObject typoscriptObjectPath="lib.currentyear" /> <f:translate id="provider" /></p>
-	</div>
-</footer>
+
+<!-- Footer?! >> ../Partials/Footer.html -->
+<f:render partial="Footer" arguments="{_all}"/>

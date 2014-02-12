@@ -6,18 +6,11 @@ page {
 		index_enable = 1
 	}
 	includeJS {
-		file1 = EXT:tmpl_adw/Resources/Public/JavaScript/libs/modernizr-2.0.6.min.js
-		file2 = EXT:tmpl_adw/Resources/Public/JavaScript/script.js
-		file3 = EXT:tmpl_adw/Resources/Public/JavaScript/plugins.js
-	}
-	includeJSFooterlibs {
-		fancybox = EXT:tmpl_adw/Resources/Public/JavaScript/libs/jquery.fancybox.pack.js
+		file = EXT:tmpl_adw/Resources/Public/JavaScript/production.min.js
 	}
 	includeCSS {
 		file1 = EXT:tmpl_adw/Resources/Public/Css/style.css
-		file2 = EXT:tmpl_adw/Resources/Public/Css/960.css
 		file5 = EXT:tmpl_adw/Resources/Public/Css/adw.css
-		file6 = EXT:tmpl_adw/Resources/Public/Css/jquery.fancybox.css
 	}
 	meta {
 		description = {$translation.meta.description.de}
@@ -46,6 +39,7 @@ page {
 			TOOLS_LANGUAGE_SWITCH < lib.tools_language_switch
 			TITLE < lib.header_title
 			MENU < lib.menu
+			MENU_1LEVELONLY < lib.menu_1levelonly
 			ROOTLINE < lib.rootline
 			CONTENT < styles.content.get
 			INFOBOX < styles.content.getRight
@@ -57,6 +51,7 @@ page {
 			TEASER < lib.teaser
 			PAGENAVITITLE < lib.pagenavititle
 			LOGODINI < lib.logo_dini
+			TOOLMODE < lib.toolMode
 		}
 	}
 }
@@ -102,13 +97,13 @@ page.headerData.500.value (
 <!--[if lt IE 9]>
 	<link rel="stylesheet" type="text/css" href="EXT:tmpl_adw/Resources/Public/Css/ie.css" media="all" />
 <![endif]-->
-<!--[if lte IE 8]>
-	<link rel="stylesheet" type="text/css" href="EXT:tmpl_adw/Resources/Public/Css/ie.css" media="all" />
-<![endif]-->
 )
 
 
 page.bodyTag = <body class="js-off subpage">
+[globalVar = LIT:0<{$toolMode}]
+page.bodyTag = <body class="js-off subpage tool-mode">
+[global]
 [globalVar = TSFE:id=2]
 page.bodyTag = <body class="js-off index">
 [global]

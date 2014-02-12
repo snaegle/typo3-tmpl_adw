@@ -1,3 +1,11 @@
+# get toolMode var
+
+[globalVar = LIT:0<{$toolMode}]
+lib.toolMode = TEXT
+lib.toolMode.value = {$toolMode}
+[global]
+
+
 ##### HEADERDATA #####
 
 # add geo code in header
@@ -229,6 +237,26 @@ lib.menu {
 	2.CUR < .1.CUR
 	2.ACT < .1.ACT
 	2.wrap = <ul>|</ul>
+}
+
+
+##### menu_1levelonly #####
+lib.menu_1levelonly = HMENU
+lib.menu_1levelonly.excludeUidList = {$ids.excludeFromMenu}
+lib.menu_1levelonly.special = directory
+lib.menu_1levelonly.special.value = {$ids.menuStart}
+lib.menu_1levelonly {
+	wrap = <ul>|</ul>
+	1 = TMENU
+	1.NO.wrapItemAndSub = <li>|</li>
+	1.NO.ATagParams = title="{field:title}"
+	1.NO.allStdWrap.insertData = 1
+	1.CUR = 1
+	1.CUR.wrapItemAndSub = <li class="cur">|</li>
+	1.CUR.allStdWrap.insertData = 1
+	1.ACT = 1
+	1.ACT.wrapItemAndSub = <li class="act">|</li>
+	1.ACT.allStdWrap.insertData = 1
 }
 
 

@@ -1,2 +1,4 @@
-.sass-cache
-.arcconfig
+Build/.sass-cache
+Build/bower_components
+Build/node_modules
+Gemfile.lock

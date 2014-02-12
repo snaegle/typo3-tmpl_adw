@@ -1,0 +1,25 @@
+<div class="top-container clearfix" id="top">
+	<div class="container_16">
+		<!-- breadcrumb | start -->
+		<!-- <f:render partial="BreadCrumb" arguments="{ROOTLINE: ROOTLINE}"/> -->
+		<f:render partial="BreadCrumb" arguments="{_all}"/>
+		<!-- breadcrumb | end -->
+		<f:if condition="{TOOLMODE}">
+			<f:then>
+			<!-- Tool Mode | start -->
+			<!-- Tool Mode | end -->
+			</f:then>
+			<f:else>
+				<!-- default | start -->
+				<!-- search/language | start -->
+				<div class="search">
+					<f:render partial="SearchBox" arguments="{searchPageId: searchPageId}"/>
+				</div>
+				<div class="language">{TOOLS_LANGUAGE_SWITCH -> f:format.raw()}</div>
+				<!-- search/language | end -->
+				<!-- default | end -->
+			</f:else>
+		</f:if>
+	</div>
+</div><!--! end of top-container -->
+<div class="clear"></div>
