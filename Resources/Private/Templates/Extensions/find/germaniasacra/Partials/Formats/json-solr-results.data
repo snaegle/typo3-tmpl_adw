@@ -1,1 +1,1 @@
-../../../../../../../../../find/Resources/Private/Partials/Formats/json-solr-results.data
+{namespace s=Subugoe\Find\ViewHelpers}<s:format.json data="{results.data.response.docs}"/>

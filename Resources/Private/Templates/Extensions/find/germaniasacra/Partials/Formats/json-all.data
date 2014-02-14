@@ -1,1 +1,1 @@
-../../../../../../../../../find/Resources/Private/Partials/Formats/json-all.data
+{namespace s=Subugoe\Find\ViewHelpers}<s:format.json data="{_all}"/>

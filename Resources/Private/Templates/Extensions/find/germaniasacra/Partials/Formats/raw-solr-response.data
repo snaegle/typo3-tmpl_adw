@@ -1,1 +1,1 @@
-../../../../../../../../../find/Resources/Private/Partials/Formats/raw-solr-response.data
+{results.response.body -> f:format.raw()}
