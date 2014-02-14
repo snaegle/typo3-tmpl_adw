@@ -1,1 +1,1 @@
-../../../../../../../../../find/Resources/Private/Templates/Search/Suggest.data
+{namespace s=Subugoe\Find\ViewHelpers}<s:format.json data="{suggestions}"/>
