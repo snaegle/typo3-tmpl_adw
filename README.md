@@ -2,7 +2,6 @@
 * [Ruby](https://www.ruby-lang.org/)
 * [Node](http://nodejs.org/)
 * compass	`$ gem install compass`
-* sass		`$ gem install sass`
 * bower		`$ npm install bower`
 * grunt		`$ npm install grunt-cli`
 
