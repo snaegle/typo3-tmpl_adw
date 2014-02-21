@@ -1,0 +1,45 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+<f:comment>
+	Creates a section for URLs available for the monastery.
+
+	Inserts a link for each of them, adding the bemerkung field to the displayed
+	text if it is available.
+</f:comment>
+<section class="link">
+	<f:if condition="{document.url_wikipedia}">
+		<h2>
+			Wikipedia
+		</h2>
+		<ul>
+			<s:data.transpose name="urls" arrays="{
+				url: document.url_wikipedia
+			}">
+				<f:for each="{urls}" as="url">
+					<li>
+						<f:link.external uri="{url.url}">
+							{document.title}
+							<f:if condition="{url.bemerkung}">
+								– {f:format.raw(value:url.bemerkung)}
+							</f:if>
+							{url.url}
+						</f:link.external>
+					</li>
+				</f:for>
+			</s:data.transpose>
+			<f:if condition="{document.bistum_wikipedia.0}">
+				<li>
+					<f:link.external uri="{document.bistum_wikipedia.0}">
+						<f:translate id="facet.bistum" default="Bistum" /> – {document.bistum_wikipedia.0}
+					</f:link.external>
+				</li>
+			</f:if>
+			<f:if condition="{document.orden_wikipedia.0}">
+				<li>
+					<f:link.external uri="{document.orden_wikipedia.0}">
+						<f:translate id="facet.orden" default="Orden" /> – {document.orden_wikipedia.0}
+					</f:link.external>
+				</li>
+			</f:if>
+		</ul>
+	</f:if>
+</section>
