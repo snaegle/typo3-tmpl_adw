@@ -1,0 +1,13 @@
+plugin.tx_find{
+	settings {
+		CSSPaths {
+			10 = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Resources/css/find.css
+			50 = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Resources/css/germania-sacra.css
+			70 = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Resources/css/bib.css
+		}
+	}
+	view {
+		templateRootPath = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Templates/
+		partialRootPath = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Partials/
+	}
+}
