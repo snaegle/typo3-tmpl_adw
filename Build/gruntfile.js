@@ -57,7 +57,7 @@ module.exports = function(grunt) {
                     debugInfo: true,
                     trace: true,
                     sassDir: '../Resources/Private/Scss',
-                    cssDir: '../Resources/Public/Css',
+                    cssDir: '../Resources/Public/Css'
                 }
             },
             dist: {
@@ -65,7 +65,7 @@ module.exports = function(grunt) {
                     outputStyle: 'compressed',
                     noLineComments: true,
                     sassDir: '../Resources/Private/Scss',
-                    cssDir: '../Resources/Public/Css',
+                    cssDir: '../Resources/Public/Css'
                 }
             }
         },
@@ -104,7 +104,7 @@ module.exports = function(grunt) {
                 options: {
                     stdout: true
                 }
-            },
+            }
         }
 
     });
