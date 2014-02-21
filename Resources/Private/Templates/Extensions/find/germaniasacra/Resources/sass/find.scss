@@ -34,15 +34,14 @@ $tabSelected: #263476;
 		color: $highlight;
 	}
 
-
 	/* error message */
-	
+
 	section.error {
 		margin-bottom: 1em;
 		padding: 1em;
 		border: 2px solid red;
 	}
-	
+
 	/* search form */
 
 	form {
@@ -55,8 +54,7 @@ $tabSelected: #263476;
 		$backgroundB: #f3f6fb;
 		$backgroundBActive: #e7e9ed;
 		$textB: #555;
-		
-		
+
 		position: relative;
 		line-height: 150%;
 
@@ -81,31 +79,31 @@ $tabSelected: #263476;
 				text-align: right;
 				padding-right: 5px;
 			}
-			
+
 			.inputContainer {
 				display: block;
 				line-height: 133%;
 			}
-			
+
 			input {
 				padding: 2px;
 				border-color: #C90230;
 				border-style: solid;
 				border-width: 1px;
 				color: $textA;
-				background: $backgroundA;				
+				background: $backgroundA;
 			}
-			
+
 			input.noleftmargin {
 				margin-left: 0;
 			}
-			
+
 			select {
 				position: relative;
 				top: 2px;
 			}
 		}
-		
+
 		.field-default {
 			.fieldLabel {
 				display: none;
@@ -116,10 +114,10 @@ $tabSelected: #263476;
 				height: 30px;
 				margin: 0px 6px 2px 0px;
 				padding: 4px;
-				font-size: 100%;				
+				font-size: 100%;
 			}
 		}
-		
+
 		.fieldType-Text {
 			.alternate label {
 				display: inline-block;
@@ -128,7 +126,7 @@ $tabSelected: #263476;
 				text-align: left;
 			}
 		}
-		
+
 		.fieldType-Range {
 			input {
 				width: 6em;
@@ -150,7 +148,7 @@ $tabSelected: #263476;
 			background-color: #C90230;
 			border-style: solid;
 			border-width: 1px;
-			border-color:  $borderB1 $borderB2 $borderB2 $borderB1;
+			border-color: $borderB1 $borderB2 $borderB2 $borderB1;
 			border-radius: 3px 3px 3px 3px;
 			border-right: 1px solid $borderB2;
 			color: white;
@@ -174,17 +172,17 @@ $tabSelected: #263476;
 		}
 
 		.field-mode-extended {
-			 display: none;
+			display: none;
 		}
 
 		.sortOrder, .resultCountPicker {
 			float: right;
 			margin: 5px 0 0 0.5em;
-		
+
 			label {
 				width: auto;
 			}
-			
+
 			select {
 				position: relative;
 				top: 2px;
@@ -192,24 +190,22 @@ $tabSelected: #263476;
 			}
 		}
 	}
-	
+
 	form.search-extended .field-mode-extended {
 		display: block;
 	}
 
-
-	
 	/* result list */
 
 	.results {
 		position: relative;
 		clear: left;
-		
+
 		.navigation {
 			margin-bottom: 2em;
 			clear: both;
 		}
-		
+
 		ol.resultList {
 			margin: 0 220px 0 0;
 			padding-left: 2em;
@@ -219,7 +215,7 @@ $tabSelected: #263476;
 				font-size: 133%;
 				line-height: 133%;
 			}
-			
+
 			li:target {
 				background: $backgroundActive;
 				border-radius: 7px;
@@ -227,8 +223,6 @@ $tabSelected: #263476;
 			}
 		}
 	}
-
-
 
 	/* facets */
 
@@ -251,14 +245,14 @@ $tabSelected: #263476;
 		.facetSearch {
 			margin: 1em 0 0 0;
 		}
-		
+
 		ol {
 			list-style-type: none;
 			margin: 1em 0 0 0;
 			padding-left: 0;
 			line-height: 150%;
 		}
-		
+
 		ol.autocomplete {
 			margin: 0.5em 0 0 0;
 		}
@@ -303,13 +297,13 @@ $tabSelected: #263476;
 				margin-left: 0.1em;
 			}
 		}
-		
+
 		.facetShowAll {
 			a {
 				font-style: italic;
 				color: $downlight;
 			}
-			
+
 			a:hover {
 				color: $current;
 			}
@@ -325,16 +319,16 @@ $tabSelected: #263476;
 		}
 
 		.flot-x-axis .flot-tick-label:first-child {
-			left: 13px!important;
+			left: 13px !important;
 		}
 	}
-	
+
 	.facet-type-Map {
 		.mapContainer {
 			height: 150px;
 		}
 	}
-	
+
 	.facet-type-Tabs {
 		@extend article.facet;
 
@@ -365,10 +359,8 @@ $tabSelected: #263476;
 					color: $downlightInverted;
 				}
 			}
-		}	
+		}
 	}
-
-	
 
 	/* page browser list view */
 
@@ -385,28 +377,26 @@ $tabSelected: #263476;
 		ol {
 			display: inline;
 			list-style-type: none;
-			
+
 			li {
 				display: inline;
 
 				a {
 					padding: 0.4em;
-				}			
+				}
 			}
 		}
-	
+
 		.current {
 			font-weight: bold;
 			color: $current;
 		}
-		
+
 		.resultCount {
 			margin-bottom: 2em;
 		}
 	}
 
-	
-	
 	/* result count */
 
 	.resultCount {
@@ -415,13 +405,11 @@ $tabSelected: #263476;
 		text-align: right;
 	}
 
-
-	
 	/* page browser single item view */
 
 	.queryAndPager {
 		margin: 1em 0 2em 0;
-		
+
 		.query {
 			display: none;
 		}
@@ -429,13 +417,13 @@ $tabSelected: #263476;
 		.resultPager {
 			display: block;
 			float: right;
-			
+
 			.pager {
 				color: $inactive;
-				
+
 				.icon-right-dir:before,
 				.icon-left-dir:before {
-					position:relative;
+					position: relative;
 					top: 1px;
 					width: auto;
 					padding: 0 4px;
@@ -450,14 +438,12 @@ $tabSelected: #263476;
 		}
 	}
 
-	
-
 	/* field list on single item view */
 
 	.detail h1 {
 		margin-bottom: 1em;
 	}
-	
+
 	dl {
 		margin: 0;
 	}
