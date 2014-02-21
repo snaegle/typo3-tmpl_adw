@@ -9,7 +9,6 @@
 </f:comment>
 <f:if condition="{document.koordinaten}">
 	<aside>
-		<h2>Karte</h2>
 		<div id="c-{document.id}-map" class="map"></div>
 		<t3jquery:addJQueryAndScript>
 			var ID = {s:format.json(data:document.id)};
