@@ -18,7 +18,7 @@ to get bower components and grunt modules you might need to run ist again if bow
 `$ cd` into Build folder and run `$ grunt dev` (for local development) or '$ grunt devCSS' (if you want to run compass watch only for development) or `$ grunt dist` (before you commit stuff to GitHub) 
 
 
-# please note
+# Please note
 
 if you change scss files and commit them without running grunt (`$ grunt dist`), the css files won't get updated and - obviously - you can't expect to see changes in the front end.
 
