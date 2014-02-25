@@ -16,7 +16,7 @@
 		}">
 			<f:for each="{ordens}" as="orden">
 				<li>
-					<p>
+
 						<f:if condition="{0:orden.von_verbal, 1:orden.bis_verbal} != {0:'', 1:''}">
 							<span class="zeitraum">{f:format.raw(value:orden.von_verbal)} – {f:format.raw(value:orden.bis_verbal)}</span>
 						</f:if>
@@ -44,7 +44,6 @@
 								</f:link.action>
 							</s:data.newArray>
 						</span>
-					</p>
 				</li>
 			</f:for>
 		</s:data.transpose>
