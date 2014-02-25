@@ -7,8 +7,8 @@
 	with the same town name or diocese respectively.
 </f:comment>
 <section class="lage">
-	<h2>Lage</h2>
-	<ol>
+	<h2 class="grid_4">Lage</h2>
+	<ol class="grid_7">
 		<s:data.transpose name="standorte" arrays="{
 			name: \"{s:find.highlightField(field:'ort', document:document, results:results)}\",
 			nameOriginal: document.ort,
@@ -22,7 +22,6 @@
 		}">
 			<f:for each="{standorte}" as="standort">
 				<li>
-					<p>
 						<f:if condition="{0:standort.von_verbal, 1:standort.bis_verbal} != {0:'', 1:''}">
 							<span class="zeitraum">{f:format.raw(value:standort.von_verbal)} – {f:format.raw(value:standort.bis_verbal)}</span>
 						</f:if>
@@ -73,7 +72,7 @@
 								</f:link.action>
 							</s:data.newArray>
 						</span>
-					</p>
+				
 				</li>
 			</f:for>
 		</s:data.transpose>

@@ -14,15 +14,15 @@
 	<article class="detail">
 		<f:render partial="GS/Karte" arguments="{_all}"/>
 
-		<h1>
+		<h1 class="grid_11">
 			<f:render partial="Display/Field/General" arguments="{results:results, document:document, field:'kloster'}"/>
 		</h1>
 
-		<div class="main">
+		<div class="main grid_11 alpha">
 			<f:if condition="{document.patrozinium}">
 				<section class="patrozinium">
-					<h2>Patrozinium</h2>
-					<p>
+					<h2 class="grid_4">Patrozinium</h2>
+					<p class="grid_7">
 						<f:render partial="Display/Field/General" arguments="{results:results, document:document, field:'patrozinium'}"/>
 					</p>
 				</section>
@@ -34,8 +34,8 @@
 
 			<f:if condition="{document.bemerkung_kloster.0}">
 				<section class="bemerkung">
-					<h2>Bemerkung</h2>
-					<p>
+					<h2 class="grid_4">Bemerkung</h2>
+					<p class="grid_7">
 						<f:render partial="Display/Field/General" arguments="{results:results, document:document, field:'bemerkung_kloster'}"/>
 					</p>
 				</section>
@@ -44,8 +44,8 @@
 			<f:render partial="GS/Band" arguments="{_all}"/>
 
 			<section class="permalink">
-				<h2>Zitierlink</h2>
-				<p>
+				<h2 class="grid_4">Zitierlink</h2>
+				<p class="grid_7">
 					<f:link.external uri="{f:render(partial:'GS/Permalink', arguments:'{id:document.sql_uid}')}">
 						{f:render(partial:'GS/Permalink', arguments:'{id:document.sql_uid}')}
 					</f:link.external>
