@@ -7,13 +7,13 @@
 </f:comment>
 <section class="link">
 	<f:if condition="{document.url}">
-		<h2>
+		<h2 class="grid_3">
 			<f:if condition="{f:count(subject:document.url} == 1">
 				<f:then>Link</f:then>
 				<f:else>Links</f:else>
 			</f:if>
 		</h2>
-		<ul>
+		<ul class="grid_8">
 			<s:data.transpose name="urls" arrays="{
 				url: document.url,
 				typ: document.url_typ,
