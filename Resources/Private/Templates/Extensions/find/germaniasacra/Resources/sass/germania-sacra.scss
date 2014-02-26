@@ -74,6 +74,11 @@
 	}
 
 	article {
+		&.detail {
+			h2 {
+				font-size: 1rem!important;
+			}
+		}
 		section {
 			margin-bottom: 1em;
 
