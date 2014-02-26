@@ -13,14 +13,18 @@
 
 	<div class="results grid_16 {f:if(condition:arguments.largeMap, then:'largeMap')}">
 
+		<f:render partial="Form/Form" arguments="{_all}"/>
+
+		<div class="navigation top"/>
+			<f:render partial="Components/ResultCount" arguments="{_all}"/>
+			<f:render partial="Pager/ListPager" arguments="{_all}"/>
+		</div>
+
 		<div class="grid_12 alpha">
 
-			<f:render partial="Form/Form" arguments="{_all}"/>
+			
 
-			<div class="navigation top"/>
-				<f:render partial="Components/ResultCount" arguments="{_all}"/>
-				<f:render partial="Pager/ListPager" arguments="{_all}"/>
-			</div>
+
 
 			<ol id="c{config.uid}-resultList" class="resultList" start="{config.counterStart}">
 				<f:for each="{results.documents}" as="document">
