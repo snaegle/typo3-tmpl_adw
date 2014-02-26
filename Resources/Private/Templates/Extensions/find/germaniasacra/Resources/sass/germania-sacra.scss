@@ -13,7 +13,7 @@
 			height: 300px;
 			background: #fff;
 		}
-		
+
 	}
 
 	.mapContainer .infoWindow {
@@ -35,11 +35,11 @@
 			}
 
 			.zeitraum:after {
-				content:': ';
+				content: ': ';
 			}
 		}
 	}
-	
+
 	$formLabelWidth: 150px;
 
 	form {
@@ -47,7 +47,7 @@
 			.fieldLabel {
 				width: $formLabelWidth;
 			}
-			
+
 			.inputContainer {
 				margin-left: $formLabelWidth + 10px;
 			}
@@ -55,7 +55,7 @@
 	}
 
 	$mapRight: 225px;
-	
+
 	.results {
 		&.largeMap {
 			.facet-type-Map .mapContainer {
@@ -72,13 +72,12 @@
 			}
 		}
 	}
-	
-	
+
 	article {
 		section {
 			margin-bottom: 1em;
 
-			>* {
+			> * {
 				line-height: 1.5;
 				margin: 8px 0 0 15px;
 				padding: 0;
@@ -98,7 +97,7 @@
 				text-transform: uppercase;
 				margin-top: 1em;
 				margin-bottom: 1em;
-				margin: 1em 0 1em 12em!important;
+				margin: 1em 0 1em 12em !important;
 			}
 
 			ol, ul {
@@ -139,7 +138,7 @@
 		}
 
 		span.bemerkung {
-			font-style: italic; 
+			font-style: italic;
 		}
 
 		.literatur li {
@@ -168,7 +167,7 @@
 			}
 		}
 	}
-	
+
 	.facet-type-Map {
 		h1 {
 			.extraText {
@@ -176,17 +175,17 @@
 				font-style: italic;
 				color: #bbb;
 			}
-			
+
 			:hover .extraText {
 				color: inherit;
 			}
 		}
 	}
-	
+
 	.hidden {
 		display: none;
 	}
-	
+
 	.downloadLinks {
 		ul, li {
 			display: inline;
@@ -196,7 +195,7 @@
 			text-transform: uppercase;
 		}
 	}
-	
+
 	.zitation-detail {
 		font-style: italic;
 	}
