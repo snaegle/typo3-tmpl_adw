@@ -1,7 +1,6 @@
 .tx_find aside {
   float: right;
-  width: 300px;
-  margin: 0 0 1em 1em; }
+  width: 300px; }
   .tx_find aside aside h2 {
     display: none; }
   .tx_find aside .map {
