@@ -9,12 +9,14 @@
 </f:comment>
 <f:if condition="{document.person_name}">
 	<section class="person">
-		<h2>
+		<h2 class="grid_3">
 			<f:if condition="{f:count(subject:document.person_name)} == 1">
 				<f:then>Person</f:then>
 				<f:else>Personen</f:else>
 			</f:if>
 		</h2>
+
+		<div class="grid_8">
 
 		<p>{document.personallistenstatus.0}.</p>
 
@@ -88,5 +90,6 @@
 				</f:alias>
 			</f:groupedFor>
 		</s:data.transpose>
+		</div>
 	</section>
 </f:if>
