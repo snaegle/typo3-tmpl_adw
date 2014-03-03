@@ -149,6 +149,13 @@ jQuery(function() {
 		}
 	});
 
+	/**
+	 *
+	 */
+	jQuery('.tool-mode a').filter(function() {
+		return this.hostname && this.hostname !== location.hostname;
+	}).attr("target","_blank");
+
 	/* Tool mode | End */
 
 });
