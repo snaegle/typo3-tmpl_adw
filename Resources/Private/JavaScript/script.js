@@ -149,6 +149,18 @@ jQuery(function() {
 		}
 	});
 
+	/**
+	 *
+	 */
+	jQuery('.tool-mode a').filter(function() {
+		return this.hostname && this.hostname !== location.hostname;
+	}).attr("target","_blank");
+
+	/**
+	 *
+	 */
+	jQuery('.tool-mode .fieldType-SelectFacet .inputContainer').chosen();
+
 	/* Tool mode | End */
 
 });

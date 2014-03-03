@@ -4,7 +4,7 @@
 	It displays the current range and total number of results as appropriate.
 	If an error occurred it indicates the error.
 </f:comment>
-<div class="resultCount">
+<div class="grid_4 resultCount">
 	<f:if condition="{results.numfound}==0">
 		<f:then>
 			<f:if condition="{error}">
@@ -22,7 +22,7 @@
 					<f:translate key="1 result"/>
 				</f:then>
 				<f:else>
-					<f:if condition="{results.numfound}<{settings.count}">
+					<f:if condition="{results.numfound}<{config.counterEnd}">
 						<f:then>
 							{results.numfound} <f:translate key="results"/>
 						</f:then>
