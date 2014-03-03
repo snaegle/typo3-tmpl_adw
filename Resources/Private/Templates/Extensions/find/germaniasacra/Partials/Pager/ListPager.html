@@ -1,5 +1,5 @@
 {namespace s=Subugoe\Find\ViewHelpers}
-<div class="pager listPager">
+<div class="pager listPager grid_12">
 	<f:alias map="{pager:'{s:find.pageList(currentPage:arguments.page, perPage:settings.paging.perPage, resultCount:results.numfound)}'}">
 		<f:if condition="{f:count(subject:pager.pages)} > 1">
 			<span class="previous">

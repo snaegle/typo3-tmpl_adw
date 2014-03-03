@@ -365,9 +365,10 @@ $tabSelected: #263476;
 	/* page browser list view */
 
 	.listPager {
-		margin-right: 220px;
-		text-align: center;
-		margin-top: 1em;
+		// margin-right: 220px;
+		text-align: right;
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
 
 		* {
 			margin: 0;
@@ -401,8 +402,10 @@ $tabSelected: #263476;
 
 	.resultCount {
 		float: right;
-		width: 200px;
+		// width: 200px;
 		text-align: right;
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
 	}
 
 	/* page browser single item view */
