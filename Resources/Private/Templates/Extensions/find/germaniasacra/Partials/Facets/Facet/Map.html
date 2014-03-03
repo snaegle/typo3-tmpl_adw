@@ -36,24 +36,15 @@
 			}
 		}
 </f:comment>
-<t3jquery:addJQueryAndScript jsfile="EXT:find/Resources/Public/JavaScript/js-geohash/geohash.js">
-	tx_find_facetMap.init ({
-		container: jQuery('.facet-id-{facetInfo.id} .mapContainer')[0],
-		queryURLTemplate: {s:format.json(data:"{f:uri.action(
-			addQueryString:TRUE,
-			arguments:'{
-				q:\'{raw:\"###TERM###\"}\',
-				count:1000
-			}',
-			action:'index',
-			pageType:'1369315139',
-			format:'data',
-			noCacheHash:'1'
-		)}")},
-		facetData: {s:format.json(data:facetData.values)},
-		facetFetchMaximum: {facetInfo.fetchMaximum}
-	});
+<s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.css"/>
+<s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/Css/germaniasacraMap.css"/>
+<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.js"></t3jquery:addJQueryAndScript>
+<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js">
+initMap();
 </t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
-	<div class="mapContainer"></div>
+	<div class="mapContainer">
+		<div id="lMap"></div>
+	</div>
+	<f:debug>{facetData}</f:debug>
 </div>
