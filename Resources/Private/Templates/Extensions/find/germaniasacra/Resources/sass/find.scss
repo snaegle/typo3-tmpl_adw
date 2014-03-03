@@ -30,8 +30,9 @@ $tabSelected: #263476;
 	}
 
 	em.highlight {
-		font-weight: bold;
-		color: $highlight;
+		background: none repeat scroll 0 0 #FDEE53;
+		// font-weight: bold;
+		// color: $highlight;
 	}
 
 	/* error message */
