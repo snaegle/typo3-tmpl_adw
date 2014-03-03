@@ -1,11 +1,4 @@
-.facetMap-container {
-  background: red;
-}
-.mapContainer {
-  background: blue;
-}
-.mapContainer #lMap {
-	width: 200px;
-	height: 150px;
-	overflow: hidden;
+
+#lmap {
+
 }
