@@ -4,8 +4,8 @@
 </f:comment>
 <f:if condition="{settings.paging.detailPagePaging}">
 	<f:if condition="{arguments.underlyingQuery}">
-		<p class="queryAndPager">
-			<span class="underlyingQuery">
+		<div class="queryAndPager">
+			<span class="grid_8 underlyingQuery">
 				<span class="backToResultList">
 					<s:data.newArray
 						name="linkArguments"
@@ -40,7 +40,7 @@
 				</span>
 			</span>
 
-			<span class="resultPager">
+			<span class="grid_4 resultPager">
 				<span class="position">
 					<f:translate key="result"/>
 					<span class="resultPosition">{arguments.underlyingQuery.position}</span>
@@ -80,6 +80,7 @@
 					</f:if>
 				</span>
 			</span>
-		</p>
+			<div class="grid_4">&nbsp;</div>
+		</div>
 	</f:if>
 </f:if>
