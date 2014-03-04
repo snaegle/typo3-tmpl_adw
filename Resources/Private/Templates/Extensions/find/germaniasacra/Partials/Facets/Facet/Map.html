@@ -40,20 +40,26 @@
 <s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/Css/germaniasacraMap.css"/>
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.js"></t3jquery:addJQueryAndScript>
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js">
-	leafletInitMap();
-	<f:if condition="{facetData}">
-		<f:then>
-			<f:for each="{facetData.values}" as="string">
-			</f:for>
-		</f:then>
-	</f:if>
 </t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
 	<div class="mapContainer">
 		<div id="lmap" class="tool-mode__lmap"></div>
 	</div>
 	<div id="test">
-		<f:for each="{facetData.values}" as="elems" key="coords" iteration="its">
-			<div id="nix">{coords}</div>
+		<script>var leafletJsonCoords = {
+			"type": "Feature",
+		    "geometry": {
+			"type": "MultiPoint",
+			  "coordinates": [
+		<f:for each="{facetData.values}" as="elems" key="coord" iteration="iterator">
+		  <f:if condition="{iterator.isLast}">
+		    <f:then>[{coord}]</f:then>
+		    <f:else>[{coord}],</f:else>
+		  </f:if>
 	</f:for>
+		]
+		}
+		};
+		leafletInitMap();
+		</script>
 </div>

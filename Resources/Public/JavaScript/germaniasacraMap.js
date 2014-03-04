@@ -5,8 +5,12 @@ function leafletInitMap() {
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors'
   }).addTo(map);
+	L.geoJson(leafletJsonCoords, {
+						style: function(feature) {return feature.properties;}
+					}).addTo(map);
 }
-function leafletMapAddMarker (isso) {
-	alert("nix");
+function leafletAddToMap() {
+	L.geoJson(leafletJsonCoords, {
+					style: function(feature) {return feature.properties;}
+				}).addTo(map);
 }
-
