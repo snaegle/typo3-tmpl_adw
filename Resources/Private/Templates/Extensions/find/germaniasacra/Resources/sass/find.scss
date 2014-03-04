@@ -403,7 +403,7 @@ $tabSelected: #263476;
 	/* result count */
 
 	.resultCount {
-		float: right;
+		// float: left;
 		// width: 200px;
 		text-align: right;
 		margin-top: 0.5em;
@@ -421,7 +421,8 @@ $tabSelected: #263476;
 
 		.resultPager {
 			display: block;
-			float: right;
+			text-align: right;
+			// float: right;
 
 			.pager {
 				color: $inactive;
