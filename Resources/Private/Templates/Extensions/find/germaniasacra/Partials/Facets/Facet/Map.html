@@ -46,20 +46,22 @@
 		<div id="lmap" class="tool-mode__lmap"></div>
 	</div>
 	<div id="test">
-		<script>var leafletJsonCoords = {
-			"type": "Feature",
-		    "geometry": {
-			"type": "MultiPoint",
-			  "coordinates": [
-		<f:for each="{facetData.values}" as="elems" key="coord" iteration="iterator">
-		  <f:if condition="{iterator.isLast}">
-		    <f:then>[{coord}]</f:then>
-		    <f:else>[{coord}],</f:else>
-		  </f:if>
-	</f:for>
-		]
-		}
-		};
-		leafletInitMap();
+		<script>
+			var leafletJsonCoords = {
+				"type": "Feature",
+		        "geometry": {
+					"type": "MultiPoint",
+					"coordinates": [
+						<f:for each="{facetData.values}" as="itemCount" key="coord" iteration="iterator">
+							<f:if condition="{iterator.isLast}">
+								<f:then>[{coord}]</f:then>
+								<f:else>[{coord}],</f:else>
+							</f:if>
+						</f:for>
+					]
+				}
+			};
+			leafletInitMap();
 		</script>
+	</div>
 </div>
