@@ -3,38 +3,8 @@
 <f:comment>
 	Creates a map facet.
 
-	It expects the configured facet field to contain geohashes in all available lenghts
-	prefixed by the zero-padded hash length and a hyphen. E.g.:
-
-		"geohash": [
-			"01-u",
-			"02-u3",
-			"03-u39",
-			"04-u392",
-			"05-u392t",
-			"06-u392tk",
-			"07-u392tk8",
-			"08-u392tk8e",
-			"09-u392tk8e6",
-			"10-u392tk8e6n",
-			"11-u392tk8e6n1",
-			"12-u392tk8e6n18"
-		]
-
-	The facet must be configured to return items sorted by index order. The higher the number
-	of facet values that are fetched the more granular the displayed results will be.
-
-	Sample TypoScript configuration:
-	
-		plugin.tx_find.settings.facet {
-			10 {
-				id = map
-				field = geohash
-				type = Map
-				sortOrder = index
-				fetchMaximum = 1000
-			}
-		}
+	It expects coordinates.
+	It defines the map, initiates it and adds the markers
 </f:comment>
 <s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.css"/>
 <s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/Css/germaniasacraMap.css"/>
@@ -44,24 +14,13 @@
 <div class="facetMap-container">
 	<div class="mapContainer">
 		<div id="lmap" class="tool-mode__lmap"></div>
-	</div>
-	<div id="test">
 		<script>
-			var leafletJsonCoords = {
-				"type": "Feature",
-		        "geometry": {
-					"type": "MultiPoint",
-					"coordinates": [
-						<f:for each="{facetData.values}" as="itemCount" key="coord" iteration="iterator">
-							<f:if condition="{iterator.isLast}">
-								<f:then>[{coord}]</f:then>
-								<f:else>[{coord}],</f:else>
-							</f:if>
-						</f:for>
-					]
-				}
-			};
+			var leafletMap = L.map('lmap').setView([52,14], 3);
 			leafletInitMap();
-		</script>
+		<f:for each="{facetData.values}" as="itemCount" key="coord" iteration="iterator">
+			leafletIterate({coord});
+		</f:for>
+	</script>
 	</div>
 </div>
+
