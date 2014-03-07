@@ -14,7 +14,7 @@
 	<article class="detail">
 		<f:render partial="GS/Karte" arguments="{_all}"/>
 
-		<div class="main grid_11">
+		<div class="main grid_12">
 
 		<h1 class="">
 			<f:render partial="Display/Field/General" arguments="{results:results, document:document, field:'kloster'}"/>
@@ -53,6 +53,10 @@
 					</f:link.external>
 					<span class="fa fa-files-o" id="copy-button" data-clipboard-text="{f:render(partial:'GS/Permalink', arguments:'{id:document.sql_uid}')}" title="Klicken um den Zitierlink in die Zwischenablage zu kopieren"></span>
 				</p>
+			</section>
+
+			<section>
+				<f:render partial="GS/Zitierhinweis" arguments="{_all}" />
 			</section>
 
 			<f:render partial="GS/Quelle" arguments="{_all}"/>

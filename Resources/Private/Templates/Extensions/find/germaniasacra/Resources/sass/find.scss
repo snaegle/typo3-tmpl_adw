@@ -30,8 +30,9 @@ $tabSelected: #263476;
 	}
 
 	em.highlight {
-		font-weight: bold;
-		color: $highlight;
+		background: none repeat scroll 0 0 #FDEE53;
+		// font-weight: bold;
+		// color: $highlight;
 	}
 
 	/* error message */
@@ -274,8 +275,9 @@ $tabSelected: #263476;
 
 		.facetActive {
 			display: block;
-			background: $highlight;
-			border: 1px solid $highlightBorder;
+			// background: $highlight;
+			background: #FDEE53;
+			// border: 1px solid $highlightBorder;
 			line-height: 150%;
 			font-weight: bold;
 		}
@@ -289,7 +291,7 @@ $tabSelected: #263476;
 		.facetActive {
 			a {
 				padding-left: 0.2em;
-				color: $textInverted;
+				color: black;
 			}
 
 			a:before {
@@ -365,9 +367,10 @@ $tabSelected: #263476;
 	/* page browser list view */
 
 	.listPager {
-		margin-right: 220px;
+		// margin-right: 220px;
 		text-align: center;
-		margin-top: 1em;
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
 
 		* {
 			margin: 0;
@@ -400,9 +403,11 @@ $tabSelected: #263476;
 	/* result count */
 
 	.resultCount {
-		float: right;
-		width: 200px;
+		// float: left;
+		// width: 200px;
 		text-align: right;
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
 	}
 
 	/* page browser single item view */
@@ -416,7 +421,8 @@ $tabSelected: #263476;
 
 		.resultPager {
 			display: block;
-			float: right;
+			text-align: right;
+			// float: right;
 
 			.pager {
 				color: $inactive;
@@ -468,4 +474,8 @@ $tabSelected: #263476;
 
 .fieldContainer {
 	margin-bottom: 15px;
+}
+
+.tx-find .person section ol {
+	margin: 0;
 }
