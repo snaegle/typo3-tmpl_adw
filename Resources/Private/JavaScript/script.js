@@ -159,7 +159,7 @@ jQuery(function() {
 	/**
 	 *
 	 */
-	jQuery('.tool-mode .fieldType-SelectFacet .inputContainer').chosen();
+	// jQuery('.tool-mode .fieldType-SelectFacet .inputContainer').chosen();
 
 	/* Tool mode | End */
 
