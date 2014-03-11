@@ -30,8 +30,8 @@
 				argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
 				section="{settings.jumpToID}"
 				noCacheHash="1"
-				class="icon-cancel facetRemove internal"
-				title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}"><span class="facetName"><f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}" default="{facetTermDisplay}"/></span></f:link.action>
+				class="facetRemove internal"
+				title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}"><i class="fa fa-times"></i> <span class="facetName"><f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}" default="{facetTermDisplay}"/></span></f:link.action>
 		</f:then>
 		<f:else>
 			<f:link.action

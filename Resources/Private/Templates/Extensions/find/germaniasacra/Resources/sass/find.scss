@@ -68,9 +68,9 @@ $tabSelected: #263476;
 			// clear: left;
 
 			.alternate {
-				padding-left: 145px;
-				padding-top: 5px;
-				display: block;
+				// padding-left: 145px;
+				// padding-top: 5px;
+				// display: block;
 			}
 
 			.fieldLabel {
@@ -478,4 +478,12 @@ $tabSelected: #263476;
 
 .tx-find .person section ol {
 	margin: 0;
+}
+
+.tx_find .searchForm .field-mode-extended input[type=text] {
+	width: 225px;
+}
+
+.tx_find .searchForm .field-mode-extended select {
+	width: 230px;
 }

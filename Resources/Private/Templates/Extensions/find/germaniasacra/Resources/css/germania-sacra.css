@@ -21,7 +21,7 @@
 .tx_find form .fieldContainer .fieldLabel {
   width: 150px; }
 .tx_find form .fieldContainer .inputContainer {
-  margin-left: 160px; }
+  margin-left: 155px; }
 .tx_find .results.largeMap .facet-type-Map .mapContainer {
   position: absolute;
   left: 0;
@@ -32,8 +32,7 @@
   left: 0;
   right: 225px; }
 .tx_find article.detail h2 {
-  font-size: 1rem !important;
-  margin: 0 0 24px !important; }
+  font-size: 1rem !important; }
 .tx_find article section {
   margin-bottom: 1em; }
   .tx_find article section > * {

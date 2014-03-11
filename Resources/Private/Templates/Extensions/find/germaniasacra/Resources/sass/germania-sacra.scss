@@ -48,7 +48,7 @@
 			}
 
 			.inputContainer {
-				margin-left: $formLabelWidth + 10px;
+				margin-left: $formLabelWidth + 5px;
 			}
 		}
 	}
@@ -76,7 +76,7 @@
 		&.detail {
 			h2 {
 				font-size: 1rem!important;
-				margin: 0 0 24px!important;
+				// margin: 0 0 24px!important;
 			}
 		}
 		section {
