@@ -2,8 +2,8 @@
 
 function leafletInitMap() {
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors'
-  }).addTo(leafletMap);
+		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(leafletMap);
 }
 
 function leafletIterate(lat,lng) {

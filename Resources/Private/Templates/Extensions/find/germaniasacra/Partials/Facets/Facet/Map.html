@@ -15,12 +15,13 @@
 	<div class="mapContainer">
 		<div id="lmap" class="tool-mode__lmap"></div>
 		<script>
-			var leafletMap = L.map('lmap').setView([52,14], 3);
+			var leafletMap = L.map('lmap', {zoomControl: false}).setView([52,14], 3);
 			leafletInitMap();
 		<f:for each="{facetData.values}" as="itemCount" key="coord" iteration="iterator">
 			leafletIterate({coord});
 		</f:for>
 	</script>
+	<a href="">Interaktive Karte anzeigen</a>
 	</div>
 </div>
 
