@@ -29,14 +29,15 @@ namespace Subugoe\TmplAdw\ViewHelpers;
 /**
  * Removes the prefix from wikipedia links and only returns the last part
  */
-class LastPartOfUrlExtractorViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class LastPartOfWikipediaUrlExtractorViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * @param string $url
 	 * @return string
 	 */
 	public function render($url) {
-		$lastPart = str_replace('http://de.wikipedia.org/wiki/', '', $url);
+		$pattern = '|http://(.*?)\.wikipedia\.org/wiki/|';
+		$lastPart = preg_replace($pattern, '', $url);
 		return $lastPart;
 	}
 
