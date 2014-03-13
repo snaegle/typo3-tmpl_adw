@@ -34,6 +34,22 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
 				),
 				'postVarSets' => array(
 						'_DEFAULT' => array(
+								'a' => array(
+										array(
+												'GETvar' => 'tx_find_find[action]',
+												'valueMap' => array(
+														'data' => 'data',
+														'suggest' => 'suggest',
+												),
+												'noMatch' => 'bypass',
+										),
+								),
+								'c' => array(
+										array(
+												'GETvar' => 'tx_find_find[controller]',
+												'noMatch' => 'bypass',
+										),
+								),
 								'gsn' => array(
 										array(
 												'GETvar' => 'tx_find_find[id]',
