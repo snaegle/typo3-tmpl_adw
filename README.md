@@ -23,3 +23,12 @@ to get bower components and grunt modules you might need to run ist again if bow
 if you change scss files and commit them without running grunt (`$ grunt dist`), the css files won't get updated and - obviously - you can't expect to see changes in the front end.
 
 Run any grunt task with `--verbose` to get lots of cli output.
+
+# Applying RealURL configuration shipped with this extension
+
+To apply the shipped RealURL configuration the global configuration file has to be a symlink to the file in
+Configuration/System/realurl_conf
+
+In order to achieve this create the symlink in typo3conf with
+
+`ln -s ext/tmpl_adw/Configuration/System/realurl_conf.php realurl_conf.php`
