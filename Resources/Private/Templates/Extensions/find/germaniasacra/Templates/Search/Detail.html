@@ -22,7 +22,7 @@
 
 
 			<f:if condition="{document.patrozinium}">
-				<section class="patrozinium">
+				<section class="patrozinium grid_12">
 					<h2 class="grid_3">Patrozinium</h2>
 					<p class="grid_8">
 						<f:render partial="Display/Field/General" arguments="{results:results, document:document, field:'patrozinium'}"/>
@@ -35,7 +35,7 @@
 			<f:render partial="GS/Orden" arguments="{_all}"/>
 
 			<f:if condition="{document.bemerkung_kloster.0}">
-				<section class="bemerkung">
+				<section class="bemerkung grid_12">
 					<h2 class="grid_3">Bemerkung</h2>
 					<p class="grid_8">
 						<f:render partial="Display/Field/General" arguments="{results:results, document:document, field:'bemerkung_kloster'}"/>
@@ -45,7 +45,7 @@
 
 			<f:render partial="GS/Band" arguments="{_all}"/>
 
-			<section class="permalink">
+			<section class="permalink grid_12">
 				<h2 class="grid_3">Zitierlink</h2>
 				<p class="grid_8">
 					<f:link.external uri="{f:render(partial:'GS/Permalink', arguments:'{id:document.sql_uid}')}">
@@ -55,7 +55,7 @@
 				</p>
 			</section>
 
-			<section>
+			<section class="grid_12">
 				<f:render partial="GS/Zitierhinweis" arguments="{_all}" />
 			</section>
 
