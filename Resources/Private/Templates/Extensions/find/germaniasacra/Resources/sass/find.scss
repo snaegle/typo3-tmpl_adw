@@ -480,10 +480,14 @@ $tabSelected: #263476;
 	margin: 0;
 }
 
-.tx_find .searchForm .field-mode-extended input[type=text] {
+.tx_find .searchForm .field-mode-extended.fieldType-Text input[type=text] {
 	width: 225px;
 }
 
 .tx_find .searchForm .field-mode-extended select {
 	width: 230px;
+}
+
+.tx_find .searchForm .fieldType-Range input {
+	width: 102px;
 }
