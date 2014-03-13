@@ -1,10 +1,12 @@
 {namespace s=Subugoe\Find\ViewHelpers}
+{namespace t=Subugoe\TmplAdw\ViewHelpers}
 <f:comment>
 	Creates a section for URLs available for the monastery.
 
 	Inserts a link for each of them, adding the bemerkung field to the displayed
 	text if it is available.
 </f:comment>
+
 <section class="link grid_12">
 	<f:if condition="{document.url}">
 		<h2 class="grid_3">
@@ -30,7 +32,7 @@
 					</li>
 					<f:if condition="{document.url_wikipedia}">
 						<li>
-							<f:link.external uri="{document.url_wikipedia.0}">Wikipedia</f:link.external>
+							<f:link.external uri="{document.url_wikipedia.0}">Wikipedia – <t:lastPartOfUrlExtractor url="{document.url_wikipedia.0}" /></f:link.external>
 						</li>
 					</f:if>
 				</f:for>
