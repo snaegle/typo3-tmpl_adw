@@ -13,14 +13,31 @@
 </t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
 	<div class="mapContainer">
+		<div class="leafletZoom"><i class="fa fa-expand fa-1f"></i></div>
 		<div id="lmap" class="tool-mode__lmap"></div>
 		<script>
-			var leafletMap = L.map('lmap', {zoomControl: false}).setView([52,14], 3);
+			var leafletMap = L.map('lmap', {zoomControl: false, attributionControl: false}).setView([52,14], 3);
 			leafletInitMap();
 		<f:for each="{facetData.values}" as="itemCount" key="coord" iteration="iterator">
 			leafletIterate({coord});
 		</f:for>
 	</script>
 	</div>
+	<div class="leafletCopy">Open street map contributors</div>
 </div>
-
+<style>
+	.leafletZoom {
+		position: absolute;
+		right: 10px;
+		z-index: 7;
+		width: 32px;
+		height: 32px;
+		background: rgb(255, 255, 255);
+		border-radius: 3px;
+		text-shadow: 1px 1px 3px #888;
+		text-align: center;
+		margin: 5px;
+		color: #c90230;
+		font-size: 1.5em;
+	}
+</style>
