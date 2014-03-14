@@ -12,13 +12,18 @@
 	<f:render partial="Components/DetailResultPager" arguments="{_all}"/>
 
 	<article class="detail">
-		<f:render partial="GS/Karte" arguments="{_all}"/>
+		<aside class="grid_4">
+			<f:if condition="{document.koordinaten}">
+				<f:render partial="GS/Karte" arguments="{_all}"/>
+			</f:if>
+			<f:render partial="GS/LinkedData" arguments="{_all}"/>
+		</aside>
 
 		<div class="main grid_12">
 
-		<h1 class="">
-			<f:render partial="Display/Field/General" arguments="{results:results, document:document, field:'kloster'}"/>
-		</h1>
+			<h1 class="">
+				<f:render partial="Display/Field/General" arguments="{results:results, document:document, field:'kloster'}"/>
+			</h1>
 
 
 			<f:if condition="{document.patrozinium}">
@@ -56,7 +61,7 @@
 			</section>
 
 			<section class="grid_12">
-				<f:render partial="GS/Zitierhinweis" arguments="{_all}" />
+				<f:render partial="GS/Zitierhinweis" arguments="{_all}"/>
 			</section>
 
 			<f:render partial="GS/Quelle" arguments="{_all}"/>
@@ -64,8 +69,6 @@
 			<f:render partial="GS/Links" arguments="{_all}"/>
 
 			<f:render partial="Bib/Bibliography" arguments="{_all}"/>
-
-			<f:render partial="GS/LinkedData" arguments="{_all}"/>
 
 			<f:render partial="GS/Personen" arguments="{_all}"/>
 

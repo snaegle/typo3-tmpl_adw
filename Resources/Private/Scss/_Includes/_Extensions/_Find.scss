@@ -17,4 +17,11 @@
 	aside {
 		margin-top: 26px
 	}
+	section {
+		&.linked-data {
+			li {
+				display: inline;
+			}
+		}
+	}
 }
