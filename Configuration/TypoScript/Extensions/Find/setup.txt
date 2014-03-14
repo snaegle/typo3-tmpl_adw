@@ -5,6 +5,11 @@ plugin.tx_find{
 			50 = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Resources/css/germania-sacra.css
 			70 = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Resources/css/bib.css
 		}
+		facets {
+			10 {
+				fetchMaximum = 2000
+			}
+		}
 	}
 	view {
 		templateRootPath = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Templates/
