@@ -14,7 +14,9 @@
 <div class="facetMap-container">
 	<div class="mapContainer">
 		<div class="leafletZoom"><i class="fa fa-expand fa-1f"></i></div>
-		<div id="lmap" class="tool-mode__lmap"></div>
+		<div id="lmap" class="tool-mode__lmap">
+			<div class="leafletCopy">&copy; <a href="http://openstreetmap.org/copyright">Open street map</a>a> contributors</div>
+		</div>
 		<script>
 			var leafletMap = L.map('lmap', {zoomControl: false, attributionControl: false}).setView([52,14], 3);
 			leafletInitMap();
