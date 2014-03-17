@@ -12,12 +12,11 @@
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js">
 </t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
-	<div class="mapContainer">
-		<a id="bigMap" href="#lmap">
+	<a class="bigMap" href="#lmap">
+		<div class="mapContainer">
 			<div class="leafletZoom">
 				<i class="fa fa-expand fa-1f"></i>
 			</div>
-		</a>
 		<div id="lmap" class="tool-mode__lmap">
 			<div class="leafletCopy"><a href="http://openstreetmap.org/copyright">Open street map</a>&nbsp;contributors</div>
 		</div>
@@ -29,9 +28,5 @@
 		</f:for>
 	</script>
 	</div>
+	</a>
 </div>
-		<style>
-			#lmap {
-				display: relative;
-			}
-		</style>
