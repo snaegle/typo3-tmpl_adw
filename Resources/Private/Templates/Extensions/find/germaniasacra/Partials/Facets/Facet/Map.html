@@ -13,7 +13,11 @@
 </t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
 	<div class="mapContainer">
-		<div class="leafletZoom"><i class="fa fa-expand fa-1f"></i></div>
+		<a id="bigMap" href="#lmap">
+			<div class="leafletZoom">
+				<i class="fa fa-expand fa-1f"></i>
+			</div>
+		</a>
 		<div id="lmap" class="tool-mode__lmap">
 			<div class="leafletCopy"><a href="http://openstreetmap.org/copyright">Open street map</a>&nbsp;contributors</div>
 		</div>
@@ -26,3 +30,8 @@
 	</script>
 	</div>
 </div>
+		<style>
+			#lmap {
+				display: relative;
+			}
+		</style>
