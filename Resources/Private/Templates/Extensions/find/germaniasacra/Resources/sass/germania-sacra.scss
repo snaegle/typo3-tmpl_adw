@@ -220,15 +220,13 @@
 
 
 	.mapContainer .leafletCopy {
-		position: relative;
+		position: absolute;
 		display: inline-flex;
 		z-index: 7;
-		top: 135px;
-		float: right;
-		clear: both;
+		bottom: 0;
+		right: 0;
 		padding: 0 5px;
 		margin: 0;
-		height: 15px;
 		font-size: 0.8em;
 		background: rgba(255, 255, 255, 0.7);
 	}
