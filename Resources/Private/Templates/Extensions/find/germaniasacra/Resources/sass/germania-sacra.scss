@@ -205,6 +205,28 @@
 		font-style: italic;
 	}
 
+	.mapContainer .leafletZoom {
+		position: absolute;
+		right: 10px;
+		z-index: 7;
+		width: 25px;
+		height: 25px;
+		text-align: center;
+		margin: 5px;
+		color: #c90230;
+		font-size: 1.3em;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		-moz-background-clip: padding;
+		-webkit-background-clip: padding-box;
+		background-clip: padding-box;
+		border: 1px solid #aaa;
+		-webkit-box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, .1);
+		-moz-box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, .1);
+		box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, .1);
+	}
+
 }
 
 .tx_find .person ol,
