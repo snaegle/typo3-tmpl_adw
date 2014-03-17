@@ -113,6 +113,18 @@
   color: #c90230;
   font-size: 1.3em;
   background-color: #fff; }
+.tx_find .mapContainer .leafletCopy {
+  position: relative;
+  display: inline-flex;
+  z-index: 7;
+  top: 135px;
+  float: right;
+  clear: both;
+  padding: 0 5px;
+  margin: 0;
+  height: 15px;
+  font-size: 0.8em;
+  background: rgba(255, 255, 255, 0.7); }
 
 .tx_find .person ol,
 .tx_find .person h3 {
