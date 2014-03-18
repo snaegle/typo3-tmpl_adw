@@ -1,6 +1,6 @@
 <?php
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
-		'dev.adw-goe.de' => array(
+		'_DEFAULT' => array(
 				'init' => array(
 						'enableCHashCache' => true,
 						'appendMissingSlash' => 'ifNotFile,redirect',
