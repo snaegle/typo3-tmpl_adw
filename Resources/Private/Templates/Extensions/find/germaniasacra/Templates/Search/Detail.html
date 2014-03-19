@@ -50,16 +50,6 @@
 
 			<f:render partial="GS/Band" arguments="{_all}"/>
 
-			<section class="permalink grid_12">
-				<h2 class="grid_3">Zitierlink</h2>
-				<p class="grid_8">
-					<f:link.external uri="{f:render(partial:'GS/Permalink', arguments:'{id:document.sql_uid}')}">
-						{f:render(partial:'GS/Permalink', arguments:'{id:document.sql_uid}')}
-					</f:link.external>
-					<span class="fa fa-files-o" id="copy-button" data-clipboard-text="{f:render(partial:'GS/Permalink', arguments:'{id:document.sql_uid}')}" title="Klicken um den Zitierlink in die Zwischenablage zu kopieren"></span>
-				</p>
-			</section>
-
 			<section class="grid_12">
 				<f:render partial="GS/Zitierhinweis" arguments="{_all}"/>
 			</section>
