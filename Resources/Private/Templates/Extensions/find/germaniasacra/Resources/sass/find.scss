@@ -218,9 +218,9 @@ $tabSelected: #263476;
 			}
 
 			li:target {
-				background: $backgroundActive;
+				// background: $backgroundActive;
 				border-radius: 7px;
-				transition: background .5s ease-in-out;
+				// transition: background .5s ease-in-out;
 			}
 		}
 	}
