@@ -16,7 +16,6 @@
 					<f:link.action
 						addQueryString="TRUE"
 						argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, activeFacets:config.activeFacets, mode:'remove')}"
-						section="{settings.jumpToID}"
 						noCacheHash="1"
 						class="facetRemove internal"
 						title="{f:translate(key:'remove filter %s', arguments:{0:years})}"><i class="fa fa-times"></i> <span class="facetName">{years}</span></f:link.action>
@@ -36,7 +35,6 @@
 			addQueryString="TRUE"
 			arguments="{addArguments}"
 			argumentsToBeExcludedFromQueryString="{removeArguments}"
-			section="{settings.jumpToID}"
 			noCacheHash="1"
 			class="link-template hidden internal"
 		/>
