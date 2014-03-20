@@ -36,9 +36,10 @@ class LastPartOfWikipediaUrlExtractorViewHelper extends \TYPO3\CMS\Fluid\Core\Vi
 	 * @return string
 	 */
 	public function render($url) {
-		$pattern = '|http://(.*?)\.wikipedia\.org/wiki/|';
+		$pattern = '%(http|https)://(.*?)\.wikipedia\.org/wiki/%';
 		$lastPart = preg_replace($pattern, '', $url);
-		return $lastPart;
+
+		return urldecode($lastPart);
 	}
 
 } 
