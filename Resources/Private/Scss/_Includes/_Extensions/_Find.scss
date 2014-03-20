@@ -19,6 +19,10 @@
 	}
 	section {
 		&.linked-data {
+			margin-top: 15px;
+			ul {
+				margin-left: 0 !important;
+			}
 			li {
 				display: inline;
 			}
