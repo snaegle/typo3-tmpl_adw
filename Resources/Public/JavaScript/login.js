@@ -21,6 +21,9 @@ $(document).ready(function() {
 	});
 });
  **/
+
+/**
+ * Am Freitag wieder bearbeiten
 $(document).ready(function() {
 	$(".tx-felogin-pi1").css("display", "none");
 
@@ -32,6 +35,7 @@ $(document).ready(function() {
 		$(".tx-felogin-pi1").css("display", "none");
 		$(".tx-felogin-pi1 input").change();
 	});
+**/
 
 /**
 	$(".tx-felogin-pi1 input").change(function() {
