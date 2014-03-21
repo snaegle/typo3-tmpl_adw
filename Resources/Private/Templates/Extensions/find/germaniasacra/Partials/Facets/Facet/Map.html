@@ -12,16 +12,16 @@
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js">
 </t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
-	<a class="bigMap" href="#lmap">
+	<a class="leaflet-big-map" href="#leaflet-map">
 		<div class="mapContainer">
-			<div class="leafletZoom">
+			<div class="leaflet-zoom">
 				<i class="fa fa-expand fa-1f"></i>
 			</div>
-		<div id="lmap" class="tool-mode__lmap">
-			<div class="leafletCopy"><a href="http://openstreetmap.org/copyright">Open street map</a>&nbsp;contributors</div>
+		<div id="leaflet-map" class="tool-mode__lmap">
+			<div class="leaflet-copy"><a href="http://openstreetmap.org/copyright">Open street map</a>&nbsp;contributors</div>
 		</div>
 		<script>
-			var leafletMap = L.map('lmap', {zoomControl: false, attributionControl: false}).setView([52,14], 3);
+			var leafletMap = L.map('leaflet-map', {zoomControl: false, attributionControl: false}).setView([52,14], 3);
 			leafletInitMap();
 		<f:for each="{facetData.values}" as="itemCount" key="coord" iteration="iterator">
 			leafletIterate({coord});
@@ -30,15 +30,4 @@
 	</div>
 	</a>
 </div>
-<a class="bigMap" href="#lmap" id="leafletOpenLink">interaktive Karte öffnen</a>
-		<style>
-			#lmap {
-				cursor: pointer;
-			}
-			#leafletOpenLink {
-				#color: #666;
-				font: 1em / 22px Cambria, Georgia, serif;
-				font-style: italic;
-			}
-
-		</style>
+<a class="leaflet-big-map" href="#leaflet-map" id="leaflet-open-link">Interaktive Karte öffnen</a>

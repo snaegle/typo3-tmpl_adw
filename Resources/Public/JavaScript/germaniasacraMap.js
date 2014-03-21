@@ -4,10 +4,10 @@ function leafletInitMap() {
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(leafletMap);
 	leafletMap.scrollWheelZoom.disable();
 
-   $("a.bigMap").fancybox({
+   $("a.leaflet-big-map").fancybox({
 	   "padding": 10,
 	                          afterClose: function() {
-		                          $("#lmap").show();
+		                          $("#leaflet-map").show();
 	                          }
                           });
 
