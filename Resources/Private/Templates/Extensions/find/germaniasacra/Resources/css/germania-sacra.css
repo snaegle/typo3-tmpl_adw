@@ -104,7 +104,7 @@
   text-transform: uppercase; }
 .tx_find .zitation-detail {
   font-style: italic; }
-.tx_find .mapContainer .leafletZoom {
+.tx_find .mapContainer .leaflet-zoom {
   position: absolute;
   right: 10px;
   z-index: 7;
@@ -115,7 +115,7 @@
   color: #c90230;
   font-size: 1.3em;
   background-color: #fff; }
-.tx_find .mapContainer .leafletCopy {
+.tx_find .mapContainer .leaflet-copy {
   position: absolute;
   display: inline-flex;
   z-index: 7;
@@ -125,6 +125,8 @@
   margin: 0;
   font-size: 0.8em;
   background: rgba(255, 255, 255, 0.7); }
+.tx_find #leaflet-open-link {
+  font: 1em / 22px Cambria, Georgia, serif; }
 
 .tx_find .person ol,
 .tx_find .person h3 {

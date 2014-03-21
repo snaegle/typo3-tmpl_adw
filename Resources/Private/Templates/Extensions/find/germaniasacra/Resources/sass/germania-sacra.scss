@@ -208,7 +208,7 @@
 		font-style: italic;
 	}
 
-	.mapContainer .leafletZoom {
+	.mapContainer .leaflet-zoom {
 		position: absolute;
 		right: 10px;
 		z-index: 7;
@@ -222,7 +222,7 @@
 	}
 
 
-	.mapContainer .leafletCopy {
+	.mapContainer .leaflet-copy {
 		position: absolute;
 		display: inline-flex;
 		z-index: 7;
@@ -232,6 +232,11 @@
 		margin: 0;
 		font-size: 0.8em;
 		background: rgba(255, 255, 255, 0.7);
+	}
+
+
+	#leaflet-open-link {
+		font: 1em / 22px Cambria, Georgia, serif; // matches font of other facets
 	}
 
 }
