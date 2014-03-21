@@ -27,7 +27,6 @@ module.exports = function(grunt) {
                 src: [
                     'bower_components/fancybox/source/jquery.fancybox.css',
                     'bower_components/960-grid-system/code/css/960.css',
-                    '../Resources/Private/Templates/Extensions/find/germaniasacra/Resources/sass/find.scss'
                 ],
                 dest: '../Resources/Private/Scss/_libs.scss'
             }
@@ -105,9 +104,6 @@ module.exports = function(grunt) {
                     stdout: true
                 }
             },
-            sassCompileGS: {
-                command: 'sass --update ../Resources/Private/Templates/Extensions/find/germaniasacra/Resources/sass/germania-sacra.scss:../Resources/Private/Templates/Extensions/find/germaniasacra/Resources/css/germania-sacra.css'
-            }
         }
 
     });
@@ -120,8 +116,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
 
     // Default task(s).
-    grunt.registerTask('dev', ['shell:preFileCleanUp', 'copy', 'concat:js', 'concat:css', 'shell:sassCompileGS', 'uglify', 'compass:dev', 'shell:postFileCleanUp']);
-    grunt.registerTask('dist', ['shell:preFileCleanUp', 'copy', 'concat:js', 'concat:css', 'shell:sassCompileGS', 'uglify', 'compass:dist', 'shell:postFileCleanUp']);
+    grunt.registerTask('dev', ['shell:preFileCleanUp', 'copy', 'concat:js', 'concat:css', 'uglify', 'compass:dev', 'shell:postFileCleanUp']);
+    grunt.registerTask('dist', ['shell:preFileCleanUp', 'copy', 'concat:js', 'concat:css', 'uglify', 'compass:dist', 'shell:postFileCleanUp']);
     grunt.registerTask('devCss', ['concat:css', 'compass:dev']);
 
 };
