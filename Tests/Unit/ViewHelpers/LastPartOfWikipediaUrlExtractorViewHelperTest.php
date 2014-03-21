@@ -60,4 +60,58 @@ class LastPartOfWikipediaUrlExtractorViewHelperTest extends \TYPO3\CMS\Fluid\Tes
 		$this->assertSame($expected, $actual);
 	}
 
+	/**
+	 * @test
+	 */
+	public function areHtmlCharsDecodedWhenCorrectlyEncoded() {
+		$actual = $this->fixture->render('http://in.wikipedia.org/wiki/Taj_Mahal_(Indien)');
+		$expected = 'Taj_Mahal_(Indien)';
+
+		$this->assertSame($expected, $actual);
+	}
+
+	/**
+	 * @test
+	 */
+	public function areEndodedHtmlCharsCorrectlyDecoded() {
+		$url = 'http://de.wikipedia.org/wiki/Di%C3%B6zese_Augsburg';
+		$actual = $this->fixture->render($url);
+		$expected = 'Diözese_Augsburg';
+
+		$this->assertSame($expected, $actual);
+	}
+
+	/**
+	 * @test
+	 */
+	public function areUrlsWithParenthesesCorrectlyDecoded() {
+		$url = 'http://de.wikipedia.org/wiki/Kollegiatstift_St._Paul_%28Freising%29';
+		$actual = $this->fixture->render($url);
+		$expected = 'Kollegiatstift_St._Paul_(Freising)';
+
+		$this->assertSame($expected, $actual);
+	}
+
+	/**
+	 * @test
+	 */
+	public function areHttpsUrlsCorrectlyStripped() {
+		$url = 'https://de.wikipedia.org/wiki/Kollegiatstift_St._Paul';
+		$actual = $this->fixture->render($url);
+		$expected = 'Kollegiatstift_St._Paul';
+
+		$this->assertSame($expected, $actual);
+	}
+
+	/**
+	 * @test
+	 */
+	public function areUrlsWithMixedEntitiesCorrectlyParsed() {
+		$url = 'http://de.wikipedia.org/wiki/St._Severus_(Gem%C3%BCnden)';
+		$actual = $this->fixture->render($url);
+		$expected = 'St._Severus_(Gemünden)';
+
+		$this->assertSame($expected, $actual);
+	}
+
 }
