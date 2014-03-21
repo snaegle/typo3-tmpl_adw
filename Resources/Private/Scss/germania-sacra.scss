@@ -1,3 +1,5 @@
+$formLabelWidth: 150px;
+
 .tx_find {
 
 	aside {
@@ -12,7 +14,6 @@
 			height: 300px;
 			background: #fff;
 		}
-
 	}
 
 	.mapContainer .infoWindow {
@@ -38,8 +39,6 @@
 			}
 		}
 	}
-
-	$formLabelWidth: 150px;
 
 	form {
 		.fieldContainer {
@@ -76,7 +75,6 @@
 		&.detail {
 			h2 {
 				font-size: 1rem!important;
-				// margin: 0 0 24px!important;
 			}
 			.main > p {
 				margin-top: 0 !important;
@@ -84,7 +82,6 @@
 		}
 		section {
 			margin-bottom: 1em;
-
 			> * {
 				line-height: 1.5;
 				margin: 0 0 0 15px;
@@ -105,7 +102,6 @@
 				text-transform: uppercase;
 				margin-top: 1em;
 				margin-bottom: 1em;
-				//margin: 1em 0 1em 12em !important;
 			}
 
 			ol, ul {
@@ -129,7 +125,6 @@
 					li {
 						display: inline;
 						list-style-type: none;
-
 						:after {
 							content: ', ';
 						}
@@ -238,12 +233,9 @@
 	#leaflet-open-link {
 		font: 1em / 22px Cambria, Georgia, serif; // matches font of other facets
 	}
-
 }
 
 .tx_find .person ol,
 .tx_find .person h3 {
-	// background-color: red;
-	// margin: 0 0 0 -15px !important;
 	margin-left: 0;
 }
