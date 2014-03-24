@@ -47,5 +47,5 @@ $(document).ready(function() {
 		}
 	});
 	$("header h2").css("color", "blue");
- **/
 });
+ **/
