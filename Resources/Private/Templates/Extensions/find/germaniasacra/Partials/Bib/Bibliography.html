@@ -1,0 +1,37 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+{namespace bib=Ipf\Bib\ViewHelpers}
+<f:comment>
+	Creates a section with the bibliography records for this monastery.
+
+	The bibliography records are expected to have been imported with the bib
+	extension with the citekeys also referenced in the data.
+
+	The bib Extension is then used to load and display the bibliography data.
+
+	The note made for a reference for the current monastery (e.g. page number)
+	is included in the output.
+</f:comment>
+<f:if condition="{document.literatur_citekey}">
+	<section class="literatur grid_12">
+		<h2 class="grid_3">Literatur</h2>
+		<ul class="grid_8">
+			<s:data.transpose
+				name="items"
+				arrays="{
+					citekey:document.literatur_citekey,
+					beschreibung:document.literatur_beschreibung
+			}">
+				<f:for each="{items}" as="item">
+					<li>
+						<f:alias map="{bibitem:'{bib:publicationByCiteId(citeId:item.citekey, storagePid:\"{settings.tx_bib_pid}\")}'}">
+							<f:render
+								partial="Bib/Bibitem"
+								arguments="{bibitem:bibitem, note:item.beschreibung}"
+							/>
+						</f:alias>
+					</li>
+				</f:for>
+			</s:data.transpose>
+		</ul>
+	</section>
+</f:if>

@@ -1,0 +1,67 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+{namespace t3jquery=Tx_T3jquery_ViewHelpers}
+<f:comment>
+	Insert the Germania Sacra JavaScript file and set variables with URL templates
+	for further index queries performed by JavaScript to load monastery locations
+	for the maps that are displayed.
+</f:comment>
+<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/ZeroClipboard.min.js">
+	var client = new ZeroClipboard( document.getElementById("copy-button"), {
+		moviePath: "/typo3conf/ext/tmpl_adw/Resources/Public/Flash/ZeroClipboard.swf"
+	} );
+</t3jquery:addJQueryAndScript>
+<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germania-sacra.js">
+	<s:data.newArray name="newQ" keys="{1:'raw'}" values="{1:'###TERM###'}">
+		<f:for each="{arguments.q}" as="argument" key="key">
+			<s:data.newArray
+				name="newQ"
+				global="1"
+				array="{newQ}"
+				keys="{1:'{key}-nojoin'}"
+				values="{1:argument}"
+			/>
+		</f:for>
+		<f:for each="{arguments.facet}" as="value" key="key">
+			<f:for each="{value}" as="unused" key="term">
+				<s:data.newArray
+						name="newQ"
+						global="1"
+						array="{newQ}"
+						keys="{1:'{key}-facet-nojoin'}"
+						values="{1:term}"
+						/>
+			</f:for>
+		</f:for>
+		germaniaSacra.config.queryURLTemplate = {s:format.json(data:"{f:uri.action(
+		arguments:'{
+		q:newQ,
+		count:1000,
+		data-format:\'raw-solr-response\'
+		}',
+		action:'index',
+		pageType:'1369315139',
+		format:'data',
+		noCacheHash:'1'
+		)}")};
+	</s:data.newArray>
+
+	germaniaSacra.config.resourcesBaseURL = {s:format.json(data:"{f:uri.resource(
+		path:'Projects/germania-sacra/Resources/',
+		absolute:'1'
+	)}")};
+
+
+	germaniaSacra.config.IDURLTemplate = {s:format.json(data:"{f:uri.action(
+		arguments:'{
+			id:\'###ID###\'
+		}',
+		action:'detail',
+		noCacheHash:'1'
+	)}")};
+	<f:if condition="{id}">
+		germaniaSacra.config.ID = {s:format.json(data:id)};
+	</f:if>
+	germaniaSacra.init();
+</t3jquery:addJQueryAndScript>
+
+<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/login.js"></t3jquery:addJQueryAndScript>

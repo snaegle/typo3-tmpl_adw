@@ -1,0 +1,32 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+{namespace t3jquery=Tx_T3jquery_ViewHelpers}
+<f:comment>
+	Adds the map to the monastery detaily view with information on the markers
+	to set for the current monastery.
+
+	germania-sacra.js will then load other monastery locations close to the current
+	one and insert those into the map in case the user wants to explore the region.
+</f:comment>
+
+<div id="c-{document.id}-map" class="map"></div>
+<t3jquery:addJQueryAndScript>
+	var ID = {s:format.json(data:document.id)};
+	var standorte = [];
+	var koordinaten, titel, queryURL, institutionengenau, icon;
+	<f:for each="{document.koordinaten}" as="koordinaten" key="index">
+		koordinaten = {s:format.json(data:koordinaten)};
+		titel = {s:format.json(data:document.kloster)};
+		institutionengenau = {s:format.json(data:"{s:data.valueForKey(array:document.koordinaten_institutionengenau, key:index)}")};
+		icon = {s:format.json(data:"{s:data.valueForKey(array:document.orden_graphik, key:index)}")};
+		standorte.push({
+			koordinaten: koordinaten,
+			titel: titel,
+			queryURL: queryURL,
+			institutionengenau: institutionengenau,
+			icon: icon
+		});
+	</f:for>
+
+	germaniaSacra.config.ID = ID;
+	germaniaSacra.config.standorte = standorte;
+</t3jquery:addJQueryAndScript>

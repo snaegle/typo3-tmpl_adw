@@ -1,0 +1,21 @@
+<f:comment>
+	Renders the DOM for the Chassinat pages display pager.
+
+	The pager consists of:
+
+	* a link to the previous page
+	* a link opening the current page in a new window
+	* a link to the next page
+
+	The actual paging is driven by the included edfu.js script.
+</f:comment>
+<div class="chassinatPager">
+	<a class="previous icon-left-dir"
+	   title="{f:translate(key:'LLL:{settings.languageRootPath}locallang-edfu.xml:vorige Seite')}"></a>
+	<span class="currentPage">
+		<a title="{f:translate(key:'LLL:{settings.languageRootPath}locallang-edfu.xml:Seite in neuem Fenster zeigen')}"
+		   target="_blank"></a>
+	</span>
+	<a class="next icon-right-dir"
+	   title="{f:translate(key:'LLL:{settings.languageRootPath}locallang-edfu.xml:vorige Seite')}"></a>
+</div>

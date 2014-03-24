@@ -1,0 +1,64 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+<f:layout name="Default"/>
+
+<f:section name="main">
+	<s:page.title>{document.fields.kloster} – {config.pageTitle}</s:page.title>
+	<f:render partial="Page/Standard" arguments="{_all}"/>
+
+	<f:render partial="GS/JavaScript" arguments="{id: document.id}"/>
+
+	<f:render partial="Form/Form" arguments="{_all}"/>
+
+	<f:render partial="Components/DetailResultPager" arguments="{_all}"/>
+
+	<article class="detail">
+		<aside class="grid_4">
+			<f:if condition="{document.koordinaten}">
+				<f:render partial="GS/Karte" arguments="{_all}"/>
+			</f:if>
+			<f:render partial="GS/LinkedData" arguments="{_all}"/>
+		</aside>
+
+		<div class="main grid_12">
+
+			<h1 class="">
+				<f:render partial="Display/Field/General" arguments="{results:results, document:document, field:'kloster'}"/>
+			</h1>
+
+			<f:render partial="GS/Zitierhinweis" arguments="{_all}"/>
+
+			<f:if condition="{document.patrozinium}">
+				<section class="patrozinium grid_12">
+					<h2 class="grid_3">Patrozinium</h2>
+					<p class="grid_8">
+						<f:render partial="Display/Field/General" arguments="{results:results, document:document, field:'patrozinium'}"/>
+					</p>
+				</section>
+			</f:if>
+
+			<f:render partial="GS/Standorte" arguments="{_all}"/>
+
+			<f:render partial="GS/Orden" arguments="{_all}"/>
+
+			<f:if condition="{document.bemerkung_kloster.0}">
+				<section class="bemerkung grid_12">
+					<h2 class="grid_3">Bemerkung</h2>
+					<p class="grid_8">
+						<f:render partial="Display/Field/General" arguments="{results:results, document:document, field:'bemerkung_kloster'}"/>
+					</p>
+				</section>
+			</f:if>
+
+			<f:render partial="GS/Band" arguments="{_all}"/>
+
+			<f:render partial="GS/Quelle" arguments="{_all}"/>
+
+			<f:render partial="GS/Links" arguments="{_all}"/>
+
+			<f:render partial="Bib/Bibliography" arguments="{_all}"/>
+
+			<f:render partial="GS/Personen" arguments="{_all}"/>
+
+		</div>
+	</article>
+</f:section>

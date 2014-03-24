@@ -91,6 +91,7 @@ DIV.csc-textpic-clear {
 DIV.csc-textpic-left DIV.csc-textpic-imagewrap .csc-textpic-image,
 DIV.csc-textpic-intext-left-nowrap DIV.csc-textpic-imagewrap .csc-textpic-image,
 DIV.csc-textpic-intext-left DIV.csc-textpic-imagewrap .csc-textpic-image {
+	display: inline; /* IE fix for double-margin bug */
 	margin-right: 10px;
 }
 
@@ -98,11 +99,13 @@ DIV.csc-textpic-intext-left DIV.csc-textpic-imagewrap .csc-textpic-image {
 DIV.csc-textpic-right DIV.csc-textpic-imagewrap .csc-textpic-image,
 DIV.csc-textpic-intext-right-nowrap DIV.csc-textpic-imagewrap .csc-textpic-image,
 DIV.csc-textpic-intext-right DIV.csc-textpic-imagewrap .csc-textpic-image {
+	display: inline; /* IE fix for double-margin bug */
 	margin-left: 10px;
 }
 
 /* Pictures centered, add margin on left */
 DIV.csc-textpic-center DIV.csc-textpic-imagewrap .csc-textpic-image {
+	display: inline; /* IE fix for double-margin bug */
 	margin-left: 10px;
 }
 
@@ -261,7 +264,7 @@ DIV.csc-textpic DIV.csc-textpic-imagerow-last {
 		margin: 22px 0;
 	}
 	li {
-		font: 1em / 22px Cambria, Georgia, serif;
+		//font: 1em / 22px Cambria, Georgia, serif;
 		margin: 22px 0;
 		margin: 0;
 	}
@@ -377,7 +380,7 @@ DIV.csc-textpic DIV.csc-textpic-imagerow-last {
 }
 
 figcaption.csc-textpic-caption {
-	width: 100%;
+	display: block;
 }
 
 .csc-default:before, .clearfix:before,

@@ -1,0 +1,17 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+<f:comment>
+	Creates a dt/dd pair for the field whose name is given in the »field« variable.
+
+	The dt contains the localised field name, the dd contains the field content
+	using the highlighting required for remarks.
+</f:comment>
+<f:if condition="{s:data.valueForKey(array:document.fields, key:field)}">
+	<dt class="dt-{field}">
+		<f:translate key="LLL:{settings.languageRootPath}locallang-fields.xml:field.{field}" default="{field}"/>
+	</dt>
+	<dd class="dd-{field}">
+		<span class="field-with-transliteration field-{field}">
+			<f:render partial="Edfu/AnmerkungItem" arguments="{_all}"/>
+		</span>
+	</dd>
+</f:if>

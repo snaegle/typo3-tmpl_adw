@@ -1,0 +1,18 @@
+plugin.tx_find{
+	settings {
+		CSSPaths {
+			10 >
+			50 = EXT:tmpl_adw/Resources/Public/Css/germania-sacra.css
+			70 >
+		}
+		facets {
+			10 {
+				fetchMaximum = 2000
+			}
+		}
+	}
+	view {
+		templateRootPath = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Templates/
+		partialRootPath = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Partials/
+	}
+}

@@ -1,4 +1,5 @@
 @import 'compass/css3/images';
+@import 'compass/css3/hyphenation';
 @import '_Includes/Settings';
 @import '_Includes/h5bp';
 @import '_Includes/Base';
@@ -11,8 +12,14 @@
 @import '_Includes/_Extensions/Pagebrowse';
 @import '_Includes/_Extensions/DSpaceConnect';
 @import '_Includes/_Extensions/News';
-@import '_Includes/960';
+@import '_Includes/_Extensions/Find';
+@import '_Includes/_Extensions/Bib';
 @import '_Includes/Print';
+@import '_Includes/tool_mode';
+
+@import '../../../Build/bower_components/font-awesome/scss/font-awesome';
+@import 'libs';
+
 
 /* Improve readability when focused and hovered in all browsers: h5bp.com/h */
 
@@ -365,10 +372,12 @@ p {
 	text-align: center;
 }
 
-table {
-	font: 1em/22px Cambria,Georgia,serif;
+.align-justify {
+	@include word-break(break-word);
+	@include hyphens(auto);
+	text-align: justify;
 }
 
-#tx_find h2 {
-	margin: 0;
+table {
+	font: 1em/22px Cambria,Georgia,serif;
 }
