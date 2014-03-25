@@ -40,7 +40,6 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
 										'rss-edfu' => 109,
 										'rss-septuaginta' => 110
 								),
-								'noMatch' => 'bypass'
 						)
 				),
 				'postVarSets' => array(
