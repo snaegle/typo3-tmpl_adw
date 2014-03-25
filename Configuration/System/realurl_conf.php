@@ -31,16 +31,6 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
 										'cz' => 5),
 								'noMatch' => 'bypass'
 						),
-						1 => array(
-								'GETvar' => 'type',
-								'valueMap' => array(
-										'rss-deutsche_inschriften_des_mittelalters' => 101,
-										'rss-germania_sacra' => 104,
-										'rss-residenzstaedte_im_alten_reich_1300_1800' => 107,
-										'rss-edfu' => 109,
-										'rss-septuaginta' => 110
-								),
-						)
 				),
 				'postVarSets' => array(
 						'_DEFAULT' => array(
