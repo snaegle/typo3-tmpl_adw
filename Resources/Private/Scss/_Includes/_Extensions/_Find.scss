@@ -462,6 +462,9 @@ $textB: #555;
 		position: absolute;
 		background: #fff;
 	}
+	.ui-helper-hidden-accessible {
+		display:none;
+	}
 }
 
 .fieldContainer {
