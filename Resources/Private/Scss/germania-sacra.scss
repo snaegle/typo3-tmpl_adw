@@ -204,6 +204,7 @@ $formLabelWidth: 150px;
 	}
 
 	.mapContainer .leaflet-zoom {
+		display: none;
 		position: absolute;
 		right: 10px;
 		z-index: 7;
@@ -232,6 +233,7 @@ $formLabelWidth: 150px;
 
 	#leaflet-open-link {
 		font: 1em / 22px Cambria, Georgia, serif; // matches font of other facets
+		display: none;
 	}
 }
 
