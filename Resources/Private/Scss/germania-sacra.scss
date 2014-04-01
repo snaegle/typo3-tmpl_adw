@@ -203,11 +203,8 @@ $formLabelWidth: 150px;
 		font-style: italic;
 	}
 
-	.mapContainer #leafletMap_id * {
-		cursor: default !important;
-	}
-
-	.mapContainer .leafletMap_zoom {
+	.mapContainer .leaflet-zoom {
+		display: none;
 		position: absolute;
 		right: 10px;
 		z-index: 7;
@@ -221,7 +218,7 @@ $formLabelWidth: 150px;
 	}
 
 
-	.mapContainer .leafletMap_copy {
+	.mapContainer .leaflet-copy {
 		position: absolute;
 		display: inline-flex;
 		z-index: 7;
@@ -237,9 +234,9 @@ $formLabelWidth: 150px;
 		}
 
 
-	#leafletMap_resizeLink {
+	#leaflet-open-link {
 		font: 1em / 22px Cambria, Georgia, serif; // matches font of other facets
-		cursor: pointer;
+		display: none;
 	}
 }
 

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ipf/typo3-tmpl_adw.svg?branch=master)](https://travis-ci.org/ipf/typo3-tmpl_adw)
+
 # Check
 
 * [Ruby](https://www.ruby-lang.org/) is installed? `$ ruby -v`
