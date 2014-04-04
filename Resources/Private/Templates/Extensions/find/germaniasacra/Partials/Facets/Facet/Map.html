@@ -13,26 +13,35 @@
 </t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
 		<div class="mapContainer">
-			<!-- <a class="leafletMap_resize"><div class="leafletMap_zoom"><i class="fa fa-expand fa-1f"></i></div></a> -->
 		<div id="leafletMap_id" class="tool-mode__lmap">
+			<a class="leafletMap_resize">
+			 	<div class="leafletMap_zoom">
+			 		<i class="fa fa-expand fa-1f"></i>
+			 	</div>
+			 </a>
 			<div class="leafletMap_copy"><a href="http://openstreetmap.org/copyright">Open street map</a>&nbsp;contributors</div>
 		</div>
-		<script>
-			var leafletMap = L.map('leafletMap_id', {zoomControl: false, attributionControl: false}).setView([52,14], 3);
-			leafletMapInit();
-			var leafletMap_widthSmall;
-			var leafletMap_heightSmall;
-			var leafletMap_widthBig;
-			var leafletMap_heightBig;
-			var leafletMap_navigation;
-			var leafletMap_resultsList;
-			var leafletMap_resultsWidth;
-			var leafletMap_resultsHeight;
-			var leafletMap_content;
+			<a class="leafletMap_resize" id="leafletMap_resizeLink">Interaktive Karte öffnen</a>
+	</div>
+	<script>
+		var leafletMap_widthSmall;
+		var leafletMap_heightSmall;
+		var leafletMap_widthBig;
+		var leafletMap_heightBig;
+		var leafletMap_navigation;
+		var leafletMap_resultsList;
+		var leafletMap_resultsWidth;
+		var leafletMap_resultsHeight;
+		var leafletMap_content;
+	 	if (!leafletMap_loaded) {
+			var leafletMap = L.map('leafletMap_id', {
+				zoomControl: false,
+				attributionControl: false
+			}).setView([52, 14], 3);
+			var leafletMap_loaded = leafletMapInit();
+		}
 		<f:for each="{facetData.values}" as="itemCount" key="coord" iteration="iterator">
 			leafletMapIterate({coord});
 		</f:for>
 	</script>
-	<!-- <a class="leafletMap_resize" id="leafletMap_resizeLink" onClick="leafletMapGrow()">Interaktive Karte öffnen</a> -->
-	</div>
 </div>
