@@ -212,7 +212,7 @@ lib.header_title.wrap = <p class="header_title">|</p>
 
 [globalVar = TSFE:id = 2]
 lib.header_title.10 = TEXT
-lib.header_title.10.value = 
+lib.header_title.10.value =
 [global]
 
 ##### MENU #####
@@ -554,20 +554,29 @@ lib.teaser {
 [global]
 
 
+
 ##### PAGENAVITITLE #####
 
 
 lib.pagenavititle = TEXT
-lib.pagenavititle.value = 
+lib.pagenavititle.value =
+
+# [globalVar = LIT:0 != {$set_pagenavititle}]
 
 [globalVar = LIT:0 != {$set_pagenavititle}]
 lib.pagenavititle.value = {$pagenavititle.de}
 lib.pagenavititle.typolink.parameter = {$set_pagenavititle}
 [global]
 
+
 [globalVar = LIT:0 != {$set_pagenavititle}] && [globalVar = GP:L = 1]
 lib.pagenavititle.value = {$pagenavititle.en}
 [global]
+
+[globalVar = TSFE:id = {$set_pagenavititle}]
+lib.pagenavititle >
+[globalVar]
+
 lib.pagenavititle.wrap = <div class="pagenavititle">|</div>
 
 
@@ -576,7 +585,7 @@ lib.pagenavititle.wrap = <div class="pagenavititle">|</div>
 
 
 lib.logo_dini = TEXT
-lib.logo_dini.value = 
+lib.logo_dini.value =
 [globalVar = LIT:0 != {$show_logo_dini}]
 lib.logo_dini = IMAGE
 lib.logo_dini {
