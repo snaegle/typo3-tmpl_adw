@@ -1,6 +1,17 @@
 // Generates a Map using leafletJs
 
 function leafletMapInit() {
+
+	/* Hide previous link below map */
+	$("#leafletMap_id").next("a").toggle();
+	/* Hide title for map */
+	$(".facet-id-map h1").css("display", "none");
+	/* Create link */
+	$(".facet-id-map").prepend('<a class="leafletMap_resize leafletMap_resizeLink">' +
+	                           'Rechercheergebnisse in Kartenansicht anzeigen' +
+	                           '</a>');
+	$(".leafletMap_resizeLink").css("font-family","Cambria, Georgia, serif");
+	
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(leafletMap);
 
 	/* remove handlers */
@@ -28,6 +39,7 @@ function leafletMapGrow() {
 		The map has to be resized
 		The mouse- and keyboard controls have to be put in place again
 	 */
+
 
 	/* remove pager */
 	$(".navigation .pager").toggle();
@@ -63,8 +75,11 @@ function leafletMapGrow() {
 	leafletMap.setView([51.2,10.9],6);
 	// Vielleicht: leafletMap.getCenter();
 
+	/* Show again previous link below map */
+	$("#leafletMap_id").next("a").toggle();
+
 	/* rename Links and change their function */
-	$("#leafletMap_resizeLink").text("Interaktive Karte schließen");
+	$(".leafletMap_resizeLink").text("Rechercheergebnisse in Listenansicht anzeigen");
 	$(".leafletMap_zoom i").toggleClass("fa-compress fa-expand");
 	$(".leafletMap_resize").off();
 	$(".leafletMap_resize").on("click", function() {
@@ -104,9 +119,11 @@ function leafletMapShrink() {
 	if(leafletMap.tap) {
 		leafletMap.tap.disable();
 	};
+		/* Hide previous link below map */
+		$("#leafletMap_id").next("a").toggle();
 
 	/* rename links and change their function */
-	$("#leafletMap_resizeLink").text("Interaktive Karte öffnen");
+	$(".leafletMap_resizeLink").text("Rechercheergebnisse in Kartenansicht anzeigen");
 	$(".leafletMap_zoom i").toggleClass("fa-compress fa-expand");
 	$(".leafletMap_resize").off();
 	$(".leafletMap_resize").on("click", function() {
