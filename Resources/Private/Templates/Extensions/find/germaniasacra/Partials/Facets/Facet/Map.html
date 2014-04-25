@@ -7,8 +7,11 @@
   It defines the map, initiates it and adds the markers
 </f:comment>
 <s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.css"/>
+<s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/MarkerCluster.css"/>
+<s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/MarkerCluster.Default.css"/>
 <s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/Css/germaniasacraMap.css"/>
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.js"></t3jquery:addJQueryAndScript>
+<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.markercluster.js"></t3jquery:addJQueryAndScript>
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js">
 </t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
@@ -42,6 +45,9 @@
     }).setView([52, 14], 3);
     var leafletMap_loaded = leafletMapInit();
     }
-    leafletMapAddDiverseMarkers();
+			<f:for each="{facetData.values}" as="itemCount" key="coord" iteration="iterator">
+				leafletMapIterate({coord});
+			</f:for>
+		}
     </script>
 </div>
