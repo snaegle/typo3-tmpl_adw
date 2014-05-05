@@ -115,6 +115,9 @@ jQuery(function() {
 
 	/* show/hide the "empty search form fields" depending on the search mode. initiated by clicking the advanced/simple search link */
 	jQuery('.extendedSearch').click(function(e){
+		jQuery('.field-mode-extended input').each(function(id, field){
+			$(field).prop('value', '');
+		});
 		jQuery('.button-reset-form').toggle();
 	});
 
@@ -173,11 +176,6 @@ jQuery(function() {
 	jQuery('.tool-mode a').filter(function() {
 		return this.hostname && this.hostname !== location.hostname;
 	}).attr("target","_blank");
-
-	/**
-	 *
-	 */
-	// jQuery('.tool-mode .fieldType-SelectFacet .inputContainer').chosen();
 
 	/* Tool mode | End */
 
