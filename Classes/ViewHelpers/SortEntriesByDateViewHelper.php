@@ -39,7 +39,7 @@ class SortEntriesByDateViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstr
 	public function render($array, $as) {
 		uasort($array, function($a, $b) {
 
-			if ($a['von_verbal'] !== '') {
+			if (isset($a['von_verbal']) && $a['von_verbal'] !== '') {
 				return -1;
 			} else {
 				return 1;
