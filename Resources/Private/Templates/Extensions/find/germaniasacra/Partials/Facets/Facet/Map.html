@@ -1,10 +1,10 @@
 {namespace s=Subugoe\Find\ViewHelpers}
 {namespace t3jquery=Tx_T3jquery_ViewHelpers}
 <f:comment>
-  Creates a map facet.
+	Creates a map facet.
 
-  It expects coordinates.
-  It defines the map, initiates it and adds the markers
+	It expects coordinates.
+	It defines the map, initiates it and adds the markers
 </f:comment>
 <s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.css"/>
 <s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/MarkerCluster.css"/>
@@ -15,39 +15,41 @@
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js">
 </t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
-  <div class="mapContainer">
-    <div id="leafletMap_id" class="tool-mode__lmap">
-      <a class="leafletMap_resize">
-        <div class="leafletMap_zoom">
-          <i class="fa fa-expand fa-1f"></i>
-          </div>
-         </a>
-      <div class="leafletMap_copy"><a href="http://openstreetmap.org/copyright">Open street map</a>&nbsp;contributors</div>
-      </div>
-    <a class="leafletMap_resize leafletMap_resizeLink">Interaktive Karte öffnen</a>
-    </div>
-  <script>
-    var leafletMap_markers = [[]];
-    leafletMap_markers.push([]); // create 2-dimensional array
-    var leafletMap_widthSmall;
-    var leafletMap_heightSmall;
-    var leafletMap_widthBig;
-    var leafletMap_heightBig;
-    var leafletMap_navigation;
-    var leafletMap_resultsList;
-    var leafletMap_resultsWidth;
-    var leafletMap_resultsHeight;
-    var leafletMap_content;
-    if (!leafletMap_loaded) {
-    var leafletMap = L.map('leafletMap_id', {
-    zoomControl: false,
-    attributionControl: false
-    }).setView([52, 14], 3);
-    var leafletMap_loaded = leafletMapInit();
-    }
-			<f:for each="{facetData.values}" as="itemCount" key="coord" iteration="iterator">
-				leafletMapIterate({coord});
-			</f:for>
+	<div class="mapContainer">
+		<div id="leafletMap_id" class="tool-mode__lmap">
+			<a class="leafletMap_resize">
+				<div class="leafletMap_zoom">
+					<i class="fa fa-expand fa-1f"></i>
+				</div>
+			</a>
+
+			<div class="leafletMap_copy"><a href="http://openstreetmap.org/copyright">Open street map</a>&nbsp;contributors
+			</div>
+		</div>
+		<a class="leafletMap_resize leafletMap_resizeLink">Interaktive Karte öffnen</a>
+	</div>
+	<script>
+		var leafletMap_markers = [
+			[]
+		];
+		leafletMap_markers.push([]); // create 2-dimensional array
+		var leafletMap_widthSmall;
+		var leafletMap_heightSmall;
+		var leafletMap_widthBig;
+		var leafletMap_heightBig;
+		var leafletMap_navigation;
+		var leafletMap_resultsList;
+		var leafletMap_resultsWidth;
+		var leafletMap_resultsHeight;
+		var leafletMap_content;
+		if (!leafletMap_loaded) {
+			var leafletMap = L.map('leafletMap_id', {
+				zoomControl: false,
+				attributionControl: false
+			}).setView([52, 14], 3);
+			var leafletMap_loaded = leafletMapInit();
+
+		<f:for each="{facetData.values}" as="itemCount" key="coord" iteration="iterator" >leafletMapIterate({coord});</f:for>
 		}
-    </script>
+	</script>
 </div>

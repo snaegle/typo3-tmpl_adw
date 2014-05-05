@@ -2,7 +2,7 @@
 
 function leafletMapInit() {
 
-	leafletMap_markers = new L.MarkerClusterGroup();
+	leafletMap_markers = new L.MarkerClusterGroup({ maxClusterRadius: 30 });
 
 	/* Hide previous link below map */
 	$("#leafletMap_id").next("a").toggle();
