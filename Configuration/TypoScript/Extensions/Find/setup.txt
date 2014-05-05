@@ -5,6 +5,9 @@ plugin.tx_find{
 			50 = EXT:tmpl_adw/Resources/Public/Css/germania-sacra.css
 			70 >
 		}
+		paging {
+			maximumPerPage = 3000
+		}
 		languageRootPath = EXT:tmpl_adw/Resources/Private/Language/GermaniaSacra/
 		facets {
 			10 {

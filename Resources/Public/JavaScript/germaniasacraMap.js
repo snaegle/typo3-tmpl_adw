@@ -8,10 +8,10 @@ function leafletMapInit() {
 	$(".facet-id-map h1").css("display", "none");
 	/* Create link */
 	$(".facet-id-map").prepend('<a class="leafletMap_resize leafletMap_resizeLink">' +
-	                           'Rechercheergebnisse in Kartenansicht anzeigen' +
-	                           '</a>');
-	$(".leafletMap_resizeLink").css("font-family","Cambria, Georgia, serif");
-	
+	            'Rechercheergebnisse in Kartenansicht anzeigen' +
+	            '</a>');
+	$(".leafletMap_resizeLink").css("font-family", "Cambria, Georgia, serif");
+
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(leafletMap);
 
 	/* remove handlers */
@@ -21,7 +21,8 @@ function leafletMapInit() {
 	leafletMap.doubleClickZoom.disable();
 	if (leafletMap.tap) {
 		leafletMap.tap.disable();
-	};
+	}
+	;
 
 	/* add function */
 	$(".leafletMap_resize").on("click", function() {
@@ -30,14 +31,96 @@ function leafletMapInit() {
 	return true;
 }
 
+function leafletMapAddDiverseMarkers() {
+
+	/*
+	 check, if document loaded
+	 remove old icons,
+	 add URLparameter to create page with all information
+	 read the page and create the markers
+	 */
+
+	$(document).ready(function() {
+
+		/* get map boundaries */
+		var bounds = leafletMap.getBounds();
+		var southWest = bounds.getSouth() + "," + bounds.getWest();
+		var northEast = bounds.getNorth() + "," + bounds.getEast();
+
+		/* create QueryString */
+		var url = $(location).attr("href");
+		if (url.indexOf("?") != "-1") {
+			var pageID = url.substring(0, url.indexOf("?"));
+		} else {
+			pageID = url + "/";
+		}
+		var dataFields = "koordinaten:[" + southWest + "%20TO%20" + northEast + "]\%20AND%20typ:standort-orden&tx_find_find[count]=3000&tx_find_find[data-format]=raw-solr-response&tx_find_find[format]=data&tx_find_find[data-fields]=id,kloster_id,koordinaten,kloster,ort,orden,orden_graphik,orden_bis_verbal,orden_von_verbal";
+		url = document.baseURI + germaniaSacra.config.queryURLTemplate.replace('%23%23%23TERM%23%23%23', dataFields);
+
+		/* get information from JSON-Object */
+		var shadowURL = $(".leaflet-marker-icon").attr("src");
+		var doc, docIndex, mydata, docs, orden_graphik;
+		var kLocation, kOrden, kName, kOrden, kID, kURL, kVVerbal, kBVerbal, kKloster, kLink;
+		var kIFolder = germaniaSacra.config.resourcesBaseURL + "Ordenssymbole/"
+		var kIconDef = kIFolder + "Kloster_allgemein.png";
+		var kSIcon = kIFolder + "Shadow.png";
+		jQuery.getJSON(url, function(data) {
+			docs = data.response.docs;
+			for (index in docs) {
+				kID = docs[index].kloster_id;
+				kLocation = docs[index].koordinaten;
+				kLocation = docs[index].koordinaten.pop().split(",");
+				leafletMap_markers[0][kID] = {};
+				leafletMap_markers[0][kID]["kOrden"] = docs[index].orden;
+				leafletMap_markers[0][kID]["kName"] = docs[index].kloster;
+				leafletMap_markers[0][kID]["kKloster"] = docs[index].kloster;
+				leafletMap_markers[0][kID]["kVVerbal"] = docs[index].orden_von_verbal;
+				leafletMap_markers[0][kID]["kBVerbal"] = docs[index].orden_bis_verbal;
+				leafletMap_markers[0][kID]["kLink"] = document.baseURI + germaniaSacra.config.IDURLTemplate.replace('%23%23%23ID%23%23%23', kID);
+				leafletMap_markers[0][kID]["orden_graphik"] = kIFolder + docs[index].orden_graphik + ".png";
+				/* check, if no icon was defined */
+				if (leafletMap_markers[0][kID]["orden_graphik"].indexOf("/.") != "-1") {
+					kIcon = L.icon({
+						iconUrl: kIconDef,
+						iconSize: [21, 32],
+						iconAnchor: [10.5, 32],
+						popupAnchor: [0, -32]
+					});
+				} else {
+					kIcon = L.icon({
+						iconUrl: leafletMap_markers[0][kID]["orden_graphik"],
+						iconSize: [21, 32],
+						iconAnchor: [10.5, 32],
+						popupAnchor: [0, -32]
+					});
+				}
+				var tmp = germaniaSacra.config.IDURLTemplate.replace('%23%23%23ID%23%23%23', docs[index].kloster_id);
+				kURL = $(location).attr("href") + tmp.substring(tmp.indexOf("?"), tmp.length);
+
+				/*
+				 add the icon,
+				 and its popup
+				 */
+				leafletMap_markers[1][kID] = new Array();
+				leafletMap_markers[1][kID][0] = '<p id="' + kID + '"><h3><a href="' + leafletMap_markers[0][kID]["kLink"] + '">' + leafletMap_markers[0][kID]["kKloster"] + "</a></h3><b>Lage:</b> " + leafletMap_markers[0][kID]["kVVerbal"] + " bis " + leafletMap_markers[0][kID]["kBVerbal"] + "<br /><b>Orden:</b> " + leafletMap_markers[0][kID]["kOrden"] + "</p>";
+				leafletMap_markers[1][kID][1] = L.marker([kLocation[0], kLocation[1]], {
+					icon: kIcon
+				}).addTo(leafletMap)
+				leafletMap_markers[1][kID][1].bindPopup();
+				leafletMap_markers[1][kID][1].setPopupContent(leafletMap_markers[1][kID][0]);
+
+			}
+		});
+	});
+}
 
 function leafletMapGrow() {
 
 	/*
-		The map moves from top right to the whole left side.
-		The pager has to be removed from dom
-		The map has to be resized
-		The mouse- and keyboard controls have to be put in place again
+	 The map moves from top right to the whole left side.
+	 The pager has to be removed from dom
+	 The map has to be resized
+	 The mouse- and keyboard controls have to be put in place again
 	 */
 
 
@@ -67,12 +150,13 @@ function leafletMapGrow() {
 	leafletMap.dragging.enable();
 	leafletMap.touchZoom.enable();
 	leafletMap.doubleClickZoom.enable();
-	if(leafletMap.tap) {
+	if (leafletMap.tap) {
 		leafletMap.tap.enable();
-	};
+	}
+	;
 
 	/* reorient map, according to markers */
-	leafletMap.setView([51.2,10.9],6);
+	leafletMap.setView([51.2, 10.9], 6);
 	// Vielleicht: leafletMap.getCenter();
 
 	/* Show again previous link below map */
@@ -116,11 +200,12 @@ function leafletMapShrink() {
 	leafletMap.dragging.disable();
 	leafletMap.touchZoom.disable();
 	leafletMap.doubleClickZoom.disable();
-	if(leafletMap.tap) {
+	if (leafletMap.tap) {
 		leafletMap.tap.disable();
-	};
-		/* Hide previous link below map */
-		$("#leafletMap_id").next("a").toggle();
+	}
+	;
+	/* Hide previous link below map */
+	$("#leafletMap_id").next("a").toggle();
 
 	/* rename links and change their function */
 	$(".leafletMap_resizeLink").text("Rechercheergebnisse in Kartenansicht anzeigen");
@@ -132,8 +217,4 @@ function leafletMapShrink() {
 
 	/* remove Popups */
 
-}
-
-function leafletMapIterate(lat,lng) {
-	L.marker([lat, lng]).addTo(leafletMap);
 }

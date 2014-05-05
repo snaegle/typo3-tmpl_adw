@@ -241,6 +241,10 @@ $formLabelWidth: 150px;
 			cursor: pointer;
 		}
 
+	.mapContainer .leaflet-popup-content h3 a {
+		color: #c90230;
+	}
+
 
 	#leafletMap_resizeLink {
 		font: 1em / 22px Cambria, Georgia, serif; // matches font of other facets
