@@ -2,6 +2,8 @@
 
 function leafletMapInit() {
 
+	leafletMap_markers = new L.MarkerClusterGroup({ maxClusterRadius: 30 });
+
 	/* Hide previous link below map */
 	$("#leafletMap_id").next("a").toggle();
 	/* Hide title for map */
@@ -217,4 +219,9 @@ function leafletMapShrink() {
 
 	/* remove Popups */
 
+}
+
+function leafletMapIterate(lat,lng) {
+    leafletMap_markers.addLayer(L.marker([lat, lng]));
+    leafletMap.addLayer(leafletMap_markers);
 }
