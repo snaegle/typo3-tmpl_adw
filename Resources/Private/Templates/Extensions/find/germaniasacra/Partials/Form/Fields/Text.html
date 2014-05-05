@@ -18,7 +18,7 @@
 				condition:hasAlternate,
 				then:'[term]'
 			)}"
-			value="{queryParameter}"
+			value="{f:if(condition:queryParameter.term, then:queryParameter.term, else: queryParameter)}"
 			placeholder="{f:translate(key:'LLL:{settings.languageRootPath}locallang-form.xml:input.{fieldInfo.id}.placeholder')}"
 			additionalAttributes="<f:if condition='{fieldInfo.autocomplete}==1'><f:then>{autocompleteURL:\"{f:uri.action(
 				arguments:{dictionary:fieldInfo.autocompleteDictionary, q:'%%%%'},
