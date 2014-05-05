@@ -208,8 +208,8 @@ $formLabelWidth: 150px;
 		font-style: italic;
 	}
 
-	.mapContainer #leafletMap_id * {
-		cursor: default !important;
+	.mapContainer .leaflet-map-pane * {
+		cursor: default;
 	}
 
 	.mapContainer .leafletMap_zoom {
@@ -223,6 +223,7 @@ $formLabelWidth: 150px;
 		color: #c90230;
 		font-size: 18px;
 		background-color: #fff;
+		line-height: 27px;
 	}
 
 
@@ -236,6 +237,7 @@ $formLabelWidth: 150px;
 		margin: 0;
 		font-size: 0.8em;
 		background: rgba(255, 255, 255, 0.7);
+		cursor: default;
 	}
 	.mapContainer .leafletMap_resize {
 			cursor: pointer;
@@ -246,7 +248,7 @@ $formLabelWidth: 150px;
 	}
 
 
-	#leafletMap_resizeLink {
+	.leafletMap_resizeLink {
 		font: 1em / 22px Cambria, Georgia, serif; // matches font of other facets
 		cursor: pointer;
 	}
