@@ -39,7 +39,9 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
 										'rss-residenzstaedte_im_alten_reich_1300_1800' => 107,
 										'rss-edfu' => 109,
 										'rss-septuaginta' => 110,
-										'tx-find-data' => 1369315139
+										'tx-find-data' => 1369315139,
+										'tx-find-turtle' => 1380124799,
+										'tx-find-rdf' => 1378891468
 								),
 								'noMatch' => 'bypass'
 						)
