@@ -1,4 +1,13 @@
 Build/.sass-cache
 Build/bower_components
 Build/node_modules
+Build/logs
+Build/pdepend
+Build/lib
+Resources/Public/JavaScript/production*.js*
+Resources/Public/Css/adw.css
+Resources/Private/Scss/_libs.scss
+.gradle
 .sass-cache
+.idea
+.jruby
