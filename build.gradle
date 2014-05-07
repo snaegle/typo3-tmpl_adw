@@ -1,10 +1,8 @@
 ant.importBuild 'build.xml'
 
-defaultTasks 'cleanUp', 'prepare', 'compileSass', 'combineJs', 'minifyJs'
-
+defaultTasks 'cleanUp', 'prepare', 'getFontAwesome', 'compileSass', 'combineJs', 'minifyJs'
 // Invoke the plugin
 apply plugin: 'compass'
-
 apply plugin: 'js'
 apply plugin: 'css'
 
@@ -12,8 +10,25 @@ project.ext.set("jsSrcDir", "Resources/Private/JavaScript")
 project.ext.set("jsDestDir", "Resources/Public/JavaScript")
 project.ext.set("cssSrcDir", "Resources/Public/Css")
 
-FileCollection buildDirectories = files(['Build/logs', 'Build/lib', 'Build/pdepend'])
-FileCollection generatedFiles = files([cssSrcDir + '/adw.css', jsDestDir + '/production.js', jsDestDir + '/production.min.js', jsDestDir + '/production.sourcemap.json'] )
+project.ext.set(
+    'libraryVersions', [
+        fontAwesome: '4.0.3'
+    ]
+)
+
+FileCollection buildDirectories = files([
+        'Build/logs',
+        'Build/lib',
+        'Build/pdepend',
+        'Build/tmp/FontAwesome'
+])
+
+FileCollection generatedFiles = files([
+        cssSrcDir + '/adw.css',
+        jsDestDir + '/production.js',
+        jsDestDir + '/production.min.js',
+        jsDestDir + '/production.sourcemap.json'
+])
 
 
 task wrapper(type: Wrapper) {
@@ -96,5 +111,27 @@ minifyJs {
     sourceMap = file("Resources/Public/JavaScript/production.sourcemap.json")
     closure {
         warningLevel = 'QUIET'
+    }
+}
+
+task getFontAwesome(dependsOn: prepare) << {
+    if (!file("Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '.zip'").exists()) {
+        ant.get(src: 'http://fortawesome.github.io/Font-Awesome/assets/font-awesome-' + libraryVersions.fontAwesome + '.zip',
+                dest: 'Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '.zip',
+                usetimestamp: true,
+                verbose: true)
+        ant.unzip(src: 'Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '.zip',
+                  dest: "Build/tmp/FontAwesome/")
+
+        copy {
+            from 'Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '/fonts'
+            into compass.fontsDir
+        }
+        copy {
+            from 'Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '/scss'
+            into 'Resources/Private/Scss/_Includes/_FontAwesome'
+            exclude '**/_variables.scss'
+            rename ('font-awesome.scss', '_font-awesome.scss')
+        }
     }
 }

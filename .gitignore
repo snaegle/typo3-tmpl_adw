@@ -4,9 +4,13 @@ Build/node_modules
 Build/logs
 Build/pdepend
 Build/lib
+Build/tmp
 Resources/Public/JavaScript/production*.js*
 Resources/Public/Css/adw.css
 Resources/Private/Scss/_libs.scss
+Resources/Private/Scss/_Includes/_FontAwesome/*
+!Resources/Private/Scss/_Includes/_FontAwesome/_variables.scss
+Resources/Public/Fonts
 .gradle
 .sass-cache
 .idea
