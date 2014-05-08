@@ -2,11 +2,11 @@
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
 		'_DEFAULT' => array(
 				'init' => array(
-						'enableCHashCache' => true,
+						'enableCHashCache' => false,
 						'appendMissingSlash' => 'ifNotFile,redirect',
 						'adminJumpToBackend' => true,
-						'enableUrlDecodeCache' => true,
-						'enableUrlEncodeCache' => true,
+						'enableUrlDecodeCache' => false,
+						'enableUrlEncodeCache' => false,
 						'emptyUrlReturnValue' => '/'
 				),
 				'pagePath' => array(
