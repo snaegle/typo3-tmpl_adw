@@ -1,260 +1,260 @@
 // Generates a Map using leafletJs
 
 $(function() {
-	if (document.location.href.indexOf('mode=map') > -1) {
-		leafletMapGrow();
+    if (document.location.href.indexOf('mode=map') > -1) {
+	leafletMapGrow();
 	}
 });
 
 function leafletMapSwitchMapParameter(mode) {
 
-	switch (mode) {
-		case "list":
-			/* remove attribute */
-			$('.facetList a').attr('href', function(i, hash) {
-				return (hash.replace(/\&mode=map/g, ""));
-			});
-		case "map":
-			/* add attribute if necessary */
-			if (window.location.href.indexOf("mode=") == -1) {
-				$('.facetList a').attr('href', function(i, hash) {
-					return hash + (hash.indexOf('?') != -1 ? "&mode=map" : "?mode=map");
-				});
-			}
+    switch (mode) {
+	case "list":
+	/* remove attribute */
+	$('.facetList a').attr('href', function(i, hash) {
+	                return (hash.replace(/\&mode=map/g, ""));
+	    });
+	case "map":
+	/* add attribute if necessary */
+	if (window.location.href.indexOf("mode=") == -1) {
+	                $('.facetList a').attr('href', function(i, hash) {
+			    return hash + (hash.indexOf('?') != -1 ? "&mode=map" : "?mode=map");
+			    });
+	        }
 	}
 }
 
 function leafletMapInit() {
 
-	leafletMap_markers = new L.MarkerClusterGroup({ maxClusterRadius: 30 });
-
-	/* Hide previous link below map */
-	$("#leafletMap_id").next("a").toggle();
-	/* Hide title for map */
-	$(".facet-id-map h1").css("display", "none");
-	/* Create link */
-	$(".facet-id-map").prepend('<a class="leafletMap_resize leafletMap_resizeLink">' +
-	                           'Rechercheergebnisse in Kartenansicht anzeigen' +
-	                           '</a>');
-	$(".leafletMap_resizeLink").css("font-family", "Cambria, Georgia, serif");
-
-	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(leafletMap);
-
-	/* remove handlers */
-	leafletMap.scrollWheelZoom.disable();
-	leafletMap.dragging.disable();
-	leafletMap.touchZoom.disable();
-	leafletMap.doubleClickZoom.disable();
-	if (leafletMap.tap) {
-		leafletMap.tap.disable();
-	}
-	;
-
-	/* add function */
-	$(".leafletMap_resize").on("click", function() {
-		leafletMapGrow();
+    leafletMap_markers.markerGroup = new L.MarkerClusterGroup({
+	maxClusterRadius: 30,
+	zoomToBoundsOnClick: false,
+	disableClusteringAtZoom: 9
 	});
-	return true;
+
+    /* Hide previous link below map */
+    $("#leafletMap_id").next("a").toggle();
+    /* Hide title for map */
+    $(".facet-id-map h1").css("display", "none");
+    /* Create link */
+    $(".facet-id-map").prepend('<a class="leafletMap_resize leafletMap_resizeLink">' +
+			                                         'Rechercheergebnisse in Kartenansicht anzeigen' +
+			                                         '</a>');
+    $(".leafletMap_resizeLink").css("font-family", "Cambria, Georgia, serif");
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(leafletMap);
+
+    /* remove handlers */
+    leafletMap.scrollWheelZoom.disable();
+    leafletMap.dragging.disable();
+    leafletMap.touchZoom.disable();
+    leafletMap.doubleClickZoom.disable();
+    if (leafletMap.tap) {
+	leafletMap.tap.disable();
+	};
+
+    /* add function */
+    $(".leafletMap_resize").on("click", function() {
+	leafletMapGrow();
+	});
+    return true;
 }
 
 function leafletMapAddDiverseMarkers() {
 
-	/*
-	 check, if document loaded
-	 remove old icons,
+    /*
+       check, if document loaded
+        remove old icons,
 	 add URLparameter to create page with all information
-	 read the page and create the markers
-	 */
+	   read the page and create the markers
+	      */
 
-	$(document).ready(function() {
+    $(document).ready(function() {
 
-		/* get map boundaries */
-		var bounds = leafletMap.getBounds();
-		var southWest = bounds.getSouth() + "," + bounds.getWest();
-		var northEast = bounds.getNorth() + "," + bounds.getEast();
+	/* recreate values */
+	leafletMap_markers.marker = [];
+	leafletMap_markers.popup = [];
+	leafletMap_markers.marker.push();
+	leafletMap_markers.popup.push();
 
-		/* create QueryString */
-		var url = $(location).attr("href");
-		if (url.indexOf("?") != "-1") {
-			var pageID = url.substring(0, url.indexOf("?"));
-		} else {
-			pageID = url + "/";
-		}
-		var dataFields = "koordinaten:[" + southWest + "%20TO%20" + northEast + "]\%20AND%20typ:standort-orden&tx_find_find[count]=3000&tx_find_find[data-format]=raw-solr-response&tx_find_find[format]=data&tx_find_find[data-fields]=id,kloster_id,koordinaten,kloster,ort,orden,orden_graphik,orden_bis_verbal,orden_von_verbal";
-		url = document.baseURI + germaniaSacra.config.queryURLTemplate.replace('%23%23%23TERM%23%23%23', dataFields);
+	/* get map boundaries */
+	var bounds = leafletMap.getBounds();
+	var southWest = bounds.getSouth() + "," + bounds.getWest();
+	var northEast = bounds.getNorth() + "," + bounds.getEast();
 
-		/* get information from JSON-Object */
-		var shadowURL = $(".leaflet-marker-icon").attr("src");
-		var doc, docIndex, mydata, docs, orden_graphik;
-		var kLocation, kOrden, kName, kOrden, kID, kURL, kVVerbal, kBVerbal, kKloster, kLink;
-		var kIFolder = germaniaSacra.config.resourcesBaseURL + "Ordenssymbole/"
-		var kIconDef = kIFolder + "Kloster_allgemein.png";
-		var kSIcon = kIFolder + "Shadow.png";
-		jQuery.getJSON(url, function(data) {
-			docs = data.response.docs;
-			for (index in docs) {
-				kID = docs[index].kloster_id;
-				kLocation = docs[index].koordinaten;
-				kLocation = docs[index].koordinaten.pop().split(",");
-				leafletMap_markers[0][kID] = {};
-				leafletMap_markers[0][kID]["kOrden"] = docs[index].orden;
-				leafletMap_markers[0][kID]["kName"] = docs[index].kloster;
-				leafletMap_markers[0][kID]["kKloster"] = docs[index].kloster;
-				leafletMap_markers[0][kID]["kVVerbal"] = docs[index].orden_von_verbal;
-				leafletMap_markers[0][kID]["kBVerbal"] = docs[index].orden_bis_verbal;
-				leafletMap_markers[0][kID]["kLink"] = document.baseURI + germaniaSacra.config.IDURLTemplate.replace('%23%23%23ID%23%23%23', kID);
-				leafletMap_markers[0][kID]["orden_graphik"] = kIFolder + docs[index].orden_graphik + ".png";
-				/* check, if no icon was defined */
-				if (leafletMap_markers[0][kID]["orden_graphik"].indexOf("/.") != "-1") {
-					kIcon = L.icon({
-						               iconUrl: kIconDef,
-						               iconSize: [21, 32],
-						               iconAnchor: [10.5, 32],
-						               popupAnchor: [0, -32]
-					               });
-				} else {
-					kIcon = L.icon({
-						               iconUrl: leafletMap_markers[0][kID]["orden_graphik"],
-						               iconSize: [21, 32],
-						               iconAnchor: [10.5, 32],
-						               popupAnchor: [0, -32]
-					               });
-				}
-				var tmp = germaniaSacra.config.IDURLTemplate.replace('%23%23%23ID%23%23%23', docs[index].kloster_id);
-				kURL = $(location).attr("href") + tmp.substring(tmp.indexOf("?"), tmp.length);
+	/* generation of search string */
+	var solrQuery = 'koordinaten:[';
+	solrQuery += southWest;
+	solrQuery += ' TO ';
+	solrQuery += northEast;
+	solrQuery += '] AND typ:standort-orden';
+	var dataFields = 'id,kloster_id,koordinaten,kloster,ort,orden,orden_graphik,orden_bis_verbal,orden_von_verbal';
+	var escapedQuery = encodeURIComponent(solrQuery);
+	var queryURL = germaniaSacra.config.queryURLTemplate.replace('%23%23%23TERM%23%23%23', escapedQuery);
+	queryURL += '&' + encodeURIComponent('tx_find_find[data-fields]') + '=' + encodeURIComponent(dataFields);
+	var url = document.baseURI + queryURL;
 
-				/*
-				 add the icon,
-				 and its popup
-				 */
-				leafletMap_markers[1][kID] = new Array();
-				leafletMap_markers[1][kID][0] = '<p id="' + kID + '"><h3><a href="' + leafletMap_markers[0][kID]["kLink"] + '">' + leafletMap_markers[0][kID]["kKloster"] + "</a></h3><b>Lage:</b> " + leafletMap_markers[0][kID]["kVVerbal"] + " bis " + leafletMap_markers[0][kID]["kBVerbal"] + "<br /><b>Orden:</b> " + leafletMap_markers[0][kID]["kOrden"] + "</p>";
-				leafletMap_markers[1][kID][1] = L.marker([kLocation[0], kLocation[1]], {
-					icon: kIcon
-				}).addTo(leafletMap)
-				leafletMap_markers[1][kID][1].bindPopup();
-				leafletMap_markers[1][kID][1].setPopupContent(leafletMap_markers[1][kID][0]);
+	/* get information from JSON-Object */
+	var shadowURL = $(".leaflet-marker-icon").attr("src");
+	var doc, docIndex, mydata, docs, orden_graphik;
+	var kLocation, kOrden, kName, kOrden, kID, kURL, kVVerbal, kBVerbal, kKloster, kLink;
+	var kIFolder = germaniaSacra.config.resourcesBaseURL + "Ordenssymbole/"
+	var kIconDef = kIFolder + "Kloster_allgemein.png";
+	var kSIcon = kIFolder + "Shadow.png";
+	jQuery.getJSON(url, function(data) {
+	        docs = data.response.docs;
+	        for (index in docs) {
+		    kID = docs[index].kloster_id;
+		    kLocation = docs[index].koordinaten;
+		    kLocation = kLocation.toString().split(",");
+		    leafletMap_markers.marker[kID] = {};
+		    leafletMap_markers.marker[kID].kOrden = docs[index].orden;
+		    leafletMap_markers.marker[kID].kName = docs[index].kloster;
+		    leafletMap_markers.marker[kID].kKloster = docs[index].kloster;
+		    leafletMap_markers.marker[kID].kVVerbal = docs[index].orden_von_verbal;
+		    leafletMap_markers.marker[kID].kBVerbal = docs[index].orden_bis_verbal;
+		    leafletMap_markers.marker[kID].kLink = document.baseURI + germaniaSacra.config.IDURLTemplate.replace('%23%23%23ID%23%23%23', kID);
+		    leafletMap_markers.marker[kID].orden_graphik = kIFolder + docs[index].orden_graphik + ".png";
 
-			}
-		});
+		    /* check, if no icon was defined */
+		    if (leafletMap_markers.marker[kID].orden_graphik.indexOf("/.") != "-1") {
+			        kIcon = L.icon({
+				                   iconUrl: kIconDef,
+				                   iconSize: [21, 32],
+				                   iconAnchor: [10.5, 32],
+				                   popupAnchor: [0, -32]
+				    });
+			} else {
+			    kIcon = L.icon({
+				                   iconUrl: leafletMap_markers.marker[kID].orden_graphik,
+				                   iconSize: [21, 32],
+				                   iconAnchor: [10.5, 32],
+				                   popupAnchor: [0, -32]
+				});
+			    }
+
+		    /* add the icon */
+		    leafletMap_markers.popup[kID] = {};
+		    leafletMap_markers.popup[kID].content = '<p id="' + kID + '"><h3><a href="' + leafletMap_markers.marker[kID].kLink + '">' + leafletMap_markers.marker[kID].kKloster + "</a></h3><b>Lage:</b> " + leafletMap_markers.marker[kID].kVVerbal + " bis " + leafletMap_markers.marker[kID].kBVerbal + "<br /><b>Orden:</b> " + leafletMap_markers.marker[kID].kOrden + "</p>";
+		    leafletMap_markers.popup[kID].layer = L.marker([kLocation[0], kLocation[1]], {
+			        icon: kIcon
+			}).addTo(leafletMap_markers.markerGroup);
+		    leafletMap_markers.popup[kID].layer.bindPopup();
+		    leafletMap_markers.popup[kID].layer.setPopupContent(leafletMap_markers.popup[kID].content);
+		    }
+	    });
+	leafletMap.addLayer(leafletMap_markers.markerGroup);
 	});
 }
 
 function leafletMapGrow() {
 
-	/*
-	 The map moves from top right to the whole left side.
-	 The pager has to be removed from dom
+    /*
+       The map moves from top right to the whole left side.
+        The pager has to be removed from dom
 	 The map has to be resized
-	 The mouse- and keyboard controls have to be put in place again
-	 */
+	   The mouse- and keyboard controls have to be put in place again
+	      */
 
-	leafletMapSwitchMapParameter("map");
+    leafletMapSwitchMapParameter("map");
 
-	/* remove pager */
-	$(".navigation .pager").toggle();
-	$(".navigation .resultCount").toggle();
-	leafletMap_resultsList = $(".grid_12 .resultList").toggle();
+    /* remove pager */
+    $(".navigation .pager").toggle();
+    $(".navigation .resultCount").toggle();
+    leafletMap_resultsList = $(".grid_12 .resultList").toggle();
 
-	/* store small Size */
-	leafletMap_widthSmall = $("#leafletMap_id").width();
-	leafletMap_heightSmall = $("#leafletMap_id").height();
+    /* store small Size */
+    leafletMap_widthSmall = $("#leafletMap_id").width();
+    leafletMap_heightSmall = $("#leafletMap_id").height();
 
-	/* store element properties */
-	leafletMap_resultsWidth = $(".grid_12").width();
-	leafletMap_resultsHeight = $(".grid_12").height();
-	leafletMap_heightBig = 750;
-	leafletMap_widthBig = leafletMap_resultsWidth;
-	leafletMap_content = $(".facet-id-map");
+    /* store element properties */
+    leafletMap_resultsWidth = $(".grid_12").width();
+    leafletMap_resultsHeight = $(".grid_12").height();
+    leafletMap_heightBig = 750;
+    leafletMap_widthBig = leafletMap_resultsWidth;
+    leafletMap_content = $(".facet-id-map");
 
-	/* move map */
-	$(".grid_12").last().prepend(leafletMap_content);
-	$("#leafletMap_id").height(leafletMap_heightBig).width(leafletMap_widthBig);
-	leafletMap.invalidateSize();
-
-	/* add scale to large map */
-	L.control.scale().addTo(leafletMap);
-
-	/* put back handlers */
-	leafletMap.scrollWheelZoom.enable();
-	leafletMap.dragging.enable();
-	leafletMap.touchZoom.enable();
-	leafletMap.doubleClickZoom.enable();
-	if (leafletMap.tap) {
-		leafletMap.tap.enable();
+    /* move map */
+    $(".grid_12").last().prepend(leafletMap_content);
+    for (index in leafletMap._layers) {
+	leafletMap.removeLayer[index]
 	}
-	;
+    $("#leafletMap_id").height(leafletMap_heightBig).width(leafletMap_widthBig);
+    leafletMap.invalidateSize();
 
-	/* reorient map, according to markers */
-	leafletMap.setView([51.2, 10.9], 6);
-	// Vielleicht: leafletMap.getCenter();
+    /* add scale to large map */
+    L.control.scale().addTo(leafletMap);
 
-	/* Show again previous link below map */
-	$("#leafletMap_id").next("a").toggle();
+    /* put back handlers */
+    leafletMap.scrollWheelZoom.enable();
+    leafletMap.dragging.enable();
+    leafletMap.touchZoom.enable();
+    leafletMap.doubleClickZoom.enable();
+    if (leafletMap.tap) {
+	leafletMap.tap.enable();
+	};
+    leafletMap_markers.markerGroup.options.zoomToBoundsOnClick = true;
 
-	/* rename Links and change their function */
-	$(".leafletMap_resizeLink").text("Rechercheergebnisse in Listenansicht anzeigen");
-	$(".leafletMap_zoom i").toggleClass("fa-compress fa-expand");
-	$(".leafletMap_resize").off();
-	$(".leafletMap_resize").on("click", function() {
-		leafletMapShrink();
+    /* reorient map, according to markers */
+    leafletMap.setView([51.2, 10.9], 6);
+    // Vielleicht: leafletMap.getCenter();
+
+    /* Show again previous link below map */
+    $("#leafletMap_id").next("a").toggle();
+
+    /* rename Links and change their function */
+    $(".leafletMap_resizeLink").text("Rechercheergebnisse in Listenansicht anzeigen");
+    $(".leafletMap_zoom i").toggleClass("fa-compress fa-expand");
+    $(".leafletMap_resize").off();
+    $(".leafletMap_resize").on("click", function() {
+	leafletMapShrink();
 	});
 
-
-	/* add popup-Content */
-
-	return true
+    return true
 }
 
 function leafletMapShrink() {
 
-	leafletMapSwitchMapParameter("list");
+    leafletMapSwitchMapParameter("list");
 
-	/* put back pager */
-	$(".navigation .pager").toggle();
-	$(".navigation .resultCount").toggle();
-	$(".grid_12 .resultList").toggle();
+    /* put back pager */
+    $(".navigation .pager").toggle();
+    $(".navigation .resultCount").toggle();
+    $(".grid_12 .resultList").toggle();
 
 
-	/* store element properties */
-	leafletMap_content = $(".facet-id-map");
+    /* store element properties */
+    leafletMap_content = $(".facet-id-map");
 
-	/* move map */
-	leafletMap_content.prependTo(".facet-id-orden");
-	$("#leafletMap_id").height(leafletMap_heightSmall).width(leafletMap_widthSmall);
-	leafletMap.invalidateSize();
+    /* move map */
+    leafletMap_content.prependTo(".facet-id-orden");
+    $("#leafletMap_id").height(leafletMap_heightSmall).width(leafletMap_widthSmall);
+    leafletMap.invalidateSize();
 
-	/* reorient Map, according to markers */
-	leafletMap.setView([52, 14], 3);
+    /* reorient Map, according to markers */
+    leafletMap.setView([52, 14], 3);
 
-	/* remove scale */
-	$('.leaflet-control-scale').hide();
+    /* remove scale */
+    $('.leaflet-control-scale').hide();
 
-	/* remove handlers */
-	leafletMap.scrollWheelZoom.disable();
-	leafletMap.dragging.disable();
-	leafletMap.touchZoom.disable();
-	leafletMap.doubleClickZoom.disable();
-	if (leafletMap.tap) {
-		leafletMap.tap.disable();
-	}
-	;
-	/* Hide previous link below map */
-	$("#leafletMap_id").next("a").toggle();
+    /* remove handlers */
+    leafletMap.scrollWheelZoom.disable();
+    leafletMap.dragging.disable();
+    leafletMap.touchZoom.disable();
+    leafletMap.doubleClickZoom.disable();
+    if (leafletMap.tap) {
+	leafletMap.tap.disable();
+	};
+    leafletMap_markers.markerGroup.options.zoomToBoundsOnClick = false;
 
-	/* rename links and change their function */
-	$(".leafletMap_resizeLink").text("Rechercheergebnisse in Kartenansicht anzeigen");
-	$(".leafletMap_zoom i").toggleClass("fa-compress fa-expand");
-	$(".leafletMap_resize").off();
-	$(".leafletMap_resize").on("click", function() {
-		leafletMapGrow();
+    /* Hide previous link below map */
+    $("#leafletMap_id").next("a").toggle();
+
+    /* rename links and change their function */
+    $(".leafletMap_resizeLink").text("Rechercheergebnisse in Kartenansicht anzeigen");
+    $(".leafletMap_zoom i").toggleClass("fa-compress fa-expand");
+    $(".leafletMap_resize").off();
+    $(".leafletMap_resize").on("click", function() {
+	leafletMapGrow();
 	});
-
-	/* remove Popups */
-
-}
-
-function leafletMapIterate(lat, lng) {
-	leafletMap_markers.addLayer(L.marker([lat, lng]));
-	leafletMap.addLayer(leafletMap_markers);
 }
