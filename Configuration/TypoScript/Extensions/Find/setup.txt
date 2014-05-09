@@ -1,4 +1,4 @@
-plugin.tx_find{
+plugin.tx_find {
 	settings {
 		CSSPaths {
 			10 >
@@ -18,5 +18,9 @@ plugin.tx_find{
 	view {
 		templateRootPath = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Templates/
 		partialRootPath = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Partials/
+	}
+	felogin < plugin.tx_felogin_pi1
+	felogin {
+		storagePid = {$plugin.tx_find.felogin.storagePid}
 	}
 }
