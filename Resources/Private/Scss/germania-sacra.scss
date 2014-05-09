@@ -102,6 +102,7 @@ $formLabelWidth: 150px;
 				text-transform: uppercase;
 				margin-top: 1em;
 				margin-bottom: 1em;
+				text-indent: -1em;
 			}
 
 			ol, ul {
@@ -161,6 +162,10 @@ $formLabelWidth: 150px;
 			content: ':';
 		}
 
+		.zeitraum {
+			margin-left: -1em;
+		}
+
 		.person_namensalternativen {
 			&:before {
 				content: '(';
@@ -203,22 +208,26 @@ $formLabelWidth: 150px;
 		font-style: italic;
 	}
 
-	.mapContainer .leaflet-zoom {
-		display: none;
+	.mapContainer .leaflet-map-pane * {
+		cursor: default;
+	}
+
+	.mapContainer .leafletMap_zoom {
 		position: absolute;
-		right: 10px;
+		right: 0;
 		z-index: 7;
 		width: 25px;
 		height: 25px;
 		text-align: center;
 		margin: 5px;
 		color: #c90230;
-		font-size: 1.3em;
+		font-size: 18px;
 		background-color: #fff;
+		line-height: 27px;
 	}
 
 
-	.mapContainer .leaflet-copy {
+	.mapContainer .leafletMap_copy {
 		position: absolute;
 		display: inline-flex;
 		z-index: 7;
@@ -228,12 +237,21 @@ $formLabelWidth: 150px;
 		margin: 0;
 		font-size: 0.8em;
 		background: rgba(255, 255, 255, 0.7);
+		cursor: default;
+	}
+	.mapContainer .leafletMap_resize {
+			cursor: pointer;
+		}
+
+	.mapContainer .leaflet-popup-content h3 a {
+		color: #c90230;
+		font-weight: normal;
 	}
 
 
-	#leaflet-open-link {
+	.leafletMap_resizeLink {
 		font: 1em / 22px Cambria, Georgia, serif; // matches font of other facets
-		display: none;
+		cursor: pointer;
 	}
 }
 

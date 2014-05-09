@@ -173,7 +173,14 @@ $textB: #555;
 
 		a.extendedSearch {
 			line-height: 30px;
-			margin-left: 0.5em;
+		}
+
+		.button-reset-form {
+			border: none;
+			color: #C90230;
+			background-color: transparent;
+			padding: 0;
+			display: block;
 		}
 
 		.field-mode-extended {

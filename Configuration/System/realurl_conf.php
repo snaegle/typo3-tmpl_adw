@@ -2,11 +2,11 @@
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
 		'_DEFAULT' => array(
 				'init' => array(
-						'enableCHashCache' => true,
+						'enableCHashCache' => false,
 						'appendMissingSlash' => 'ifNotFile,redirect',
 						'adminJumpToBackend' => true,
-						'enableUrlDecodeCache' => true,
-						'enableUrlEncodeCache' => true,
+						'enableUrlDecodeCache' => false,
+						'enableUrlEncodeCache' => false,
 						'emptyUrlReturnValue' => '/'
 				),
 				'pagePath' => array(
@@ -31,6 +31,20 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
 										'cz' => 5),
 								'noMatch' => 'bypass'
 						),
+						1 => array(
+								'GETvar' => 'type',
+								'valueMap' => array(
+										'rss-deutsche_inschriften_des_mittelalters' => 101,
+										'rss-germania_sacra' => 104,
+										'rss-residenzstaedte_im_alten_reich_1300_1800' => 107,
+										'rss-edfu' => 109,
+										'rss-septuaginta' => 110,
+										'tx-find-data' => 1369315139,
+										'tx-find-turtle' => 1380124799,
+										'tx-find-rdf' => 1378891468
+								),
+								'noMatch' => 'bypass'
+						)
 				),
 				'postVarSets' => array(
 						'_DEFAULT' => array(

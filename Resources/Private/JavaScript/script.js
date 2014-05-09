@@ -100,12 +100,33 @@ jQuery(function() {
 	 * Tool mode stuff
 	 */
 
+	/* resets the form input field contents */
+	jQuery('.button-reset-form').click(function(e) {
+		e.preventDefault();
+		jQuery(".search-extended").trigger('reset');
+	});
+
+	/* show "empty search form fields" if page is loaded with extended search as url parameter */
+	if(window.location.href.indexOf("extended") > -1) {
+
+	} else {
+		jQuery('.button-reset-form').toggle();
+	}
+
+	/* show/hide the "empty search form fields" depending on the search mode. initiated by clicking the advanced/simple search link */
+	jQuery('.extendedSearch').click(function(e){
+		jQuery('.field-mode-extended input').each(function(id, field){
+			$(field).prop('value', '');
+		});
+		jQuery('.button-reset-form').toggle();
+	});
+
 	 /* closes the tool mode menu */
 	function closeToolMenu() {
 		jQuery('.tool-mode__pagenav ul').hide();
 	}
 
-	/** 
+	/**
 	 * opens the tool mode menu if the menu button is clicked
 	 * required for mouse and touch devices
 	 */
@@ -127,10 +148,10 @@ jQuery(function() {
 	 */
 	jQuery('.nav-breadcrumb').click(function(){
 		closeToolMenu();
-	});	
+	});
 
 	/**
-	 * closes the tool mode menu if mouse leaves the tool mode menu 
+	 * closes the tool mode menu if mouse leaves the tool mode menu
 	 * required for mouse devices
 	 */
 	jQuery('.tool-mode__pagenav ul').mouseleave(function() {
@@ -155,11 +176,6 @@ jQuery(function() {
 	jQuery('.tool-mode a').filter(function() {
 		return this.hostname && this.hostname !== location.hostname;
 	}).attr("target","_blank");
-
-	/**
-	 *
-	 */
-	// jQuery('.tool-mode .fieldType-SelectFacet .inputContainer').chosen();
 
 	/* Tool mode | End */
 
