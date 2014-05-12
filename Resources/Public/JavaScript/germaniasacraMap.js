@@ -29,7 +29,8 @@ function leafletMapInit() {
     leafletMap_markers.markerGroup = new L.MarkerClusterGroup({
 	maxClusterRadius: 30,
 	zoomToBoundsOnClick: false,
-	disableClusteringAtZoom: 9
+	disableClusteringAtZoom: 9,
+	showCoverageOnHover: false
 	});
 
     /* Hide previous link below map */
