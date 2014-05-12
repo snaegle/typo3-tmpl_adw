@@ -4,19 +4,21 @@
 	It displays the current range and total number of results as appropriate.
 	If an error occurred it indicates the error.
 </f:comment>
-<div class="grid_3 resultCount">
-	<f:if condition="{results.numfound}==0">
-		<f:then>
+<f:if condition="{results.numfound}==0">
+	<f:then>
+		<div class="grid_9 resultCount noResult">
 			<f:if condition="{error}">
 				<f:then>
 					<f:translate key="Error"/>
 				</f:then>
 				<f:else>
-					<f:translate key="no results"/>
+					<f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:noresults"/>
 				</f:else>
 			</f:if>
-		</f:then>
-		<f:else>
+		</div>
+	</f:then>
+	<f:else>
+		<div class="grid_3 resultCount">
 			<f:if condition="{results.numfound}==1">
 				<f:then>
 					<f:translate key="1 result"/>
@@ -34,6 +36,6 @@
 					</f:if>
 				</f:else>
 			</f:if>
-		</f:else>
-	</f:if>
-</div>
+		</div>
+	</f:else>
+</f:if>

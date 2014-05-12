@@ -28,6 +28,7 @@
 			<label index="input.person">Personenname</label>
 			<label index="input.person-checkbox">ähnliche Personennamen einschließen</label>
 			<label index="input.status">Klosterstatus</label>
+			<label index="noresults">Keine Treffer</label>
 		</languageKey>
 	</data>
 </T3locallang>
