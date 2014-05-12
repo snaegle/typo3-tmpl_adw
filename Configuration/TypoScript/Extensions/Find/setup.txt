@@ -5,6 +5,9 @@ plugin.tx_find {
 			50 = EXT:tmpl_adw/Resources/Public/Css/germania-sacra.css
 			70 >
 		}
+		JSPaths {
+			10 = EXT:tmpl_adw/Resources/Public/JavaScript/find.js
+		}
 		paging {
 			maximumPerPage = 3000
 		}
