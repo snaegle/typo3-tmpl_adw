@@ -166,6 +166,11 @@ $formLabelWidth: 150px;
 			margin-left: -1em;
 		}
 
+		.lage .zeitraum,
+		.orden .zeitraum, {
+			margin-left: 0;
+		}
+
 		.person_namensalternativen {
 			&:before {
 				content: '(';
