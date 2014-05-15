@@ -130,7 +130,7 @@ minifyJs {
 
 task getFontAwesome(dependsOn: prepare) << {
     if (!file("Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '.zip'").exists()) {
-        ant.get(src: 'https://github.com/FortAwesome/Font-Awesome/archive/' + libraryVersions.fontAwesome + '.zip',
+        ant.get(src: 'https://github.com/FortAwesome/Font-Awesome/archive/v' + libraryVersions.fontAwesome + '.zip',
                 dest: 'Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '.zip',
                 usetimestamp: true,
                 verbose: true)
