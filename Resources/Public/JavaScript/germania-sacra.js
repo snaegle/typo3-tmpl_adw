@@ -25,22 +25,6 @@ var germaniaSacra = (function () {
 		else if (jQuery('.facet-type-Map').length > 0) {
 			// Search result view.
 			var jH1 = jQuery('.facet-type-Map h1');
-			//jH1.wrapInner(document.createElement('a'));
-
-			//var extraTextSmall = document.createElement('span');
-			//extraTextSmall.setAttribute('class', 'extraText small');
-			//extraTextSmall.appendChild(document.createTextNode('groß anzeigen'));
-
-			//var extraTextLarge = document.createElement('span');
-			//extraTextLarge.setAttribute('class', 'extraText large hidden');
-			//extraTextLarge.appendChild(document.createTextNode('verkleinern und Liste anzeigen'));
-			
-			//var jLink = jQuery('a', jH1);
-			//jLink.addClass('largeMap icon-resize-full no-change');
-			//jLink.attr('href', '#');
-			//jLink.click(largeMap);
-			//jLink.append(extraTextSmall);
-			//jLink.append(extraTextLarge);
 
 			if (tx_find_facetMap.map) {
 				addBistumsgrenzen(tx_find_facetMap.map);
