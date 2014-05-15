@@ -1,15 +1,16 @@
 ant.importBuild 'build.xml'
 
 loadConfiguration()
+def env = hasProperty('env') ? env : 'development'
 
 def loadConfiguration() {
-    def environment = hasProperty('env') ? env : 'dev'
-    project.ext.set("environment", environment)
-    println "Building for $environment environment"
+    def env = hasProperty('env') ? env : 'development'
+ //   project.ext.set("environment", environment)
+    println "Building for $env environment"
 
     defaultTasks = ['cleanUp', 'prepare', 'getFontAwesome', 'compileSass', 'combineJs']
 
-    if (environment == 'prod') {
+    if (env == 'production') {
         defaultTasks.add('minifyJs')
     }
 }
@@ -21,6 +22,7 @@ apply plugin: 'css'
 
 project.ext.set("jsSrcDir", "Resources/Private/JavaScript")
 project.ext.set("jsDestDir", "Resources/Public/JavaScript")
+project.ext.set("cssSrcDir", "Resources/Public/Css")
 project.ext.set("cssSrcDir", "Resources/Public/Css")
 
 project.ext.set(
@@ -68,9 +70,11 @@ compass {
     cssDir = file('Resources/Public/Css')
     sassDir = file('Resources/Private/Scss')
     fontsDir = file('Resources/Public/Fonts')
-    noLineComments = (environment == 'dev' ? false : true)
-    outputStyle = (environment == 'dev' ? 'expanded' : 'compressed')
-    debugInfo = (environment == 'dev' ? true : false)
+    environment = env
+    debugInfo = (env == "development") ? true : false
+    noLineComments = (env == "production") ? true : false
+    outputStyle = (env == "production") ? "compressed" : "expanded"
+    trace = true
 }
 
 task cleanUp << {
