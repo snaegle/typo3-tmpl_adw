@@ -1,6 +1,19 @@
 ant.importBuild 'build.xml'
 
-defaultTasks 'cleanUp', 'prepare', 'getFontAwesome', 'compileSass', 'combineJs', 'minifyJs'
+loadConfiguration()
+
+def loadConfiguration() {
+    def environment = hasProperty('env') ? env : 'dev'
+    project.ext.set("environment", environment)
+    println "Building for $environment environment"
+
+    defaultTasks = ['cleanUp', 'prepare', 'getFontAwesome', 'compileSass', 'combineJs']
+
+    if (environment == 'prod') {
+        defaultTasks.add('minifyJs')
+    }
+}
+
 // Invoke the plugin
 apply plugin: 'compass'
 apply plugin: 'js'
@@ -11,10 +24,9 @@ project.ext.set("jsDestDir", "Resources/Public/JavaScript")
 project.ext.set("cssSrcDir", "Resources/Public/Css")
 
 project.ext.set(
-    'libraryVersions', [
-        fontAwesome: '4.0.3'
-    ]
-)
+        'libraryVersions', [
+        fontAwesome: '4.1.0'
+])
 
 FileCollection buildDirectories = files([
         'Build/logs',
@@ -56,9 +68,9 @@ compass {
     cssDir = file('Resources/Public/Css')
     sassDir = file('Resources/Private/Scss')
     fontsDir = file('Resources/Public/Fonts')
-    noLineComments = true
-    outputStyle = 'compressed'
-    debugInfo = false
+    noLineComments = (environment == 'dev' ? false : true)
+    outputStyle = (environment == 'dev' ? 'expanded' : 'compressed')
+    debugInfo = (environment == 'dev' ? true : false)
 }
 
 task cleanUp << {
@@ -74,6 +86,8 @@ task cleanUp << {
 
 task prepare << {
     description 'Prepare for build'
+
+
     buildDirectories.each { File file ->
         file.mkdirs()
     }
@@ -116,7 +130,7 @@ minifyJs {
 
 task getFontAwesome(dependsOn: prepare) << {
     if (!file("Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '.zip'").exists()) {
-        ant.get(src: 'http://fortawesome.github.io/Font-Awesome/assets/font-awesome-' + libraryVersions.fontAwesome + '.zip',
+        ant.get(src: 'https://github.com/FortAwesome/Font-Awesome/archive/' + libraryVersions.fontAwesome + '.zip',
                 dest: 'Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '.zip',
                 usetimestamp: true,
                 verbose: true)
@@ -131,7 +145,7 @@ task getFontAwesome(dependsOn: prepare) << {
             from 'Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '/scss'
             into 'Resources/Private/Scss/_Includes/_FontAwesome'
             exclude '**/_variables.scss'
-            rename ('font-awesome.scss', '_font-awesome.scss')
+            rename('font-awesome.scss', '_font-awesome.scss')
         }
     }
 }
