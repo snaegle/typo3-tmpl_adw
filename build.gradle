@@ -142,13 +142,12 @@ task getFontAwesome(dependsOn: prepare) << {
                   dest: "Build/tmp/FontAwesome/")
 
         copy {
-            from 'Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '/fonts'
+            from 'Build/tmp/FontAwesome/Font-Awesome-' + libraryVersions.fontAwesome + '/fonts'
             into compass.fontsDir
         }
         copy {
-            from 'Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '/scss'
+            from 'Build/tmp/FontAwesome/Font-Awesome-' + libraryVersions.fontAwesome + '/scss'
             into 'Resources/Private/Scss/_Includes/_FontAwesome'
-            exclude '**/_variables.scss'
             rename('font-awesome.scss', '_font-awesome.scss')
         }
     }

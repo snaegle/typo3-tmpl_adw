@@ -10,7 +10,6 @@ Resources/Public/Css/adw.css
 Resources/Public/Css/germania-sacra.css
 Resources/Private/Scss/_libs.scss
 Resources/Private/Scss/_Includes/_FontAwesome/*
-!Resources/Private/Scss/_Includes/_FontAwesome/_variables.scss
 Resources/Public/Fonts
 .gradle
 .sass-cache
