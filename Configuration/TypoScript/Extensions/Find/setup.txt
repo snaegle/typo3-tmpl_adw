@@ -5,6 +5,9 @@ plugin.tx_find {
 			50 = EXT:tmpl_adw/Resources/Public/Css/germania-sacra.css
 			70 >
 		}
+		JSPaths {
+			10 = EXT:tmpl_adw/Resources/Public/JavaScript/find.js
+		}
 		paging {
 			maximumPerPage = 3000
 		}
@@ -12,6 +15,12 @@ plugin.tx_find {
 		facets {
 			10 {
 				fetchMaximum = 2000
+			}
+		}
+		# germania sacra field orden @see ADWD-779
+		queryFields {
+			50 {
+				query = {!join from=kloster_id to=id}((orden:%1$s OR orden_ordo:%1$s) AND typ:standort-orden)
 			}
 		}
 	}

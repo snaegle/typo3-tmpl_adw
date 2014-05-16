@@ -29,7 +29,8 @@ function leafletMapInit() {
     leafletMap_markers.markerGroup = new L.MarkerClusterGroup({
 	maxClusterRadius: 30,
 	zoomToBoundsOnClick: false,
-	disableClusteringAtZoom: 9
+	disableClusteringAtZoom: 9,
+	showCoverageOnHover: false
 	});
 
     /* Hide previous link below map */
@@ -135,7 +136,10 @@ function leafletMapAddDiverseMarkers() {
 
 		    /* add the icon */
 		    leafletMap_markers.popup[kID] = {};
-		    leafletMap_markers.popup[kID].content = '<p id="' + kID + '"><h3><a href="' + leafletMap_markers.marker[kID].kLink + '">' + leafletMap_markers.marker[kID].kKloster + "</a></h3><b>Lage:</b> " + leafletMap_markers.marker[kID].kVVerbal + " bis " + leafletMap_markers.marker[kID].kBVerbal + "<br /><b>Orden:</b> " + leafletMap_markers.marker[kID].kOrden + "</p>";
+		    leafletMap_markers.popup[kID].content = '<p id="' + kID + '">';
+		    leafletMap_markers.popup[kID].content += '<h3><a href="' + leafletMap_markers.marker[kID].kLink + '">' + leafletMap_markers.marker[kID].kKloster + '</a></h3>';
+		    leafletMap_markers.popup[kID].content += leafletMap_markers.marker[kID].kVVerbal + "-" + leafletMap_markers.marker[kID].kBVerbal;
+		    leafletMap_markers.popup[kID].content += ": " + leafletMap_markers.marker[kID].kOrden + "</p>";
 		    leafletMap_markers.popup[kID].layer = L.marker([kLocation[0], kLocation[1]], {
 			        icon: kIcon
 			}).addTo(leafletMap_markers.markerGroup);

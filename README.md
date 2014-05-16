@@ -8,7 +8,9 @@
 
 # Development notes
 
-To get a production environment for the otherwise server-side generated JavaScript and CSS file you need to run `./gradlew` in the root folder of the extensions.
+To get a development environment for the otherwise server-side generated JavaScript and CSS file you need to run `./gradlew` in the root folder of the extensions.
+
+For a production environment use the command `./gradlew -Penv=production`
 
 ## Please note
 

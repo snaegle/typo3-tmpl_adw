@@ -1,6 +1,20 @@
 ant.importBuild 'build.xml'
 
-defaultTasks 'cleanUp', 'prepare', 'getFontAwesome', 'compileSass', 'combineJs', 'minifyJs'
+loadConfiguration()
+def env = hasProperty('env') ? env : 'development'
+
+def loadConfiguration() {
+    def env = hasProperty('env') ? env : 'development'
+ //   project.ext.set("environment", environment)
+    println "Building for $env environment"
+
+    defaultTasks = ['cleanUp', 'prepare', 'getFontAwesome', 'compileSass', 'combineJs']
+
+    if (env == 'production') {
+        defaultTasks.add('minifyJs')
+    }
+}
+
 // Invoke the plugin
 apply plugin: 'compass'
 apply plugin: 'js'
@@ -9,12 +23,12 @@ apply plugin: 'css'
 project.ext.set("jsSrcDir", "Resources/Private/JavaScript")
 project.ext.set("jsDestDir", "Resources/Public/JavaScript")
 project.ext.set("cssSrcDir", "Resources/Public/Css")
+project.ext.set("cssSrcDir", "Resources/Public/Css")
 
 project.ext.set(
-    'libraryVersions', [
-        fontAwesome: '4.0.3'
-    ]
-)
+        'libraryVersions', [
+        fontAwesome: '4.1.0'
+])
 
 FileCollection buildDirectories = files([
         'Build/logs',
@@ -56,9 +70,11 @@ compass {
     cssDir = file('Resources/Public/Css')
     sassDir = file('Resources/Private/Scss')
     fontsDir = file('Resources/Public/Fonts')
-    noLineComments = true
-    outputStyle = 'compressed'
-    debugInfo = false
+    environment = env
+    debugInfo = (env == "development") ? true : false
+    noLineComments = (env == "production") ? true : false
+    outputStyle = (env == "production") ? "compressed" : "expanded"
+    trace = true
 }
 
 task cleanUp << {
@@ -74,6 +90,8 @@ task cleanUp << {
 
 task prepare << {
     description 'Prepare for build'
+
+
     buildDirectories.each { File file ->
         file.mkdirs()
     }
@@ -116,7 +134,7 @@ minifyJs {
 
 task getFontAwesome(dependsOn: prepare) << {
     if (!file("Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '.zip'").exists()) {
-        ant.get(src: 'http://fortawesome.github.io/Font-Awesome/assets/font-awesome-' + libraryVersions.fontAwesome + '.zip',
+        ant.get(src: 'https://github.com/FortAwesome/Font-Awesome/archive/v' + libraryVersions.fontAwesome + '.zip',
                 dest: 'Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '.zip',
                 usetimestamp: true,
                 verbose: true)
@@ -124,14 +142,13 @@ task getFontAwesome(dependsOn: prepare) << {
                   dest: "Build/tmp/FontAwesome/")
 
         copy {
-            from 'Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '/fonts'
+            from 'Build/tmp/FontAwesome/Font-Awesome-' + libraryVersions.fontAwesome + '/fonts'
             into compass.fontsDir
         }
         copy {
-            from 'Build/tmp/FontAwesome/font-awesome-' + libraryVersions.fontAwesome + '/scss'
+            from 'Build/tmp/FontAwesome/Font-Awesome-' + libraryVersions.fontAwesome + '/scss'
             into 'Resources/Private/Scss/_Includes/_FontAwesome'
-            exclude '**/_variables.scss'
-            rename ('font-awesome.scss', '_font-awesome.scss')
+            rename('font-awesome.scss', '_font-awesome.scss')
         }
     }
 }
