@@ -92,7 +92,6 @@ DIV.csc-textpic-left DIV.csc-textpic-imagewrap .csc-textpic-image,
 DIV.csc-textpic-intext-left-nowrap DIV.csc-textpic-imagewrap .csc-textpic-image,
 DIV.csc-textpic-intext-left DIV.csc-textpic-imagewrap .csc-textpic-image {
 	display: inline; /* IE fix for double-margin bug */
-	margin-right: 10px;
 }
 
 /* Pictures on right, add margin on left */
@@ -100,7 +99,6 @@ DIV.csc-textpic-right DIV.csc-textpic-imagewrap .csc-textpic-image,
 DIV.csc-textpic-intext-right-nowrap DIV.csc-textpic-imagewrap .csc-textpic-image,
 DIV.csc-textpic-intext-right DIV.csc-textpic-imagewrap .csc-textpic-image {
 	display: inline; /* IE fix for double-margin bug */
-	margin-left: 10px;
 }
 
 /* Pictures centered, add margin on left */
@@ -158,12 +156,10 @@ DIV.csc-textpic DIV.csc-textpic-imagewrap .csc-textpic-lastcol {
 /* Add margin from image-block to text (in case of "Text w/ images") */
 DIV.csc-textpic-intext-left DIV.csc-textpic-imagewrap,
 DIV.csc-textpic-intext-left-nowrap DIV.csc-textpic-imagewrap {
-	margin-right: 10px !important;
 }
 
 DIV.csc-textpic-intext-right DIV.csc-textpic-imagewrap,
 DIV.csc-textpic-intext-right-nowrap DIV.csc-textpic-imagewrap {
-	margin-left: 10px !important;
 }
 
 /* Positioning of images: */
@@ -264,7 +260,6 @@ DIV.csc-textpic DIV.csc-textpic-imagerow-last {
 		margin: 22px 0;
 	}
 	li {
-		//font: 1em / 22px Cambria, Georgia, serif;
 		margin: 22px 0;
 		margin: 0;
 	}
@@ -282,14 +277,11 @@ DIV.csc-textpic DIV.csc-textpic-imagerow-last {
 		-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 		-moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 		box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-		max-width: 95%;
 	}
 	.rss-feed a img {
 		width: inherit;
 	}
 	img {
-		// margin: 12px 12px 12px 0
-
 	}
 	hr + ul {
 		margin: 16px 0;
@@ -391,4 +383,20 @@ DIV.csc-textpic DIV.csc-textpic-imagerow-last {
 
 .csc-default, .clearfix {
 	*zoom: 1;
+}
+
+/*
+ * stuff related to the awfully broken image and image caption display
+ */
+.csc-textpic-intext-left figure.csc-textpic-image {
+	padding-right: 15px;
+}
+
+.csc-textpic-intext-right-nowrap .csc-textpic-imagewrap {
+	width: 216px;
+	margin-left: 15px;
+}
+
+.csc-textpic-imagecolumn {
+	width: 45%;
 }
