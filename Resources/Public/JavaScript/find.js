@@ -207,7 +207,7 @@ var createHistogramForTermsInContainer = function (terms, histogramContainer, co
 	if (jTooltip.length === 0) {
 		var tooltipDiv = document.createElement('div');
 		tooltipDiv.setAttribute('id', 'tx_find-histogram-tooltip');
-		jTooltip = jQuery(tooltipDiv).appendTo(document.body);
+		jTooltip = jQuery(tooltipDiv).appendTo(histogramContainer);
 	}
 
 	for (var termIndex in config.activeFacets) {
@@ -288,8 +288,8 @@ var createHistogramForTermsInContainer = function (terms, histogramContainer, co
 			jTooltip.text(contents);
 			if (x) {
 				jTooltip.css( {
-					'top': y - 20,
-					'left': x + 5
+					'bottom': 20,
+					'left': 14
 				});
 			}
 			jTooltip.show();
