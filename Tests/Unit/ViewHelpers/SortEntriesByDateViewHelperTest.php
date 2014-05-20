@@ -42,47 +42,57 @@ class SortEntriesByDateViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHe
 		$this->fixture = new \Subugoe\TmplAdw\ViewHelpers\SortEntriesByDateViewHelper();
 	}
 
-	public function additionProvider() {
-		return array(
-				array(array(
-						'id' => 1,
-						'name' => 'Franz Konrad von Stadion',
-						'von_verbal' => '1513',
-						'bis_verbal' => ''
-				)),
-				array(array(
-						'id' => 2,
-						'name' => 'Franz Konrad von Stadion',
-						'von_verbal' => '1516',
-						'bis_verbal' => ''
-				)),
-				array(array(
-						'id' => 3,
-						'name' => 'Franz Konrad von Stadion',
-						'von_verbal' => '1516',
-						'bis_verbal' => '1616'
-				)),
-				array(array(
-						'id' => 4,
-						'name' => 'Franz Konrad von Stadion',
-						'von_verbal' => '',
-						'bis_verbal' => ''
-				))
-		);
-	}
+	protected $testData = array(
+				array(
+								'id' => 1,
+								'name' => 'Franz Konrad von Stadion',
+								'von_verbal' => '1513',
+								'bis_verbal' => ''
+				),
+				array(
+								'id' => 2,
+								'name' => 'Franz Konrad von Stadion',
+								'von_verbal' => '1516',
+								'bis_verbal' => ''
+				),
+				array(
+								'id' => 3,
+								'name' => 'Franz Konrad von Stadion',
+								'von_verbal' => '1516',
+								'bis_verbal' => '1616'
+				),
+				array(
+								'id' => 4,
+								'name' => 'Franz Konrad von Stadion',
+								'von_verbal' => '',
+								'bis_verbal' => ''
+			));
+
 
 	/**
 	 * @test
-	 * @dataProvider additionProvider
 	 */
-	public function renderAddsObjectNameToTemplateVariableContainer($array) {
+	public function renderAddsObjectNameToTemplateVariableContainer() {
 		$mockViewHelperNode = $this->getMock('TYPO3\\CMS\\Fluid\\Core\\Parser\\SyntaxTree\\ViewHelperNode', array('evaluateChildNodes'), array(), '', FALSE);
 		$mockViewHelperNode->expects($this->once())->method('evaluateChildNodes')->will($this->returnValue('foo'));
-		$this->templateVariableContainer->expects($this->at(0))->method('add')->with('as', $array);
+		$this->templateVariableContainer->expects($this->at(0))->method('add')->with('as', $this->testData);
 		$this->templateVariableContainer->expects($this->at(1))->method('remove')->with('as');
 
 		$this->injectDependenciesIntoViewHelper($this->fixture);
 		$this->fixture->setViewHelperNode($mockViewHelperNode);
-		$this->fixture->render($array, 'as');
+		$this->fixture->render($this->testData, 'as');
+	}
+
+	/**
+	 * @test
+	 */
+	public function sortingReturnsCorrectSorting() {
+		$mockViewHelperNode = $this->getMock('TYPO3\\CMS\\Fluid\\Core\\Parser\\SyntaxTree\\ViewHelperNode', array('evaluateChildNodes'), array(), '', FALSE);
+
+		$this->injectDependenciesIntoViewHelper($this->fixture);
+		$this->fixture->setViewHelperNode($mockViewHelperNode);
+		$this->templateVariableContainer->expects($this->at(0))->method('add')->with('as', $this->testData);
+		$this->fixture->render($this->testData, 'as');
+
 	}
 }
