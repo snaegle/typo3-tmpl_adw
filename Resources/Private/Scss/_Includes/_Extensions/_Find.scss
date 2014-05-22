@@ -473,16 +473,28 @@ $textB: #555;
 		background: #fff;
 	}
 	.ui-helper-hidden-accessible {
-		display:none;
+		display: none;
+	}
+	.person {
+		section {
+			ol {
+				margin: 0;
+			}
+		}
+		nav {
+			&.aemter {
+				ol {
+					li {
+						margin-right: 0.3rem;
+					}
+				}
+			}
+		}
 	}
 }
 
 .fieldContainer {
 	margin-bottom: 15px;
-}
-
-.tx-find .person section ol {
-	margin: 0;
 }
 
 .tx_find .searchForm .field-mode-extended.fieldType-Text input[type=text] {
