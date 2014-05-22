@@ -82,3 +82,8 @@ tt_content.image.20.1.imageLinkWrap {
 }
 tt_content.image.20.1.imageLinkWrap.height =
 tt_content.image.20.1.imageLinkWrap.width =
+
+# fix image captions as in ADWD-1050
+plugin.tx_cssstyledcontent._CSS_DEFAULT_STYLE (
+	figcaption.csc-textpic-caption { display: block; padding: 10px 0; }
+)
