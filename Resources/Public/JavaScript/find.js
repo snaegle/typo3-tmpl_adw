@@ -15,6 +15,16 @@ var tx_find = (function() {
 var URLParameterPrefix = 'tx_find_find';
 var container;
 
+/**
+ * add jQuery chosen to select boxes in extended search
+ */
+var addChosenToExtendedSearchSelects = function() {
+	// jQuery Chosen for klosterstatus
+	jQuery('.tx_find .field-status select').chosen({
+		placeholder_text_single: localise("Klosterstatus wählen")
+	})
+}
+
 
 /**
  * Initialise. Set up:
@@ -48,6 +58,11 @@ var initialise = function () {
 		}
 
 		jQuery('a.extendedSearch', container).click(toggleExtendedSearch);
+
+		if (jQuery('.tx_find .search-extended').length !== 0) {
+			addChosenToExtendedSearchSelects();
+		}
+
 
 		jQuery('.position .resultPosition', container).click(onClickRecordNumber);
 	});
@@ -424,8 +439,6 @@ var detailViewWithPaging = function (element, position) {
 	return true;
 };
 
-
-
 /**
  * Toggles extended search: shows/hides additional fields
  * and changes location URL to reflect the state.
@@ -443,6 +456,7 @@ var toggleExtendedSearch = function () {
 		jThis.text(this.getAttribute('extendedstring'));
 		jQuery('.field-mode-extended', jForm).slideDown('fast');
 		changeURLParameterForPage('extended', 1);
+		addChosenToExtendedSearchSelects();
 	}
 	else {
 		jThis.text(this.getAttribute('simplestring'));
@@ -450,7 +464,6 @@ var toggleExtendedSearch = function () {
 		changeURLParameterForPage('extended');
 	}
 	jForm.toggleClass('search-simple').toggleClass('search-extended');
-
 	return false;
 };
 
