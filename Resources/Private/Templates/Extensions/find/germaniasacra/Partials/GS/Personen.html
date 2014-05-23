@@ -30,6 +30,8 @@
 			anmerkung: \"{s:find.highlightField(field:'person_anmerkung', document:document, results:results)}\",
 			von_verbal: document.person_von_verbal,
 			bis_verbal: document.person_bis_verbal,
+			person_von: document.person_von,
+			person_bis: document.person_bis,
 			gso: document.person_gso
 		}">
 
@@ -45,7 +47,8 @@
 				</nav>
 			</f:if>
 
-			<f:groupedFor each="{personen}" as="personenMitAmt" groupBy="bezeichnungOriginal" groupKey="amt">
+			<a:sortEntriesByDate array="{personen}" as="sortedPersonen">
+			<f:groupedFor each="{sortedPersonen}" as="personenMitAmt" groupBy="bezeichnungOriginal" groupKey="amt">
 				<f:alias map="{
 					samplePerson:'{s:data.arrayFirst(array:personenMitAmt)}',
 					amtClass:'{s:format.regexp(string:amt, match:\"/\s+/\", replace:\"_\")}'
@@ -89,6 +92,7 @@
 					</section>
 				</f:alias>
 			</f:groupedFor>
+			</a:sortEntriesByDate>
 		</s:data.transpose>
 		</div>
 	</section>

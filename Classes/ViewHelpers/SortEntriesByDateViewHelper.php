@@ -6,7 +6,7 @@ namespace Subugoe\TmplAdw\ViewHelpers;
  *
  *  (c) 2014 Ingo Pfennigstorf <pfennigstorf@sub-goettingen.de>
  *      Goettingen State Library
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -27,7 +27,7 @@ namespace Subugoe\TmplAdw\ViewHelpers;
  * ************************************************************* */
 
 /**
- * Description 
+ * Sorting of persons - first with date ascending by date and following without date record
  */
 class SortEntriesByDateViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
@@ -37,17 +37,28 @@ class SortEntriesByDateViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstr
 	 * @return mixed
 	 */
 	public function render($array, $as) {
-		uasort($array, function($a, $b) {
-
-			if (isset($a['von_verbal']) && $a['von_verbal'] !== '') {
-				return -1;
-			} else {
-				return 1;
+		$fromDates = array();
+		foreach ($array as $key => $row) {
+			if ($row['person_von'] !== 0) {
+				$fromDates[$key] = $row['person_von'];
 			}
+		}
 
-		});
+		$onlyWithDate = array();
+		$onlyWithoutDate = array();
+		foreach ($array as $key => $row) {
+			if ($row['person_von'] !== 0) {
+				array_push($onlyWithDate, $row);
+			} else {
+				array_push($onlyWithoutDate, $row);
+			}
+		}
 
-		$this->templateVariableContainer->add($as, $array);
+		array_multisort($fromDates, SORT_ASC, $onlyWithDate, SORT_DESC);
+
+		$personArray = array_merge($onlyWithDate, $onlyWithoutDate);
+
+		$this->templateVariableContainer->add($as, $personArray);
 		$output = $this->renderChildren();
 		$this->templateVariableContainer->remove($as);
 
