@@ -43,30 +43,57 @@ class SortEntriesByDateViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHe
 	}
 
 	protected $testData = array(
-				array(
-								'id' => 1,
-								'name' => 'Franz Konrad von Stadion',
-								'von_verbal' => '1513',
-								'bis_verbal' => ''
-				),
-				array(
-								'id' => 2,
-								'name' => 'Franz Konrad von Stadion',
-								'von_verbal' => '1516',
-								'bis_verbal' => ''
-				),
-				array(
-								'id' => 3,
-								'name' => 'Franz Konrad von Stadion',
-								'von_verbal' => '1516',
-								'bis_verbal' => '1616'
-				),
-				array(
-								'id' => 4,
-								'name' => 'Franz Konrad von Stadion',
-								'von_verbal' => '',
-								'bis_verbal' => ''
+			array(
+					'id' => 1,
+					'name' => 'Franz Konrad von Stadion',
+					'von_verbal' => '1513',
+					'bis_verbal' => ''
+			),
+			array(
+					'id' => 2,
+					'name' => 'Franz Konrad von Stadion',
+					'von_verbal' => '1516',
+					'bis_verbal' => ''
+			),
+			array(
+					'id' => 3,
+					'name' => 'Franz Konrad von Stadion',
+					'von_verbal' => '1516',
+					'bis_verbal' => '1616'
+			),
+			array(
+					'id' => 4,
+					'name' => 'Franz Konrad von Stadion',
+					'von_verbal' => '',
+					'bis_verbal' => ''
 			));
+
+	protected $expectedData = array(
+			array(
+					'id' => 4,
+					'name' => 'Franz Konrad von Stadion',
+					'von_verbal' => '',
+					'bis_verbal' => ''
+			),
+			array(
+					'id' => 3,
+					'name' => 'Franz Konrad von Stadion',
+					'von_verbal' => '1516',
+					'bis_verbal' => '1616'
+			),
+			array(
+					'id' => 2,
+					'name' => 'Franz Konrad von Stadion',
+					'von_verbal' => '1516',
+					'bis_verbal' => ''
+			),
+			array(
+					'id' => 1,
+					'name' => 'Franz Konrad von Stadion',
+					'von_verbal' => '1513',
+					'bis_verbal' => ''
+			),
+	);
 
 
 	/**
@@ -75,7 +102,7 @@ class SortEntriesByDateViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHe
 	public function renderAddsObjectNameToTemplateVariableContainer() {
 		$mockViewHelperNode = $this->getMock('TYPO3\\CMS\\Fluid\\Core\\Parser\\SyntaxTree\\ViewHelperNode', array('evaluateChildNodes'), array(), '', FALSE);
 		$mockViewHelperNode->expects($this->once())->method('evaluateChildNodes')->will($this->returnValue('foo'));
-		$this->templateVariableContainer->expects($this->at(0))->method('add')->with('as', $this->testData);
+		$this->templateVariableContainer->expects($this->at(0))->method('add')->with('as', $this->expectedData);
 		$this->templateVariableContainer->expects($this->at(1))->method('remove')->with('as');
 
 		$this->injectDependenciesIntoViewHelper($this->fixture);
@@ -91,7 +118,7 @@ class SortEntriesByDateViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHe
 
 		$this->injectDependenciesIntoViewHelper($this->fixture);
 		$this->fixture->setViewHelperNode($mockViewHelperNode);
-		$this->templateVariableContainer->expects($this->at(0))->method('add')->with('as', $this->testData);
+		$this->templateVariableContainer->expects($this->at(0))->method('add')->with('as', $this->expectedData);
 		$this->fixture->render($this->testData, 'as');
 
 	}
