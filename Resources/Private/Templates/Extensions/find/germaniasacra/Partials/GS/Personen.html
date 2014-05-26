@@ -34,7 +34,7 @@
 		}">
 
 			<f:if condition="{f:count(subject:personen)} > 15">
-				<nav>
+				<nav class="aemter">
 					<ol>
 						<f:groupedFor each="{personen}" as="personenMitAmt" groupBy="bezeichnungOriginal" groupKey="amt">
 							<f:alias map="{samplePerson:'{s:data.arrayFirst(array:personenMitAmt)}'}">
