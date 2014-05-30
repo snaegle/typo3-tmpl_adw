@@ -22,7 +22,8 @@
 		prov:'http://www.w3.org/ns/prov#',
 		geo:'http://www.w3.org/2003/01/geo/wgs84_pos#',
 		kloster:'{f:render(partial:\'GS/Permalink\')}',
-		person:'http://personendatenbank.germania-sacra.de/index/gsn/'
+		person:'http://personendatenbank.germania-sacra.de/index/gsn/',
+		license:'https://creativecommons.org/licenses/by-sa/3.0/'
 	}"
 	format="{LDFormat}"
 >
@@ -39,6 +40,7 @@
 			<s:linkedData.item subject="gnd:4031225-2" predicate="rdfs:label" language="de">Kloster (Körperschaft)</s:linkedData.item>
 			<s:linkedData.item subject="gnd:4031225-2" predicate="rdfs:label" language="en">Monastery (Corporate Body)</s:linkedData.item>
 
+			<s:linkedData.item subject="{klosterURI}" predicate="dcterms:licence" object="https://creativecommons.org/licenses/by-sa/3.0/" />
 			<s:linkedData.item subject="{klosterURI}" predicate="foaf:name">{doc.kloster}</s:linkedData.item>
 			<f:if condition="{doc.patrozinium}">
 				<s:linkedData.item subject="{klosterURI}" predicate="skos:altLabel">{doc.patrozinium}</s:linkedData.item>
