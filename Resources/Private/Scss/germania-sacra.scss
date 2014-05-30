@@ -1,3 +1,5 @@
+@import '_Includes/Settings';
+
 $formLabelWidth: 150px;
 
 .tx_find {
@@ -213,51 +215,60 @@ $formLabelWidth: 150px;
 		font-style: italic;
 	}
 
-	.mapContainer .leaflet-map-pane * {
-		cursor: default;
+	.facetMap-container {
+			height: 2em !important;
 	}
 
-	.mapContainer .leafletMap_zoom {
-		position: absolute;
-		right: 0;
-		z-index: 7;
-		width: 25px;
-		height: 25px;
-		text-align: center;
-		margin: 5px;
-		color: #c90230;
-		font-size: 18px;
-		background-color: #fff;
-		line-height: 27px;
+	.leafletMap_popup {
+		a {
+			color: $link-color;
+			font-weight: normal;
+		}
+		td {
+			padding-right: 5px;
+			white-space: nowrap;
+		}
 	}
 
+		.mapContainer {
 
-	.mapContainer .leafletMap_copy {
-		position: absolute;
-		display: inline-flex;
-		z-index: 7;
-		bottom: 0;
-		right: 0;
-		padding: 0 5px;
-		margin: 0;
-		font-size: 0.8em;
-		background: rgba(255, 255, 255, 0.7);
-		cursor: default;
-	}
-	.mapContainer .leafletMap_resize {
-			cursor: pointer;
+			.leafletMap_copy {
+				position: absolute;
+				display: inline-flex;
+				z-index: 7;
+				bottom: 0;
+				right: 0;
+				padding: 0 5px;
+				margin: 0;
+				font-size: 0.8em;
+				background: rgba(255, 255, 255, 0.7);
+				cursor: default;
+			}
+			.leafletMap_resize {
+				cursor: pointer;
+			}
+
+			.leafletMap_view {
+				width: 49%;
+				padding: 3px 0px 3px 0px;
+				font-weight: bold;
+				border-radius: 3px;
+				background-color: $button-color-inactive;
+				border-top: 1px solid $button-border-color-light;
+				border-right: 1px solid $button-border-color-light;
+				border-bottom: 1px solid $button-border-color-light;
+				border-left: 1px solid $button-border-color-light;
+				color: $font-default-color;
+			}
 		}
 
-	.mapContainer .leaflet-popup-content h3 a {
-		color: #c90230;
-		font-weight: normal;
-	}
-
-
-	.leafletMap_resizeLink {
-		font: 1em / 22px Cambria, Georgia, serif; // matches font of other facets
-		cursor: pointer;
-	}
+		#leafletMap_spinner {
+			position: relative;
+			top: -350px;
+			left: 350px;
+			z-index: 3;
+			color: rgba(241, 128, 23, 0.6);
+		}
 }
 
 .tx_find .person ol,
