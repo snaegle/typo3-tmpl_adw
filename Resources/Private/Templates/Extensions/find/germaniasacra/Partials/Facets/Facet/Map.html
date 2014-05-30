@@ -49,7 +49,7 @@
 
 		/* Add functionality to toggle buttons */
 		$("#leafletMap_btnGroup input").click(function() {
-			leafletMapToggle($(this).val());
+			leafletMapToggle($(this).attr('id').replace('leafletMap_','').replace('_i', ''));
 		});
 
 		/* depending on the mode, the buttons are active or inactive.
