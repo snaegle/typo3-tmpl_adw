@@ -229,46 +229,28 @@ $formLabelWidth: 150px;
 			white-space: nowrap;
 		}
 	}
+	.marker-cluster-small, .marker-cluster-small div,
+	.marker-cluster-medium, .marker-cluster-medium div,
+	.marker-cluster-large, .marker-cluster-large div {
+		background-color: $cluster-color;
+	}
 
-		.mapContainer {
-
-			.leafletMap_copy {
-				position: absolute;
-				display: inline-flex;
-				z-index: 7;
-				bottom: 0;
-				right: 0;
-				padding: 0 5px;
-				margin: 0;
-				font-size: 0.8em;
-				background: rgba(255, 255, 255, 0.7);
-				cursor: default;
-			}
-			.leafletMap_resize {
-				cursor: pointer;
-			}
-
-			.leafletMap_view {
-				width: 49%;
-				padding: 3px 0px 3px 0px;
-				font-weight: bold;
-				border-radius: 3px;
-				background-color: $button-color-inactive;
-				border-top: 1px solid $button-border-color-light;
-				border-right: 1px solid $button-border-color-light;
-				border-bottom: 1px solid $button-border-color-light;
-				border-left: 1px solid $button-border-color-light;
-				color: $font-default-color;
-			}
+		/* IE 6-8 fallback colors */
+	.leaflet-oldie {
+		.marker-cluster-small, .marker-cluster-small div,
+		.marker-cluster-medium, .marker-cluster-medium div,
+		.marker-cluster-large, .marker-cluster-large div {
+			background-color: $cluster-color-ie;
 		}
+	}
 
-		#leafletMap_spinner {
-			position: relative;
-			top: -350px;
-			left: 350px;
-			z-index: 3;
-			color: rgba(241, 128, 23, 0.6);
-		}
+	#leafletMap_spinner {
+		position: relative;
+		top: -350px;
+		left: 350px;
+		z-index: 3;
+		color: rgba(241, 128, 23, 0.6);
+	}
 }
 
 .tx_find .person ol,
