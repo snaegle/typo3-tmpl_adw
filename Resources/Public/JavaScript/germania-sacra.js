@@ -20,7 +20,8 @@ var germaniaSacra = (function () {
 		if (config.ID) {
 			// Single item view.
 			tx_find.googleMapsLoader.load();
-			jQuery(document).bind('tx_find.mapsLoaded', mapsReady);
+			//next line removed, because it would prevent leaflet map in detailed view
+			//jQuery(document).bind('tx_find.mapsLoaded', mapsReady);
 		}
 		else if (jQuery('.facet-type-Map').length > 0) {
 			// Search result view.

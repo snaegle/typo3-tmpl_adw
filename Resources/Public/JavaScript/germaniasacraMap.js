@@ -112,12 +112,16 @@ function leafletMapGetDataFieldsOfFacets() {
 }
 
 
-function leafletMapSetViewToMarkerBounds() {
+function leafletMapSetViewToMarkerBounds(layer) {
 	/* changes view of map according to all markers presently shown */
-	_bounds = leafletMap.markers.markerGroup.getBounds()
-	if (_bounds.isValid()) {
-		leafletMap.map.fitBounds(_bounds)
-	}
+		var _bounds = layer.getBounds();
+		if (_bounds.isValid()) {
+			leafletMap.map.fitBounds(_bounds);
+		}
+
+	$.when($.ajax().done(function() {
+		leafletMap.map.setZoom(leafletMap.map.getZoom() > 15 ? 15 : leafletMap.map.getZoom());
+	}));
 }
 
 
@@ -165,13 +169,12 @@ function leafletMapInit() {
 	/* add scale to map */
 	L.control.scale().addTo(leafletMap.map);
 	leafletMap.markers.markerGroup = new L.MarkerClusterGroup({
-																  zoomToBoundsOnClick: false,
-																  showCoverageOnHover: false,
-																  disableClusteringAtZoom: 7
-															  });
+		zoomToBoundsOnClick: false,
+		showCoverageOnHover: false,
+		disableClusteringAtZoom: 7
+	});
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(leafletMap.map);
 
-	leafletMapSetViewToMarkerBounds();
 	leafletMap.loaded = true;
 	return leafletMap.loaded;
 }
@@ -276,7 +279,7 @@ function leafletMapAddDiverseMarkers() {
 			var kIFolder = germaniaSacra.config.resourcesBaseURL + "Ordenssymbole/"
 			var kDefIcon = kIFolder + "Kloster_allgemein.png";
 			var kShadIcon = kIFolder + "Shadow.png";
-			jQuery.getJSON(url, function(data) {
+			$.when(jQuery.getJSON(url, function(data) {
 				docs = data.response.docs;
 				for (index in docs) {
 					kID = docs[index].kloster_id;
@@ -363,7 +366,7 @@ function leafletMapAddDiverseMarkers() {
 					sessionStorage.setItem("leafletMap_coords", leafletMap.markers.marker[kID].kKoordinaten);
 					sessionStorage.setItem("leafletMap_id", kID);
 				}
-			});
+			}).done(function() {leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup)}));
 
 
 			if (_facetFields != sessionStorage.leafletMap_facetFields) {
@@ -375,7 +378,6 @@ function leafletMapAddDiverseMarkers() {
 		leafletMap.map.addLayer(leafletMap.markers.markerGroup);
 		addBordersToMap();
 	}))
-
 }
 
 var addBordersToMap = function() {
@@ -409,5 +411,58 @@ var addBordersToMap = function() {
 			onEachFeature: onEachFeature
 		}).addTo(leafletMap.map);
 	});
+}
 
+var leafletMapSmallMap = function(id) {
+
+	leafletMap.markers = {};
+	leafletMap.markers.marker = [];
+	leafletMap.markers.marker.push();
+
+	// add spinner to map
+	$("#"+id).append('<div id="leafletMap_spinner">' +
+			'<i class="fa fa-spinner fa-spin fa-3x"></i>' +
+			'</div>');
+	$("#leafletMap_spinner").css("top", "150px").css("left", "100px");
+	// create map
+	leafletMap.map = L.map(id, {minZoom: 2});
+	// create the tile layer with correct attribution
+
+	var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+	var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
+	leafletMap.map.addLayer(osm);
+
+	leafletMap.map.layer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(leafletMap.map);
+
+	leafletMap.markers.markerGroup = L.featureGroup();
+	$.when(leafletMapAddMarkerToSmallMap()).done(function() {
+		leafletMap.map.addLayer(leafletMap.markers.markerGroup);
+		addBordersToMap();
+		leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup);
+	}).done(function() {
+		$("#leafletMap_spinner").css("display", "none");
+	})
+}
+
+var leafletMapAddMarkerToSmallMap = function() {
+	for (var i=0; i< standorte.length; i++) {
+		if (standorte[i].icon) {
+			var icon = germaniaSacra.config.resourcesBaseURL + "Ordenssymbole/"+standorte[i].icon+".png";
+		} else {
+			var icon = germaniaSacra.config.resourcesBaseURL + "Ordenssymbole/Kloster_allgemein.png";
+		}
+		kIcon = L.icon({
+						iconUrl: icon,
+						iconSize: [21, 32],
+						iconAnchor: [10.5, 32],
+						popupAnchor: [0, -32]
+				});
+		var koordinaten = standorte[i].koordinaten.split(",");
+		var lat = koordinaten[0];
+		var lng = koordinaten[1];
+		kMarker = L.marker([lat, lng], {icon: kIcon}).addTo(leafletMap.markers.markerGroup);
+		kMarker.bindPopup();
+		kMarker.setPopupContent(standorte[i].klosterTitel);
+	}
 }
