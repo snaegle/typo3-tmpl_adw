@@ -55,7 +55,7 @@
 		/* depending on the mode, the buttons are active or inactive.
 			Default is list=active */
 		if (leafletMapGetMode() == "map") {
-			$("#leafletMap_map_i").attr("value", "checked");
+			$("#leafletMap_btnGroup input")[1].checked = true;
 		}
 	</script>
 	<style>
