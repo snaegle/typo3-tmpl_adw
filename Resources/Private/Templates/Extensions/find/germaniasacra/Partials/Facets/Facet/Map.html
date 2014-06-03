@@ -15,38 +15,78 @@
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js">
 </t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
-  <div class="mapContainer">
-    <div id="leafletMap_id" class="tool-mode__lmap">
-      <a class="leafletMap_resize">
-	<div class="leafletMap_zoom">
-	    <i class="fa fa-expand fa-1f"></i>
-	      </div>
-	</a>
-
-      <div class="leafletMap_copy"><a href="http://openstreetmap.org/copyright">Open street map</a>&nbsp;contributors
-	</div>
-      </div>
-    <a class="leafletMap_resize leafletMap_resizeLink">Interaktive Karte öffnen</a>
+	<div class="mapContainer">
+		<div id="leafletMap_btnGroup">
+			<input
+				type="radio"
+				name="view"
+				id="leafletMap_list_i"
+				value="list" checked />
+			<label for="leafletMap_list_i" id="leafletMap_list"><i class="fa fa-list-ol fa-1g fa-fw"></i>
+				<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.list"/>
+			</label>
+			<input
+				type="radio"
+				name="view"
+				id="leafletMap_map_i"
+				value="map" />
+			<label for="leafletMap_map_i"id="leafletMap_map"><i class="fa fa-map-marker fa-1g fa-fw"></i>
+				<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.map"/>
+			</label>
+		</div>
     </div>
-  <script>
-    if (!leafletMap_loaded) {
-    var leafletMap_markers = {};
-    var leafletMap_widthSmall;
-    var leafletMap_heightSmall;
-    var leafletMap_widthBig;
-    var leafletMap_heightBig;
-    var leafletMap_navigation;
-    var leafletMap_resultsList;
-    var leafletMap_resultsWidth;
-    var leafletMap_resultsHeight;
-    var leafletMap_content;
-    var leafletMap = L.map('leafletMap_id', {
-    zoomControl: false,
-    attributionControl: false
-    }).setView([52, 14], 3);
-    var leafletMap_loaded = leafletMapInit();
-    leafletMapAddDiverseMarkers("withoutPopups");
-    }
-    var leafletMap_filled = true;
-    </script>
+	<script>
+
+		/* If loaded for the first time, the object is defined */
+		var leafletMap = {};
+
+		/* change standard header */
+		$(".facet-id-map h1").text("<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.view"/>");
+
+
+		$("#top a").unbind("click", leafletMapClearStorage);
+		$("#top a").click(leafletMapClearStorage);
+
+		/* Add functionality to toggle buttons */
+		$("#leafletMap_btnGroup input").click(function() {
+			leafletMapToggle($(this).attr('id').replace('leafletMap_','').replace('_i', ''));
+		});
+
+		/* depending on the mode, the buttons are active or inactive.
+			Default is list=active */
+		if (leafletMapGetMode() == "map") {
+			$("#leafletMap_btnGroup input")[1].checked = true;
+		}
+	</script>
+	<style>
+		#leafletMap_btnGroup {
+			width: 100%;
+		}
+#leafletMap_btnGroup input[type="radio"] {
+	position: absolute;
+	left: -1000px;
+}
+
+#leafletMap_btnGroup label {
+    background-color:#ddd;
+    padding:4px 11px;
+	margin: 0px;
+    font-family:Arial;
+    font-size:16px;
+    cursor: pointer;
+	width: 40%;
+	display: block;
+}
+#leafletMap_btnGroup #leafletMap_list {
+	float: left;
+}
+#leafletMap_btnGroup #leafletMap_map {
+	float: right;
+}
+#leafletMap_btnGroup input[type="radio"]:checked + label {
+  background-color:#c90230;
+  color: #fff;
+  cursor: default;
+}
+	</style>
 </div>
