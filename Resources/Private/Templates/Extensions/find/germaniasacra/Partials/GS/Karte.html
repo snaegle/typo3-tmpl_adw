@@ -17,21 +17,22 @@
 <script>
 	var leafletMap = {};
 	var id="c-"+{document.id}+"-map";
-
 	var ID = {s:format.json(data:document.id)};
 	var standorte = [];
 	var koordinaten, titel, queryURL, institutionengenau, icon, ort, klosterTitel;
-	<f:for each="{document.koordinaten}" as="koordinaten" key="indexes" iteration="iter">
+	<f:for each="{document.koordinaten}" as="koordinaten" key="index" iteration="iter">
+		id={s:format.json(data:document.id)};
 		koordinaten = {s:format.json(data:koordinaten)};
 		titel = {s:format.json(data:document.kloster)};
-		institutionengenau = {s:format.json(data:"{s:data.valueForKey(array:document.koordinaten_institutionengenau, key:indexes)}")};
-		icon = {s:format.json(data:"{s:data.valueForKey(array:document.orden_graphik, key:indexes)}")};
-		ort = {s:format.json(data:"{s:data.valueForKey(array:document.ort, key:indexes)}")};
+		institutionengenau = {s:format.json(data:"{s:data.valueForKey(array:document.koordinaten_institutionengenau, key:index)}")};
+		icon = {s:format.json(data:"{s:data.valueForKey(array:document.orden_graphik, key:index)}")};
+		ort = {s:format.json(data:"{s:data.valueForKey(array:document.ort, key:index)}")};
 		<f:if condition="{iter.total} > 1">
 			<f:then>klosterTitel = titel+",<br />Standort "+ort;</f:then>
 			<f:else>klosterTitel = titel</f:else>
 		</f:if>
 		standorte.push({
+			id:id,
 			koordinaten: koordinaten,
 			titel: titel,
 			queryURL: queryURL,
@@ -42,6 +43,7 @@
 	</f:for>
 
 	jQuery(document).bind('tx_find.mapsLoaded', function() {
-		leafletMapSmallMap(id);
-	});
+		leafletMapInit("small", "c-"+{document.id}+"-map");
+		$.when($.ajax(leafletMapAddDiverseMarkers()))
+	})
 </script>

@@ -125,9 +125,9 @@ function leafletMapSetViewToMarkerBounds(layer) {
 }
 
 
-function leafletMapInit() {
+function leafletMapInit(type, id) {
 	/*
-	 create map and fill with markers
+	 create map
 	 */
 
 	leafletMap.markers = {};
@@ -135,56 +135,93 @@ function leafletMapInit() {
 	leafletMap.markers.popup = [];
 	leafletMap.markers.marker.push();
 	leafletMap.markers.popup.push();
-	sessionStorage.setItem("leafletMap_facetFields", "");
 
-	/* create dom-element as container for map */
-	$(".results").find(".navigation").next(".grid_12")
-		.append('<div id="leafletMap_wrapper">' +
-				'<div id="leafletMap_id"></div>' +
-				'<div id="leafletMap_spinner">' +
-				'<i class="fa fa-spinner fa-spin fa-3x"></i>' +
-				'</div>' +
-				'</div>');
+
+	switch (type) {
+		case "small":
+			leafletMap.markers.markerGroup = new L.featureGroup();
+			// add spinner to map
+				$("#"+id).append('<div id="leafletMap_spinner">' +
+					'<i class="fa fa-spinner fa-spin fa-3x"></i>' +
+					'</div>');
+				// maybe bring css to scss with own spinner-class
+				$("#leafletMap_spinner").css("top", "150px").css("left", "100px");
+			$.when($.ajax(leafletMapCreateMap(id)))
+			.done(function() {leafletMapAddMarkerToSmallMap()})
+			break;
+		case "big":
+			leafletMap.markers.markerGroup = new L.MarkerClusterGroup({
+				zoomToBoundsOnClick: false,
+				showCoverageOnHover: false,
+				disableClusteringAtZoom: 7
+			});
+			sessionStorage.setItem("leafletMap_facetFields", "");
+
+			/* create dom-element as container for map */
+			$(".results").find(".navigation").next(".grid_12")
+				.append('<div id="leafletMap_wrapper">' +
+					'<div id="leafletMap_id"></div>' +
+					'<div id="leafletMap_spinner">' +
+					'<i class="fa fa-spinner fa-spin fa-3x"></i>' +
+					'</div>' +
+					'</div>');
+			leafletMapCreateMap(id);
+			// set viewPort, depending of earlier settings
+			if (!sessionStorage.leafletMap_lat) {
+				leafletMapCenter("50", "10", "5");
+			} else {
+				leafletMapCenter(sessionStorage.leafletMap_lat, sessionStorage.leafletMap_lng, sessionStorage.leafletMap_zoom);
+			}
+			// make map stores its viewPort
+			leafletMap.map.on("moveend", function() {
+				leafletMapCenter(leafletMap.map.getCenter().lat, leafletMap.map.getCenter().lng, leafletMap.map.getZoom());
+			});
+			/* add scale to map */
+			L.control.scale().addTo(leafletMap.map);
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(leafletMap.map);
+			break;
+	}
+
+	leafletMap.loaded = true;
+	return leafletMap.loaded;
+}
+
+function leafletMapCreateMap(id) {
 
 	// create map
-	leafletMap.map = L.map('leafletMap_id', {minZoom: 2});
-
-	// set viewPort, depending of earlier settings
-	if (!sessionStorage.leafletMap_lat) {
-		leafletMapCenter("50", "10", "5");
-	} else {
-		leafletMapCenter(sessionStorage.leafletMap_lat, sessionStorage.leafletMap_lng, sessionStorage.leafletMap_zoom);
-	}
-	// make map stores its viewPort
-	leafletMap.map.on("moveend", function() {
-		leafletMapCenter(leafletMap.map.getCenter().lat, leafletMap.map.getCenter().lng, leafletMap.map.getZoom());
-	});
-
+	leafletMap.map = L.map(id, {minZoom: 2});
 	/* create the tile layer with correct attribution */
 	var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
 	var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
 	leafletMap.map.addLayer(osm);
 
-	/* add scale to map */
-	L.control.scale().addTo(leafletMap.map);
-	leafletMap.markers.markerGroup = new L.MarkerClusterGroup({
-		zoomToBoundsOnClick: false,
-		showCoverageOnHover: false,
-		disableClusteringAtZoom: 7
-	});
-	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(leafletMap.map);
-
-	leafletMap.loaded = true;
-	return leafletMap.loaded;
 }
 
+
+var leafletMapCreateSmallMap = function(id) {
+
+	// create map
+	leafletMap.map = L.map(id, {minZoom: 2});
+	// create the tile layer with correct attribution
+
+	var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+	var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
+	leafletMap.map.addLayer(osm);
+
+	leafletMap.map.layer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(leafletMap.map);
+
+
+
+
+}
 
 function leafletMapGrow() {
 	/* Only if not loaded and filled yet */
 
 	if (!leafletMap.loaded) {
-		leafletMapInit();
+		leafletMapInit("big", 'leafletMap_id');
 	}
 	if (!leafletMap.grown) {
 		/* switch content */
@@ -238,9 +275,7 @@ function leafletMapAddDiverseMarkers() {
 	 merge information rather than create several markers
 	 */
 	$.when($.ajax().done(function() {
-		// hide loading spinner
-		$("#leafletMap_spinner").css("display", "none");
-		if (!leafletMap.filled && leafletMap.loaded) {
+		if ( !leafletMap.filled && leafletMap.loaded ) {
 
 			/* get map boundaries */
 			var southWest = [36.006667, -9.5008];
@@ -257,12 +292,23 @@ function leafletMapAddDiverseMarkers() {
 			//var queryURL = germaniaSacra.config.queryURLTemplate.replace('%23%23%23TERM%23%23%23', escapedQuery);
 			var _facetFields = leafletMapGetDataFieldsOfFacets();
 			var queryURL = "tx-find-data";
-			queryURL += location.pathname;
+			var _location = location.pathname;
+			if (_location.match("^//")) {
+				_location = _location.substring(1,_location.length)
+			}
+			var _index = _location.indexOf("/gsn/");
+			if (_index != -1) {
+				queryURL += _location.substring(0,_index)+"/";
+			} else {
+				queryURL += location.pathname;
+			}
 			queryURL += "?tx_find_find[q][raw]=";
 			queryURL += encodeURIComponent(solrQuery);
 			queryURL += '&' + encodeURIComponent('tx_find_find[data-fields]') + '=' + encodeURIComponent(dataFields);
 			queryURL += '&' + "tx_find_find[count]=3000&tx_find_find[data-format]=raw-solr-response&tx_find_find[format]=data"
-			queryURL += '&' + _facetFields;
+			if (_facetFields) {
+				queryURL += '&' + _facetFields;
+			}
 			var url = document.baseURI + queryURL;
 
 			/* get information from JSON-Object */
@@ -366,7 +412,13 @@ function leafletMapAddDiverseMarkers() {
 					sessionStorage.setItem("leafletMap_coords", leafletMap.markers.marker[kID].kKoordinaten);
 					sessionStorage.setItem("leafletMap_id", kID);
 				}
-			}).done(function() {leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup)}));
+			}).done(function() {
+				// hide loading spinner
+				$("#leafletMap_spinner").css("display", "none");
+				if (leafletMapGetMode()) {
+					leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup);
+				}
+			}));
 
 
 			if (_facetFields != sessionStorage.leafletMap_facetFields) {
@@ -375,18 +427,17 @@ function leafletMapAddDiverseMarkers() {
 			}
 			leafletMap.filled = true;
 		}
+
+	})).done(function() {
 		leafletMap.map.addLayer(leafletMap.markers.markerGroup);
 		addBordersToMap();
-	}))
+	})
 }
 
 var addBordersToMap = function() {
 
-	var geojson;
-
-
 	function zoomToFeature(e) {
-		map.fitBounds(e.target.getBounds());
+		leafletMap.map.fitBounds(e.target.getBounds());
 	}
 
 	function onEachFeature(feature, layer) {
@@ -406,63 +457,51 @@ var addBordersToMap = function() {
 	}
 
 	$.getJSON(germaniaSacra.config.resourcesBaseURL + 'Bistumsgrenzen/Alle.geojson', function(statesData) {
-		geojson = L.geoJson(statesData, {
+		leafletMap.markers.geojson = L.geoJson(statesData, {
 			style: style,
 			onEachFeature: onEachFeature
 		}).addTo(leafletMap.map);
 	});
 }
 
-var leafletMapSmallMap = function(id) {
-
-	leafletMap.markers = {};
-	leafletMap.markers.marker = [];
-	leafletMap.markers.marker.push();
-
-	// add spinner to map
-	$("#"+id).append('<div id="leafletMap_spinner">' +
-			'<i class="fa fa-spinner fa-spin fa-3x"></i>' +
-			'</div>');
-	$("#leafletMap_spinner").css("top", "150px").css("left", "100px");
-	// create map
-	leafletMap.map = L.map(id, {minZoom: 2});
-	// create the tile layer with correct attribution
-
-	var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-	var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-	var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
-	leafletMap.map.addLayer(osm);
-
-	leafletMap.map.layer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(leafletMap.map);
-
-	leafletMap.markers.markerGroup = L.featureGroup();
-	$.when(leafletMapAddMarkerToSmallMap()).done(function() {
-		leafletMap.map.addLayer(leafletMap.markers.markerGroup);
-		addBordersToMap();
-		leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup);
-	}).done(function() {
-		$("#leafletMap_spinner").css("display", "none");
-	})
-}
-
 var leafletMapAddMarkerToSmallMap = function() {
-	for (var i=0; i< standorte.length; i++) {
-		if (standorte[i].icon) {
-			var icon = germaniaSacra.config.resourcesBaseURL + "Ordenssymbole/"+standorte[i].icon+".png";
-		} else {
-			var icon = germaniaSacra.config.resourcesBaseURL + "Ordenssymbole/Kloster_allgemein.png";
-		}
-		kIcon = L.icon({
+	// Creation of another layergroup to zoom around
+	leafletMap.markers.detailGroup = L.featureGroup();
+	$.when($.ajax().done(function() {
+
+		for (var i=0; i< standorte.length; i++) {
+			if (standorte[i].icon) {
+				var icon = germaniaSacra.config.resourcesBaseURL + "Ordenssymbole/"+standorte[i].icon+".png";
+			} else {
+				var icon = germaniaSacra.config.resourcesBaseURL + "Ordenssymbole/Kloster_allgemein.png";
+			}
+			kSIcon = L.icon({
 						iconUrl: icon,
-						iconSize: [21, 32],
+						iconSize: [31.5, 48],
 						iconAnchor: [10.5, 32],
 						popupAnchor: [0, -32]
 				});
-		var koordinaten = standorte[i].koordinaten.split(",");
-		var lat = koordinaten[0];
-		var lng = koordinaten[1];
-		kMarker = L.marker([lat, lng], {icon: kIcon}).addTo(leafletMap.markers.markerGroup);
-		kMarker.bindPopup();
-		kMarker.setPopupContent(standorte[i].klosterTitel);
-	}
+			var koordinaten = standorte[i].koordinaten.split(",");
+			var lat = koordinaten[0];
+			var lng = koordinaten[1];
+			kMarker = L.marker([lat, lng], {icon: kSIcon}).addTo(leafletMap.markers.detailGroup);
+			kContent = '<div id="' + standorte[i].id + '" class="leafletMap_popup"><table><tr><td>';
+			kContent += standorte[i].klosterTitel;
+			kContent += '</td></tr></table></div>';
+			kMarker.bindPopup();
+			kMarker.setPopupContent(kContent);
+			// Removal of the marker from ajax
+			for (var n=0; n< leafletMap.markers.markerGroup.getLayers().length;n++) {
+				var tmp = leafletMap.markers.markerGroup.getLayers()[n];
+				if (tmp) {
+					if (tmp._popup._content.indexOf('id="'+standorte[i].id)!=-1) {
+						leafletMap.markers.markerGroup.removeLayer(tmp)
+					}
+				}
+			}
+		}
+		leafletMap.map.addLayer(leafletMap.markers.detailGroup);
+		leafletMapSetViewToMarkerBounds(leafletMap.markers.detailGroup);
+	}))
 }
+
