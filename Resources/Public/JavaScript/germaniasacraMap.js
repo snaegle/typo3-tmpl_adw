@@ -182,6 +182,7 @@ function leafletMapInit(type, id) {
 			break;
 	}
 
+
 	leafletMap.loaded = true;
 	return leafletMap.loaded;
 }
@@ -451,13 +452,32 @@ var addBordersToMap = function() {
 			weight: 2,
 			opacity: 1,
 			color: '#f49739',
-			dashArray: '3',
+			dashArray: '7',
 			fillOpacity: 0.1
 		};
 	}
 
+	// change line style with zoom level to blur them out when closer
+	leafletMap.map.on("zoomend", function() {
+		leafletMap.zoomLevel = leafletMap.map.getZoom();
+
+		if (leafletMap.zoomLevel >= 12) {
+			leafletMap.markers.geoJson
+				.setStyle({weight: "16", opacity: "0.2", dashArray: "21"});
+		} else {
+			if (leafletMap.zoomLevel > 9 && leafletMap.zoomLevel < 12) {
+				leafletMap.markers.geoJson
+					.setStyle({weight: "8", opacity: "0.5", dashArray: "14"});
+			} else {
+				leafletMap.markers.geoJson
+					.setStyle({weight: "2", opacity: "1", dashArray: "7"});
+			}
+		}
+	})
+
+
 	$.getJSON(germaniaSacra.config.resourcesBaseURL + 'Bistumsgrenzen/Alle.geojson', function(statesData) {
-		leafletMap.markers.geojson = L.geoJson(statesData, {
+		leafletMap.markers.geoJson = L.geoJson(statesData, {
 			style: style,
 			onEachFeature: onEachFeature
 		}).addTo(leafletMap.map);
