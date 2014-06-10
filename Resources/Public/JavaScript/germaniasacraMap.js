@@ -9,6 +9,12 @@ $(function() {
 	if (leafletMapGetMode() == "map") {
 		leafletMapGrow();
 	}
+	// remove sessionStorage if there is no filter -> the page is newly opened
+	if (document.location.href.indexOf("/?tx_find_find") == "-1") {
+		console.log("nix");
+		sessionStorage.clear();
+		sessionStorage.setItem("new", "1")
+	}
 });
 
 
@@ -416,8 +422,9 @@ function leafletMapAddDiverseMarkers() {
 			}).done(function() {
 				// hide loading spinner
 				$("#leafletMap_spinner").css("display", "none");
-				if (leafletMapGetMode()) {
+				if (sessionStorage.new) {
 					leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup);
+					sessionStorage.setItem("new",0);
 				}
 			}));
 
