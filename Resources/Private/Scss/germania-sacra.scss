@@ -226,7 +226,11 @@ $formLabelWidth: 150px;
 		}
 		td {
 			padding-right: 5px;
-			white-space: nowrap;
+			padding-top: 5px;
+			line-height: 1.2;
+		}
+		h3 {
+			line-height: 1.2;
 		}
 	}
 	.marker-cluster-small, .marker-cluster-small div,
