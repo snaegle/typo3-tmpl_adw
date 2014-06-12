@@ -9,6 +9,11 @@ $(function() {
 	if (leafletMapGetMode() == "map") {
 		leafletMapGrow();
 	}
+	// remove sessionStorage if there is no filter -> the page is newly opened
+	if (document.location.href.indexOf("/?") == "-1") {
+		sessionStorage.clear();
+		sessionStorage.setItem("pageEnter", "1")
+	}
 });
 
 
@@ -416,8 +421,9 @@ function leafletMapAddDiverseMarkers() {
 			}).done(function() {
 				// hide loading spinner
 				$("#leafletMap_spinner").css("display", "none");
-				if (leafletMapGetMode()) {
+				if (sessionStorage.pageEnter) {
 					leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup);
+					sessionStorage.setItem("pageEnter",0);
 				}
 			}));
 
