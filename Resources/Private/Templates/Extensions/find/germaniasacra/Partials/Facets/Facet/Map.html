@@ -13,6 +13,9 @@
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.js"></t3jquery:addJQueryAndScript>
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.markercluster.js"></t3jquery:addJQueryAndScript>
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js">
+
+
+
 </t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
 	<div class="mapContainer">
@@ -36,6 +39,20 @@
 		</div>
     </div>
 	<script>
+		var resourcesBaseURL = {s:format.json(data:"{f:uri.resource(
+					path:'Images/GermaniaSacra/',
+					absolute:'1',
+					extensionName: 'tmpl_adw'
+				)}")};
+
+
+				var IDURLTemplate = {s:format.json(data:"{f:uri.action(
+					arguments:'{
+						id:\'###ID###\'
+					}',
+					action:'detail',
+					noCacheHash:'1'
+				)}")};
 
 		/* If loaded for the first time, the object is defined */
 		var leafletMap = {};
