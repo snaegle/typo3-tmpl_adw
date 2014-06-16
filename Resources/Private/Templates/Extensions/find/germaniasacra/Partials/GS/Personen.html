@@ -47,8 +47,7 @@
 				</nav>
 			</f:if>
 
-			<a:sortEntriesByDate array="{personen}" as="sortedPersonen">
-			<f:groupedFor each="{sortedPersonen}" as="personenMitAmt" groupBy="bezeichnungOriginal" groupKey="amt">
+			<f:groupedFor each="{personen}" as="personenMitAmt" groupBy="bezeichnungOriginal" groupKey="amt">
 				<f:alias map="{
 					samplePerson:'{s:data.arrayFirst(array:personenMitAmt)}',
 					amtClass:'{s:format.regexp(string:amt, match:\"/\s+/\", replace:\"_\")}'
@@ -62,37 +61,38 @@
 							</f:if>
 						</h3>
 						<ol>
-							<f:for each="{personenMitAmt}" as="person">
-								<li>
-									<f:if condition="{person.von_verbal}{person.bis_verbal}">
-										<span class="zeitraum">{person.von_verbal}{f:if(condition:person.bis_verbal, then:'-{person.bis_verbal}')}</span>
-									</f:if>
-									<f:link.external
-										uri="http://personendatenbank.germania-sacra.de/index/gsn/{person.gso}"
-										title="{person.bezeichnungOriginal} {person.nameOriginal} in der Personendatenbank anzeigen"
-									>
-										<f:if condition="{person.name}">
-											<f:then>
-												<span class="name">{f:format.raw(value:person.name)}</span>
-											</f:then>
-											<f:else>
-												unbekannter Name
-											</f:else>
+							<a:sortEntriesByDate array="{personenMitAmt}" as="sortedPersonen">
+								<f:for each="{sortedPersonen}" as="person">
+									<li>
+										<f:if condition="{person.von_verbal}{person.bis_verbal}">
+											<span class="zeitraum">{person.von_verbal}{f:if(condition:person.bis_verbal, then:'-{person.bis_verbal}')}</span>
 										</f:if>
-									</f:link.external>
-									<f:if condition="{person.namensalternativen}">
-										<span class="namensalternativen">{f:format.raw(value:person.namensalternativen)}</span>
-									</f:if>
-									<f:if condition="{person.anmerkung}">
-										<span class="bemerkung">{f:format.raw(value:person.anmerkung)}</span>
-									</f:if>
-								</li>
-							</f:for>
+										<f:link.external
+											uri="http://personendatenbank.germania-sacra.de/index/gsn/{person.gso}"
+											title="{person.bezeichnungOriginal} {person.nameOriginal} in der Personendatenbank anzeigen"
+										>
+											<f:if condition="{person.name}">
+												<f:then>
+													<span class="name">{f:format.raw(value:person.name)}</span>
+												</f:then>
+												<f:else>
+													unbekannter Name
+												</f:else>
+											</f:if>
+										</f:link.external>
+										<f:if condition="{person.namensalternativen}">
+											<span class="namensalternativen">{f:format.raw(value:person.namensalternativen)}</span>
+										</f:if>
+										<f:if condition="{person.anmerkung}">
+											<span class="bemerkung">{f:format.raw(value:person.anmerkung)}</span>
+										</f:if>
+									</li>
+								</f:for>
+							</a:sortEntriesByDate>
 						</ol>
 					</section>
 				</f:alias>
 			</f:groupedFor>
-			</a:sortEntriesByDate>
 		</s:data.transpose>
 		</div>
 	</section>
