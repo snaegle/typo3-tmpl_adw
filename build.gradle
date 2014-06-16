@@ -1,5 +1,3 @@
-ant.importBuild 'build.xml'
-
 loadConfiguration()
 def env = hasProperty('env') ? env : 'development'
 
