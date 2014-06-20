@@ -10,11 +10,26 @@
 <s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.css"/>
 <s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/Css/germaniasacraMap.css"/>
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.js"></t3jquery:addJQueryAndScript>
-<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js"></t3jquery:addJQueryAndScript>
+<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js">
+</t3jquery:addJQueryAndScript>
 
 <div id="c-{document.id}-map" class="map"></div>
 
 <script>
+	var resourcesBaseURL = {s:format.json(data:"{f:uri.resource(
+				path:'Images/GermaniaSacra/',
+				absolute:'1',
+				extensionName: 'tmpl_adw'
+			)}")};
+
+
+			var IDURLTemplate = {s:format.json(data:"{f:uri.action(
+				arguments:'{
+					id:\'###ID###\'
+				}',
+				action:'detail',
+				noCacheHash:'1'
+			)}")};
 	var leafletMap = {};
 	var id="c-"+{document.id}+"-map";
 	var ID = {s:format.json(data:document.id)};
@@ -44,6 +59,6 @@
 
 	jQuery(document).bind('tx_find.mapsLoaded', function() {
 		leafletMapInit("small", "c-"+{document.id}+"-map");
-		$.when($.ajax(leafletMapAddDiverseMarkers()))
+		//$.when($.ajax(leafletMapAddDiverseMarkers()))
 	})
 </script>
