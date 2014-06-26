@@ -9,15 +9,10 @@ $(function() {
 	if (leafletMapGetMode() == "map") {
 		leafletMapGrow();
 	}
-	// remove sessionStorage if there is no filter -> the page is newly opened
-	if (document.location.href.indexOf("/?") == "-1") {
-		sessionStorage.clear();
-		sessionStorage.setItem("pageEnter", "1")
-	}
 });
 
 
-function leafletMapGetMode() {
+var leafletMapGetMode = function() {
 	var url = decodeURIComponent(document.location.href);
 	var mode = false;
 	if (url.indexOf('[mode]=map') !== -1) {
@@ -27,11 +22,7 @@ function leafletMapGetMode() {
 		mode = "list";
 	}
 	return mode;
-}
-
-function leafletMapClearStorage() {
-	sessionStorage.clear();
-}
+};
 
 var leafletMapToggle = function(mode) {
 	if (mode != leafletMapGetMode()) {
@@ -50,29 +41,9 @@ var leafletMapToggle = function(mode) {
 		}
 	}
 	return mode;
-}
+};
 
-
-function leafletMapCenter(lat, lng, zoom) {
-	/*
-	 store viewing informations for map
-	 persistent of reload
-	 */
-	if (!lat || !leafletMap.map) {
-		lat = leafletMap.map.getCenter().lat;
-		lng = leafletMap.map.getCenter().lng;
-		zoom = leafletMap.map.getZoom();
-	} else {
-		leafletMap.map.setView([lat, lng], zoom);
-	}
-	sessionStorage.setItem("leafletMap_lat", lat);
-	sessionStorage.setItem("leafletMap_lng", lng);
-	sessionStorage.setItem("leafletMap_zoom", zoom);
-
-	return lat + ", " + lng + ", " + zoom;
-}
-
-function leafletMapGetDataFieldsOfFacets() {
+var leafletMapGetDataFieldsOfFacets = function() {
 	/*
 	 find facet filters,
 	 remove them from original search string (because they are not sufficient
@@ -90,19 +61,19 @@ function leafletMapGetDataFieldsOfFacets() {
 		str = "";
 	}
 	return str;
-}
+};
 
 
-function leafletMapSetViewToMarkerBounds(layer) {
+var leafletMapSetViewToMarkerBounds = function(layer) {
 	/* changes view of map according to all markers presently shown */
 		var _bounds = layer.getBounds();
 		if (_bounds.isValid()) {
-			leafletMap.map.fitBounds(_bounds, {maxZoom: 13});
+			leafletMap.map.fitBounds(_bounds, {maxZoom: 13, padding: [4,4]});
 		}
-}
+};
 
 
-function leafletMapInit(type, id) {
+var leafletMapInit = function(type, id) {
 	/*
 	 create map
 	 */
@@ -144,27 +115,25 @@ function leafletMapInit(type, id) {
 					'</div>' +
 					'</div>');
 			leafletMapCreateMap(id);
-			// set viewPort, depending of earlier settings
-			if (!sessionStorage.leafletMap_lat) {
-				leafletMapCenter("50", "10", "5");
-			} else {
-				leafletMapCenter(sessionStorage.leafletMap_lat, sessionStorage.leafletMap_lng, sessionStorage.leafletMap_zoom);
-			}
-			// make map stores its viewPort
-			leafletMap.map.on("moveend", function() {
-				leafletMapCenter(leafletMap.map.getCenter().lat, leafletMap.map.getCenter().lng, leafletMap.map.getZoom());
-			});
+
 			/* add scale to map */
 			L.control.scale().addTo(leafletMap.map);
 			L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(leafletMap.map);
+
+			// make map stores its viewPort
+			$(window).unload(function() {
+				sessionStorage.setItem("lat", leafletMap.map.getCenter().lat);
+				sessionStorage.setItem("lng", leafletMap.map.getCenter().lng);
+				sessionStorage.setItem("zoom", leafletMap.map.getZoom());
+			});
 			break;
 	}
-}
+};
 
-function leafletMapCreateMap(id) {
+var leafletMapCreateMap = function(id) {
 
 	// create map
-	leafletMap.map = L.map(id, {minZoom: 2});
+	leafletMap.map = L.map(id, {minZoom: 2}).setView([51,10],6);
 	/* create the tile layer with correct attribution */
 	var osmUrl = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 	var osmAttrib = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>';
@@ -173,11 +142,10 @@ function leafletMapCreateMap(id) {
 
 	leafletMap.loaded = true;
 	return leafletMap.loaded;
-}
+};
 
-function leafletMapGrow() {
+var leafletMapGrow = function() {
 	/* Only if not loaded and filled yet */
-
 	if (!leafletMap.loaded) {
 		leafletMapInit("big", 'leafletMap_id');
 	}
@@ -198,18 +166,25 @@ function leafletMapGrow() {
 		}
 		leafletMap.map.invalidateSize();
 
-		/* reorient map, according to former view (if existent) */
-		leafletMapCenter();
-
 		leafletMapAddDiverseMarkers();
+
+		$(document).ajaxComplete(function() {
+			/* reorient map, according to former view (if existent) */
+			if (sessionStorage.lat) {
+				leafletMap.map.setView([sessionStorage.lat, sessionStorage.lng], sessionStorage.zoom);
+			} else {
+				leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup);
+			}
+		});
+
 		// the parameter has to be explicitly removed first, than  set
 		tx_find.changeURLParameterForPage("mode");
 		tx_find.changeURLParameterForPage("mode", "map");
 		leafletMap.grown = true;
 	}
-}
+};
 
-function leafletMapShrink() {
+var leafletMapShrink = function() {
 	/* switch content */
 	$(".navigation").children().toggle();
 	$(".resultList").toggle();
@@ -220,9 +195,9 @@ function leafletMapShrink() {
 	tx_find.changeURLParameterForPage("mode", "list");
 
 	leafletMap.grown = false;
-}
+};
 
-function leafletMapAddDiverseMarkers() {
+var leafletMapAddDiverseMarkers = function() {
 	/*
 	 add URLparameter to create page with all information
 	 read the page and create the markers
@@ -283,9 +258,9 @@ function leafletMapAddDiverseMarkers() {
 		$.when(jQuery.getJSON(url, function(data) {
 			docs = data.response.docs;
 			for (index in docs) {
-				kID = docs[index].kloster_id;
-				kLocation = docs[index].koordinaten;
-				kLocation = kLocation.toString().split(",");
+				var kID = docs[index].kloster_id;
+				var kLocation = docs[index].koordinaten;
+				var kLocation = kLocation.toString().split(",");
 				leafletMap.markers.marker[kID] = {};
 				leafletMap.markers.marker[kID].kID = docs[index].id;
 				leafletMap.markers.marker[kID].kKoordinaten = docs[index].koordinaten;
@@ -297,26 +272,23 @@ function leafletMapAddDiverseMarkers() {
 				leafletMap.markers.marker[kID].kVVerbal = docs[index].orden_von_verbal;
 				leafletMap.markers.marker[kID].kBVerbal = docs[index].orden_bis_verbal;
 				leafletMap.markers.marker[kID].kLink = document.baseURI + germaniaSacra.config.IDURLTemplate.replace('%23%23%23ID%23%23%23', kID);
-				leafletMap.markers.marker[kID].orden_graphik = kIFolder + docs[index].orden_graphik + ".png";
-				/* check, if no icon was defined or monastry has several denominations */
-				/* is it a new monastery or has there already been the same StandortOrden? */
-				/* there is a problem if a monastry has several places, but they are not in order! */
-				tmp = leafletMap.markers.marker[kID].kID.split("-");
-				if ((leafletMap.markers.marker[kID].orden_graphik.indexOf("/.") != "-1") ||
-					(tmp[3] != 1)) {
-					kIcon = L.icon({
-									   iconUrl: kDefIcon,
-									   iconSize: [21, 32],
-									   iconAnchor: [10.5, 32],
-									   popupAnchor: [0, -32]
-								   });
+				if (docs[index].orden_graphik != "") {
+					leafletMap.markers.marker[kID].orden_graphik = kIFolder + docs[index].orden_graphik + ".png";
+					var kIcon = L.icon({
+						               iconUrl: leafletMap.markers.marker[kID].orden_graphik,
+						               iconSize: [21, 32],
+						               iconAnchor: [10.5, 32],
+						               popupAnchor: [0, -32]
+					               });
 				} else {
-					kIcon = L.icon({
-									   iconUrl: leafletMap.markers.marker[kID].orden_graphik,
-									   iconSize: [21, 32],
-									   iconAnchor: [10.5, 32],
-									   popupAnchor: [0, -32]
-								   });
+					if (!kIcon) {
+						var kIcon = L.icon({
+							               iconUrl: kDefIcon,
+							               iconSize: [21, 32],
+							               iconAnchor: [10.5, 32],
+							               popupAnchor: [0, -32]
+						               });
+					}
 				}
 				/* is it a new monastery or has there already been the same StandortOrden? */
 				/* there is a problem if a monastry has several places, but they are not in order! */
@@ -328,7 +300,7 @@ function leafletMapAddDiverseMarkers() {
 					// same monastry
 					leafletMap.markers.popup[kID].content = sessionStorage.leafletMap_content;
 					leafletMap.markers.popup[kID].content += '<tr><td>';
-					leafletMap.markers.popup[kID].content += leafletMap.markers.marker[kID].kVVerbal + " bis " + leafletMap.markers.marker[kID].kBVerbal;
+					leafletMap.markers.popup[kID].content += leafletMap.markers.marker[kID].kVVerbal + " - " + leafletMap.markers.marker[kID].kBVerbal;
 					leafletMap.markers.popup[kID].content += ':</td><td>';
 					leafletMap.markers.popup[kID].content += leafletMap.markers.marker[kID].kOrden;
 					leafletMap.markers.popup[kID].content += '</td></tr>';
@@ -338,7 +310,7 @@ function leafletMapAddDiverseMarkers() {
 					leafletMap.markers.popup[kID].layer.setPopupContent(leafletMap.markers.popup[kID].content);
 				} else {
 					// new monastry or new place
-					/* add the icon */
+
 					leafletMap.markers.popup[kID] = {};
 					leafletMap.markers.popup[kID].content = '<div id="' + kID + '" class="leafletMap_popup">';
 					leafletMap.markers.popup[kID].content += '<h3><a href="' + leafletMap.markers.marker[kID].kLink + '">';
@@ -348,19 +320,19 @@ function leafletMapAddDiverseMarkers() {
 					}
 					leafletMap.markers.popup[kID].content += '</a></h3>';
 					leafletMap.markers.popup[kID].content += '<table><tr><td>';
-					leafletMap.markers.popup[kID].content += leafletMap.markers.marker[kID].kVVerbal + " bis " + leafletMap.markers.marker[kID].kBVerbal;
+					leafletMap.markers.popup[kID].content += leafletMap.markers.marker[kID].kVVerbal + "-" + leafletMap.markers.marker[kID].kBVerbal;
 					leafletMap.markers.popup[kID].content += ':</td><td>';
 					leafletMap.markers.popup[kID].content += leafletMap.markers.marker[kID].kOrden;
 					leafletMap.markers.popup[kID].content += '</td></tr>';
 					sessionStorage.setItem("leafletMap_content", leafletMap.markers.popup[kID].content);
 					leafletMap.markers.popup[kID].content += "</table></div>";
-					leafletMap.markers.popup[kID].layer = L.marker([kLocation[0], kLocation[1]], {
-						icon: kIcon
-					}).addTo(leafletMap.markers.markerGroup);
-					leafletMap.markers.popup[kID].layer.unbindPopup();
-					leafletMap.markers.popup[kID].layer.bindPopup();
-					leafletMap.markers.popup[kID].layer.setPopupContent(leafletMap.markers.popup[kID].content);
-					}
+				}
+				leafletMap.markers.popup[kID].layer = L.marker([kLocation[0], kLocation[1]], {
+					icon: kIcon
+				}).addTo(leafletMap.markers.markerGroup);
+				leafletMap.markers.popup[kID].layer.unbindPopup();
+				leafletMap.markers.popup[kID].layer.bindPopup();
+				leafletMap.markers.popup[kID].layer.setPopupContent(leafletMap.markers.popup[kID].content);
 				sessionStorage.setItem("leafletMap_ort", leafletMap.markers.marker[kID].kOrt);
 				sessionStorage.setItem("leafletMap_coords", leafletMap.markers.marker[kID].kKoordinaten);
 				sessionStorage.setItem("leafletMap_id", kID);
@@ -368,11 +340,6 @@ function leafletMapAddDiverseMarkers() {
 		}).done(function() {
 			// hide loading spinner
 			$("#leafletMap_spinner").css("display", "none");
-			if (sessionStorage.pageEnter && leafletMapGetMode()) {
-				// only used for overview map
-				leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup);
-				sessionStorage.setItem("pageEnter",0);
-			}
 		}));
 
 		if (_facetFields != sessionStorage.leafletMap_facetFields) {
@@ -383,7 +350,7 @@ function leafletMapAddDiverseMarkers() {
 	}
 	leafletMap.map.addLayer(leafletMap.markers.markerGroup);
 	addBordersToMap();
-}
+};
 
 var addBordersToMap = function() {
 
@@ -425,17 +392,16 @@ var addBordersToMap = function() {
 			style: style
 		}).addTo(leafletMap.map);
 	});
-}
+};
 
 var leafletMapAddMarkerToSmallMap = function() {
 
 	// Creation of another layergroup to zoom around
 	leafletMap.markers.detailGroup = L.featureGroup();
+	var icon = resourcesBaseURL + "Ordenssymbole/Kloster_allgemein.png";
 	for (var i=0; i< standorte.length; i++) {
 		if (standorte[i].icon) {
 			var icon = resourcesBaseURL + "Ordenssymbole/"+standorte[i].icon+".png";
-		} else {
-			var icon = resourcesBaseURL + "Ordenssymbole/Kloster_allgemein.png";
 		}
 		kSIcon = L.icon({
 					iconUrl: icon,
@@ -458,7 +424,7 @@ var leafletMapAddMarkerToSmallMap = function() {
 	leafletMapSetViewToMarkerBounds(leafletMap.markers.detailGroup);
 		// hide loading spinner
 	$("#leafletMap_spinner").css("display", "none");
-}
+};
 
 var leafletMapRemoveMarker = function(id) {
 
@@ -469,4 +435,4 @@ var leafletMapRemoveMarker = function(id) {
 			}
 		}
 	})
-}
+};
