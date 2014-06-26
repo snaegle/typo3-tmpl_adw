@@ -46,6 +46,13 @@
 			<f:then>klosterTitel = titel+",<br />Standort "+ort;</f:then>
 			<f:else>klosterTitel = titel</f:else>
 		</f:if>
+		<f:for each="{document.orden_graphik}" as="graphik" key="index2" iteration="iter2">
+			<f:if condition='{graphik}'>
+				<f:then>;
+					icon = {s:format.json(data:"{s:data.valueForKey(array:document.orden_graphik, key:index2)}")};
+				</f:then>
+				</f:if>
+		</f:for>
 		standorte.push({
 			id:id,
 			koordinaten: koordinaten,
@@ -56,9 +63,7 @@
 			klosterTitel: klosterTitel
 		});
 	</f:for>
-
 	jQuery(document).bind('tx_find.mapsLoaded', function() {
 		leafletMapInit("small", "c-"+{document.id}+"-map");
-		//$.when($.ajax(leafletMapAddDiverseMarkers()))
 	})
 </script>

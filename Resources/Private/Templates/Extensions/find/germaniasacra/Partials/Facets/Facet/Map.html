@@ -60,10 +60,6 @@
 		/* change standard header */
 		$(".facet-id-map h1").text("<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.view"/>");
 
-
-		$("#top a").unbind("click", leafletMapClearStorage);
-		$("#top a").click(leafletMapClearStorage);
-
 		/* Add functionality to toggle buttons */
 		$("#leafletMap_btnGroup input").click(function() {
 			leafletMapToggle($(this).attr('id').replace('leafletMap_','').replace('_i', ''));
