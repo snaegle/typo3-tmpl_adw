@@ -352,44 +352,81 @@ var leafletMapAddDiverseMarkers = function() {
 	addBordersToMap();
 };
 
+
 var addBordersToMap = function() {
 
-	function style(feature) {
-		return {
-			weight: 2,
-			opacity: 1,
-			color: '#f49739',
-			dashArray: '7',
-			fillOpacity: 0.1,
-			clickable: false
-		};
+	function setDynamicStyle(layer, zoom) {
+		switch (zoom) {
+			case 18:
+				var weight="4096", opacity="0.1";
+				break;
+			case 17:
+				var weight="2048", opacity="0.13";
+				break;
+			case 16:
+				var weight="1024", opacity="0.17";
+				break;
+			case 15:
+				var weight="512", opacity="0.2";
+				break;
+			case 14:
+				var weight="256", opacity="0.23";
+				break;
+			case 13:
+				var weight="128", opacity="0.27";
+				break;
+			case 12:
+				var weight="64", opacity="0.3";
+				break;
+			case 11:
+				var weight="32", opacity="0.33";
+				break;
+			case 10:
+				var weight="16", opacity="0.37";
+				break;
+			case 9:
+				var weight="8", opacity="0.4";
+				break;
+			case 8:
+				var weight="4", opacity="0.43";
+				break;
+			case 7:
+				var weight="2", opacity="0.47";
+				break;
+			case 6:
+				var weight="1", opacity="0.5";
+				break;
+			case 5:
+				var weight="1", opacity="0.53";
+				break;
+			case 4:
+				var weight="1", opacity="0.57";
+				break;
+			case 3:
+				var weight="0.5", opacity="0.6";
+				break;
+			case 2:
+				var weight="0.25", opacity="0.63";
+				break;
+		}
+		layer.setStyle({weight: weight, opacity: opacity});
 	}
 
 	// change line style with zoom level to blur them out when closer
 	leafletMap.map.on("zoomend", function() {
-		leafletMap.zoomLevel = leafletMap.map.getZoom();
-		if (leafletMap.markers.geoJson) {
-
-			if (leafletMap.zoomLevel >= 12) {
-				leafletMap.markers.geoJson
-					.setStyle({weight: "32", opacity: "0.2", dashArray: "21"});
-			} else {
-
-				if (leafletMap.zoomLevel > 9 && leafletMap.zoomLevel < 12) {
-					leafletMap.markers.geoJson
-						.setStyle({weight: "8", opacity: "0.5", dashArray: "14"});
-				} else {
-					leafletMap.markers.geoJson
-						.setStyle({weight: "2", opacity: "1", dashArray: "7"});
-				}
-			}
-		}
+		setDynamicStyle(leafletMap.markers.geoJson, this._zoom);
 	})
 
 
 	$.getJSON(resourcesBaseURL + 'Bistumsgrenzen/Alle.geojson', function(statesData) {
 		leafletMap.markers.geoJson = L.geoJson(statesData, {
-			style: style
+			style: {
+				weight: 2,
+				opacity: 1,
+				color: '#f49739',
+				fillOpacity: 0.1,
+				clickable: false
+			}
 		}).addTo(leafletMap.map);
 	});
 };
