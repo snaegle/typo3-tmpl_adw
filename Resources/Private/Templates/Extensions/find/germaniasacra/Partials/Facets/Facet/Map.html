@@ -46,7 +46,7 @@
 				)}")};
 
 
-				var IDURLTemplate = {s:format.json(data:"{f:uri.action(
+		var IDURLTemplate = {s:format.json(data:"{f:uri.action(
 					arguments:'{
 						id:\'###ID###\'
 					}',
@@ -56,7 +56,9 @@
 
 		/* If loaded for the first time, the object is defined */
 		var leafletMap = {};
+		leafletMap.legendPath = "{settings.legendPath}";
 		leafletMap.language = {};
+		leafletMap.language.legend = "<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.legend"/>";
 		leafletMap.language.resetView = "<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.resetView"/>";
 
 		/* change standard header */
