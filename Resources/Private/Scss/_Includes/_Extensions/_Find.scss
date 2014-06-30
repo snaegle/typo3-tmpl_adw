@@ -176,13 +176,14 @@ $textB: #555;
 			display: block;
 			text-align: center;
 			margin-top: 5px;
+			text-decoration: none;
 		}
 
 		a.extendedSearch:hover {
-			text-decoration: none;
 			background-color: #c90230;
 			color: white;
 			border: 1px solid #b4b4b4;
+			transition: all .1s ease-in;
 		}
 
 		.button-reset-form {
@@ -199,6 +200,7 @@ $textB: #555;
 				color: white;
 				background-color: #c90230;
 				border: 1px solid #b4b4b4;
+				transition: all .1s ease-in;
 		}
 
 		.field-mode-extended {
