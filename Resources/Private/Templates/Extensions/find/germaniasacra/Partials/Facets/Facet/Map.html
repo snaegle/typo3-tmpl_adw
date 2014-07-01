@@ -56,6 +56,8 @@
 
 		/* If loaded for the first time, the object is defined */
 		var leafletMap = {};
+		leafletMap.language = {};
+		leafletMap.language.resetView = "<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.resetView"/>";
 
 		/* change standard header */
 		$(".facet-id-map h1").text("<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.view"/>");

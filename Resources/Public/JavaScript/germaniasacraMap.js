@@ -106,7 +106,7 @@ var leafletMapInit = function(type, id) {
 			});
 			sessionStorage.setItem("leafletMap_facetFields", "");
 
-			/* create dom-element as container for map */
+			// create dom-element as container for map
 			$(".results").find(".navigation").next(".grid_12")
 				.append('<div id="leafletMap_wrapper">' +
 					'<div id="leafletMap_id"></div>' +
@@ -116,19 +116,47 @@ var leafletMapInit = function(type, id) {
 					'</div>');
 			leafletMapCreateMap(id);
 
-			/* add scale to map */
+			// add scale to map
 			L.control.scale().addTo(leafletMap.map);
 			L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(leafletMap.map);
 
 			// make map stores its viewPort
 			$(window).unload(function() {
-				sessionStorage.setItem("lat", leafletMap.map.getCenter().lat);
-				sessionStorage.setItem("lng", leafletMap.map.getCenter().lng);
-				sessionStorage.setItem("zoom", leafletMap.map.getZoom());
+				leafletMapStoreView();
 			});
-			break;
-	}
+
+			// create button to reset map view
+			leafletMap.map.on("movestart", function() {
+				leafletMapCreateResetButton();
+			});
+			leafletMap.changed = false;
+	};
 };
+
+var leafletMapCreateResetButton = function() {
+
+	if(leafletMap.changed) {
+		$(".results").find("#leafletMap_wrapper")
+				.prepend('<button class="leafletMap_reset-view">' + leafletMap.language.resetView + '</button>');
+
+		$(".leafletMap_reset-view")
+				.unbind("click")
+				.on("click", function() {
+			                    sessionStorage.clear();
+			                    leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup);
+		                    });
+		leafletMap.map.removeEventListener("movestart");
+	};
+
+	leafletMap.changed = true;
+}
+
+var leafletMapStoreView = function() {
+
+	sessionStorage.setItem("lat", leafletMap.map.getCenter().lat);
+	sessionStorage.setItem("lng", leafletMap.map.getCenter().lng);
+	sessionStorage.setItem("zoom", leafletMap.map.getZoom());
+}
 
 var leafletMapCreateMap = function(id) {
 

@@ -233,6 +233,26 @@ $formLabelWidth: 150px;
 			line-height: 1.2;
 		}
 	}
+
+	.leafletMap_reset-view {
+		border: $button-border;
+		color: $link-color;
+		background-color: $button-background-light;
+		padding: 5px;
+		margin-bottom:5px;
+		display: block;
+		margin-top: 5px;
+	}
+	.leafletMap_reset-view:focus {
+		outline: 0;
+	}
+
+	.leafletMap_reset-view:hover {
+		color: #fff;
+		background-color: $button-background-dark;
+		transition: all .1s ease-in;
+	}
+
 	.marker-cluster-small, .marker-cluster-small div,
 	.marker-cluster-medium, .marker-cluster-medium div,
 	.marker-cluster-large, .marker-cluster-large div {
