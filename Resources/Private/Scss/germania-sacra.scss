@@ -221,7 +221,7 @@ $formLabelWidth: 150px;
 
 	.leafletMap_popup {
 		a {
-			color: $link-color;
+			color: $link-color-dark;
 			font-weight: normal;
 		}
 		td {
@@ -236,21 +236,63 @@ $formLabelWidth: 150px;
 
 	.leafletMap_reset-view {
 		border: $button-border;
-		color: $link-color;
+		color: $link-color-dark;
 		background-color: $button-background-light;
 		padding: 5px;
 		margin-bottom:5px;
 		display: block;
 		margin-top: 5px;
 	}
+
 	.leafletMap_reset-view:focus {
 		outline: 0;
 	}
 
 	.leafletMap_reset-view:hover {
-		color: #fff;
+		color: $link-color-light;
 		background-color: $button-background-dark;
 		transition: all .1s ease-in;
+	}
+
+	#leafletMap_btnGroup {
+		width: 100%;
+	}
+
+	#leafletMap_btnGroup input[type="radio"] {
+		position: absolute;
+		left: -1000px;
+	}
+
+	#leafletMap_btnGroup label {
+		background-color:$button-background-light;
+		color: $link-color-dark;
+		border: $button-border;
+		padding:4px 11px;
+		margin: -1px;
+		font-family:Arial;
+		font-size:16px;
+		cursor: pointer;
+		width: 40%;
+		display: block;
+	}
+
+	#leafletMap_btnGroup #leafletMap_list {
+		float: left;
+	}
+
+	#leafletMap_btnGroup #leafletMap_map {
+		float: right;
+	}
+
+	#leafletMap_btnGroup input[type="radio"]:checked + label {
+		background-color: $button-background-dark;
+		color: $link-color-light;
+		cursor: default;
+	}
+
+	#leafletMap_btnGroup label:hover {
+		background-color: $button-background-dark;
+		color: $link-color-light;
 	}
 
 	.marker-cluster-small, .marker-cluster-small div,
