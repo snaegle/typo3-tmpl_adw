@@ -6,7 +6,7 @@ if "%SPHINXOPTS%" == "" (
 	set SPHINXOPTS=-c . -a -E -w ./_not_versioned/warnings.txt
 )
 if "%SPHINXBUILD%" == "" (
-	set SPHINXBUILD=/var/www/adw/Web/typo3temp/tx_sphinx/sphinx-doc/bin/sphinx-build
+	set SPHINXBUILD=sphinx-build
 )
 set PAPER=a4
 set BUILDDIR=build
