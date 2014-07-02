@@ -375,9 +375,11 @@ var leafletMapAddDiverseMarkers = function() {
 			sessionStorage.setItem("leafletMap_facetFields", "_facetFields");
 		}
 		leafletMap.filled = true;
+		
+		addBordersToMap();
+
 	}
 	leafletMap.map.addLayer(leafletMap.markers.markerGroup);
-	addBordersToMap();
 };
 
 
