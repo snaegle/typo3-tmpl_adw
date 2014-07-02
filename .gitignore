@@ -15,4 +15,4 @@ Resources/Public/Fonts
 .sass-cache
 .idea
 .jruby
-Documentation/_make
+Documentation/_make/build
