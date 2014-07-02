@@ -50,7 +50,7 @@ master_doc = 'Index'
 
 # General information about the project.
 project = u'ADW Template'
-copyright = u'2014, Ingo Pfennigstorf, Nils Windisch'
+copyright = u'2014, Daniel Beucke'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -204,7 +204,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     ('Index', 'tmpl_adw.tex', u'ADW Template',
-     u'Ingo Pfennigstorf, Nils Windisch', 'manual'),
+     u'Daniel Beucke', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -245,7 +245,7 @@ latex_documents = [
 # regardless of the global pdf_compressed setting.
 pdf_documents = [
     ('Index', 'tmpl_adw', u'ADW Template',
-     u'Ingo Pfennigstorf, Nils Windisch'),
+     u'Daniel Beucke'),
 ]
 
 # A comma-separated list of custom stylesheets. Example:
@@ -333,7 +333,7 @@ pdf_fit_background_mode = 'scale'
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('Index', 'tmpl_adw', u'ADW Template',
-     [u'Ingo Pfennigstorf, Nils Windisch'], 1)
+     [u'Daniel Beucke'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -347,7 +347,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     ('Index', 'tmpl_adw', u'ADW Template',
-     u'Ingo Pfennigstorf, Nils Windisch', 'ADW Template', 'One line description of project.',
+     u'Daniel Beucke', 'ADW Template', 'One line description of project.',
      'Miscellaneous'),
 ]
 

@@ -12,7 +12,7 @@ conf.py:
   - - Index
     - tmpl_adw.tex
     - ADW Template
-    - Daniel Beucke, Ingo Pfennigstorf, Nils Windisch
+    - Daniel Beucke
     - manual
   latex_elements:
     papersize: a4paper
