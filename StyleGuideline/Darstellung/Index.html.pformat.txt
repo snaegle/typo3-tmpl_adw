@@ -1,0 +1,47 @@
+<document source="/home/ingop/repo/VagrantTYPO3/vHosts/adw/Web/typo3conf/ext/tmpl_adw/Documentation/StyleGuideline/Darstellung/Index.rst">
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        FOR YOUR INFORMATION
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <comment xml:space="preserve">
+        -*- coding: utf-8 -*- with BOM.
+    <target refid="darstellung">
+    <section dupnames="darstellung" ids="darstellung id1" names="darstellung">
+        <title>
+            Darstellung
+        <section ids="verwendung-der-rechten-spalte" names="verwendung\ der\ rechten\ spalte">
+            <title>
+                Verwendung der rechten Spalte
+            <paragraph>
+                Die rechte Spalte soll für zusätzliche bzw. weiterführende Information verwendet werden. Auf der Startseite der AdW als auch der Vorhaben befinden sich in der rechten Spalte die Kontaktdaten und (wenn vorhanden) die News.
+        <section ids="verwendung-von-tabellen" names="verwendung\ von\ tabellen">
+            <title>
+                Verwendung von Tabellen
+            <paragraph>
+                Tabellen sollten nur für die Darstellung von tabellarischen Daten genutzt werden und NICHT für Layoutzwecke.
+        <section ids="einbinden-von-bildern" names="einbinden\ von\ bildern">
+            <title>
+                Einbinden von Bildern
+            <paragraph>
+                Es gibt zwei Möglichkeiten der Einbindungen von Bildern:
+            <enumerated_list enumtype="arabic" prefix="" suffix=".">
+                <list_item>
+                    <paragraph classes="first">
+                        direkt über den RTF-Editor
+                <list_item>
+                    <paragraph classes="first">
+                        in Form eines Seitenelements („Text und Bilder“ oder nur „Bilder“).
+            <paragraph>
+                Das Seitenelement hat den Vorteil, dass korrekte Metadaten (Bildunterschrift, Alternativtext für Barrierefreiheit etc.) erfasst werden können und sollte daher vorgezogen werden. Das schnelle Einbinden der Bilder über den RFT-Editor wäre z. B. bei Publikations-Icons sinnvoll.
+        <section ids="tipp-zum-rtf-editior" names="tipp\ zum\ rtf-editior">
+            <title>
+                Tipp zum RTF-Editior
+            <paragraph>
+                Sollte Text aus einem Browser kopiert und in den RTF-Editor einfügt werden, ist Firefox anderen Browsern wie Opera  vorzuziehen, da damit auch Links übernommen werden. Im RTF-Editor sollten anschließend die Word-Formatierungen entfernt werden, um eine einheitliche Darstellung zu gewährleisten. Texte sollten demnach keine „harten“ Formatierungen (z. B. manuelle Trennungen oder unterschiedliche Schriftgrößen) enthalten (dies kann im RTF-Editor in der HTML-Ansicht überprüft werden).
+        <section ids="schriftsatz" names="schriftsatz">
+            <title>
+                Schriftsatz
+            <paragraph>
+                Auf der gesamten Seite ist lediglich „linksbündig“ als Schriftsatz zu nutzen.

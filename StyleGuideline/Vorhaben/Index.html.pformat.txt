@@ -1,0 +1,52 @@
+<document source="/home/ingop/repo/VagrantTYPO3/vHosts/adw/Web/typo3conf/ext/tmpl_adw/Documentation/StyleGuideline/Vorhaben/Index.rst">
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        FOR YOUR INFORMATION
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <comment xml:space="preserve">
+        -*- coding: utf-8 -*- with BOM.
+    <target refid="vorhaben">
+    <section dupnames="vorhaben" ids="vorhaben id1" names="vorhaben">
+        <title>
+            Vorhaben
+        <section ids="vorgaben" names="vorgaben">
+            <title>
+                Vorgaben
+            <bullet_list bullet="-">
+                <list_item>
+                    <paragraph classes="first">
+                        Die Startseite eines Vorhabens enthält in der rechten Spalte die Kontaktdaten.
+                <list_item>
+                    <paragraph classes="first">
+                        Bei Angaben von Telefon- oder anderen Nummern bitte das Format +49 (0)551 395336  verwenden.
+                <list_item>
+                    <paragraph classes="first">
+                        Werden für ein Vorhaben News verwendet, dann sind diese in der rechten Spalte unter dem Kontakt zu platzieren.
+                <list_item>
+                    <definition_list classes="first">
+                        <definition_list_item>
+                            <term>
+                                Sollte ein Logo für das Vorhaben gewünscht sein, kann es rechts über die Kontaktdaten gesetzt werden.
+                            <definition>
+                                <bullet_list bullet="-" classes="first last">
+                                    <list_item>
+                                        <paragraph classes="first">
+                                            Das Vorhaben-Logo sollte in Zusammenhang zum AdW-Logo gesehen werden und damit in den Abmessungen 220px x 150px  nicht überschreiten.
+                <list_item>
+                    <paragraph classes="first">
+                        Auf der Startseite befindet sich eine kurze Beschreibung zum Vorhaben.
+                <list_item>
+                    <paragraph classes="first">
+                        Sollte ein Slider verwendet werden, sollte dieser nach den Vorgaben des Sliders auf der AdW-Startseite gestaltet werden.
+        <section ids="empfehlungen" names="empfehlungen">
+            <title>
+                Empfehlungen
+            <bullet_list bullet="-">
+                <list_item>
+                    <paragraph classes="first">
+                        Bei der Erstellung der Webseiten durch die Zentralredaktion, wird eine Struktur für die Vorhabenseiten vorgeben, die ggf. noch angepasst werden kann.
+            <figure>
+                <reference internal="True" refuri="StyleGuideline/Vorhaben/../../Images/StyleGuideline/StartseiteVorhaben.png">
+                    <image alt="Startseite des Vorhaben Deutsche Inschriften" candidates="{'*': u'StyleGuideline/Vorhaben/../../Images/StyleGuideline/StartseiteVorhaben.png'}" uri="StyleGuideline/Vorhaben/../../Images/StyleGuideline/StartseiteVorhaben.png" width="600px">

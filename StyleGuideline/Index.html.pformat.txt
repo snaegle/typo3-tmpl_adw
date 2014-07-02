@@ -1,0 +1,102 @@
+<document source="/home/ingop/repo/VagrantTYPO3/vHosts/adw/Web/typo3conf/ext/tmpl_adw/Documentation/StyleGuideline/Index.rst">
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        FOR YOUR INFORMATION
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <comment xml:space="preserve">
+        -*- coding: utf-8 -*- with BOM.
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        FOR YOUR INFORMATION
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <comment xml:space="preserve">
+        -*- coding: utf-8 -*- with BOM.
+    <comment xml:space="preserve">
+        This is 'Includes.txt'. It is included at the very top of each and
+        every ReST source file in this documentation project (= manual).
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        DEFINE SOME TEXT ROLES
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <highlightlang lang="php" linenothreshold="9223372036854775807">
+    <target refid="style-guideline">
+    <section ids="style-guideline id1" names="style-guideline style_guideline">
+        <title>
+            Style-Guideline
+        <paragraph>
+            In der vorliegenden Style Guideline finden Sie Hinweise zur redaktionellen Bearbeitung der AdW-Website.
+        <section ids="inhalt" names="inhalt">
+            <title>
+                Inhalt
+            <compound classes="toctree-wrapper">
+                <compact_paragraph toctree="True">
+                    <bullet_list>
+                        <list_item classes="toctree-l1">
+                            <compact_paragraph classes="toctree-l1 first">
+                                <reference anchorname="" internal="True" refuri="Bilder/Index.html">
+                                    Bilder
+                            <bullet_list>
+                                <list_item classes="toctree-l2">
+                                    <compact_paragraph classes="toctree-l2 first">
+                                        <reference anchorname="" internal="True" refuri="Bilder/Dateiformate/Index.html">
+                                            Dateiformate
+                                <list_item classes="toctree-l2">
+                                    <compact_paragraph classes="toctree-l2 first">
+                                        <reference anchorname="" internal="True" refuri="Bilder/GroesseBilder/Index.html">
+                                            Größe der Bilder
+                                    <bullet_list>
+                                <list_item classes="toctree-l2">
+                                    <compact_paragraph classes="toctree-l2 first">
+                                        <reference anchorname="" internal="True" refuri="Bilder/PositionierungBilder/Index.html">
+                                            Positionierung von Bildern
+                                    <bullet_list>
+                                <list_item classes="toctree-l2">
+                                    <compact_paragraph classes="toctree-l2 first">
+                                        <reference anchorname="" internal="True" refuri="Bilder/DarstellungBilder/Index.html">
+                                            Darstellung der Bilder
+                                <list_item classes="toctree-l2">
+                                    <compact_paragraph classes="toctree-l2 first">
+                                        <reference anchorname="" internal="True" refuri="Bilder/MetadatenBilder/Index.html">
+                                            Metadaten der Bilder
+                                    <bullet_list>
+                                <list_item classes="toctree-l2">
+                                    <compact_paragraph classes="toctree-l2 first">
+                                        <reference anchorname="" internal="True" refuri="Bilder/Bildergalerie/Index.html">
+                                            Bildergalerie
+                                <list_item classes="toctree-l2">
+                                    <compact_paragraph classes="toctree-l2 first">
+                                        <reference anchorname="" internal="True" refuri="Bilder/QualitaetBilder/Index.html">
+                                            Qualität von Bildern
+                                <list_item classes="toctree-l2">
+                                    <compact_paragraph classes="toctree-l2 first">
+                                        <reference anchorname="" internal="True" refuri="Bilder/RegelnBenennung/Index.html">
+                                            Regeln zur Benennung von Bildern
+                                <list_item classes="toctree-l2">
+                                    <compact_paragraph classes="toctree-l2 first">
+                                        <reference anchorname="" internal="True" refuri="Bilder/NewsBilder/Index.html">
+                                            Bilderbei News
+                        <list_item classes="toctree-l1">
+                            <compact_paragraph classes="toctree-l1 first">
+                                <reference anchorname="" internal="True" refuri="Dateiablage/Index.html">
+                                    Beschreibung der Dateiablage
+                        <list_item classes="toctree-l1">
+                            <compact_paragraph classes="toctree-l1 first">
+                                <reference anchorname="" internal="True" refuri="Links/Index.html">
+                                    Links
+                            <bullet_list>
+                        <list_item classes="toctree-l1">
+                            <compact_paragraph classes="toctree-l1 first">
+                                <reference anchorname="" internal="True" refuri="Vorhaben/Index.html">
+                                    Vorhaben
+                            <bullet_list>
+                        <list_item classes="toctree-l1">
+                            <compact_paragraph classes="toctree-l1 first">
+                                <reference anchorname="" internal="True" refuri="Darstellung/Index.html">
+                                    Darstellung
+                            <bullet_list>

@@ -1,0 +1,15 @@
+<document source="/home/ingop/repo/VagrantTYPO3/vHosts/adw/Web/typo3conf/ext/tmpl_adw/Documentation/StyleGuideline/Bilder/QualitaetBilder/Index.rst">
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        FOR YOUR INFORMATION
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <comment xml:space="preserve">
+        -*- coding: utf-8 -*- with BOM.
+    <target refid="bilder-qualitaet">
+    <section ids="qualitat-von-bildern bilder-qualitaet" names="qualität\ von\ bildern bilder_qualitaet">
+        <title>
+            Qualität von Bildern
+        <paragraph>
+            Das Bild sollte in bester Quelität in das System eingestellt werden.

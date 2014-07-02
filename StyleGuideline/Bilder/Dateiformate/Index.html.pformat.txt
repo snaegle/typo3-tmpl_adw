@@ -1,0 +1,17 @@
+<document source="/home/ingop/repo/VagrantTYPO3/vHosts/adw/Web/typo3conf/ext/tmpl_adw/Documentation/StyleGuideline/Bilder/Dateiformate/Index.rst">
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        FOR YOUR INFORMATION
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <comment xml:space="preserve">
+        -*- coding: utf-8 -*- with BOM.
+    <target refid="dateiformate">
+    <section dupnames="dateiformate" ids="dateiformate id1" names="dateiformate">
+        <title>
+            Dateiformate
+        <paragraph>
+            Bilddateien sollten in den Formaten png oder jpg verwendet werden.
+        <paragraph>
+            Für Grafiken (z. B. Logo) sollte gif verwendet werden.

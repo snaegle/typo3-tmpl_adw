@@ -1,0 +1,42 @@
+<document source="/home/ingop/repo/VagrantTYPO3/vHosts/adw/Web/typo3conf/ext/tmpl_adw/Documentation/StyleGuideline/Bilder/RegelnBenennung/Index.rst">
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        FOR YOUR INFORMATION
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <comment xml:space="preserve">
+        -*- coding: utf-8 -*- with BOM.
+    <target refid="regeln-benennung">
+    <section ids="regeln-zur-benennung-von-bildern regeln-benennung" names="regeln\ zur\ benennung\ von\ bildern regeln_benennung">
+        <title>
+            Regeln zur Benennung von Bildern
+        <paragraph>
+            Bei der Benennung der Dateien sollten folgende Regeln beachtet werden:
+        <bullet_list bullet="-">
+            <list_item>
+                <paragraph classes="first">
+                    Vorhabenlogo: 
+                    <problematic ids="id2" refid="id1">
+                        *
+                    vorhaben*_logo.png (Beispiel: germania_sacra_logo.png)
+            <list_item>
+                <paragraph classes="first">
+                    Personenfoto: 
+                    <emphasis>
+                        nachname_vorname
+                    .png (Beispiel: schade_angelika.png)
+            <list_item>
+                <paragraph classes="first">
+                    Sliderbilder: 
+                    <emphasis>
+                        vorhaben*_slider_*nummerierung
+                    .png (Beispiel: runes_slider_01.png)
+        <paragraph>
+            <strong>
+                Vorschlag:
+            
+            - Bilder in Vorhaben: 
+            <emphasis>
+                bildname
+            .png (Beispiel: tempel01.png)

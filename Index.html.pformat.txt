@@ -1,0 +1,197 @@
+<document source="/home/ingop/repo/VagrantTYPO3/vHosts/adw/Web/typo3conf/ext/tmpl_adw/Documentation/Index.rst">
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        FOR YOUR INFORMATION
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <comment xml:space="preserve">
+        -*- coding: utf-8 -*- with BOM.
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        FOR YOUR INFORMATION
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <comment xml:space="preserve">
+        -*- coding: utf-8 -*- with BOM.
+    <comment xml:space="preserve">
+        This is 'Includes.txt'. It is included at the very top of each and
+        every ReST source file in this documentation project (= manual).
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        DEFINE SOME TEXT ROLES
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <highlightlang lang="php" linenothreshold="9223372036854775807">
+    <target refid="start">
+    <section ids="adw-handbuch start" names="adw\ handbuch start">
+        <title>
+            AdW Handbuch
+        <field_list>
+            <field classes="field-odd">
+                <field_name>
+                    Classification
+                <field_body>
+                    <paragraph classes="first last">
+                        extension_key
+            <field classes="field-even">
+                <field_name>
+                    Version
+                <field_body>
+                    <paragraph classes="first last">
+                        2.5.0
+            <field classes="field-odd">
+                <field_name>
+                    Language
+                <field_body>
+                    <paragraph classes="first last">
+                        en
+            <field classes="field-even">
+                <field_name>
+                    Description
+                <field_body>
+                    <paragraph classes="first last">
+                        enter description.
+            <field classes="field-odd">
+                <field_name>
+                    Keywords
+                <field_body>
+                    <paragraph classes="first last">
+                        comma,separated,list,keywords
+            <field classes="field-even">
+                <field_name>
+                    Copyright
+                <field_body>
+                    <paragraph classes="first last">
+                        2014
+            <field classes="field-odd">
+                <field_name>
+                    Author
+                <field_body>
+                    <paragraph classes="first last">
+                        Daniel Beucke, Ingo Pfennigstorf, Nils Windisch
+            <field classes="field-even">
+                <field_name>
+                    Email
+                <field_body>
+                    <paragraph classes="first last">
+                        <reference refuri="mailto:author@example.com">
+                            author@example.com
+            <field classes="field-odd">
+                <field_name>
+                    License
+                <field_body>
+                    <paragraph classes="first last">
+                        This document is published under the Open Content License
+                        available from 
+                        <reference refuri="http://www.opencontent.org/opl.shtml">
+                            http://www.opencontent.org/opl.shtml
+            <field classes="field-even">
+                <field_name>
+                    Rendered
+                <field_body>
+                    <paragraph classes="first last">
+                        2014-07-02 14:46
+        <paragraph>
+            The content of this document is related to TYPO3,
+            a GNU/GPL CMS/Framework available from 
+            <reference name="www.typo3.org" refuri="http://www.typo3.org/">
+                www.typo3.org
+            <target ids="www-typo3-org" names="www.typo3.org" refuri="http://www.typo3.org/">
+            .
+        <paragraph>
+            <strong>
+                Inhalt
+        <compound classes="toctree-wrapper">
+            <compact_paragraph toctree="True">
+                <bullet_list>
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1 first">
+                            <reference anchorname="" internal="True" refuri="Grundlagen/Index.html">
+                                1 Grundlagen
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2 first">
+                                    <reference anchorname="" internal="True" refuri="Grundlagen/Grundlagen_Einfuehrung/Index.html">
+                                        1.1 Einführung
+                                <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2 first">
+                                    <reference anchorname="" internal="True" refuri="Grundlagen/Grundlagen_Zugang/Index.html">
+                                        1.2 Zugang
+                                <bullet_list>
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1 first">
+                            <reference anchorname="" internal="True" refuri="UsersManual/Index.html">
+                                Users manual
+                        <bullet_list>
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1 first">
+                            <reference anchorname="" internal="True" refuri="StyleGuideline/Index.html">
+                                Style-Guideline
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2 first">
+                                    <reference anchorname="" internal="True" refuri="StyleGuideline/Bilder/Index.html">
+                                        Bilder
+                                <bullet_list>
+                                    <list_item classes="toctree-l3">
+                                        <compact_paragraph classes="toctree-l3 first">
+                                            <reference anchorname="" internal="True" refuri="StyleGuideline/Bilder/Dateiformate/Index.html">
+                                                Dateiformate
+                                    <list_item classes="toctree-l3">
+                                        <compact_paragraph classes="toctree-l3 first">
+                                            <reference anchorname="" internal="True" refuri="StyleGuideline/Bilder/GroesseBilder/Index.html">
+                                                Größe der Bilder
+                                        <bullet_list>
+                                    <list_item classes="toctree-l3">
+                                        <compact_paragraph classes="toctree-l3 first">
+                                            <reference anchorname="" internal="True" refuri="StyleGuideline/Bilder/PositionierungBilder/Index.html">
+                                                Positionierung von Bildern
+                                        <bullet_list>
+                                    <list_item classes="toctree-l3">
+                                        <compact_paragraph classes="toctree-l3 first">
+                                            <reference anchorname="" internal="True" refuri="StyleGuideline/Bilder/DarstellungBilder/Index.html">
+                                                Darstellung der Bilder
+                                    <list_item classes="toctree-l3">
+                                        <compact_paragraph classes="toctree-l3 first">
+                                            <reference anchorname="" internal="True" refuri="StyleGuideline/Bilder/MetadatenBilder/Index.html">
+                                                Metadaten der Bilder
+                                        <bullet_list>
+                                    <list_item classes="toctree-l3">
+                                        <compact_paragraph classes="toctree-l3 first">
+                                            <reference anchorname="" internal="True" refuri="StyleGuideline/Bilder/Bildergalerie/Index.html">
+                                                Bildergalerie
+                                    <list_item classes="toctree-l3">
+                                        <compact_paragraph classes="toctree-l3 first">
+                                            <reference anchorname="" internal="True" refuri="StyleGuideline/Bilder/QualitaetBilder/Index.html">
+                                                Qualität von Bildern
+                                    <list_item classes="toctree-l3">
+                                        <compact_paragraph classes="toctree-l3 first">
+                                            <reference anchorname="" internal="True" refuri="StyleGuideline/Bilder/RegelnBenennung/Index.html">
+                                                Regeln zur Benennung von Bildern
+                                    <list_item classes="toctree-l3">
+                                        <compact_paragraph classes="toctree-l3 first">
+                                            <reference anchorname="" internal="True" refuri="StyleGuideline/Bilder/NewsBilder/Index.html">
+                                                Bilderbei News
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2 first">
+                                    <reference anchorname="" internal="True" refuri="StyleGuideline/Dateiablage/Index.html">
+                                        Beschreibung der Dateiablage
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2 first">
+                                    <reference anchorname="" internal="True" refuri="StyleGuideline/Links/Index.html">
+                                        Links
+                                <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2 first">
+                                    <reference anchorname="" internal="True" refuri="StyleGuideline/Vorhaben/Index.html">
+                                        Vorhaben
+                                <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2 first">
+                                    <reference anchorname="" internal="True" refuri="StyleGuideline/Darstellung/Index.html">
+                                        Darstellung
+                                <bullet_list>
