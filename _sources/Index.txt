@@ -14,29 +14,14 @@ AdW Handbuch
 
 .. only:: html
 
-	:Classification:
-		extension_key
-
 	:Version:
 		|release|
 
-	:Language:
-		en
-
-	:Description:
-		enter description.
-
-	:Keywords:
-		comma,separated,list,keywords
-
-	:Copyright:
-		2014
-
 	:Author:
-		Daniel Beucke, Ingo Pfennigstorf, Nils Windisch
+		Daniel Beucke
 
 	:Email:
-		author@example.com
+		beucke@sub.uni-goettingen.de
 
 	:License:
 		This document is published under the Open Content License

@@ -32,54 +32,24 @@
         <field_list>
             <field classes="field-odd">
                 <field_name>
-                    Classification
-                <field_body>
-                    <paragraph classes="first last">
-                        extension_key
-            <field classes="field-even">
-                <field_name>
                     Version
                 <field_body>
                     <paragraph classes="first last">
                         2.5.0
-            <field classes="field-odd">
-                <field_name>
-                    Language
-                <field_body>
-                    <paragraph classes="first last">
-                        en
             <field classes="field-even">
-                <field_name>
-                    Description
-                <field_body>
-                    <paragraph classes="first last">
-                        enter description.
-            <field classes="field-odd">
-                <field_name>
-                    Keywords
-                <field_body>
-                    <paragraph classes="first last">
-                        comma,separated,list,keywords
-            <field classes="field-even">
-                <field_name>
-                    Copyright
-                <field_body>
-                    <paragraph classes="first last">
-                        2014
-            <field classes="field-odd">
                 <field_name>
                     Author
                 <field_body>
                     <paragraph classes="first last">
-                        Daniel Beucke, Ingo Pfennigstorf, Nils Windisch
-            <field classes="field-even">
+                        Daniel Beucke
+            <field classes="field-odd">
                 <field_name>
                     Email
                 <field_body>
                     <paragraph classes="first last">
-                        <reference refuri="mailto:author@example.com">
-                            author@example.com
-            <field classes="field-odd">
+                        <reference refuri="mailto:beucke@sub.uni-goettingen.de">
+                            beucke@sub.uni-goettingen.de
+            <field classes="field-even">
                 <field_name>
                     License
                 <field_body>
@@ -88,12 +58,12 @@
                         available from 
                         <reference refuri="http://www.opencontent.org/opl.shtml">
                             http://www.opencontent.org/opl.shtml
-            <field classes="field-even">
+            <field classes="field-odd">
                 <field_name>
                     Rendered
                 <field_body>
                     <paragraph classes="first last">
-                        2014-07-02 14:46
+                        2014-07-02 14:58
         <paragraph>
             The content of this document is related to TYPO3,
             a GNU/GPL CMS/Framework available from 
