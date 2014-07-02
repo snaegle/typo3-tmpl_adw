@@ -293,6 +293,7 @@ $formLabelWidth: 150px;
 	#leafletMap_btnGroup label:hover {
 		background-color: $button-background-dark;
 		color: $link-color-light;
+		transition: all .1s ease-in;
 	}
 
 	.marker-cluster-small, .marker-cluster-small div,
