@@ -3,7 +3,9 @@
 # Requirements
 
 * Installed system extension fe_login
-        * TypoScript constant `plugin.tx_find.felogin.storagePid` has to be set in order to use the frontend user functionality.
+        * TypoScript constant
+            ** `plugin.tx_find.felogin.storagePid` has to be set in order to use the frontend user functionality.
+            ** `plugin.tx_find.settings.legendPath` has to be set in order to link to the legend of markers for monastries
 
 
 # Development notes

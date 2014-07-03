@@ -102,12 +102,13 @@ var leafletMapInit = function(type, id) {
 
 			// create dom-element as container for map
 			$(".results").find(".navigation").next(".grid_12")
-					.append('<div id="leafletMap_wrapper">' +
-							'<div id="leafletMap_id"></div>' +
-							'<div id="leafletMap_spinner">' +
-							'<i class="fa fa-spinner fa-spin fa-3x"></i>' +
-							'</div>' +
-							'</div>');
+				.append('<div id="leafletMap_wrapper">' +
+			            '<div id="leafletMap_id"></div>' +
+			            '<div id="leafletMap_spinner">' +
+			            '<i class="fa fa-spinner fa-spin fa-3x"></i>' +
+			            '</div>' +
+			            '<div id="leafletMap_legend"><a href="' + leafletMap.legendPath + '">' + leafletMap.language.legend + '</a></div>' +
+			            '</div>');
 			leafletMapCreateMap(id);
 
 			// add scale to map
@@ -174,8 +175,8 @@ var leafletMapGrow = function() {
 		/* switch content */
 		$(".navigation").children().toggle();
 		$(".resultList").toggle();
-		if ($("#leafletMap_id").css("display") === "none") {
-			$("#leafletMap_id").toggle();
+		if ($("#leafletMap_wrapper").css("display") === "none") {
+			$("#leafletMap_wrapper").toggle();
 		}
 
 		/* change size of map container */
@@ -209,7 +210,7 @@ var leafletMapShrink = function() {
 	/* switch content */
 	$(".navigation").children().toggle();
 	$(".resultList").toggle();
-	$("#leafletMap_id").toggle();
+	$("#leafletMap_wrapper").toggle();
 
 	// the parameter has to be explicitly removed first, than  set
 	tx_find.changeURLParameterForPage("mode");
@@ -450,8 +451,10 @@ var addBordersToMap = function() {
 				opacity = 0.63;
 				break;
 		}
-		layer.setStyle({weight: weight, opacity: opacity});
-	};
+		if (layer) {
+			layer.setStyle({weight: weight, opacity: opacity});
+		}
+	}
 
 	// change line style with zoom level to blur them out when closer
 	leafletMap.map.on("zoomend", function() {
