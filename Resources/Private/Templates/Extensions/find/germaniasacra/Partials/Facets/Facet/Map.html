@@ -13,6 +13,9 @@
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.js"></t3jquery:addJQueryAndScript>
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.markercluster.js"></t3jquery:addJQueryAndScript>
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js">
+
+
+
 </t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
 	<div class="mapContainer">
@@ -36,16 +39,30 @@
 		</div>
     </div>
 	<script>
+		var resourcesBaseURL = {s:format.json(data:"{f:uri.resource(
+					path:'Images/GermaniaSacra/',
+					absolute:'1',
+					extensionName: 'tmpl_adw'
+				)}")};
+
+
+		var IDURLTemplate = {s:format.json(data:"{f:uri.action(
+					arguments:'{
+						id:\'###ID###\'
+					}',
+					action:'detail',
+					noCacheHash:'1'
+				)}")};
 
 		/* If loaded for the first time, the object is defined */
 		var leafletMap = {};
+		leafletMap.language = {};
+		leafletMap.language.legend = "<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.legend"/>";
+		leafletMap.language.resetView = "<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.resetView"/>";
+		leafletMap.legendPath = '<f:uri.page pageUid="{settings.legendPath}"></f:uri.page>';
 
 		/* change standard header */
 		$(".facet-id-map h1").text("<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.view"/>");
-
-
-		$("#top a").unbind("click", leafletMapClearStorage);
-		$("#top a").click(leafletMapClearStorage);
 
 		/* Add functionality to toggle buttons */
 		$("#leafletMap_btnGroup input").click(function() {
@@ -58,35 +75,4 @@
 			$("#leafletMap_btnGroup input")[1].checked = true;
 		}
 	</script>
-	<style>
-		#leafletMap_btnGroup {
-			width: 100%;
-		}
-#leafletMap_btnGroup input[type="radio"] {
-	position: absolute;
-	left: -1000px;
-}
-
-#leafletMap_btnGroup label {
-    background-color:#ddd;
-    padding:4px 11px;
-	margin: 0px;
-    font-family:Arial;
-    font-size:16px;
-    cursor: pointer;
-	width: 40%;
-	display: block;
-}
-#leafletMap_btnGroup #leafletMap_list {
-	float: left;
-}
-#leafletMap_btnGroup #leafletMap_map {
-	float: right;
-}
-#leafletMap_btnGroup input[type="radio"]:checked + label {
-  background-color:#c90230;
-  color: #fff;
-  cursor: default;
-}
-	</style>
 </div>

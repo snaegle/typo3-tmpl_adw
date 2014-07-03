@@ -1,10 +1,12 @@
 $link-color: #c90230;
+$link-color-dark: $link-color;
+$link-color-light: #fff;
 $image-path: "../Images/";
 $fa-font-path: "../Fonts" !default;
 $font-default-color: #222;
 $image-path: "../Images/";
-$button-border-color-light: #d4d4d4;
-$button-border-color-dark: #b4b4b4;
-$button-color-inactive: #cacaca;
 $cluster-color: rgba(244, 151, 57, 0.6);
 $cluster-color-ie: rgb(244, 151, 57);
+$button-border: 1px solid darkgray;
+$button-background-light: #fff;
+$button-background-dark: $link-color;

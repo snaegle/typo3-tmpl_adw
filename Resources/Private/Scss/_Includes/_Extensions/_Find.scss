@@ -172,15 +172,36 @@ $textB: #555;
 		}
 
 		a.extendedSearch {
-			line-height: 30px;
+			border: 1px solid darkgrey;
+			display: block;
+			text-align: center;
+			margin-top: 5px;
+			text-decoration: none;
+			background-color: white;
+		}
+
+		a.extendedSearch:hover {
+			background-color: #c90230;
+			color: white;
+			border: 1px solid #b4b4b4;
+			transition: all .1s ease-in;
 		}
 
 		.button-reset-form {
-			border: none;
+			border: 1px solid darkgrey;
 			color: #C90230;
-			background-color: transparent;
-			padding: 0;
+			background-color: white;
+			padding: 5px;
+			width: 100%;
 			display: block;
+			margin-top: 5px;
+		}
+
+		.button-reset-form:hover {
+				color: white;
+				background-color: #c90230;
+				border: 1px solid #b4b4b4;
+				transition: all .1s ease-in;
 		}
 
 		.field-mode-extended {

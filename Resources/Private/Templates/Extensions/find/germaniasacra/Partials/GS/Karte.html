@@ -10,11 +10,26 @@
 <s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.css"/>
 <s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/Css/germaniasacraMap.css"/>
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.js"></t3jquery:addJQueryAndScript>
-<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js"></t3jquery:addJQueryAndScript>
+<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js">
+</t3jquery:addJQueryAndScript>
 
 <div id="c-{document.id}-map" class="map"></div>
 
 <script>
+	var resourcesBaseURL = {s:format.json(data:"{f:uri.resource(
+				path:'Images/GermaniaSacra/',
+				absolute:'1',
+				extensionName: 'tmpl_adw'
+			)}")};
+
+
+			var IDURLTemplate = {s:format.json(data:"{f:uri.action(
+				arguments:'{
+					id:\'###ID###\'
+				}',
+				action:'detail',
+				noCacheHash:'1'
+			)}")};
 	var leafletMap = {};
 	var id="c-"+{document.id}+"-map";
 	var ID = {s:format.json(data:document.id)};
@@ -31,6 +46,13 @@
 			<f:then>klosterTitel = titel+",<br />Standort "+ort;</f:then>
 			<f:else>klosterTitel = titel</f:else>
 		</f:if>
+		<f:for each="{document.orden_graphik}" as="graphik" key="index2" iteration="iter2">
+			<f:if condition='{graphik}'>
+				<f:then>;
+					icon = {s:format.json(data:"{s:data.valueForKey(array:document.orden_graphik, key:index2)}")};
+				</f:then>
+				</f:if>
+		</f:for>
 		standorte.push({
 			id:id,
 			koordinaten: koordinaten,
@@ -41,9 +63,7 @@
 			klosterTitel: klosterTitel
 		});
 	</f:for>
-
 	jQuery(document).bind('tx_find.mapsLoaded', function() {
 		leafletMapInit("small", "c-"+{document.id}+"-map");
-		$.when($.ajax(leafletMapAddDiverseMarkers()))
 	})
 </script>

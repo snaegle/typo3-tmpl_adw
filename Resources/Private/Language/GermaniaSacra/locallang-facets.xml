@@ -17,6 +17,8 @@
 			<label index="facet.map">Karte</label>
 			<label index="facet.list">Liste</label>
 			<label index="facet.view">Ansicht</label>
+			<label index="facet.legend"> Legende</label>
+			<label index="facet.resetView">Kartenansicht zurücksetzen</label>
 			<label index="facet.orden">Orden</label>
 			<label index="facet.jahr50">Zeitraum</label>
 			<label index="facet.bistum">Bistum</label>
