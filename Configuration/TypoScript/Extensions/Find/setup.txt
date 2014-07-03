@@ -24,7 +24,7 @@ plugin.tx_find {
 			}
 		}
 		# Link to legend
-		legendPath = http://adw-goe.de/forschung/forschungsprojekte-akademienprogramm/germania-sacra/klosterdatenbank/legende-zur-karte/
+		legendPath = {$plugin.tx_find.settings.legendPath}
 	}
 	view {
 		templateRootPath = EXT:tmpl_adw/Resources/Private/Templates/Extensions/find/germaniasacra/Templates/

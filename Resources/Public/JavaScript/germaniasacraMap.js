@@ -107,7 +107,7 @@ var leafletMapInit = function(type, id) {
 			            '<div id="leafletMap_spinner">' +
 			            '<i class="fa fa-spinner fa-spin fa-3x"></i>' +
 			            '</div>' +
-			            '<a href="' + leafletMap.legendPath + '">' + leafletMap.language.legend + '</a>' +
+			            '<div id="leafletMap_legend"><a href="' + leafletMap.legendPath + '">' + leafletMap.language.legend + '</a></div>' +
 			            '</div>');
 			leafletMapCreateMap(id);
 
