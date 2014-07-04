@@ -21,6 +21,7 @@
 		role:'http://purl.org/vocab/participation/schema#',
 		prov:'http://www.w3.org/ns/prov#',
 		geo:'http://www.w3.org/2003/01/geo/wgs84_pos#',
+		dcterms:'http://purl.org/dc/terms/',
 		kloster:'{f:render(partial:\'GS/Permalink\')}',
 		person:'http://personendatenbank.germania-sacra.de/index/gsn/',
 		license:'https://creativecommons.org/licenses/by-sa/3.0/'
