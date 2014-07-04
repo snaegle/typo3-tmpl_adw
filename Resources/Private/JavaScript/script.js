@@ -99,18 +99,10 @@ jQuery(function() {
 	/**
 	 * Tool mode stuff
 	 */
-
-	/* resets the form input field contents */
-	jQuery('.button-reset-form').click(function(e) {
-		jQuery(this).closest('form').find("input[type=text], textarea").val("");
-		e.preventDefault();
-	});
-
 	/* show "empty search form fields" if page is loaded with extended search as url parameter */
 	if(window.location.href.indexOf("extended") > -1) {
 
 	} else {
-		console.log('toggle button-reset-form');
 		jQuery('.button-reset-form').toggle();
 	}
 
