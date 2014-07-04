@@ -15,6 +15,11 @@ var tx_find = (function() {
 var URLParameterPrefix = 'tx_find_find';
 var container;
 
+	// Localisation function. Currently not implemented.
+	var localise = function (term) {
+		return term;
+	};
+
 /**
  * add jQuery chosen to select boxes in extended search
  */
@@ -23,7 +28,7 @@ var addChosenToExtendedSearchSelects = function() {
 	jQuery('.tx_find .field-status select').chosen({
 		placeholder_text_single: localise("Klosterstatus wählen")
 	})
-}
+};
 
 
 /**
@@ -55,26 +60,26 @@ var initialise = function () {
 			jQuery('.facetSearch', container).each( function () {
 				jQuery(this).chosen({width: "100%;"}).bind('change', facetChosenSelect);
 			});
+
+			if ($('.field-status select', container).is(":visible")) {
+				addChosenToExtendedSearchSelects();
+			}
 		}
-
-		jQuery('a.extendedSearch', container).click(toggleExtendedSearch);
-
-		if (jQuery('.tx_find .search-extended').length !== 0) {
+		jQuery('a.extendedSearch', container).click(function() {
+			toggleExtendedSearch();
 			addChosenToExtendedSearchSelects();
-		}
-
+			return false;
+		});
 
 		jQuery('.position .resultPosition', container).click(onClickRecordNumber);
+
+		/* resets the form input field contents */
+		jQuery('.button-reset-form').click(function() {
+			$('.tx_find .searchForm')[0].reset();
+			return false;
+		});
 	});
 };
-
-
-
-// Localisation function. Currently not implemented.
-var localise = function (term) {
-	return term;
-};
-
 
 
 var googleMapsLoader = (function() {
@@ -446,22 +451,21 @@ var detailViewWithPaging = function (element, position) {
  * @returns {boolean}
  */
 var toggleExtendedSearch = function () {
-	var parameterName = URLParameterPrefix + '[extended]';
+	var parameterName = 'extended';
 
 	// Change URL in address bar.
 	var jForm = jQuery('.searchForm', container);
-	var jThis = jQuery(this);
+	var jThis = jQuery(jQuery('a.extendedSearch'));
 	var makeExtended= !jForm.hasClass('search-extended');
 	if (makeExtended) {
-		jThis.text(this.getAttribute('extendedstring'));
+		jThis.text($('a.extendedSearch').attr('extendedstring'));
 		jQuery('.field-mode-extended', jForm).slideDown('fast');
-		changeURLParameterForPage('extended', 1);
-		addChosenToExtendedSearchSelects();
+		changeURLParameterForPage(parameterName, 1);
 	}
 	else {
-		jThis.text(this.getAttribute('simplestring'));
+		jThis.text(jQuery('a.extendedSearch').attr('simplestring'));
 		jQuery('.field-mode-extended', jForm).slideUp('fast');
-		changeURLParameterForPage('extended');
+		changeURLParameterForPage(parameterName);
 	}
 	jForm.toggleClass('search-simple').toggleClass('search-extended');
 	return false;
