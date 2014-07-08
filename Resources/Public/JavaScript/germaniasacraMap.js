@@ -380,6 +380,7 @@ var leafletMapAddDiverseMarkers = function() {
 
 var addBordersToMap = function() {
 
+	var statesData;
 	var setDynamicStyle = function(layer, zoom) {
 		layer.setStyle({weight: getWeight(zoom), opacity: getOpacity(zoom)});
 	}
@@ -400,23 +401,20 @@ var addBordersToMap = function() {
 				1;
 	}
 	var getOpacity = function(z) {
-			return z === 18?  0:
-					z === 17? 0:
-					z === 16? 0:
-					z === 15? 0:
-					z === 14? 0: // starting from here, there would be a huge border inside the map
-					z === 13? 0.1:
-					z === 12? 0.15:
-					z === 11? 0.2:
-					z === 10? 0.25:
-					z === 9? 0.3:
-					z === 8? 0.35:
-					z === 7? 0.4:
-					z === 6? 0.45:
-					z === 5? 0.5:
-					z === 4? 0.55:
-					z === 3? 0.6:
-					0.65;
+		return z === 1? 0.7:
+				z === 2? 0.65:
+				z === 3? 0.6:
+				z === 4? 0.55:
+				z === 5? 0.5:
+				z === 6? 0.45:
+				z === 7? 0.4:
+				z === 8? 0.35:
+				z === 9? 0.3:
+				z === 10? 0.25:
+				z === 11? 0.2:
+				z === 12? 0.15:
+				z === 13? 0.1:
+				0;
 		}
 
 	// change line style with zoom level to blur them out when closer
@@ -424,15 +422,81 @@ var addBordersToMap = function() {
 		setDynamicStyle(leafletMap.markers.geoJson, this._zoom);
 	});
 
-	$.getJSON(resourcesBaseURL + 'Bistumsgrenzen/GSBistumsgrenzenGEOJSON.txt', function(statesData) {
+
+
+	////////////////////
+
+	// control that shows state info on hover
+	leafletMap.markers.info = L.control({position: "topleft"});
+
+	leafletMap.markers.info.onAdd = function(map) {
+		this._div = L.DomUtil.create('div', 'leafletMap_info');
+		this.update();
+		return this._div;
+	};
+
+	leafletMap.markers.info.update = function(properties) {
+		if (properties) {
+			this._div.innerHTML = 'Bistum '+properties["Secondary ID"];
+		} else {
+			this._div.innerHTML = '';
+		}
+	};
+
+	leafletMap.markers.info.addTo(leafletMap.map);
+
+	function style(feature) {
+			var zoomlevel = leafletMap.map.getZoom();
+		return {
+			weight: getWeight(zoomlevel),
+			opacity: getOpacity(zoomlevel),
+			color: '#f49739',
+			fillOpacity: 0.1,
+			clickable: true
+		};
+	}
+
+	function highlightFeature(e) {
+		var layer = e.target;
+		var zoomlevel = leafletMap.map.getZoom();
+		layer.setStyle({
+			               weight: 5,
+			               color: '#f49739',
+			               opacity: parseFloat(getOpacity(zoomlevel)+0.2),
+			               dashArray: '',
+			               fillOpacity: 0.3
+		               });
+
+		if (!L.Browser.ie && !L.Browser.opera) {
+			layer.bringToFront();
+		}
+
+		leafletMap.markers.info.update(layer.feature.properties);
+	}
+
+	function resetHighlight(e) {
+		leafletMap.markers.geoJson.resetStyle(e.target);
+		leafletMap.markers.info.update();
+	}
+
+	function zoomToFeature(e) {
+		leafletMap.map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		if (leafletMapGetMode()) {
+			layer.on({
+				         mouseover: highlightFeature,
+				         mouseout: resetHighlight,
+				         click: zoomToFeature
+			         });
+		}
+	}
+
+	$.getJSON(resourcesBaseURL + 'Bistumsgrenzen/GSBistumsgrenzenGEOJSON.geojson', function(statesData) {
 		leafletMap.markers.geoJson = L.geoJson(statesData, {
-			style: {
-				weight: 2,
-				opacity: 1,
-				color: '#f49739',
-				fillOpacity: 0.1,
-				clickable: false
-			}
+			style: style,
+			onEachFeature: onEachFeature
 		}).addTo(leafletMap.map);
 	});
 };
