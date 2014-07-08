@@ -377,84 +377,45 @@ var leafletMapAddDiverseMarkers = function() {
 };
 
 
+
 var addBordersToMap = function() {
 
+	var statesData;
 	var setDynamicStyle = function(layer, zoom) {
-		var weight, opacity;
-		switch (zoom) {
-			case 18:
-				weight = 4096;
-				opacity = 0.1;
-				break;
-			case 17:
-				weight = 2048;
-				opacity = 0.13;
-				break;
-			case 16:
-				weight = 1024;
-				opacity = 0.17;
-				break;
-			case 15:
-				weight = 512;
-				opacity = 0.2;
-				break;
-			case 14:
-				weight = 256;
-				opacity = 0.23;
-				break;
-			case 13:
-				weight = 128;
-				opacity = 0.27;
-				break;
-			case 12:
-				weight = 64;
-				opacity = 0.3;
-				break;
-			case 11:
-				weight = 32;
-				opacity = 0.33;
-				break;
-			case 10:
-				weight = 16;
-				opacity = 0.37;
-				break;
-			case 9:
-				weight = 8;
-				opacity = 0.4;
-				break;
-			case 8:
-				weight = 4;
-				opacity = 0.43;
-				break;
-			case 7:
-				weight = 2;
-				opacity = 0.47;
-				break;
-			case 6:
-				weight = 1;
-				opacity = 0.5;
-				break;
-			case 5:
-				weight = 1;
-				opacity = 0.53;
-				break;
-			case 4:
-				weight = 1;
-				opacity = 0.57;
-				break;
-			case 3:
-				weight = 0.5;
-				opacity = 0.6;
-				break;
-			case 2:
-				weight = 0.25;
-				opacity = 0.63;
-				break;
-		}
-		if (layer) {
-			layer.setStyle({weight: weight, opacity: opacity});
-		}
+		layer.setStyle({weight: getWeight(zoom), opacity: getOpacity(zoom)});
 	}
+
+	var getWeight = function(z) {
+		return z === 18? 4096:
+				z === 17? 2048:
+				z === 16? 1024:
+				z === 15? 512:
+				z === 14? 256:
+				z === 13? 128:
+				z === 12? 64:
+				z === 11? 32:
+				z === 10? 16:
+				z === 9? 8:
+				z === 8? 4:
+				z === 7? 2:
+				1;
+	}
+	var getOpacity = function(z) {
+		return z === 1? 0.7:
+				z === 2? 0.65:
+				z === 3? 0.6:
+				z === 4? 0.55:
+				z === 5? 0.5:
+				z === 6? 0.45:
+				z === 7? 0.4:
+				z === 8? 0.35:
+				z === 9? 0.3:
+				z === 10? 0.25:
+				z === 11? 0.2:
+				z === 12? 0.15:
+				z === 13? 0.1:
+				0;
+		}
 
 	// change line style with zoom level to blur them out when closer
 	leafletMap.map.on("zoomend", function() {
@@ -462,18 +423,84 @@ var addBordersToMap = function() {
 	});
 
 
-	$.getJSON(resourcesBaseURL + 'Bistumsgrenzen/Alle.geojson', function(statesData) {
+
+	////////////////////
+
+	// control that shows state info on hover
+	leafletMap.markers.info = L.control({position: "topleft"});
+
+	leafletMap.markers.info.onAdd = function(map) {
+		this._div = L.DomUtil.create('div', 'leafletMap_info');
+		this.update();
+		return this._div;
+	};
+
+	leafletMap.markers.info.update = function(properties) {
+		if (properties) {
+			this._div.innerHTML = 'Bistum '+properties["Secondary ID"];
+		} else {
+			this._div.innerHTML = '';
+		}
+	};
+
+	leafletMap.markers.info.addTo(leafletMap.map);
+
+	function style(feature) {
+			var zoomlevel = leafletMap.map.getZoom();
+		return {
+			weight: getWeight(zoomlevel),
+			opacity: getOpacity(zoomlevel),
+			color: '#f49739',
+			fillOpacity: 0.1,
+			clickable: true
+		};
+	}
+
+	function highlightFeature(e) {
+		var layer = e.target;
+		var zoomlevel = leafletMap.map.getZoom();
+		layer.setStyle({
+			               weight: 5,
+			               color: '#f49739',
+			               opacity: parseFloat(getOpacity(zoomlevel)+0.2),
+			               dashArray: '',
+			               fillOpacity: 0.3
+		               });
+
+		if (!L.Browser.ie && !L.Browser.opera) {
+			layer.bringToFront();
+		}
+
+		leafletMap.markers.info.update(layer.feature.properties);
+	}
+
+	function resetHighlight(e) {
+		leafletMap.markers.geoJson.resetStyle(e.target);
+		leafletMap.markers.info.update();
+	}
+
+	function zoomToFeature(e) {
+		leafletMap.map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		if (leafletMapGetMode()) {
+			layer.on({
+				         mouseover: highlightFeature,
+				         mouseout: resetHighlight,
+				         click: zoomToFeature
+			         });
+		}
+	}
+
+	$.getJSON(resourcesBaseURL + 'Bistumsgrenzen/GSBistumsgrenzenGEOJSON.geojson', function(statesData) {
 		leafletMap.markers.geoJson = L.geoJson(statesData, {
-			style: {
-				weight: 2,
-				opacity: 1,
-				color: '#f49739',
-				fillOpacity: 0.1,
-				clickable: false
-			}
+			style: style,
+			onEachFeature: onEachFeature
 		}).addTo(leafletMap.map);
 	});
 };
+
 
 var leafletMapAddMarkerToSmallMap = function() {
 
