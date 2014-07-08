@@ -255,6 +255,11 @@ $formLabelWidth: 150px;
 		transition: all .1s ease-in;
 	}
 
+	.leafletMap_info.leaflet-control {
+		background: rgba(250,250,250,0.5);
+		padding: 2px;
+	}
+
 	#leafletMap_btnGroup {
 		width: 100%;
 	}

@@ -41,7 +41,9 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
 					'rss-septuaginta' => 110,
 					'tx-find-data' => 1369315139,
 					'tx-find-turtle' => 1380124799,
-					'tx-find-rdf' => 1378891468
+					'tx-find-rdf' => 1378891468,
+					'tx-find-csv' => 1378902868,
+					'tx-find-bna' => 1378914906
 				),
 				'noMatch' => 'bypass'
 			)
