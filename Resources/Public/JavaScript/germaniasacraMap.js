@@ -377,92 +377,54 @@ var leafletMapAddDiverseMarkers = function() {
 };
 
 
+
 var addBordersToMap = function() {
 
 	var setDynamicStyle = function(layer, zoom) {
-		var weight, opacity;
-		switch (zoom) {
-			case 18:
-				weight = 4096;
-				opacity = 0.1;
-				break;
-			case 17:
-				weight = 2048;
-				opacity = 0.13;
-				break;
-			case 16:
-				weight = 1024;
-				opacity = 0.17;
-				break;
-			case 15:
-				weight = 512;
-				opacity = 0.2;
-				break;
-			case 14:
-				weight = 256;
-				opacity = 0.23;
-				break;
-			case 13:
-				weight = 128;
-				opacity = 0.27;
-				break;
-			case 12:
-				weight = 64;
-				opacity = 0.3;
-				break;
-			case 11:
-				weight = 32;
-				opacity = 0.33;
-				break;
-			case 10:
-				weight = 16;
-				opacity = 0.37;
-				break;
-			case 9:
-				weight = 8;
-				opacity = 0.4;
-				break;
-			case 8:
-				weight = 4;
-				opacity = 0.43;
-				break;
-			case 7:
-				weight = 2;
-				opacity = 0.47;
-				break;
-			case 6:
-				weight = 1;
-				opacity = 0.5;
-				break;
-			case 5:
-				weight = 1;
-				opacity = 0.53;
-				break;
-			case 4:
-				weight = 1;
-				opacity = 0.57;
-				break;
-			case 3:
-				weight = 0.5;
-				opacity = 0.6;
-				break;
-			case 2:
-				weight = 0.25;
-				opacity = 0.63;
-				break;
-		}
-		if (layer) {
-			layer.setStyle({weight: weight, opacity: opacity});
-		}
+		layer.setStyle({weight: getWeight(zoom), opacity: getOpacity(zoom)});
 	}
+
+	var getWeight = function(z) {
+		return z === 18? 4096:
+				z === 17? 2048:
+				z === 16? 1024:
+				z === 15? 512:
+				z === 14? 256:
+				z === 13? 128:
+				z === 12? 64:
+				z === 11? 32:
+				z === 10? 16:
+				z === 9? 8:
+				z === 8? 4:
+				z === 7? 2:
+				1;
+	}
+	var getOpacity = function(z) {
+			return z === 18?  0:
+					z === 17? 0:
+					z === 16? 0:
+					z === 15? 0:
+					z === 14? 0: // starting from here, there would be a huge border inside the map
+					z === 13? 0.1:
+					z === 12? 0.15:
+					z === 11? 0.2:
+					z === 10? 0.25:
+					z === 9? 0.3:
+					z === 8? 0.35:
+					z === 7? 0.4:
+					z === 6? 0.45:
+					z === 5? 0.5:
+					z === 4? 0.55:
+					z === 3? 0.6:
+					0.65;
+		}
 
 	// change line style with zoom level to blur them out when closer
 	leafletMap.map.on("zoomend", function() {
 		setDynamicStyle(leafletMap.markers.geoJson, this._zoom);
 	});
 
-
-	$.getJSON(resourcesBaseURL + 'Bistumsgrenzen/Alle.geojson', function(statesData) {
+	$.getJSON(resourcesBaseURL + 'Bistumsgrenzen/GSBistumsgrenzenGEOJSON.txt', function(statesData) {
 		leafletMap.markers.geoJson = L.geoJson(statesData, {
 			style: {
 				weight: 2,
@@ -474,6 +436,7 @@ var addBordersToMap = function() {
 		}).addTo(leafletMap.map);
 	});
 };
+
 
 var leafletMapAddMarkerToSmallMap = function() {
 
