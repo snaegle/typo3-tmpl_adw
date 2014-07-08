@@ -61,7 +61,7 @@ plugin.tx_solr {
 					url {
 						typolink {
 							parameter = {$solr.index.member.target}
-							useCacheHash = 1
+							useCacheHash = 0
 							additionalParams = &tx_wtdirectory_pi1[show]={field:uid}
 							additionalParams.insertData = 1
 							returnLast = url
@@ -101,6 +101,6 @@ plugin.tx_solr {
 }
 
 plugin.tx_solr_pi_results._LOCAL_LANG.de {
-  results_searched_for = Es wurde nach "@searchWord" gesucht 
+  results_searched_for = Es wurde nach "@searchWord" gesucht
   results_found = (@resultsTotal Treffer).
 }
