@@ -16,3 +16,4 @@ Resources/Public/Fonts
 .idea
 .jruby
 Documentation/_make/build/
+*.iml
