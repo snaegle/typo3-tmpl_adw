@@ -23,7 +23,6 @@
 		</p>
 	</f:if>
 
-	<!-- <div class="results grid_16"> -->
 	<div class="results">
 
 		<f:render partial="Form/Form" arguments="{_all}"/>
@@ -42,8 +41,8 @@
 					config:config
 			}"/>
 		</section>
-		
-		<f:render partial="Facets/Facets" arguments="{_all}"/>
+
+	<div class="grid_12">
 
 		<ol id="c{config.uid}-resultList" class="resultList grid_12" start="{config.counterStart}">
 			<f:for each="{results.documents}" as="document">
@@ -54,5 +53,12 @@
 		<div class="navigation bottom grid_16"/>
 			<f:render partial="Pager/ListPager" arguments="{_all}"/>
 		</div>
+	</div>
+
+	<div class="grid_4">
+		<f:render partial="Facets/Facets" arguments="{_all}"/>
+
+</div>
+
 	</div>
 </f:section>
