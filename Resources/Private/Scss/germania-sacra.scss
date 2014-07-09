@@ -71,6 +71,16 @@ $formLabelWidth: 150px;
 				right: $mapRight;
 			}
 		}
+		.downloadLinks {
+			float: left;
+			ul, li {
+				display: inline;
+				padding: 0;
+			}
+			.formatName {
+				text-transform: uppercase;
+			}
+		}
 	}
 
 	article {
@@ -199,16 +209,6 @@ $formLabelWidth: 150px;
 
 	.hidden {
 		display: none;
-	}
-
-	.downloadLinks {
-		ul, li {
-			display: inline;
-			padding: 0;
-		}
-		.formatName {
-			text-transform: uppercase;
-		}
 	}
 
 	.zitation-detail {
