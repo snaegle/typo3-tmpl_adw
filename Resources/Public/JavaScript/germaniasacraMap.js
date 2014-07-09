@@ -219,13 +219,32 @@ var leafletMapShrink = function() {
 	leafletMap.grown = false;
 };
 
+var getRawFacets = function(facets) {
+	var pattern = 'tx_find_find[facet]';
+	var rawFacetQuery = '';
+	var rawFacets = facets.split('&');
+
+	for (var rawFacet in rawFacets) {
+		rawFacetQuery += rawFacets[rawFacet]
+			.replace(pattern, '')
+			.replace('=1', '')
+			.replace(/\[(.*?)\]\[(.*?)\]/, "$1:$2");
+		if ((parseInt(rawFacet) + 1) !== rawFacets.length) {
+			rawFacetQuery += ' AND ';
+		}
+	}
+
+	return rawFacetQuery;
+};
+
+
 var leafletMapAddDiverseMarkers = function() {
 	/*
 	 add URLparameter to create page with all information
 	 read the page and create the markers
 	 has to wait until object "germaniaSacra" is filled completely
 
-	 if either bistum or orden of monasteries are the same,
+	 if either bistum or orden of monasteries are the esame,
 	 merge information rather than create several markers
 	 */
 	if (!leafletMap.filled && leafletMap.loaded) {
@@ -243,6 +262,8 @@ var leafletMapAddDiverseMarkers = function() {
 		// germaniaSacra.config.queryURLTemplate is to broken to be used
 		//var queryURL = germaniaSacra.config.queryURLTemplate.replace('%23%23%23TERM%23%23%23', escapedQuery);
 		var _facetFields = leafletMapGetDataFieldsOfFacets();
+
+		var rawFacets = getRawFacets(_facetFields);
 		var queryURL = "tx-find-data";
 		var _location = location.pathname;
 		if (_location.match("^//")) {
@@ -256,11 +277,12 @@ var leafletMapAddDiverseMarkers = function() {
 		}
 		queryURL += "?tx_find_find[q][raw]=";
 		queryURL += encodeURIComponent(solrQuery);
+		if (rawFacets) {
+			queryURL += ' AND ' + rawFacets;
+		}
 		queryURL += '&' + encodeURIComponent('tx_find_find[data-fields]') + '=' + encodeURIComponent(dataFields);
 		queryURL += '&' + "tx_find_find[count]=3000&tx_find_find[data-format]=raw-solr-response&tx_find_find[format]=data";
-		if (_facetFields) {
-			queryURL += '&' + _facetFields;
-		}
+
 		var url = document.baseURI + queryURL;
 
 		/* get information from JSON-Object */
