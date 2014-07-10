@@ -224,7 +224,8 @@ var getRawFacets = function(facets) {
 		rawFacetQuery += rawFacets[rawFacet]
 			.replace(pattern, '')
 			.replace('=1', '')
-			.replace(/\[(.*?)\]\[(.*?)\]/, "$1:$2");
+			.replace(/\[(.*?)\]\[(.*?)\]/, "$1:$2")
+			.replace(/RANGE (.*)/, "[$1]");
 		if ((parseInt(rawFacet) + 1) !== rawFacets.length) {
 			rawFacetQuery += ' AND ';
 		}
