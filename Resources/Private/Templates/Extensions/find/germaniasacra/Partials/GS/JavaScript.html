@@ -6,9 +6,8 @@
 	for the maps that are displayed.
 </f:comment>
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/ZeroClipboard.min.js">
-	var client = new ZeroClipboard( document.getElementById("copy-button"), {
-		moviePath: "/typo3conf/ext/tmpl_adw/Resources/Public/Flash/ZeroClipboard.swf"
-	} );
+	ZeroClipboard.config( { swfPath: "/typo3conf/ext/tmpl_adw/Resources/Public/Flash/ZeroClipboard.swf" } );
+	var client = new ZeroClipboard(document.getElementById("copy-button"));
 </t3jquery:addJQueryAndScript>
 <t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germania-sacra.js">
 	<s:data.newArray name="newQ" keys="{1:'raw'}" values="{1:'###TERM###'}">
