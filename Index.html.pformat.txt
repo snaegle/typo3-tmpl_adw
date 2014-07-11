@@ -63,7 +63,7 @@
                     Rendered
                 <field_body>
                     <paragraph classes="first last">
-                        2014-07-11 14:44
+                        2014-07-11 15:54
         <paragraph>
             The content of this document is related to TYPO3,
             a GNU/GPL CMS/Framework available from 

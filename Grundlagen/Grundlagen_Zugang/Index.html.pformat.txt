@@ -63,8 +63,7 @@
                 1.2.4 Login zum Editieren
             <paragraph>
                 Wenn Sie die Backend-Adresse in Ihrem Web-Browser eingeben, erscheint eine Seite mit folgendem Dialogfeld:
-            <figure>
-                <reference internal="True" refuri="Grundlagen/Grundlagen_Zugang/../../Images/LogIn.png">
-                    <image alt="Login fürs Backend" candidates="{'*': u'Grundlagen/Grundlagen_Zugang/../../Images/LogIn.png'}" uri="Grundlagen/Grundlagen_Zugang/../../Images/LogIn.png" width="300px">
+            <reference internal="True" refuri="../../_images/LogIn.PNG">
+                <image alt="Login fürs Backend" candidates="{'*': u'Grundlagen/Grundlagen_Zugang/LogIn.PNG'}" uri="../../_images/LogIn.PNG" width="300px">
             <paragraph>
                 Geben Sie bitte Benutzername und Passwort ein und klicken Sie Anmelden. Bei erfolgreichem Login erscheint Ihre persönliche Benutzeroberfläche (siehe Kapitel 1.4).

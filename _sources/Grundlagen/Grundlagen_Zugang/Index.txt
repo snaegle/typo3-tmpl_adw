@@ -42,7 +42,7 @@ Die Endung /typo3 wird lediglich an die URL Ihrer Webseite angefügt. Sie müsse
 -------------------------
 Wenn Sie die Backend-Adresse in Ihrem Web-Browser eingeben, erscheint eine Seite mit folgendem Dialogfeld:
 
-.. figure:: ../../Images/LogIn.png
+.. image:: LogIn.PNG
 	:width: 300px
 	:alt: Login fürs Backend
 

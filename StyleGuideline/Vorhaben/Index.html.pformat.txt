@@ -48,5 +48,5 @@
                     <paragraph classes="first">
                         Bei der Erstellung der Webseiten durch die Zentralredaktion, wird eine Struktur für die Vorhabenseiten vorgeben, die ggf. noch angepasst werden kann.
             <figure>
-                <reference internal="True" refuri="StyleGuideline/Vorhaben/../../Images/StyleGuideline/StartseiteVorhaben.png">
-                    <image alt="Startseite des Vorhaben Deutsche Inschriften" candidates="{'*': u'StyleGuideline/Vorhaben/../../Images/StyleGuideline/StartseiteVorhaben.png'}" uri="StyleGuideline/Vorhaben/../../Images/StyleGuideline/StartseiteVorhaben.png" width="600px">
+                <reference internal="True" refuri="../../_images/StartseiteVorhaben.PNG">
+                    <image alt="Startseite des Vorhaben Deutsche Inschriften" candidates="{'*': u'StyleGuideline/Vorhaben/../../Images/StyleGuideline/StartseiteVorhaben.PNG'}" uri="../../_images/StartseiteVorhaben.PNG" width="600px">
