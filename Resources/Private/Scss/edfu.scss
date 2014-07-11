@@ -73,6 +73,10 @@ $labelWidth: 120px;
 
 	.facet-type-Tabs ol li.facetActive {
 		background: $adwRed;
+
+		a {
+			color: $link-color-light;
+		}
 	}
 
 	.searchNote {
@@ -209,7 +213,7 @@ $labelWidth: 120px;
 			}
 
 			.details {
-				color: #999;
+				color: $adwRed;
 
 				&:before {
 					margin-right: 0;
@@ -431,24 +435,27 @@ $labelWidth: 120px;
 		}
 	}
 
-	article.fields {
-		padding-top: 1em;
+	article {
 
-		dl {
-			margin-top: 1em;
+		.fields {
+			padding-top: 1em;
 
-			dt {
-				width: 200px;
-			}
+			dl {
+				margin-top: 1em;
 
-			dd {
-				padding-left: 210px;
+				dt {
+					width: 200px;
+				}
 
-				ul {
-					padding-left: 2em;
+				dd {
+					padding-left: 210px;
 
-					li {
-						list-style-type: square;
+					ul {
+						padding-left: 2em;
+
+						li {
+							list-style-type: square;
+						}
 					}
 				}
 			}
