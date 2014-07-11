@@ -90,7 +90,7 @@ Bei beiden Optionen können die Bildbreiten auch selbst angepasst werden, wovon 
 Qualität von Bildern
 --------------------
 
-Das Bild sollte in bester Quelität in das System eingestellt werden.
+Das Bild sollte in bester Qualität in das System eingestellt werden.
 
 Regeln zur Benennung von Bildern
 --------------------------------
@@ -102,4 +102,5 @@ Bei der Benennung der Dateien sollten folgende Regeln beachtet werden:
 - Sliderbilder: *vorhaben*_slider_*nummerierung*.png (Beispiel: runes_slider_01.png)
 
 **Vorschlag:**
+
 - Bilder in Vorhaben: *bildname*.png (Beispiel: tempel01.png)
