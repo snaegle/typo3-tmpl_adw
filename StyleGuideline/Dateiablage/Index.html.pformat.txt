@@ -1,0 +1,18 @@
+<document source="/home/ingop/repo/VagrantTYPO3/vHosts/adw/Web/typo3conf/ext/tmpl_adw/Documentation/StyleGuideline/Dateiablage/Index.rst">
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        FOR YOUR INFORMATION
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <comment xml:space="preserve">
+        -*- coding: utf-8 -*- with BOM.
+    <target refid="dateiablage">
+    <section ids="beschreibung-der-dateiablage dateiablage" names="beschreibung\ der\ dateiablage dateiablage">
+        <title>
+            Beschreibung der Dateiablage
+        <paragraph>
+            In der Dateiliste befinden sich alle Dokumente, die im Adw-Portal dargestellt und zum Download angeboten werden. Die Struktur sieht wie folgt aus:
+        <figure>
+            <reference internal="True" refuri="../../_images/dateiablage.png">
+                <image alt="Dateiablage des TYPO3-Backend" candidates="{'*': u'StyleGuideline/Dateiablage/../../Images/StyleGuideline/dateiablage.png'}" uri="../../_images/dateiablage.png" width="300px">

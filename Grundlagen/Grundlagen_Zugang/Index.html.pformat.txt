@@ -1,0 +1,70 @@
+<document source="/home/ingop/repo/VagrantTYPO3/vHosts/adw/Web/typo3conf/ext/tmpl_adw/Documentation/Grundlagen/Grundlagen_Zugang/Index.rst">
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        FOR YOUR INFORMATION
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <comment xml:space="preserve">
+        -*- coding: utf-8 -*- with BOM.
+    <target refid="grundlagen-zugang">
+    <section ids="zugang grundlagen-zugang" names="1.2\ zugang grundlagen_zugang">
+        <title>
+            1.2 Zugang
+        <section ids="alles-im-web-browser" names="1.2.1\ alles\ im\ web-browser">
+            <title>
+                1.2.1 Alles im Web-Browser
+            <paragraph>
+                TYPO3 ist ein Online-Redaktionssystem und verwendet als Client nur einen üblichen Web-Browser. Sie können somit jederzeit von jedem Ort mit Internet-Zugang Veränderungen an Ihrer Webseite vornehmen.
+        <section ids="frontend" names="1.2.2\ frontend">
+            <title>
+                1.2.2 Frontend
+            <paragraph>
+                Das sogenannte Frontend von TYPO3 ("vordere Seite") ist die Webseite, die den Internetnutzern angezeigt wird, in unserem Fall die AdW-Webseite. Der Zugriff kann mit jedem beliebigen Web-Browser erfolgen, auch mit älteren Versionen und auch ohne spezielle Funktionen wie Cookies oder JavaScript. Im Allgemeinen ist auch kein Login notwendig (nur bei passwortgeschützten Webseiten). Der Zugriff auf die Webseiten erfolgt über die URL:
+            <paragraph>
+                <reference refuri="http://www.adw-goe.de">
+                    http://www.adw-goe.de
+        <section ids="backend" names="1.2.3\ backend">
+            <title>
+                1.2.3 Backend
+            <paragraph>
+                Das sogenannte Backend von TYPO3 („hintere Seite") ist das Content-Management-System, mit dem die Webseiten erstellt und editiert werden. Der Zugriff ist nur für berechtigte Personen, die sogenannten Web-Autoren oder -Redakteure möglich (Login, siehe Abschnitt 1.2.4). Sie brauchen dafür einen Benutzernamen und ein Passwort mit einer entsprechenden TYPO3-Berechtigung.
+                Der Zugriff kann mit allen gängigen neueren Web-Browsern erfolgen. Cookies und JavaScript müssen eingeschaltet sein und Popup-Fenster müssen für diesen Server erlaubt sein. Wir empfehlen die Verwendung des Browsers Firefox.
+                Browsereinstellungen für Firefox überprüfen und ggf. ändern:
+            <bullet_list bullet="-">
+                <list_item>
+                    <definition_list classes="first">
+                        <definition_list_item>
+                            <term>
+                                Pop-up-Fenster erlauben: über Extras auf Einstellungen gehen, dort im Ordner Inhalt
+                            <definition>
+                                <bullet_list bullet="-" classes="first last">
+                                    <list_item>
+                                        <paragraph classes="first">
+                                            entweder das Häkchen bei Pop-up-Fenster blockieren entfernen
+                                    <list_item>
+                                        <paragraph classes="first">
+                                            oder Häkchen setzen und unter Ausnahmen die URL der Webseite hinzufügen
+                <list_item>
+                    <paragraph classes="first">
+                        JavaScript ermöglichen: Häkchen bei JavaScript aktivieren
+                <list_item>
+                    <paragraph classes="first">
+                        Cookies ermöglichen: im Ordner Datenschutz: Firefox wird eine Chronik anlegen oder Firefox wird eine Chronik nach benutzerdefinierten Einstellungen anlegen (Häkchen bei Cookies akzeptieren setzen und Behalten bis Firefox geschlossen wird) auswählen
+            <paragraph>
+                Der Zugriff auf das Backend erfolgt über die URL:
+            <paragraph>
+                <reference refuri="https://www.adw-goe.de/typo3">
+                    https://www.adw-goe.de/typo3
+            <paragraph>
+                Die Endung /typo3 wird lediglich an die URL Ihrer Webseite angefügt. Sie müssen gegebenenfalls noch ein Sicherheitszertifikat herunterladen, um in das Backend der Webseite zu gelangen.
+        <section ids="login-zum-editieren" names="1.2.4\ login\ zum\ editieren">
+            <title>
+                1.2.4 Login zum Editieren
+            <paragraph>
+                Wenn Sie die Backend-Adresse in Ihrem Web-Browser eingeben, erscheint eine Seite mit folgendem Dialogfeld:
+            <figure>
+                <reference internal="True" refuri="Grundlagen/Grundlagen_Zugang/../../Images/LogIn.png">
+                    <image alt="Login fürs Backend" candidates="{'*': u'Grundlagen/Grundlagen_Zugang/../../Images/LogIn.png'}" uri="Grundlagen/Grundlagen_Zugang/../../Images/LogIn.png" width="300px">
+            <paragraph>
+                Geben Sie bitte Benutzername und Passwort ein und klicken Sie Anmelden. Bei erfolgreichem Login erscheint Ihre persönliche Benutzeroberfläche (siehe Kapitel 1.4).
