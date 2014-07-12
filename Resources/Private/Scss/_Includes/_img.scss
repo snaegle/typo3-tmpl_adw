@@ -1,0 +1,46 @@
+.imgtext {}
+
+.imgtext__img {
+  margin-bottom: 10px;
+  img {
+    width: 100%;
+  }
+}
+
+.imgtext__caption {
+  font-size: 0.75rem;
+}
+
+.imgtext__img--left {
+  margin-right: 20px;
+  float: left;
+}
+
+.imgtext__img--full {
+  padding-right: 8px;
+}
+
+.imgtext__img--one-half {
+  width: 50%;
+}
+
+.imgtext__img--one-fifth {
+  width: 20%;
+}
+
+.imgtext__img--one-third {
+  width: 33%;
+}
+
+.imgtext__img--one-fifth {
+  width: 20%;
+}
+
+.imgtext__img--one-half,
+.imgtext__img--one-fifth,
+.imgtext__img--one-third,
+.imgtext__img--one-fifth {
+  margin-top: 3px;
+}
+
+.imgtext__text {}
