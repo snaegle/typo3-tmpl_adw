@@ -22,7 +22,7 @@
 		</f:for>
 	</f:for>
 
-	<div class="grid_12">
+	<div class="grid_12 alpha">
 
 		<div class="formFields">
 			<f:for each="{settings.queryFields}" as="fieldInfo">
@@ -51,11 +51,9 @@
 	</div>
 
 
-	<div class="grid_4">
-
+	<div class="grid_4 omega">
 		<div class="controls">
 			<f:form.submit value="{f:translate(key:'Search')}" class="submit"/>
-
 			<f:groupedFor each="{settings.queryFields}" as="fieldsByType" groupBy="extended" groupKey="extended">
 				<f:if condition="{0:extended} == {0:1}">
 					<f:if condition="{config.extendedSearch}">
@@ -87,26 +85,25 @@
 				</f:if>
 			</f:groupedFor>
 		</div>
+	</div>
+	<div class="grid_9">
+		<f:if condition="{f:count(subject:config.sortOptions.menu)} > 1">
+			<div class="sortOrder">
+				<label for="c{config.uid}-sortSelect">
+					<f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.sort"/>
+				</label>
+				<f:form.select id="c{config.uid}-sortSelect" name="sort" options="{config.sortOptions.menu}" value="{config.sortOptions.selected}"/>
+			</div>
+		</f:if>
 
-</div>
-
-	<f:if condition="{f:count(subject:config.sortOptions.menu)} > 1">
-		<div class="sortOrder">
-			<label for="c{config.uid}-sortSelect">
-				<f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.sort"/>
-			</label>
-			<f:form.select id="c{config.uid}-sortSelect" name="sort" options="{config.sortOptions.menu}" value="{config.sortOptions.selected}"/>
-		</div>
-	</f:if>
-
-	<f:if condition="{f:count(subject:config.resultCountOptions.menu)} > 1">
-		<div class="resultCountPicker">
-			<label for="c{config.uid}-resultCountSelect">
-				<f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
-			</label>
-			<f:form.select id="c{config.uid}-resultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
-		</div>
-	</f:if>
-
+		<f:if condition="{f:count(subject:config.resultCountOptions.menu)} > 1">
+			<div class="resultCountPicker">
+				<label for="c{config.uid}-resultCountSelect">
+					<f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
+				</label>
+				<f:form.select id="c{config.uid}-resultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
+			</div>
+		</f:if>
+	</div>
 	<!-- <div class="clear"></div> -->
 </f:form>

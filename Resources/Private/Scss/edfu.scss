@@ -41,6 +41,10 @@ $labelWidth: 120px;
 
 .tx_find {
 
+	.invisible {
+		line-height: 0px;
+	}
+
 	form {
 		.fieldContainer {
 			.fieldLabel {
@@ -64,12 +68,6 @@ $labelWidth: 120px;
 				padding-top: 8px;
 				line-height: 100%;
 			}
-		}
-
-		.controls {
-			position: absolute;
-			bottom: 4px;
-			left: 670px;
 		}
 	}
 
@@ -116,7 +114,7 @@ $labelWidth: 120px;
 
 	ol.resultList {
 		float: left;
-		width: 660px;
+		width: 680px;
 		margin: 0;
 
 		.results {
@@ -130,8 +128,6 @@ $labelWidth: 120px;
 			}
 
 		}
-		margin: 0 220px 0 0;
-		padding-left: 3em;
 
 		h1 {
 			margin: 0;
