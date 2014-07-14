@@ -2,63 +2,80 @@
 <f:layout name="Default"/>
 
 <f:section name="main">
-	<s:page.title>
-		<f:render partial="Components/QueryString" arguments="{query:arguments.q, facets:config.activeFacets}"/>
-		–
-		{config.pageTitle}
-	</s:page.title>
 
-	<s:data.newArray name="formFacetsInnerArray"
-		keys="{0:'{s:data.valueForKey(array:\"{s:data.arrayFirst(array:config.activeFacets.typ)}\", key:\"term\")}'}"
-		values="{0:1}"
-	>
+	<div class="grid_16">
+		<s:page.title>
+			<f:render partial="Components/QueryString" arguments="{query:arguments.q, facets:config.activeFacets}"/>
+			–
+			{config.pageTitle}
+		</s:page.title>
+
+		<s:data.newArray name="formFacetsInnerArray"
+		                 keys="{0:'{s:data.valueForKey(array:\"{s:data.arrayFirst(array:config.activeFacets.typ)}\", key:\"term\")}'}"
+							values="{0:1}"
+		>
 		<s:data.newArray name="formFacets" keys="{0:'typ'}" values="{0:formFacetsInnerArray}">
 			<f:render partial="Page/Standard" arguments="{_all}"/>
 		</s:data.newArray>
-	</s:data.newArray>
+		</s:data.newArray>
 
-	<f:if condition="{arguments.facet.typ.wort}">
-		<p class="searchNote">
-			<f:translate key="LLL:{settings.languageRootPath}locallang-edfu.xml:WL Suchnotiz"/>
-		</p>
-	</f:if>
-
-	<div class="results">
-
-		<f:render partial="Form/Form" arguments="{_all}"/>
-
-		<div class="navigation top grid_16"/>
-			<f:render partial="Components/ResultCount" arguments="{_all}"/>
-			<f:render partial="Pager/ListPager" arguments="{_all}"/>
-		</div>
-
-		<section class="facets-typ grid_16">
-			<f:render
-				partial="Facets/Facet"
-				arguments="{
-					facetData: '{s:data.valueForKey(array:results.components.facetset.facets, key:config.facets.10.id)}',
-					facetInfo: config.facets.10,
-					config:config
-			}"/>
-		</section>
-
-	<div class="grid_12">
-
-		<ol id="c{config.uid}-resultList" class="resultList grid_12" start="{config.counterStart}">
-			<f:for each="{results.documents}" as="document">
-				<f:render partial="Edfu/Result" arguments="{_all}"/>
-			</f:for>
-		</ol>
-
-		<div class="navigation bottom grid_16"/>
-			<f:render partial="Pager/ListPager" arguments="{_all}"/>
+		<f:if condition="{arguments.facet.typ.wort}">
+			<p class="searchNote">
+				<f:translate key="LLL:{settings.languageRootPath}locallang-edfu.xml:WL Suchnotiz"/>
+			</p>
+		</f:if>
+		<div class="results">
+			<f:render partial="Form/Form" arguments="{_all}"/>
 		</div>
 	</div>
 
-	<div class="grid_4">
-		<f:render partial="Facets/Facets" arguments="{_all}"/>
+	<div class="grid_16">
+			<div class="navigation top">
+				<div class="grid_9 alpha">
+					<f:render partial="Pager/ListPager" arguments="{_all}"/>
+					</div>
+				<div class="grid_3">
+					<f:render partial="Components/ResultCount" arguments="{_all}"/>
+			</div>
+				<div class="grid_4 omega">&nbsp;</div>
+			</div>
+	</div>
 
-</div>
+	<div class="grid_16">
+			<section class="facets-typ">
+				<f:render
+						partial="Facets/Facet"
+						arguments="{
+											facetData: '{s:data.valueForKey(array:results.components.facetset.facets, key:config.facets.10.id)}',
+																facetInfo: config.facets.10,
+																config:config
+																			}"/>
+			</section>
+	</div>
+	<div class="grid_16">
+		<div class="grid_12 alpha">
+			<ol id="c{config.uid}-resultList" class="resultList grid_12" start="{config.counterStart}">
+				<f:for each="{results.documents}" as="document">
+					<f:render partial="Edfu/Result" arguments="{_all}"/>
+				</f:for>
+			</ol>
+		</div>
 
+		<div class="grid_4 omega">
+			<f:render partial="Facets/Facets" arguments="{_all}"/>
+		</div>
+	</div>
+
+	<div class="grid_16">
+		<div class="navigation bottom">
+			<div class="grid_9 alpha">
+				<f:render partial="Pager/ListPager" arguments="{_all}"/>
+				</div>
+			<div class="grid_3">
+				<f:render partial="Components/ResultCount" arguments="{_all}"/>
+		</div>
+			<div class="grid_4 omega">&nbsp;</div>
+		</div>
 	</div>
 </f:section>
+
