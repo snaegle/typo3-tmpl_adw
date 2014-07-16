@@ -1,9 +1,9 @@
-﻿.. ==================================================
+.. ==================================================
 .. FOR YOUR INFORMATION
 .. --------------------------------------------------
 .. -*- coding: utf-8 -*- with BOM.
 
-.. include:: ../Includes.txt
+.. include:: ../../Includes.txt
 
 
 .. _bilder:
@@ -71,7 +71,7 @@ Bedeutung der Metadaten
 	:alt: Beschreibung
 
 Bilder bei News
---------------
+---------------
 Die Bilder bei den News sollen über den Editor einfügt bzw. bearbeitet werden. Damit kann die Platzierung im Text vorgenommen werden und die Bilder werden beim Klick vergrößert dargestellt.
 
 Positionierung von Bildern
@@ -101,7 +101,7 @@ Regeln zur Benennung von Bildern
 
 Bei der Benennung der Dateien sollten folgende Regeln beachtet werden:
 
-- Vorhabenlogo: *vorhaben*_logo.png (Beispiel: germania_sacra_logo.png)
+- Vorhabenlogo: *vorhaben*\_logo.png (Beispiel: germania_sacra_logo.png)
 - Personenfoto: *nachname_vorname*.png (Beispiel: schade_angelika.png)
 - Sliderbilder: *vorhaben*_slider_*nummerierung*.png (Beispiel: runes_slider_01.png)
 

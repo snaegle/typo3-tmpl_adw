@@ -1,15 +1,15 @@
-﻿.. ==================================================
+.. ==================================================
 .. FOR YOUR INFORMATION
 .. --------------------------------------------------
 .. -*- coding: utf-8 -*- with BOM.
 
-.. include:: ../Includes.txt
+.. include:: ../../Includes.txt
 
 
 .. _dateiablage:
 
 Beschreibung der Dateiablage
-====================
+============================
 
 In der Dateiliste befinden sich alle Dokumente, die im Adw-Portal dargestellt und zum Download angeboten werden. Die Struktur sieht wie folgt aus:
 
