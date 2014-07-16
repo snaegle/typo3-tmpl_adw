@@ -1,21 +1,41 @@
+/*
+ * VARS
+ */
+
+// sets the font size of img captions
+$img__caption-font-size: .75rem;
+
+// sets the bottom margin of images in text
+$imgtext__img-margin-bottom: 10px;
+
+// sets the bottom margin of images in columns
+$imgcol__img-margin-bottom: 15px;
+
+// sets the right margin of images in text
+$imgtext__img-margin-right: 20px;
+
+/*
+ * IMGTEXT
+ */
+
 .imgtext {
   display: block;
   clear: both;
 }
 
 .imgtext__img {
-  margin-bottom: 10px;
+  margin-bottom: $imgtext__img-margin-bottom;
   img {
     width: 100%;
   }
 }
 
 .imgtext__caption {
-  font-size: 0.75rem;
+  font-size: $img__caption-font-size;
 }
 
 .imgtext__img--left {
-  margin-right: 20px;
+  margin-right: $imgtext__img-margin-right;
   float: left;
 }
 
@@ -45,3 +65,29 @@
 }
 
 .imgtext__text {}
+
+/*
+ * IMGCOL
+ */
+
+ .imgcol {
+   display: block;
+   clear: both;
+ }
+
+.imgcol__img {
+  box-sizing: border-box;
+  margin-bottom: $imgcol__img-margin-bottom;
+  img {
+    width: 100%;
+  }
+}
+
+.imgcol__img--half {
+  width: 50%;
+  float: left;
+}
+
+.imgcol__caption {
+  font-size: $img__caption-font-size;
+}
