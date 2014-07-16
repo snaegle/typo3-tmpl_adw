@@ -14,19 +14,19 @@ Bilder
 Bildergalerie
 -------------
 
-Für das Darstellen von mehreren Bildern, die ohne Text auf einer Seite stehen, sollte  eine Galerie verwendet werden. Die Benutzung der Extension wird im Redaktionshandbuch beschrieben.
+Für das Darstellen von mehreren Bildern, die ohne Text auf einer Seite stehen, sollte eine Galerie verwendet werden. Die Benutzung der Extension wird im Redaktionshandbuch beschrieben.
 
 Darstellung der Bilder
 ----------------------
 
-Beim Klick auf die Bilder werden sie – sofern es nicht explizit abgeschaltet wird – vergrößert angezeigt. Dabei skaliert das System die Bilder automatisch, so dass sie maximal bildfüllend dargestellt werden.
+Beim Klick auf die Bilder werden sie – sofern es nicht explizit abgeschaltet wird – vergrößert (in einer sog. Lightbox) angezeigt. Dabei skaliert das System die Bilder automatisch, so dass sie maximal bildfüllend dargestellt werden.
 
 Dateiformate
 ------------
 
-Bilddateien sollten in den Formaten png oder jpg verwendet werden.
+Bilddateien sollten in den Formaten PNG oder JPG verwendet werden.
 
-Für Grafiken (z. B. Logo) sollte gif verwendet werden.
+Für Grafiken (z. B. Logo) sollte GIF verwendet werden.
 
 Größe der Bilder
 ----------------
@@ -38,11 +38,13 @@ Bilder in der rechten Spalte werden per default über die gesamte Breite dargest
 
 Content Spalte
 ~~~~~~~~~~~~~~
-Die Bilder werden per default über die gesamte Breite (bei Inhaltselement Bild) oder über die hälfte der Breite (bei Inhaltselement Bild und Text) dargestellt. Wenn andere Einstellungen gewünscht sind, dann muss das im Backend vorgenommen werden. Es können relative Angaben gemacht werden (siehe Screenshot).
+Die Bilder werden per default über die gesamte Breite (bei Inhaltselement Bild) oder über die Hälfte der Breite (bei Inhaltselement "Bild und Text") dargestellt. Wenn andere Einstellungen gewünscht sind, dann muss das im Backend vorgenommen werden. Es können relative Angaben gemacht werden (siehe Screenshot); "Hälfte", "Ein Drittel", "Zwei Fünftel".
 
 Personenbilder
 ~~~~~~~~~~~~~~
 Die Größe für Personenbilder sollte in der Breite einen einheitlichen Wert haben, um eine Bündigkeit zu gewährleisten.
+
+Empfohlen wird die Breite "Zwei Fünftel".
 
 Metadaten der Bilder
 --------------------
@@ -77,20 +79,20 @@ Positionierung von Bildern
 
 In der rechten Spalte
 ~~~~~~~~~~~~~~~~~~~~~
-Bild und Bildunterschrift werden immer linksbündig dargestellt. Die Bildgröße wird per default auf die gesamte Breite der Spalte angepasst.
+Die Bildgröße wird per default auf die gesamte Breite der Spalte angepasst. Bildunterschriften werden immer linksbündig dargestellt.
 
 In der Content-Spalte
 ~~~~~~~~~~~~~~~~~~~~~
 In der mittleren Inhaltsspalte stehen verschiedene Möglichkeiten zur Positionierung von Bildern zur Verfügung.
-- Bild als eigenes Inhaltselement einfügen. In der Grundeinstellung wird das Bild  auf die gesamte Spaltenbreite skaliert.
-- Bild mit Text: Das Bild ist oben links platziert und der Text fließt um das Bild. Die Bildgröße wird automatisch angepasst.
+- Bild als eigenes Inhaltselement einfügen. In der Grundeinstellung wird das Bild auf die gesamte Spaltenbreite skaliert.
+- Bild mit Text: Das Bild ist oben links platziert und der Text fließt um das Bild. Die Bildgröße wird automatisch angepasst, kann aber auf "Hälfte", "Ein Drittel" bzw. "Zwei Fünftel"
 
 Bei beiden Optionen können die Bildbreiten auch selbst angepasst werden, wovon aus ästhetischen Gründen abgeraten wird.
 
 Qualität von Bildern
 --------------------
 
-Das Bild sollte in bester Qualität in das System eingestellt werden.
+Das Bild sollte in bester Qualität (d. H. größtmöglicher Auflösung) in das System eingestellt werden - TYPO3 ist für die Skalierung zuständig, dies muss nicht von Redakteuren vorgenommen werden.
 
 Regeln zur Benennung von Bildern
 --------------------------------
