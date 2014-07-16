@@ -63,7 +63,7 @@
                     Rendered
                 <field_body>
                     <paragraph classes="first last">
-                        2014-07-11 15:54
+                        2014-07-16 12:18
         <paragraph>
             The content of this document is related to TYPO3,
             a GNU/GPL CMS/Framework available from 
@@ -92,11 +92,6 @@
                                     <reference anchorname="" internal="True" refuri="Grundlagen/Grundlagen_Zugang/Index.html">
                                         1.2 Zugang
                                 <bullet_list>
-                    <list_item classes="toctree-l1">
-                        <compact_paragraph classes="toctree-l1 first">
-                            <reference anchorname="" internal="True" refuri="UsersManual/Index.html">
-                                Users manual
-                        <bullet_list>
                     <list_item classes="toctree-l1">
                         <compact_paragraph classes="toctree-l1 first">
                             <reference anchorname="" internal="True" refuri="StyleGuideline/Index.html">

@@ -7,6 +7,24 @@
         --------------------------------------------------
     <comment xml:space="preserve">
         -*- coding: utf-8 -*- with BOM.
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        FOR YOUR INFORMATION
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <comment xml:space="preserve">
+        -*- coding: utf-8 -*- with BOM.
+    <comment xml:space="preserve">
+        This is 'Includes.txt'. It is included at the very top of each and
+        every ReST source file in this documentation project (= manual).
+    <comment xml:space="preserve">
+        ==================================================
+    <comment xml:space="preserve">
+        DEFINE SOME TEXT ROLES
+    <comment xml:space="preserve">
+        --------------------------------------------------
+    <highlightlang lang="php" linenothreshold="9223372036854775807">
     <target refid="bilder">
     <section dupnames="bilder" ids="bilder id1" names="bilder">
         <title>
@@ -15,19 +33,19 @@
             <title>
                 Bildergalerie
             <paragraph>
-                Für das Darstellen von mehreren Bildern, die ohne Text auf einer Seite stehen, sollte  eine Galerie verwendet werden. Die Benutzung der Extension wird im Redaktionshandbuch beschrieben.
+                Für das Darstellen von mehreren Bildern, die ohne Text auf einer Seite stehen, sollte eine Galerie verwendet werden. Die Benutzung der Extension wird im Redaktionshandbuch beschrieben.
         <section ids="darstellung-der-bilder" names="darstellung\ der\ bilder">
             <title>
                 Darstellung der Bilder
             <paragraph>
-                Beim Klick auf die Bilder werden sie – sofern es nicht explizit abgeschaltet wird – vergrößert angezeigt. Dabei skaliert das System die Bilder automatisch, so dass sie maximal bildfüllend dargestellt werden.
+                Beim Klick auf die Bilder werden sie – sofern es nicht explizit abgeschaltet wird – vergrößert (in einer sog. Lightbox) angezeigt. Dabei skaliert das System die Bilder automatisch, so dass sie maximal bildfüllend dargestellt werden.
         <section ids="dateiformate" names="dateiformate">
             <title>
                 Dateiformate
             <paragraph>
-                Bilddateien sollten in den Formaten png oder jpg verwendet werden.
+                Bilddateien sollten in den Formaten PNG oder JPG verwendet werden.
             <paragraph>
-                Für Grafiken (z. B. Logo) sollte gif verwendet werden.
+                Für Grafiken (z. B. Logo) sollte GIF verwendet werden.
         <section ids="grosze-der-bilder" names="größe\ der\ bilder">
             <title>
                 Größe der Bilder
@@ -40,12 +58,14 @@
                 <title>
                     Content Spalte
                 <paragraph>
-                    Die Bilder werden per default über die gesamte Breite (bei Inhaltselement Bild) oder über die hälfte der Breite (bei Inhaltselement Bild und Text) dargestellt. Wenn andere Einstellungen gewünscht sind, dann muss das im Backend vorgenommen werden. Es können relative Angaben gemacht werden (siehe Screenshot).
+                    Die Bilder werden per default über die gesamte Breite (bei Inhaltselement Bild) oder über die Hälfte der Breite (bei Inhaltselement "Bild und Text") dargestellt. Wenn andere Einstellungen gewünscht sind, dann muss das im Backend vorgenommen werden. Es können relative Angaben gemacht werden (siehe Screenshot); "Hälfte", "Ein Drittel", "Zwei Fünftel".
             <section ids="personenbilder" names="personenbilder">
                 <title>
                     Personenbilder
                 <paragraph>
                     Die Größe für Personenbilder sollte in der Breite einen einheitlichen Wert haben, um eine Bündigkeit zu gewährleisten.
+                <paragraph>
+                    Empfohlen wird die Breite "Zwei Fünftel".
         <section ids="metadaten-der-bilder" names="metadaten\ der\ bilder">
             <title>
                 Metadaten der Bilder
@@ -74,9 +94,9 @@
                 <figure>
                     <reference internal="True" refuri="../../_images/BildBeschreibungFE.png">
                         <image alt="Beschreibung" candidates="{'*': u'StyleGuideline/Bilder/../../Images/StyleGuideline/BildBeschreibungFE.png'}" uri="../../_images/BildBeschreibungFE.png" width="400px">
-        <section ids="bilderbei-news" names="bilderbei\ news">
+        <section ids="bilder-bei-news" names="bilder\ bei\ news">
             <title>
-                Bilderbei News
+                Bilder bei News
             <paragraph>
                 Die Bilder bei den News sollen über den Editor einfügt bzw. bearbeitet werden. Damit kann die Platzierung im Text vorgenommen werden und die Bilder werden beim Klick vergrößert dargestellt.
         <section ids="positionierung-von-bildern" names="positionierung\ von\ bildern">
@@ -86,21 +106,29 @@
                 <title>
                     In der rechten Spalte
                 <paragraph>
-                    Bild und Bildunterschrift werden immer linksbündig dargestellt. Die Bildgröße wird per default auf die gesamte Breite der Spalte angepasst.
+                    Die Bildgröße wird per default auf die gesamte Breite der Spalte angepasst. Bildunterschriften werden immer linksbündig dargestellt.
             <section ids="in-der-content-spalte" names="in\ der\ content-spalte">
                 <title>
                     In der Content-Spalte
                 <paragraph>
                     In der mittleren Inhaltsspalte stehen verschiedene Möglichkeiten zur Positionierung von Bildern zur Verfügung.
-                    - Bild als eigenes Inhaltselement einfügen. In der Grundeinstellung wird das Bild  auf die gesamte Spaltenbreite skaliert.
-                    - Bild mit Text: Das Bild ist oben links platziert und der Text fließt um das Bild. Die Bildgröße wird automatisch angepasst.
+                <bullet_list bullet="-">
+                    <list_item>
+                        <paragraph classes="first">
+                            Bild als eigenes Inhaltselement einfügen. In der Grundeinstellung wird das Bild auf die gesamte Spaltenbreite skaliert.
+                    <list_item>
+                        <paragraph classes="first">
+                            Bild mit Text: Das Bild ist oben links platziert und der Text fließt um das Bild. Die Bildgröße wird automatisch angepasst, kann aber auf "Hälfte", "Ein Drittel" bzw. "Zwei Fünftel" geändert werden.
+                    <list_item>
+                        <paragraph classes="first">
+                            Zum Einbinden von mehrere Bildern sollte eine Galerie verwendet werden (s.o.). Alternativ können Bilder im Contentbereich zweispaltig eingebunden werden. Dabei werden die Bilder automatisch an die Spaltenbreite angepasst und in zwei Spalten angezeigt. Es sollte darauf geachtet werden, dass die Bilder das selbe Format (Hoch- oder Querformat) haben.
                 <paragraph>
-                    Bei beiden Optionen können die Bildbreiten auch selbst angepasst werden, wovon aus ästhetischen Gründen abgeraten wird.
+                    Bei den ersten beiden Optionen können die Bildbreiten auch selbst angepasst werden, wovon aus ästhetischen Gründen abgeraten wird.
         <section ids="qualitat-von-bildern" names="qualität\ von\ bildern">
             <title>
                 Qualität von Bildern
             <paragraph>
-                Das Bild sollte in bester Qualität in das System eingestellt werden.
+                Das Bild sollte in bester Qualität (d. H. größtmöglicher Auflösung) in das System eingestellt werden - TYPO3 ist für die Skalierung zuständig, dies muss nicht von Redakteuren vorgenommen werden.
         <section ids="regeln-zur-benennung-von-bildern" names="regeln\ zur\ benennung\ von\ bildern">
             <title>
                 Regeln zur Benennung von Bildern
@@ -110,9 +138,9 @@
                 <list_item>
                     <paragraph classes="first">
                         Vorhabenlogo: 
-                        <problematic ids="id3" refid="id2">
-                            *
-                        vorhaben*_logo.png (Beispiel: germania_sacra_logo.png)
+                        <emphasis>
+                            vorhaben
+                        _logo.png (Beispiel: germania_sacra_logo.png)
                 <list_item>
                     <paragraph classes="first">
                         Personenfoto: 
