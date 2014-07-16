@@ -70,7 +70,7 @@ Bedeutung der Metadaten
 	:width: 400px
 	:alt: Beschreibung
 
-Bilderbei News
+Bilder bei News
 --------------
 Die Bilder bei den News sollen über den Editor einfügt bzw. bearbeitet werden. Damit kann die Platzierung im Text vorgenommen werden und die Bilder werden beim Klick vergrößert dargestellt.
 
@@ -84,10 +84,12 @@ Die Bildgröße wird per default auf die gesamte Breite der Spalte angepasst. Bi
 In der Content-Spalte
 ~~~~~~~~~~~~~~~~~~~~~
 In der mittleren Inhaltsspalte stehen verschiedene Möglichkeiten zur Positionierung von Bildern zur Verfügung.
-- Bild als eigenes Inhaltselement einfügen. In der Grundeinstellung wird das Bild auf die gesamte Spaltenbreite skaliert.
-- Bild mit Text: Das Bild ist oben links platziert und der Text fließt um das Bild. Die Bildgröße wird automatisch angepasst, kann aber auf "Hälfte", "Ein Drittel" bzw. "Zwei Fünftel"
 
-Bei beiden Optionen können die Bildbreiten auch selbst angepasst werden, wovon aus ästhetischen Gründen abgeraten wird.
+- Bild als eigenes Inhaltselement einfügen. In der Grundeinstellung wird das Bild auf die gesamte Spaltenbreite skaliert.
+- Bild mit Text: Das Bild ist oben links platziert und der Text fließt um das Bild. Die Bildgröße wird automatisch angepasst, kann aber auf "Hälfte", "Ein Drittel" bzw. "Zwei Fünftel" geändert werden.
+- Zum Einbinden von mehrere Bildern sollte eine Galerie verwendet werden (s.o.). Alternativ können Bilder im Contentbereich zweispaltig eingebunden werden. Dabei werden die Bilder automatisch an die Spaltenbreite angepasst und in zwei Spalten angezeigt. Es sollte darauf geachtet werden, dass die Bilder das selbe Format (Hoch- oder Querformat) haben. 
+
+Bei den ersten beiden Optionen können die Bildbreiten auch selbst angepasst werden, wovon aus ästhetischen Gründen abgeraten wird.
 
 Qualität von Bildern
 --------------------
