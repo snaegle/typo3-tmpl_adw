@@ -18,6 +18,9 @@
 	</f:if>
 </h1>
 <p>
+	<f:if condition="{showDetails}">
+		<f:render partial="Edfu/Uebersetzung" arguments="{results:results, document:document}"/>
+	</f:if>
 	<f:link.action
 		action="detail"
 		arguments="{id:document.id}"
@@ -29,11 +32,10 @@
 					then:'return tx_find.detailViewWithPaging(this);'
 		)}"
 		>
-		<f:if condition="{showDetails}">
-			<f:render partial="Edfu/Uebersetzung" arguments="{results:results, document:document}"/>
-		</f:if>
-		<i class="fa fa-chevron-right"></i>
-		<f:translate key="Show Detail Page"/>
+		<p>
+			<i class="fa fa-chevron-right"></i>
+			<f:translate key="Show Detail Page"/>
+		</p>
 	</f:link.action>
 </p>
 </f:alias>
