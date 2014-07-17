@@ -192,6 +192,11 @@ plugin.tx_find {
 		languageRootPath = EXT:find/Projects/edfu/Language/
 		jumpToID >
 	}
+
+	felogin < plugin.tx_felogin_pi1
+	felogin {
+		storagePid = {$plugin.tx_find.felogin.storagePid}
+	}
 }
 
 
