@@ -61,7 +61,7 @@ var initialise = function () {
 				jQuery(this).chosen({width: "100%;"}).bind('change', facetChosenSelect);
 			});
 
-			if ($('.field-status select', container).is(":visible")) {
+			if (jQuery('.field-status select', container).is(":visible")) {
 				addChosenToExtendedSearchSelects();
 			}
 		}
@@ -75,7 +75,10 @@ var initialise = function () {
 
 		/* resets the form input field contents */
 		jQuery('.button-reset-form').click(function() {
-			$('.tx_find .searchForm')[0].reset();
+			jQuery('.tx_find .searchForm')[0].reset();
+			jQuery('.tx_find .searchForm input[type=text]').each(function(){
+				jQuery(this).attr('value', '')
+			});
 			return false;
 		});
 	});

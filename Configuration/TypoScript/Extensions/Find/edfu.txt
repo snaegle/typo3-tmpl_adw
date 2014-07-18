@@ -187,9 +187,14 @@ plugin.tx_find {
 			50 = EXT:tmpl_adw/Resources/Public/Css/edfu.css
 			70 >
 		}
-		JSPaths.50 = EXT:tmpl_adw/Resources/Public/JavaScript/edfu.js
 
-		languageRootPath = EXT:find/Projects/edfu/Language/
+		JSPaths {
+			10 = EXT:tmpl_adw/Resources/Public/JavaScript/find.js
+			50 = EXT:tmpl_adw/Resources/Public/JavaScript/edfu.js
+		}
+
+		#languageRootPath = EXT:find/Projects/edfu/Language/
+		languageRootPath = EXT:tmpl_adw/Resources/Private/Language/Edfu/
 		jumpToID >
 	}
 
