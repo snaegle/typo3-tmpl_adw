@@ -11,7 +11,6 @@ Resources/Public/Css/germania-sacra.css
 Resources/Public/Css/edfu.css
 Resources/Private/Scss/_libs.scss
 Resources/Private/Scss/_Includes/_FontAwesome/*
-Resources/Public/Fonts
 .gradle
 .sass-cache
 .idea

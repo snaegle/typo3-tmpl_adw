@@ -1,4 +1,4 @@
-﻿.. ==================================================
+.. ==================================================
 .. FOR YOUR INFORMATION
 .. --------------------------------------------------
 .. -*- coding: utf-8 -*- with BOM.
@@ -41,7 +41,5 @@ AdW Handbuch
 	:titlesonly:
 	:glob:
 
-	Introduction/Index
 	Grundlagen/Index
-	UsersManual/Index
 	StyleGuideline/Index

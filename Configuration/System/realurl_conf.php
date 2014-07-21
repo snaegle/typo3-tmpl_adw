@@ -43,7 +43,8 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
 					'tx-find-turtle' => 1380124799,
 					'tx-find-rdf' => 1378891468,
 					'tx-find-csv' => 1378902868,
-					'tx-find-bna' => 1378914906
+					'tx-find-bna' => 1378914906,
+					'api' => 1405527928
 				),
 				'noMatch' => 'bypass'
 			)
@@ -87,7 +88,12 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
 						'GETvar' => 'tx_find_find[id]',
 					)
 				),
-			)
+				'bibliography' => array(
+					array(
+						'GETvar' => 'tx_bib_rest[pageUid]'
+					),
+				),
+			),
 		)
 	),
 );

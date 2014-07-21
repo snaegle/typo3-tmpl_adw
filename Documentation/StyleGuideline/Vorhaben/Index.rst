@@ -1,9 +1,9 @@
-﻿.. ==================================================
+.. ==================================================
 .. FOR YOUR INFORMATION
 .. --------------------------------------------------
 .. -*- coding: utf-8 -*- with BOM.
 
-.. include:: ../Includes.txt
+.. include:: ../../Includes.txt
 
 
 .. _vorhaben:
@@ -26,6 +26,6 @@ Empfehlungen
 - Bei der Erstellung der Webseiten durch die Zentralredaktion, wird eine Struktur für die Vorhabenseiten vorgeben, die ggf. noch angepasst werden kann.
 
 
-.. figure:: ../../Images/StyleGuideline/StartseiteVorhaben.png
+.. figure:: ../../Images/StyleGuideline/StartseiteVorhaben.PNG
 	:width: 600px
 	:alt: Startseite des Vorhaben Deutsche Inschriften

@@ -5,7 +5,22 @@
 	</span>
 	<f:render partial="Display/Field/Inline" arguments="{results:results, document:document, field:'transliteration', separator:', '}"/>
 </h1>
-<p>
+<div>
 	<f:render partial="Display/Field/Inline" arguments="{results:results, document:document, field:'ort', separator:', '}"/>
-	<span class="details icon-right-open"><f:translate key="Show Detail Page"/></span>
-</p>
+	<f:link.action
+		action="detail"
+		arguments="{id:document.id}"
+		section="{settings.jumpToID}"
+		noCacheHash="1"
+		class="details internal no-change"
+		onclick="{f:if(
+			condition:'{settings.paging.detailPagePaging == 1}',
+			then:'return tx_find.detailViewWithPaging(this);'
+		)}"
+	>
+		<p>
+			<i class="fa fa-chevron-right"></i>
+			<f:translate key="Show Detail Page"/>
+		</p>
+	</f:link.action>
+</div>

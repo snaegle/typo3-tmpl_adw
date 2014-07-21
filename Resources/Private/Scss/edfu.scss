@@ -1,10 +1,12 @@
+@import '_Includes/Settings';
+
 @font-face {
 	font-family: 'TransliterationFont';
-	src: url('Fonts/TransliterationTimesItalic.woff');
-	src: url('Fonts/TransliterationTimesItalic.eot') format('embedded-opentype'),
-	url('Fonts/TransliterationTimesItalic.woff') format('woff'),
-	url('Fonts/TransliterationTimesItalic.ttf') format('truetype'),
-		/* TODO: make SVG font work: for some reason Times appears in the browser */ url('Fonts/TransliterationTimesItalic.svg#tti') format('svg');
+	src: url($fa-font-path + '/TransliterationTimesItalic.woff');
+	src: url($fa-font-path + '/TransliterationTimesItalic.eot') format('embedded-opentype'),
+	url($fa-font-path + '/TransliterationTimesItalic.woff') format('woff'),
+	url($fa-font-path + '/TransliterationTimesItalic.ttf') format('truetype'),
+		/* TODO: make SVG font work: for some reason Times appears in the browser */ url($fa-font-path + '/TransliterationTimesItalic.svg#tti') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -39,6 +41,14 @@ $labelWidth: 120px;
 
 .tx_find {
 
+	.invisible {
+		line-height: 0px;
+	}
+
+	.fa {
+		margin: 0 2px;
+	}
+
 	form {
 		.fieldContainer {
 			.fieldLabel {
@@ -63,16 +73,14 @@ $labelWidth: 120px;
 				line-height: 100%;
 			}
 		}
-
-		.controls {
-			position: absolute;
-			bottom: 4px;
-			left: 670px;
-		}
 	}
 
 	.facet-type-Tabs ol li.facetActive {
 		background: $adwRed;
+
+		a {
+			color: $link-color-light;
+		}
 	}
 
 	.searchNote {
@@ -114,7 +122,7 @@ $labelWidth: 120px;
 
 	ol.resultList {
 		float: left;
-		width: 660px;
+		width: 680px;
 		margin: 0;
 
 		.results {
@@ -128,8 +136,6 @@ $labelWidth: 120px;
 			}
 
 		}
-		margin: 0 220px 0 0;
-		padding-left: 3em;
 
 		h1 {
 			margin: 0;
@@ -211,7 +217,7 @@ $labelWidth: 120px;
 			}
 
 			.details {
-				color: #999;
+				color: $adwRed;
 
 				&:before {
 					margin-right: 0;
@@ -433,24 +439,27 @@ $labelWidth: 120px;
 		}
 	}
 
-	article.fields {
-		padding-top: 1em;
+	article {
 
-		dl {
-			margin-top: 1em;
+		.fields {
+			padding-top: 1em;
 
-			dt {
-				width: 200px;
-			}
+			dl {
+				margin-top: 1em;
 
-			dd {
-				padding-left: 210px;
+				dt {
+					width: 200px;
+				}
 
-				ul {
-					padding-left: 2em;
+				dd {
+					padding-left: 210px;
 
-					li {
-						list-style-type: square;
+					ul {
+						padding-left: 2em;
+
+						li {
+							list-style-type: square;
+						}
 					}
 				}
 			}
