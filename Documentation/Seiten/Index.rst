@@ -6,17 +6,21 @@
 .. include:: ../Includes.txt
 
 
-.. _grundlagen:
+.. _seiten:
 
-1 Grundlagen
-============
+2 Seiten und Seiteninhalte
+==========================
+
+
+
 
 .. toctree::
 	:maxdepth: 5
 	:titlesonly:
     	:glob:
 
-    	Grundlagen_Einfuehrung/Index
-    	Grundlagen_Zugang/Index
-    	Grundlagen_Benutzeroberflaeche/Index
-
+    	NeueSeite/Index
+    	NeueSeiteninhalte/Index
+    	Seiteninhaltekontrollieren/Index
+    	Seitenkopieren/Index
+    	Seitenuebersetzen/Index

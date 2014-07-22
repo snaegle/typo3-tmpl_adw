@@ -1,4 +1,4 @@
-.. ==================================================
+﻿.. ==================================================
 .. FOR YOUR INFORMATION
 .. --------------------------------------------------
 .. -*- coding: utf-8 -*- with BOM.
@@ -34,7 +34,7 @@ AdW Handbuch
 	a GNU/GPL CMS/Framework available from `www.typo3.org <http://www.typo3.org/>`_.
 
 
-	**Inhalt**
+	**Inhalt Handbuch**
 
 .. toctree::
 	:maxdepth: 5
@@ -42,4 +42,16 @@ AdW Handbuch
 	:glob:
 
 	Grundlagen/Index
-	StyleGuideline/Index
+	Seiten/Index
+	RTE/Index
+	WerkzeugmodusGS/Index
+
+
+**Inhalt Style Guideline**
+
+.. toctree::
+	:maxdepth: 5
+	:titlesonly:
+    	:glob:
+
+    	StyleGuideline/Index
