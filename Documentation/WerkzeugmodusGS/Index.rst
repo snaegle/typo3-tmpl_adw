@@ -6,17 +6,20 @@
 .. include:: ../Includes.txt
 
 
-.. _grundlagen:
+.. _WerkzeugmodusGS:
 
-1 Grundlagen
-============
+Werkzeugmodus: Germania Sacra
+=============================
+
+
+
 
 .. toctree::
 	:maxdepth: 5
 	:titlesonly:
     	:glob:
 
-    	Grundlagen_Einfuehrung/Index
-    	Grundlagen_Zugang/Index
-    	Grundlagen_Benutzeroberflaeche/Index
-
+    	Dateien/Index
+    	Import/Index
+    	SOLR/Index
+    	Suche/Index

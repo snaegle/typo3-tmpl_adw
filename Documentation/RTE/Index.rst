@@ -6,17 +6,20 @@
 .. include:: ../Includes.txt
 
 
-.. _grundlagen:
+.. _rte:
 
-1 Grundlagen
-============
+3 Text mit Rich Text Editor (RTE) bearbeiten
+============================================
+
+
+
 
 .. toctree::
 	:maxdepth: 5
 	:titlesonly:
     	:glob:
 
-    	Grundlagen_Einfuehrung/Index
-    	Grundlagen_Zugang/Index
-    	Grundlagen_Benutzeroberflaeche/Index
-
+    	Texteformatieren/Index
+    	Verknuepfungen/Index
+    	Textdateien/Index
+    	Bilddateien/Index
