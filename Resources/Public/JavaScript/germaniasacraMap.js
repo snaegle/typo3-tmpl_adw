@@ -234,7 +234,6 @@ var getRawFacets = function(facets) {
 	return rawFacetQuery;
 };
 
-
 var leafletMapAddDiverseMarkers = function() {
 	/*
 	 add URLparameter to create page with all information
@@ -244,6 +243,55 @@ var leafletMapAddDiverseMarkers = function() {
 	 if either bistum or orden of monasteries are the esame,
 	 merge information rather than create several markers
 	 */
+
+	var createMarker = function(arr) {
+
+		var collectMarkerContent = function(coords) {
+			var content = "";
+			content = '<div ' +
+						'id="' + coords.id + '"' +
+						'class="leafletMap_popup"><h3><a href="' +
+						coords.link +
+						'">' +
+						coords.kloster +
+						', Standort ' +
+						coords.ort +
+						'</a></h3>' +
+						'<table><tbody>';
+			for (var ord = 0; ord < coords.orden.length; ord++) {
+				content += '<tr>' +
+							'<td>' +
+							coords.ordenIds[ord].zeiten + ': '+
+							'</td>' +
+							'<td>' +
+							coords.ordenIds[ord].orden +
+							'</td>' +
+							'</tr>';
+			}
+			content += '</tbody></table></div>';
+			return content;
+		}
+
+		for (var c = 0; c < arr.coords.length; c++) {
+			var content = collectMarkerContent(arr.coordIds[c]);
+			var iconUrl = arr.coordIds[c].graphik;
+			var icon = L.icon({
+									iconUrl: iconUrl,
+									iconSize: [21, 32],
+									iconAnchor: [10.5, 32],
+									popupAnchor: [0, -32]
+								});
+			var coords = arr.coords[c].split(",");
+			var marker = L.marker([coords[0],coords[1]], {
+								icon: icon
+							}).addTo(leafletMap.markers.markerGroup);
+
+			marker.bindPopup();
+			marker.setPopupContent(content);
+
+		}
+	}
+
 	if (!leafletMap.filled && leafletMap.loaded) {
 		/* get map boundaries */
 		var southWest = [36.006667, -9.5008];
@@ -296,88 +344,110 @@ var leafletMapAddDiverseMarkers = function() {
 		var kIFolder = resourcesBaseURL + "Ordenssymbole/";
 		var kDefIcon = kIFolder + "Kloster_allgemein.png";
 		var kShadIcon = kIFolder + "Shadow.png";
-		$.when(jQuery.getJSON(url, function(data) {
-			docs = data.response.docs;
-			for (var index in docs) {
-				var kID = docs[index].kloster_id;
-				var kLocation = docs[index].koordinaten;
-				kLocation = kLocation.toString().split(",");
-				leafletMap.markers.marker[kID] = {};
-				leafletMap.markers.marker[kID].kID = docs[index].id;
-				leafletMap.markers.marker[kID].kKoordinaten = docs[index].koordinaten;
-				leafletMap.markers.marker[kID].kOrden = docs[index].orden;
-				leafletMap.markers.marker[kID].kOrt = docs[index].ort;
-				leafletMap.markers.marker[kID].kStandortOrden = docs[index].id;
-				leafletMap.markers.marker[kID].kName = docs[index].kloster;
-				leafletMap.markers.marker[kID].kKloster = docs[index].kloster;
-				leafletMap.markers.marker[kID].kVVerbal = docs[index].orden_von_verbal;
-				leafletMap.markers.marker[kID].kBVerbal = docs[index].orden_bis_verbal;
-				leafletMap.markers.marker[kID].kLink = document.baseURI + germaniaSacra.config.IDURLTemplate.replace('%23%23%23ID%23%23%23', kID);
-				var kIcon;
-				if (docs[index].orden_graphik != "") {
-					leafletMap.markers.marker[kID].orden_graphik = kIFolder + docs[index].orden_graphik + ".png";
-					kIcon = L.icon({
-						iconUrl: leafletMap.markers.marker[kID].orden_graphik,
-						iconSize: [21, 32],
-						iconAnchor: [10.5, 32],
-						popupAnchor: [0, -32]
-					});
-				} else {
-					if (!kIcon) {
-						kIcon = L.icon({
-							iconUrl: kDefIcon,
-							iconSize: [21, 32],
-							iconAnchor: [10.5, 32],
-							popupAnchor: [0, -32]
-						});
-					}
-				}
-				/* is it a new monastery or has there already been the same StandortOrden? */
-				/* there is a problem if a monastry has several places, but they are not in order! */
-				var tmp = leafletMap.markers.marker[kID].kStandortOrden.split("-");
-				sessionStorage.setItem("leafletMap_tmp", tmp[3]);
 
-				if ((leafletMap.markers.marker[kID].kKoordinaten == sessionStorage.leafletMap_coords) &&
-					(kID == sessionStorage.leafletMap_id)) {
-					// same monastry
-					leafletMap.markers.popup[kID].content = sessionStorage.leafletMap_content;
-					leafletMap.markers.popup[kID].content += '<tr><td>';
-					leafletMap.markers.popup[kID].content += leafletMap.markers.marker[kID].kVVerbal + " - " + leafletMap.markers.marker[kID].kBVerbal;
-					leafletMap.markers.popup[kID].content += ':</td><td>';
-					leafletMap.markers.popup[kID].content += leafletMap.markers.marker[kID].kOrden;
-					leafletMap.markers.popup[kID].content += '</td></tr>';
-					sessionStorage.setItem("leafletMap_content", leafletMap.markers.popup[kID].content);
-					leafletMap.markers.popup[kID].content += "</table></div>";
-					leafletMap.markers.popup[kID].layer.bindPopup();
-					leafletMap.markers.popup[kID].layer.setPopupContent(leafletMap.markers.popup[kID].content);
-				} else {
-					// new monastry or new place
-					leafletMap.markers.popup[kID] = {};
-					leafletMap.markers.popup[kID].content = '<div id="' + kID + '" class="leafletMap_popup">';
-					leafletMap.markers.popup[kID].content += '<h3><a href="' + leafletMap.markers.marker[kID].kLink + '">';
-					leafletMap.markers.popup[kID].content += leafletMap.markers.marker[kID].kKloster;
-					if (leafletMap.markers.marker[kID].kKloster.indexOf(leafletMap.markers.marker[kID].kOrt) == "-1") {
-						leafletMap.markers.popup[kID].content += ',<br />Standort ' + leafletMap.markers.marker[kID].kOrt;
+		var collectOrdenInformation = function(orden, id) {
+			// collects information and arranges it into orden array
+			zeiten = "";
+			orden = "";
+		}
+
+		$.when(jQuery.getJSON(url,function(data) {
+			docs = data.response.docs;
+			orden = {};
+			orden.ids = [];
+
+			for (var index in docs) {
+				var id = docs[index].kloster_id;
+
+				var idIndex = $.inArray(id, orden.ids);
+
+				if (idIndex === -1) {
+					// new monastery
+
+					var actId;
+					if (actId = orden.ids[orden.ids.length - 2]) {
+					// -> generate marker for previous monastery
+						createMarker(orden[actId]);
 					}
-					leafletMap.markers.popup[kID].content += '</a></h3>';
-					leafletMap.markers.popup[kID].content += '<table><tr><td>';
-					leafletMap.markers.popup[kID].content += leafletMap.markers.marker[kID].kVVerbal + "-" + leafletMap.markers.marker[kID].kBVerbal;
-					leafletMap.markers.popup[kID].content += ':</td><td>';
-					leafletMap.markers.popup[kID].content += leafletMap.markers.marker[kID].kOrden;
-					leafletMap.markers.popup[kID].content += '</td></tr>';
-					sessionStorage.setItem("leafletMap_content", leafletMap.markers.popup[kID].content);
-					leafletMap.markers.popup[kID].content += "</table></div>";
+
+					// start new monastery
+					orden.ids.push(id);
+
+					// each monastery can have several sites which each get a marker (name with place, link and graphic)
+					orden[id] = {};
+					orden[id].coords = [];
+					orden[id].coords.push(docs[index].koordinaten[0]); // produces [0]
+					orden[id].coordIds = []; // has to be a different array than coords or $.inArray won't find coords
+					orden[id].coordIds[0] = {};
+					orden[id].coordIds[0].id = id;
+					orden[id].coordIds[0].kloster = docs[index].kloster;
+					orden[id].coordIds[0].ort = docs[index].ort[0];
+					orden[id].coordIds[0].link = document.baseURI + germaniaSacra.config.IDURLTemplate.replace('%23%23%23ID%23%23%23', id);
+					// use graphic of first denomination
+					if (docs[index].orden_graphik) {
+						orden[id].coordIds[0].graphik = kIFolder + docs[index].orden_graphik[0] + ".png";
+					} else {
+						// there must have been a graphic defined earlier
+					}
+					// on each site, it can have several denominations with its times and denominations,
+					// here it gets the first one
+					orden[id].coordIds[0].orden = [];
+					orden[id].coordIds[0].orden.push(docs[index].orden[0]);
+					orden[id].coordIds[0].ordenIds = [];
+					orden[id].coordIds[0].ordenIds[0] = {};
+					if (docs[index].orden_von_verbal != "") {
+						if (docs[index].orden_bis_verbal != "") {
+							orden[id].coordIds[0].ordenIds[0].zeiten = docs[index].orden_von_verbal + "-" + docs[index].orden_bis_verbal;
+						} else {
+							orden[id].coordIds[0].ordenIds[0].zeiten = docs[index].orden_von_verbal + "-?";
+						}
+					} else {
+						orden[id].coordIds[0].ordenIds[0].zeiten = "?";
+					}
+					orden[id].coordIds[0].ordenIds[0].orden = docs[index].orden[0];
+
+				} else {
+					// previous monastery
+
+					var coordIndex = $.inArray(docs[index].koordinaten[0], orden[id].coords);
+
+					if (coordIndex === -1) {
+						// new coordinates
+
+						coordIndex = -1 + orden[id].coords.push(docs[index].koordinaten[0]);
+						orden[id].coordIds[coordIndex] = {};
+						orden[id].coordIds[coordIndex].id = id;
+						orden[id].coordIds[coordIndex].kloster = docs[index].kloster;
+						orden[id].coordIds[coordIndex].ort = docs[index].ort[0];
+						orden[id].coordIds[coordIndex].link = document.baseURI + germaniaSacra.config.IDURLTemplate.replace('%23%23%23ID%23%23%23', id);
+
+						// on each site, it can have several denominations with its times and denominations,
+						// here it gets the first one
+						orden[id].coordIds[coordIndex].orden = [];
+						orden[id].coordIds[coordIndex].orden.push(docs[index].orden[0]);
+						orden[id].coordIds[coordIndex].ordenIds = [];
+						orden[id].coordIds[coordIndex].ordenIds[0] = {};
+						orden[id].coordIds[coordIndex].ordenIds[0].zeiten = docs[index].orden_von_verbal + "-" + docs[index].orden_bis_verbal;
+						orden[id].coordIds[coordIndex].ordenIds[0].orden = docs[index].orden[0];
+
+						// use graphic of first denomination
+						if (docs[index].orden_graphik) {
+							orden[id].coordIds[coordIndex].graphik = kIFolder + docs[index].orden_graphik[0] + ".png";
+						} else {
+							// there must have been a graphic defined earlier
+						}
+
+					} else {
+
+						// previous coordinates -> new orden
+						ordenIndex = -1 + orden[id].coordIds[coordIndex].orden.push(docs[index].orden[0]);
+						orden[id].coordIds[coordIndex].ordenIds[ordenIndex] = {};
+						orden[id].coordIds[coordIndex].ordenIds[ordenIndex].zeiten = docs[index].orden_von_verbal + "-" + docs[index].orden_bis_verbal;
+						orden[id].coordIds[coordIndex].ordenIds[ordenIndex].orden = docs[index].orden[0];
+					}
 				}
-				leafletMap.markers.popup[kID].layer = L.marker([kLocation[0], kLocation[1]], {
-					icon: kIcon
-				}).addTo(leafletMap.markers.markerGroup);
-				leafletMap.markers.popup[kID].layer.unbindPopup();
-				leafletMap.markers.popup[kID].layer.bindPopup();
-				leafletMap.markers.popup[kID].layer.setPopupContent(leafletMap.markers.popup[kID].content);
-				sessionStorage.setItem("leafletMap_ort", leafletMap.markers.marker[kID].kOrt);
-				sessionStorage.setItem("leafletMap_coords", leafletMap.markers.marker[kID].kKoordinaten);
-				sessionStorage.setItem("leafletMap_id", kID);
 			}
+
 		}).done(function() {
 			// hide loading spinner
 			$("#leafletMap_spinner").css("display", "none");
@@ -541,7 +611,9 @@ var leafletMapAddMarkerToSmallMap = function() {
 		leafletMapRemoveMarker(id);
 	}
 	leafletMap.map.addLayer(leafletMap.markers.detailGroup);
-	leafletMapSetViewToMarkerBounds(leafletMap.markers.detailGroup);
+	$(document).ajaxComplete(function() {
+		leafletMapSetViewToMarkerBounds(leafletMap.markers.detailGroup);
+	});
 	// hide loading spinner
 	$("#leafletMap_spinner").css("display", "none");
 };
@@ -554,5 +626,5 @@ var leafletMapRemoveMarker = function(id) {
 				leafletMap.markers.markerGroup.removeLayer(i);
 			}
 		}
-	})
+	});
 };
