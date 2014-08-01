@@ -12,15 +12,11 @@ $(function() {
 });
 
 var leafletMapGetMode = function() {
-	var url = decodeURIComponent(document.location.href);
-	var mode = false;
-	if (url.indexOf('[mode]=map') !== -1) {
-		mode = "map";
-	}
-	if (url.indexOf('[mode]=list') !== -1) {
-		mode = "list";
-	}
-	return mode;
+	return sessionStorage.mode;
+};
+
+var leafletMapSetMode = function(mode) {
+	sessionStorage.setItem("mode", mode);
 };
 
 var leafletMapToggle = function(mode) {
@@ -196,8 +192,7 @@ var leafletMapGrow = function() {
 		});
 
 		// the parameter has to be explicitly removed first, than  set
-		tx_find.changeURLParameterForPage("mode");
-		tx_find.changeURLParameterForPage("mode", "map");
+		leafletMapSetMode("map");
 		leafletMap.grown = true;
 	}
 };
@@ -209,8 +204,7 @@ var leafletMapShrink = function() {
 	$("#leafletMap_wrapper").toggle();
 
 	// the parameter has to be explicitly removed first, than  set
-	tx_find.changeURLParameterForPage("mode");
-	tx_find.changeURLParameterForPage("mode", "list");
+	leafletMapSetMode("list");
 
 	leafletMap.grown = false;
 };
