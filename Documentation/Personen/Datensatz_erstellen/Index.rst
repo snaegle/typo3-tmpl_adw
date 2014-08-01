@@ -6,17 +6,7 @@
 .. include:: ../../Includes.txt
 
 
-.. _WerkzeugmodusGS_import:
+.. _personen_datensatzerstellen:
 
-Import
-=======
-
-Gesamter Import
----------------
-
-
-Inkrementeller Import (zur Stapelverarbeitung)
-----------------------------------------------
-
-
-
+4.1 Personen-Adressdatensatz erstellen
+======================================
