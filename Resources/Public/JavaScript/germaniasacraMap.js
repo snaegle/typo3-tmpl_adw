@@ -129,7 +129,9 @@ var leafletMapCreateResetButton = function() {
 		$(".leafletMap_reset-view")
 			.unbind("click")
 			.on("click", function() {
-					sessionStorage.clear();
+			                sessionStorage.removeItem("lat");
+			                sessionStorage.removeItem("lng");
+			                sessionStorage.removeItem("zoom");
 					leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup);
 				});
 		leafletMap.map.removeEventListener("movestart");
