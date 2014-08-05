@@ -62,6 +62,7 @@
 			klosterTitel: klosterTitel
 		});
 	</f:for>
+	leafletMapSetSize("small");
 	jQuery(document).bind('tx_find.mapsLoaded', function() {
 		leafletMapInit("small", "c-"+{document.id}+"-map");
 	})
