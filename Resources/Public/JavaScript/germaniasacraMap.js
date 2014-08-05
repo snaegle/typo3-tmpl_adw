@@ -360,13 +360,6 @@ var leafletMapAddDiverseMarkers = function() {
 				if (idIndex === -1) {
 					// new monastery
 
-					var actId;
-					if (actId = orden.ids[orden.ids.length - 2]) {
-					// -> generate marker for previous monastery
-						createMarker(orden[actId]);
-					}
-
-					// start new monastery
 					orden.ids.push(id);
 
 					// each monastery can have several sites which each get a marker (name with place, link and graphic)
@@ -442,6 +435,12 @@ var leafletMapAddDiverseMarkers = function() {
 						orden[id].coordIds[coordIndex].ordenIds[ordenIndex].orden = docs[index].orden[0];
 					}
 				}
+			}
+
+			// Create markers
+			for (var index in orden.ids) {
+				var id = orden.ids[index];
+				createMarker(orden[id]);
 			}
 
 		}).done(function() {
