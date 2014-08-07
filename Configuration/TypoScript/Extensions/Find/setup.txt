@@ -1,5 +1,60 @@
 plugin.tx_find {
+
+
 	settings {
+
+		# Facet configuration.
+		# Just like the queryFields the facets use {!join} in their filter queries.
+		facets {
+			10 {
+				id = map
+				field = geohash
+				type = Map
+				sortOrder = index
+				fetchMaximum = 1000
+			}
+			# corresponds to queryField 121
+			20 {
+				id = orden
+				field = orden_facet
+				autocomplete = 1
+				query = {!join from=kloster_id to=id}(orden_facet:"%s" AND typ:standort-orden)
+			}
+			# corresponds to queryField 131
+			30 {
+				id = jahr50-orden
+				field = jahr50
+				type = Histogram
+				query = {!join from=kloster_id to=id}(orden_jahr50:%s AND typ:standort-orden)
+				sortOrder = index
+				fetchMaximum = 1000
+				barWidth = 10
+			}
+			# corresponds to queryField 141
+			40 {
+				id = bistum
+				field = bistum_facet
+				autocomplete = 1
+				query = {!join from=kloster_id to=id}(bistum_facet:"%s" AND typ:standort-orden)
+			}
+			# corresponds to queryField 151
+			50 {
+				id = band
+				field = band_facet
+				sortPrefixSeparator = ####
+				autocomplete = 1
+				query = {!join from=kloster_id to=id}(band_facet:"%s" AND typ:standort-orden)
+			}
+			# Request the status information to build the popup menu for the
+			# monastery status query field (queryFields.30).
+			130 {
+				id = status
+				field = status_facet
+				hidden = 1
+				fetchMinimum = 0
+			}
+		}
+
 		CSSPaths {
 			10 >
 			50 = EXT:tmpl_adw/Resources/Public/Css/germania-sacra.css
