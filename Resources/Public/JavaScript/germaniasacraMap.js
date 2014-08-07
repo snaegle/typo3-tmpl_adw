@@ -6,7 +6,7 @@
  */
 
 $(function() {
-	if (leafletMapGetMode() == "map") {
+	if (leafletMapGetMode() == "map" && leafletMapGetSize() == "big") {
 		leafletMapGrow();
 	}
 });
@@ -18,6 +18,14 @@ var leafletMapGetMode = function() {
 var leafletMapSetMode = function(mode) {
 	sessionStorage.setItem("mode", mode);
 };
+
+var leafletMapGetSize = function() {
+	return sessionStorage.size;
+}
+
+var leafletMapSetSize = function(size) {
+	sessionStorage.setItem("size", size)
+}
 
 var leafletMapToggle = function(mode) {
 	if (mode !== leafletMapGetMode()) {
@@ -211,25 +219,6 @@ var leafletMapShrink = function() {
 	leafletMap.grown = false;
 };
 
-var getRawFacets = function(facets) {
-	var pattern = 'tx_find_find[facet]';
-	var rawFacetQuery = '';
-	var rawFacets = facets.split('&');
-
-	for (var rawFacet in rawFacets) {
-		rawFacetQuery += rawFacets[rawFacet]
-			.replace(pattern, '')
-			.replace('=1', '')
-			.replace(/\[(.*?)\]\[(.*?)\]/, "$1:$2")
-			.replace(/RANGE (.*)/, "[$1]");
-		if ((parseInt(rawFacet) + 1) !== rawFacets.length) {
-			rawFacetQuery += ' AND ';
-		}
-	}
-
-	return rawFacetQuery;
-};
-
 var leafletMapAddDiverseMarkers = function() {
 	/*
 	 add URLparameter to create page with all information
@@ -290,21 +279,10 @@ var leafletMapAddDiverseMarkers = function() {
 
 	if (!leafletMap.filled && leafletMap.loaded) {
 		/* get map boundaries */
-		var southWest = [36.006667, -9.5008];
-		var northEast = [80.75, 66.966667];
-
-		/* generation of search string with different markers, but breaks when facet filters active */
-		var solrQuery = 'koordinaten:[';
-		solrQuery += southWest;
-		solrQuery += ' TO ';
-		solrQuery += northEast;
-		solrQuery += '] AND typ:standort-orden';
+		solrQuery = leafletMapGetRawSearchtring();
+		solrQuery += ' AND typ:standort-orden';
 		var dataFields = 'id,kloster_id,koordinaten,kloster,ort,orden,orden_graphik,orden_bis_verbal,orden_von_verbal';
-		// germaniaSacra.config.queryURLTemplate is to broken to be used
-		//var queryURL = germaniaSacra.config.queryURLTemplate.replace('%23%23%23TERM%23%23%23', escapedQuery);
-		var _facetFields = leafletMapGetDataFieldsOfFacets();
 
-		var rawFacets = getRawFacets(_facetFields);
 		var queryURL = "tx-find-data";
 		var _location = location.pathname;
 		if (_location.match("^//")) {
@@ -318,9 +296,6 @@ var leafletMapAddDiverseMarkers = function() {
 		}
 		queryURL += "?tx_find_find[q][raw]=";
 		queryURL += encodeURIComponent(solrQuery);
-		if (rawFacets) {
-			queryURL += ' AND ' + rawFacets;
-		}
 		queryURL += '&' + encodeURIComponent('tx_find_find[data-fields]') + '=' + encodeURIComponent(dataFields);
 		queryURL += '&' + "tx_find_find[count]=3000&tx_find_find[data-format]=raw-solr-response&tx_find_find[format]=data";
 
@@ -448,10 +423,13 @@ var leafletMapAddDiverseMarkers = function() {
 			$("#leafletMap_spinner").css("display", "none");
 		}));
 
+		// TODO: eval next statement, if necessary
+		/*
 		if (_facetFields != sessionStorage.leafletMap_facetFields) {
-			/* Facet fields have changed, so the viewport of the map has to be changed as well */
+			//Facet fields have changed, so the viewport of the map has to be changed as well
 			sessionStorage.setItem("leafletMap_facetFields", "_facetFields");
 		}
+	*/
 		leafletMap.filled = true;
 
 		addBordersToMap();
@@ -622,4 +600,16 @@ var leafletMapRemoveMarker = function(id) {
 			}
 		}
 	});
+};
+
+var leafletMapGetRawSearchtring = function() {
+	var searchString = "typ:standort-orden";
+	if (leafletMap.values) {
+		searchString += " AND (kloster_id: "+leafletMap.values[0];
+		for (var i = 1; i < leafletMap.values.length; i++) {
+			searchString += " OR "+leafletMap.values[i];
+		}
+		searchString += ")"
+	}
+	return searchString
 };

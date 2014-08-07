@@ -60,6 +60,10 @@
 		leafletMap.language.legend = "<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.legend"/>";
 		leafletMap.language.resetView = "<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.resetView"/>";
 		leafletMap.legendPath = '<f:uri.page pageUid="{settings.legendPath}"></f:uri.page>';
+		leafletMap.values = [];
+		<f:for each="{facetData.values}" as="value" key="key">
+			leafletMap.values.push({key});
+		</f:for>
 
 		/* change standard header */
 		$(".facet-id-map h1").text("<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.view"/>");
@@ -74,5 +78,8 @@
 		if (leafletMapGetMode() == "map") {
 			$("#leafletMap_btnGroup input")[1].checked = true;
 		}
+
+		leafletMapSetSize("big");
+
 	</script>
 </div>
