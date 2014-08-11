@@ -267,6 +267,15 @@ $formLabelWidth: 150px;
 		padding: 2px;
 	}
 
+	#leafletMap_wrapper {
+		#errorMsg {
+			margin-top: 20px;
+			border: 2px solid $button-background-dark;
+			padding: 5px;
+			text-align: center;
+		}
+	}
+
 	#leafletMap_btnGroup {
 		width: 100%;
 	}
