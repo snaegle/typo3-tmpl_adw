@@ -25,7 +25,7 @@ plugin.tx_find {
 		facets {
 			10 {
 				field = kloster_id
-				fetchMaximum = 2000
+				fetchMaximum = 10000
 			}
 			# corresponds to queryField 131
 			30 {
@@ -39,7 +39,7 @@ plugin.tx_find {
 				type = Histogram
 				query = {!join from=kloster_id to=id}(standort_jahr50:%s AND typ:standort-orden)
 				sortOrder = index
-				fetchMaximum = 2000
+				fetchMaximum = 10000
 				barWidth = 10
 			}
 		}
