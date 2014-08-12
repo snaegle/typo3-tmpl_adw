@@ -24,7 +24,7 @@ plugin.tx_find {
 		}
 		facets {
 			10 {
-				field = id
+				field = kloster_id
 				fetchMaximum = 2000
 			}
 			# corresponds to queryField 131

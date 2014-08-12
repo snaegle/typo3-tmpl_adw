@@ -329,6 +329,10 @@ var leafletMapAddDiverseMarkers = function() {
 
 				for (var index in docs) {
 					var id = docs[index].kloster_id;
+					//console.log(id);
+					if (docs[index].kloster_id == "2045") {
+						console.log("INDEX: "+index);
+					}
 					var idIndex = $.inArray(id, orden.ids);
 
 					if (idIndex === -1) {
@@ -338,9 +342,11 @@ var leafletMapAddDiverseMarkers = function() {
 						// each monastery can have several sites which each get a marker (name with place, link and graphic)
 						orden[id] = {};
 						orden[id].coords = [];
-						if (!docs[index].koordinaten) {
+						//console.log(docs[index].koordinaten);
+						if (docs[index].koordinaten == "0,0" || !docs[index].koordinaten) {
+							console.log("KEINE KOORDINATEN BEI: "+docs[index].koordinaten);
 							if (missingCoords.indexOf(id) == "-1") {
-								errorMsg += "Kein Marker für Kloster "+docs[index].kloster_id+" möglich, da Datensatz ohne Koordinaten.<br />";
+								errorMsg += "Kein Marker für Kloster "+docs[index].kloster_id+" möglich, da Koordinaten nicht definiert.<br />";
 								orden.ids.splice(orden.ids.length-1,1);
 								missingCoords.push(id);
 							}
