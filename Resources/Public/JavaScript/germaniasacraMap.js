@@ -292,6 +292,8 @@ var leafletMapAddDiverseMarkers = function() {
 		var solrQuery = [];
 		solrQuery = leafletMapGetRawSearchString();
 		var missingCoords = [];
+		orden = {};
+		orden.complete = [];
 
 		// go through all parted searchStrings and create its markers
 		for (var i=0; i<solrQuery.length; i++) {
@@ -324,7 +326,6 @@ var leafletMapAddDiverseMarkers = function() {
 
 			$.when(jQuery.getJSON(url,function(data) {
 				docs = data.response.docs;
-				orden = {};
 				orden.ids = [];
 
 				for (var index in docs) {
@@ -334,11 +335,12 @@ var leafletMapAddDiverseMarkers = function() {
 					if (idIndex === -1) {
 						// new monastery
 						orden.ids.push(id);
+						orden.complete.push(id);
+
 
 						// each monastery can have several sites which each get a marker (name with place, link and graphic)
 						orden[id] = {};
 						orden[id].coords = [];
-						//console.log(docs[index].koordinaten);
 						if (docs[index].koordinaten == "0,0" || !docs[index].koordinaten) {
 							if (missingCoords.indexOf(id) == "-1") {
 								errorMsg += "Kein Marker für Kloster "+docs[index].kloster_id+" möglich, da Koordinaten nicht definiert.<br />";
@@ -358,7 +360,7 @@ var leafletMapAddDiverseMarkers = function() {
 							if (docs[index].orden_graphik) {
 								orden[id].coordIds[0].graphik = kIFolder + docs[index].orden_graphik[0] + ".png";
 							} else {
-								// there must have been a graphic defined earlier
+								orden[id].coordIds[0].graphik = kDefIcon;
 							}
 							// on each site, it can have several denominations with its times and denominations,
 							// here it gets the first one
@@ -444,7 +446,7 @@ var leafletMapAddDiverseMarkers = function() {
 
 	$.ajax().done(function() {
 		if (errorMsg != "") {
-			$(leafletMap.map._container).parent().append('<div id="errorMsg">'+errorMsg+'</div>');
+			leafletMapCreateErrorMessage(errorMsg);
 		}
 
 		addBordersToMap();
@@ -644,3 +646,7 @@ var leafletMapGetRawSearchString = function() {
 	}
 	return searchString;
 };
+
+var leafletMapCreateErrorMessage = function(msg) {
+	$(leafletMap.map._container).parent().append('<div id="errorMsg">'+msg+'</div>');
+}
