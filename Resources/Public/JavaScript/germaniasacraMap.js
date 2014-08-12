@@ -338,9 +338,10 @@ var leafletMapAddDiverseMarkers = function() {
 						// each monastery can have several sites which each get a marker (name with place, link and graphic)
 						orden[id] = {};
 						orden[id].coords = [];
-						if (!docs[index].koordinaten) {
+						//console.log(docs[index].koordinaten);
+						if (docs[index].koordinaten == "0,0" || !docs[index].koordinaten) {
 							if (missingCoords.indexOf(id) == "-1") {
-								errorMsg += "Kein Marker für Kloster "+docs[index].kloster_id+" möglich, da Datensatz ohne Koordinaten.<br />";
+								errorMsg += "Kein Marker für Kloster "+docs[index].kloster_id+" möglich, da Koordinaten nicht definiert.<br />";
 								orden.ids.splice(orden.ids.length-1,1);
 								missingCoords.push(id);
 							}
