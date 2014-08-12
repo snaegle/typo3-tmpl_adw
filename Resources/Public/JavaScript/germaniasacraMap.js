@@ -343,12 +343,13 @@ var leafletMapAddDiverseMarkers = function() {
 						orden[id].coords = [];
 						if (docs[index].koordinaten == "0,0" || !docs[index].koordinaten) {
 							if (missingCoords.indexOf(id) == "-1") {
-								errorMsg += "Kein Marker für Kloster "+docs[index].kloster_id+" möglich, da Koordinaten nicht definiert.<br />";
-								orden.ids.splice(orden.ids.length-1,1);
+								errorMsg += "Die Koordinaten für Kloster "+docs[index].kloster_id+" sind unvollständig.<br />";
 								missingCoords.push(id);
+								orden[id].coords.push("0,0");
 							}
 						} else {
 							orden[id].coords.push(docs[index].koordinaten[0]);
+						}
 							// produces [0]
 							orden[id].coordIds = []; // has to be a different array than coords or $.inArray won't find coords
 							orden[id].coordIds[0] = {};
@@ -378,14 +379,19 @@ var leafletMapAddDiverseMarkers = function() {
 								orden[id].coordIds[0].ordenIds[0].zeiten = "?";
 							}
 							orden[id].coordIds[0].ordenIds[0].orden = docs[index].orden[0];
-						}
+
 
 					} else {
 						// previous monastery
 						var coordIndex = $.inArray(docs[index].koordinaten[0], orden[id].coords);
-
 						if (coordIndex === -1) {
 							// new coordinates
+							if (docs[index].koordinaten[0] == "0,0" || !docs[index].koordinaten[0]) {
+								if (missingCoords.indexOf(id) == "-1") {
+									errorMsg += "Die Koordinaten für Kloster "+docs[index].kloster_id+" sind unvollständig.<br />";
+									missingCoords.push(id);
+								}
+							} else {}
 							coordIndex = -1 + orden[id].coords.push(docs[index].koordinaten[0]);
 							orden[id].coordIds[coordIndex] = {};
 							orden[id].coordIds[coordIndex].id = id;
