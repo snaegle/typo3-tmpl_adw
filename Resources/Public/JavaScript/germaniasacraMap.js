@@ -454,7 +454,7 @@ var leafletMapAddDiverseMarkers = function() {
 
 
 	$.ajax().done(function() {
-		if (errorMsg != "") {
+		if (errorMsg != "" && location.href.indexOf("/gsn/") == "-1") {
 			leafletMapCreateErrorMessage(errorMsg);
 		}
 
