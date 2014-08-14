@@ -61,9 +61,12 @@
 		leafletMap.language.resetView = "<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.resetView"/>";
 		leafletMap.legendPath = '<f:uri.page pageUid="{settings.legendPath}"></f:uri.page>';
 		leafletMap.values = [];
+		var sessionStorageValueString = "";
 		<f:for each="{facetData.values}" as="value" key="key">
 			leafletMap.values.push({key});
+			sessionStorageValueString += {key}+" ";
 		</f:for>
+		sessionStorage.setItem("values",sessionStorageValueString);
 
 		/* change standard header */
 		$(".facet-id-map h1").text("<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.view"/>");

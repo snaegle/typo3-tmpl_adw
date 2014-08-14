@@ -9,6 +9,9 @@ $(function() {
 	if (leafletMapGetMode() == "map" && leafletMapGetSize() == "big") {
 		leafletMapGrow();
 	}
+	if (!leafletMap.values) {
+		leafletMap.values = [];
+	}
 });
 
 var leafletMapGetMode = function() {
@@ -579,6 +582,11 @@ var addBordersToMap = function() {
 };
 
 var leafletMapAddMarkerToSmallMap = function() {
+
+	// create array of monastery ids from session storage
+	var internValues = sessionStorage.values.split(" ");
+	internValues.pop();
+	leafletMap.values =  internValues;
 
 	// Creation of another layergroup to zoom around
 	leafletMap.markers.detailGroup = L.featureGroup();
