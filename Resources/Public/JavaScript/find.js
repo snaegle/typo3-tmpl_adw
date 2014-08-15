@@ -24,7 +24,6 @@ var container;
  * add jQuery chosen to select boxes in extended search
  */
 var addChosenToExtendedSearchSelects = function() {
-	// jQuery Chosen for klosterstatus
 	jQuery('.tx_find .field-status select').chosen({
 		placeholder_text_single: localise("Klosterstatus wählen")
 	})
@@ -39,7 +38,7 @@ var addChosenToExtendedSearchSelects = function() {
  * * event handlers
  */
 var initialise = function () {
-	jQuery(document).ready(function() {
+	jQuery(window).ready(function() {
 		container = jQuery('.tx_find');
 
 		if (jQuery.ui && jQuery.ui.autocomplete) {
