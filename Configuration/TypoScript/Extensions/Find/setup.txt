@@ -47,9 +47,19 @@ plugin.tx_find {
 			10 >
 			50 = EXT:tmpl_adw/Resources/Public/Css/germania-sacra.css
 			70 >
+			75 = EXT:tmpl_adw/Resources/Public/Css/chosen.min.css
+			80 = EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.css
+			82 = EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/MarkerCluster.css
+			84 = EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/MarkerCluster.Default.css
+			86 = EXT:tmpl_adw/Resources/Public/Css/germaniasacraMap.css
 		}
 		JSPaths {
 			10 = EXT:tmpl_adw/Resources/Public/JavaScript/find.js
+			20 = EXT:tmpl_adw/Resources/Public/JavaScript/jquery.chosen/chosen.jquery.min.js
+			30 = EXT:tmpl_adw/Resources/Public/JavaScript/login.js
+			40 = EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.js
+			50 = EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.markercluster.js
+			60 = EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js
 		}
 		paging {
 			maximumPerPage = 3000
