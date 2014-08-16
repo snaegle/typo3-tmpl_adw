@@ -8,6 +8,28 @@ plugin.tx_find {
 			50 {
 				query = {!join from=kloster_id to=id}((orden:%1$s OR orden_ordo:%1$s) AND typ:standort-orden)
 			}
+			70 {
+				hidden = 1
+			}
+			72 {
+				id = zeitorden
+				type = Range
+				query = {!join from=kloster_id to=id}(orden_standort_von:[* TO %2$s] AND orden_standort_bis:[%1$s TO *] AND typ:standort-orden)
+				default.0 = *
+				default.1 = *
+				noescape = 1
+				extended = 1
+			}
+			73 {
+				id = zeitstandort
+				type = Range
+				query = {!join from=kloster_id to=id}(orden_standort_von:[* TO %2$s] AND orden_standort_bis:[%1$s TO *] AND typ:standort-orden)
+				default.0 = *
+				default.1 = *
+				hidden = 0
+				noescape = 1
+				extended = 1
+			}
 			# corresponds to facet 30
 			131 {
 				id = jahr50orden-facet-nojoin

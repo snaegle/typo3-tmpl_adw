@@ -1,6 +1,6 @@
 @import '_Includes/Settings';
 
-$formLabelWidth: 150px;
+$formLabelWidth: 200px;
 
 .tx_find {
 
@@ -49,6 +49,9 @@ $formLabelWidth: 150px;
 			}
 
 			.inputContainer {
+				margin-left: $formLabelWidth + 5px;
+			}
+			.alternate {
 				margin-left: $formLabelWidth + 5px;
 			}
 		}
