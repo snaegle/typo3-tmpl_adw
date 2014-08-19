@@ -463,11 +463,13 @@ var toggleExtendedSearch = function () {
 		jThis.text($('a.extendedSearch').attr('extendedstring'));
 		jQuery('.field-mode-extended', jForm).slideDown('fast');
 		changeURLParameterForPage(parameterName, 1);
+		jQuery('.button-reset-form').slideDown('fast');
 	}
 	else {
 		jThis.text(jQuery('a.extendedSearch').attr('simplestring'));
 		jQuery('.field-mode-extended', jForm).slideUp('fast');
 		changeURLParameterForPage(parameterName);
+		jQuery('.button-reset-form').slideUp('fast');
 	}
 	jForm.toggleClass('search-simple').toggleClass('search-extended');
 	return false;

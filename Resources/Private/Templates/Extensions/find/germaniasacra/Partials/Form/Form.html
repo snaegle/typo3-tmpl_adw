@@ -65,7 +65,9 @@
 							}">
 							<f:translate key="basic Search"/>
 						</f:link.action>
-						<button class="button-reset-form">Suchfelder leeren</button>
+						<button class="button-reset-form">
+							<f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:button.empty"/>
+						</button>
 					</f:then>
 					<f:else>
 						<f:link.action
@@ -79,7 +81,9 @@
 							}">
 							<f:translate key="extended Search"/>
 						</f:link.action>
-						<button class="button-reset-form">Suchfelder leeren</button>
+						<button class="button-reset-form" style="display: none;">
+							<f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:button.empty"/>
+						</button>
 					</f:else>
 				</f:if>
 			</f:if>

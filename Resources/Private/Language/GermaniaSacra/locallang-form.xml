@@ -15,6 +15,7 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
+			<label index="button.empty">Suchfelder leeren</label>
 			<label index="input.default">Alle Felder</label>
 			<label index="input.raw">Solr Abfrage</label>
 			<label index="input.klostername">Klostername</label>
