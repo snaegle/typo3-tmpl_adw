@@ -9,8 +9,10 @@ $(function() {
 	if (leafletMapGetMode() == "map" && leafletMapGetSize() == "big") {
 		leafletMapGrow();
 	}
-	if (!leafletMap.values) {
-		leafletMap.values = [];
+	if (typeof leafletMap != "undefined") {
+		if (!leafletMap.values) {
+			leafletMap.values = [];
+		}
 	}
 });
 
