@@ -30,6 +30,14 @@ var addChosenToExtendedSearchSelects = function() {
 };
 
 
+var resetSearchFormFields = function() {
+	jQuery('.tx_find .searchForm')[0].reset();
+	jQuery('.tx_find .searchForm input[type=text]').each(function(){
+		jQuery(this).attr('value', '')
+	});
+	$('.fieldType-SelectFacet option').prop('selected', false).trigger('chosen:updated');
+}
+
 /**
  * Initialise. Set up:
  * * container element variable
@@ -74,12 +82,10 @@ var initialise = function () {
 
 		/* resets the form input field contents */
 		jQuery('.button-reset-form').click(function() {
-			jQuery('.tx_find .searchForm')[0].reset();
-			jQuery('.tx_find .searchForm input[type=text]').each(function(){
-				jQuery(this).attr('value', '')
-			});
+			resetSearchFormFields();
 			return false;
 		});
+
 	});
 };
 
@@ -470,6 +476,7 @@ var toggleExtendedSearch = function () {
 		jQuery('.field-mode-extended', jForm).slideUp('fast');
 		changeURLParameterForPage(parameterName);
 		jQuery('.button-reset-form').slideUp('fast');
+		resetSearchFormFields();
 	}
 	jForm.toggleClass('search-simple').toggleClass('search-extended');
 	return false;
