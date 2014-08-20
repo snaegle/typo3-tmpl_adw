@@ -86,6 +86,10 @@ var initialise = function () {
 			return false;
 		});
 
+		// don't show reset-form-button in basic search mode
+		if (jQuery('.searchForm.search-extended').length == 0) {
+			jQuery('.button-reset-form').css("display","none");
+		}
 	});
 };
 
