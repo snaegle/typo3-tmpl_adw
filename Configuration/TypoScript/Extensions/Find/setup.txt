@@ -14,7 +14,7 @@ plugin.tx_find {
 			72 {
 				id = zeitorden
 				type = Range
-				query = {!join from=kloster_id to=id}(orden_standort_von:[* TO %2$s] AND orden_standort_bis:[%1$s TO *] AND typ:standort-orden)
+				query = {!join from=kloster_id to=id}(orden_von_von:[* TO %2$s] AND orden_bis_bis:[%1$s TO *] AND typ:standort-orden)
 				default.0 = *
 				default.1 = *
 				noescape = 1
@@ -23,7 +23,7 @@ plugin.tx_find {
 			73 {
 				id = zeitstandort
 				type = Range
-				query = {!join from=kloster_id to=id}(orden_standort_von:[* TO %2$s] AND orden_standort_bis:[%1$s TO *] AND typ:standort-orden)
+				query = {!join from=kloster_id to=id}(standort_von_von:[* TO %2$s] AND orden_bis_bis:[%1$s TO *] AND typ:standort-orden)
 				default.0 = *
 				default.1 = *
 				hidden = 0
@@ -46,7 +46,7 @@ plugin.tx_find {
 		}
 		facets {
 			10 {
-				field = kloster_id
+				field = id
 				fetchMaximum = 10000
 			}
 			# corresponds to queryField 131
