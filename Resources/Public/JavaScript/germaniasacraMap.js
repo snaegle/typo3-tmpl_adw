@@ -6,10 +6,10 @@
  */
 
 $(function() {
-	if (leafletMapGetMode() == "map" && leafletMapGetSize() == "big") {
-		leafletMapGrow();
-	}
 	if (typeof leafletMap != "undefined") {
+		if (leafletMapGetMode() == "map" && leafletMapGetSize() == "big") {
+			leafletMapGrow();
+		}
 		if (!leafletMap.values) {
 			leafletMap.values = [];
 		}
