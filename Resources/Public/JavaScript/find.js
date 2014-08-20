@@ -87,8 +87,10 @@ var initialise = function () {
 		});
 
 		// don't show reset-form-button in basic search mode
-		if (jQuery('.searchForm.search-extended').length == 0) {
+		if ($(".field-mode-extended").css("display") == "none") {
 			jQuery('.button-reset-form').css("display","none");
+		} else {
+			jQuery('.button-reset-form').css("display","block");
 		}
 	});
 };
