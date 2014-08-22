@@ -242,15 +242,18 @@ var leafletMapAddDiverseMarkers = function() {
 		var collectMarkerContent = function(coords) {
 			var content = "";
 			content = '<div ' +
-						'id="' + coords.id + '"' +
-						'class="leafletMap_popup"><h3><a href="' +
-						coords.link +
-						'">' +
-						coords.kloster +
-						', Standort ' +
-						coords.ort +
-						'</a></h3>' +
-						'<table><tbody>';
+			          'id="' + coords.id + '"' +
+			          'class="leafletMap_popup"><h3><a href="' +
+			          coords.link +
+			          '">' +
+			          coords.kloster;
+			if (orden[coords.id].coords.length > 1) {
+				content += ', Standort ' +
+				           coords.ort;
+			}
+			content += '</a></h3>' +
+			           '<table><tbody>';
+
 			for (var ord = 0; ord < coords.orden.length; ord++) {
 				content += '<tr>' +
 							'<td>' +
