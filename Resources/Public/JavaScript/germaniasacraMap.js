@@ -169,13 +169,48 @@ var leafletMapShowResetButton = function() {
 
 var leafletMapCreateMap = function(id) {
 
-	// create map
-	leafletMap.map = L.map(id, {minZoom: 2}).setView([51, 10], 6);
-	/* create the tile layer with correct attribution */
-	var osmUrl = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
-	var osmAttrib = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>';
-	var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
-	leafletMap.map.addLayer(osm);
+	// create layers and attributions
+		leafletMap.layers = [];
+		var Esri_OceanBasemap = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri',
+			maxZoom: 13
+		});
+		leafletMap.layers.push(Esri_OceanBasemap);
+		var Esri_WorldImagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri'
+		});
+		leafletMap.layers.push(Esri_WorldImagery);
+		var OpenStreetMap_DE = L.tileLayer('http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		leafletMap.layers.push(OpenStreetMap_DE);
+
+		// create map
+		var _index = location.href.indexOf("/gsn/");
+		if (_index == -1) {
+			// big map
+			leafletMap.map = L.map(id, {
+				minZoom: 2,
+				layers: leafletMap.layers
+			}).setView([51, 10], 6);
+			var baseMaps = {
+				"Einfach": Esri_OceanBasemap,
+				"Satellit": Esri_WorldImagery,
+				"Standard": OpenStreetMap_DE
+			};
+		} else {
+			// small map, less layers
+			leafletMap.map = L.map(id, {
+				minZoom: 2,
+				layers: [leafletMap.layers[1],leafletMap.layers[2]]
+			}).setView([51, 10], 6);
+			var baseMaps = {
+				"Satellit": Esri_WorldImagery,
+				"Standard": OpenStreetMap_DE
+			}
+		}
+		// create control
+		L.control.layers(baseMaps).addTo(leafletMap.map);
 
 	leafletMap.loaded = true;
 	return leafletMap.loaded;
