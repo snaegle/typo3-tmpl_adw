@@ -120,13 +120,20 @@ var leafletMapInit = function(type, id) {
 
 			// create dom-element as container for map
 			$(".results").find(".navigation").next(".grid_12")
-				.append('<div id="leafletMap_wrapper">' +
+				.append('<button class="leafletMap_reset-view">' + leafletMap.language.resetView + '</button>' +
+			            '<div id="leafletMap_wrapper">' +
 						'<div id="leafletMap_id"></div>' +
 						'<div id="leafletMap_spinner">' +
 						'<i class="fa fa-spinner fa-spin fa-3x"></i>' +
 						'</div>' +
 						'<div id="leafletMap_legend"><a href="' + leafletMap.legendPath + '">' + leafletMap.language.legend + '</a></div>' +
 						'</div>');
+			$(".leafletMap_reset-view")
+					.on("click", function() {
+				                        leafletMapResetViewInStorage();
+				                        leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup);
+			                        })
+					.css("visibility","hidden");
 			leafletMapCreateMap(id);
 
 			// add scale to map
@@ -138,27 +145,24 @@ var leafletMapInit = function(type, id) {
 				leafletMapStoreView();
 			});
 
-			// create button to reset map view
-			leafletMap.map.on("movestart", function() {
-				leafletMapCreateResetButton();
+			// show button when view is changed
+			leafletMap.map.on("viewreset", function() {
+				leafletMapShowResetButton();
+			});
+			leafletMap.map.on("drag", function() {
+				leafletMapShowResetButton();
 			});
 			leafletMap.changed = false;
 	}
 };
 
-var leafletMapCreateResetButton = function() {
+var leafletMapShowResetButton = function() {
 
 	if (leafletMap.changed) {
-		$(".results").find("#leafletMap_wrapper")
-			.prepend('<button class="leafletMap_reset-view">' + leafletMap.language.resetView + '</button>');
-
-		$(".leafletMap_reset-view")
-			.unbind("click")
-			.on("click", function() {
-			        leafletMapResetViewInStorage();
-					leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup);
-				});
+		$(".leafletMap_reset-view").css("visibility","visible");
 		leafletMap.map.removeEventListener("movestart");
+	} else {
+		$(".leafletMap_reset-view").css("visibility","hidden");
 	}
 	leafletMap.changed = true;
 };
