@@ -14,6 +14,20 @@ $(function() {
 			leafletMap.values = [];
 		}
 	}
+	// add reset function to all search elements
+	sessionStorage.setItem("reset","0");
+	$("[type=submit]").on("click",function() {
+		leafletMapResetViewInStorage();
+	});
+	$('input').keypress(function(event){
+	    var keycode = (event.keyCode ? event.keyCode : event.which);
+	    if(keycode == '13'){
+		    leafletMapResetViewInStorage();
+	    }
+	});
+	$(".facets .facetAdd").on("click", function() {
+		leafletMapResetViewInStorage();
+	})
 });
 
 var leafletMapGetMode = function() {
@@ -48,31 +62,29 @@ var leafletMapToggle = function(mode) {
 	return mode;
 };
 
-var leafletMapGetDataFieldsOfFacets = function() {
-	/*
-	 find facet filters,
-	 remove them from original search string (because they are not sufficient
-	 and put the right number back in
-	 */
-	var searchString = decodeURI(location.href);
-	// escape tx_find[facet] and the two accending brackets
-	var result = searchString.match(/tx_find_find\[facet\]\[([^\]]+)\]\[([^\]]+)\]/g);
-	if (result) {
-		var str = result[0] + "=1";
-		for (var i = 1; i < result.length; i++) {
-			str += "&" + result[i] + "=1";
-		}
-	} else {
-		str = "";
-	}
-	return str;
-};
-
 var leafletMapSetViewToMarkerBounds = function(layer) {
 	/* changes view of map according to all markers presently shown */
 	var _bounds = layer.getBounds();
 	if (_bounds.isValid()) {
 		leafletMap.map.fitBounds(_bounds, {maxZoom: 13, padding: [4, 4]});
+	}
+};
+
+var leafletMapResetViewInStorage = function() {
+	// view is stored in sessionStorage but sometimes has to be reset
+	sessionStorage.removeItem("lat");
+	sessionStorage.removeItem("lng");
+	sessionStorage.removeItem("zoom");
+	sessionStorage.setItem("reset","1");
+};
+
+
+var leafletMapStoreView = function() {
+
+	if (!sessionStorage.reset) {
+		sessionStorage.setItem("lat", leafletMap.map.getCenter().lat);
+		sessionStorage.setItem("lng", leafletMap.map.getCenter().lng);
+		sessionStorage.setItem("zoom", leafletMap.map.getZoom());
 	}
 };
 
@@ -143,21 +155,12 @@ var leafletMapCreateResetButton = function() {
 		$(".leafletMap_reset-view")
 			.unbind("click")
 			.on("click", function() {
-			                sessionStorage.removeItem("lat");
-			                sessionStorage.removeItem("lng");
-			                sessionStorage.removeItem("zoom");
+			        leafletMapResetViewInStorage();
 					leafletMapSetViewToMarkerBounds(leafletMap.markers.markerGroup);
 				});
 		leafletMap.map.removeEventListener("movestart");
 	}
 	leafletMap.changed = true;
-};
-
-var leafletMapStoreView = function() {
-
-	sessionStorage.setItem("lat", leafletMap.map.getCenter().lat);
-	sessionStorage.setItem("lng", leafletMap.map.getCenter().lng);
-	sessionStorage.setItem("zoom", leafletMap.map.getZoom());
 };
 
 var leafletMapCreateMap = function(id) {
