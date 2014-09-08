@@ -168,49 +168,57 @@ var leafletMapShowResetButton = function() {
 };
 
 var leafletMapCreateMap = function(id) {
+	/*
+		create map, according to map size (overview or detail) and layer control
+	 */
 
 	// create layers and attributions
-		leafletMap.layers = [];
-		var Esri_OceanBasemap = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}', {
-			attribution: 'Tiles &copy; Esri',
-			maxZoom: 13
-		});
-		leafletMap.layers.push(Esri_OceanBasemap);
-		var Esri_WorldImagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-			attribution: 'Tiles &copy; Esri'
-		});
-		leafletMap.layers.push(Esri_WorldImagery);
-		var OpenStreetMap_DE = L.tileLayer('http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
-			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
-		});
-		leafletMap.layers.push(OpenStreetMap_DE);
+	leafletMap.layers = [];
+	leafletMap.layers.push(Esri_WorldImagery);
+	var OpenStreetMap_DE = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+	});
+	leafletMap.layers.push(OpenStreetMap_DE);
+	leafletMap.controlledMaps = {};
+	var Esri_OceanBasemap = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}', {
+		attribution: 'Tiles &copy; Esri',
+		maxZoom: 13
+	});
+	leafletMap.layers.push(Esri_OceanBasemap);
+	var Esri_WorldImagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+		attribution: 'Tiles &copy; Esri'
+	});
 
-		// create map
-		var _index = location.href.indexOf("/gsn/");
-		if (_index == -1) {
-			// big map
-			leafletMap.map = L.map(id, {
-				minZoom: 2,
-				layers: leafletMap.layers
-			}).setView([51, 10], 6);
-			var baseMaps = {
-				"Einfach": Esri_OceanBasemap,
-				"Satellit": Esri_WorldImagery,
-				"Standard": OpenStreetMap_DE
-			};
-		} else {
-			// small map, less layers
-			leafletMap.map = L.map(id, {
-				minZoom: 2,
-				layers: [leafletMap.layers[1],leafletMap.layers[2]]
-			}).setView([51, 10], 6);
-			var baseMaps = {
-				"Satellit": Esri_WorldImagery,
-				"Standard": OpenStreetMap_DE
-			}
-		}
-		// create control
-		L.control.layers(baseMaps).addTo(leafletMap.map);
+	// first create map, according to map size
+	var _index = location.href.indexOf("/gsn/");
+	if (_index == -1) {
+		leafletMapSetSize("big");
+	} else {
+		leafletMapSetSize("small");
+	}
+
+	if (leafletMapGetSize() == "big") {
+		leafletMap.map = L.map(id, {
+			minZoom: 2,
+			layers: [leafletMap.layers[1]]
+		}).setView([51, 10], 6);
+	} else {
+		leafletMap.map = L.map(id, {
+			minZoom: 2,
+			layers: [leafletMap.layers[1]]
+		}).setView([51, 10], 6);
+	}
+
+	// then add different map providers, again according to map size
+	var standard = {"Standard": OpenStreetMap_DE}
+	leafletMap.control = L.control.layers(standard).addTo(leafletMap.map);
+	if (leafletMapGetSize() == "big") {
+		leafletMap.control.addBaseLayer(Esri_OceanBasemap, "Einfach");
+		leafletMap.control.addBaseLayer(Esri_WorldImagery, "Satellit");
+	} else {
+		// "Esri_OceanBasemap" doesn't have enough data for big zoomlevels
+		leafletMap.control.addBaseLayer(Esri_WorldImagery, "Satellit");
+	}
 
 	leafletMap.loaded = true;
 	return leafletMap.loaded;
@@ -620,12 +628,19 @@ var addBordersToMap = function() {
 		}
 	};
 
+	// create LayerGroup
 	$.getJSON(resourcesBaseURL + 'Bistumsgrenzen/GSBistumsgrenzenGEOJSON.geojson', function(statesData) {
-		leafletMap.markers.geoJson = L.geoJson(statesData, {
+		var borders = leafletMap.markers.geoJson = L.geoJson(statesData, {
 			style: style,
 			onEachFeature: onEachFeature
-		}).addTo(leafletMap.map);
+		});
+
+		leafletMap.control.addOverlay(borders, "Bistumsgrenzen");
+		if (leafletMapGetSize() == "big") {
+			borders.addTo(leafletMap.map);
+		}
 	});
+
 };
 
 var leafletMapAddMarkerToSmallMap = function() {
