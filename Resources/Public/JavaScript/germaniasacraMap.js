@@ -80,8 +80,7 @@ var leafletMapResetViewInStorage = function() {
 
 
 var leafletMapStoreView = function() {
-
-	if (!sessionStorage.reset) {
+	if (sessionStorage.reset == 0) {
 		sessionStorage.setItem("lat", leafletMap.map.getCenter().lat);
 		sessionStorage.setItem("lng", leafletMap.map.getCenter().lng);
 		sessionStorage.setItem("zoom", leafletMap.map.getZoom());
@@ -116,7 +115,6 @@ var leafletMapInit = function(type, id) {
 				disableClusteringAtZoom: 7,
 				maxClusterRadius: 100
 			});
-			sessionStorage.setItem("leafletMap_facetFields", "");
 
 			// create dom-element as container for map
 			$(".results").find(".navigation").next(".grid_12")
@@ -272,6 +270,8 @@ var leafletMapShrink = function() {
 	// the parameter has to be explicitly removed first, than  set
 	leafletMapSetMode("list");
 
+	leafletMapStoreView();
+
 	leafletMap.grown = false;
 };
 
@@ -281,7 +281,7 @@ var leafletMapAddDiverseMarkers = function() {
 	 read the page and create the markers
 	 has to wait until object "germaniaSacra" is filled completely
 
-	 if either bistum or orden of monasteries are the esame,
+	 if either bistum or orden of monasteries are the same,
 	 merge information rather than create several markers
 	 */
 
@@ -379,7 +379,7 @@ var leafletMapAddDiverseMarkers = function() {
 			 * a monastery can have several coordinates -
 			 * than it has to have a new marker each time, or
 			 * it can have several times, orden, names, whatever
-			 *   than it has to have the same marker
+			 * than it has to have the same marker
 			 */
 
 			$.when(jQuery.getJSON(url,function(data) {
@@ -494,13 +494,6 @@ var leafletMapAddDiverseMarkers = function() {
 				$("#leafletMap_spinner").css("display", "none");
 			}));
 
-			// TODO: eval next statement, if necessary
-			/*
-			if (_facetFields != sessionStorage.leafletMap_facetFields) {
-				//Facet fields have changed, so the viewport of the map has to be changed as well
-				sessionStorage.setItem("leafletMap_facetFields", "_facetFields");
-			}
-		*/
 			leafletMap.filled = true;
 
 		}
@@ -562,19 +555,23 @@ var addBordersToMap = function() {
 	});
 
 	// control that shows state info on hover
-	leafletMap.markers.info = L.control({position: "topleft"});
+	if (!leafletMap.markers.info) {
+		leafletMap.markers.info = L.control({position: "topleft"});
+	}
 
 	leafletMap.markers.info.onAdd = function(map) {
-		this._div = L.DomUtil.create('div', 'leafletMap_info');
+		if (!leafletMap.markers.info.div) {
+			leafletMap.markers.info.div = L.DomUtil.create('div', 'leafletMap_info');
+		}
 		this.update();
-		return this._div;
+		return leafletMap.markers.info.div;
 	};
 
 	leafletMap.markers.info.update = function(properties) {
 		if (properties) {
-			this._div.innerHTML = 'Bistum ' + properties["Secondary ID"];
+			leafletMap.markers.info.div.innerHTML = 'Bistum ' + properties["Secondary ID"];
 		} else {
-			this._div.innerHTML = '';
+			leafletMap.markers.info.div.innerHTML = '';
 		}
 	};
 
