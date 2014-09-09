@@ -635,9 +635,12 @@ var addBordersToMap = function() {
 			onEachFeature: onEachFeature
 		});
 
-		leafletMap.control.addOverlay(borders, "Bistumsgrenzen");
-		if (leafletMapGetSize() == "big") {
-			borders.addTo(leafletMap.map);
+		if (!leafletMap.control.borders) {
+			leafletMap.control.addOverlay(borders, "Bistumsgrenzen");
+			if (leafletMapGetSize() == "big") {
+				borders.addTo(leafletMap.map);
+			}
+			leafletMap.control.borders = 1;
 		}
 	});
 
