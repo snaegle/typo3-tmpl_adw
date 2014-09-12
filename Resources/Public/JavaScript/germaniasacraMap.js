@@ -319,22 +319,25 @@ var leafletMapAddDiverseMarkers = function() {
 		}
 
 		for (var c = 0; c < arr.coords.length; c++) {
-			var content = collectMarkerContent(arr.coordIds[c]);
-			var iconUrl = arr.coordIds[c].graphik;
-			var icon = L.icon({
-									iconUrl: iconUrl,
-									iconSize: [21, 32],
-									iconAnchor: [10.5, 32],
-									popupAnchor: [0, -32]
-								});
-			var coords = arr.coords[c].split(",");
-			var marker = L.marker([coords[0],coords[1]], {
-								icon: icon
-							}).addTo(leafletMap.markers.markerGroup);
+			if (arr.coords[c] == "0,0") {
+				// no coordinates defined - no marker
+			} else {
+				var content = collectMarkerContent(arr.coordIds[c]);
+				var iconUrl = arr.coordIds[c].graphik;
+				var icon = L.icon({
+					                  iconUrl: iconUrl,
+					                  iconSize: [21, 32],
+					                  iconAnchor: [10.5, 32],
+					                  popupAnchor: [0, -32]
+				                  });
+				var coords = arr.coords[c].split(",");
+				var marker = L.marker([coords[0], coords[1]], {
+					icon: icon
+				}).addTo(leafletMap.markers.markerGroup);
 
-			marker.bindPopup();
-			marker.setPopupContent(content);
-
+				marker.bindPopup();
+				marker.setPopupContent(content);
+			}
 		}
 	}
 
@@ -401,7 +404,7 @@ var leafletMapAddDiverseMarkers = function() {
 						orden[id].coords = [];
 						if (docs[index].koordinaten == "0,0" || !docs[index].koordinaten) {
 							if (missingCoords.indexOf(id) == "-1") {
-								errorMsg += "Die Koordinaten für Kloster "+docs[index].kloster_id+" sind unvollständig.<br />";
+								//errorMsg += "Die Koordinaten für Kloster "+docs[index].kloster_id+" sind unvollständig.<br />";
 								missingCoords.push(id);
 								orden[id].coords.push("0,0");
 							}
@@ -446,7 +449,7 @@ var leafletMapAddDiverseMarkers = function() {
 							// new coordinates
 							if (docs[index].koordinaten[0] == "0,0" || !docs[index].koordinaten[0]) {
 								if (missingCoords.indexOf(id) == "-1") {
-									errorMsg += "Die Koordinaten für Kloster "+docs[index].kloster_id+" sind unvollständig.<br />";
+									//errorMsg += "Die Koordinaten für Kloster "+docs[index].kloster_id+" sind unvollständig.<br />";
 									missingCoords.push(id);
 								}
 							} else {}
