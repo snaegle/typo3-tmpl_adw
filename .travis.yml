@@ -12,7 +12,7 @@ matrix:
   fast_finish: true
   include:
   - php: 5.5
-    env: DB=mysql TYPO3=master INTEGRATION=master
+    env: DB=mysql TYPO3=TYPO3_6-2 INTEGRATION=master
 before_script:
 - sudo apt-get update && sudo apt-get install git
 - cd ..
