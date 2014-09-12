@@ -4,8 +4,7 @@ php:
 - 5.4
 env:
   matrix:
-  - DB=mysql TYPO3=master INTEGRATION=master
-  - DB=mysql TYPO3=TYPO3_6-1 INTEGRATION=master
+  - DB=mysql TYPO3=TYPO3_6-2 INTEGRATION=master
   global:
   - secure: A5tBgRS7n+LJ1KcaFeEOGRmNLXrNr5GFuHsM4zoyzfzzcnBSSE3Kyb7sxMG8AgbzUc2zVu4O04TRA/WlTk/3FB/Cvw2TjR0Q6t6rtHgL+S6QDp8+br5f+47f0YUwOyFe6/F2kALV81unEGS51nbUVK+pcRwLfCqElApf4bZrCW0=
   - secure: hMKQj0pNJkQ9gxnhqlf4DEeBEdof3G8eGEn0UISyClroiWniUmEHRO2gNfPvromzw66J9UlOLfUOovOWQAq9osmTMCOdP4We6011n+BoC+Yi0znTNRQPEbGXtQlQyz+ewz60LJ//4wsYNaKz22Hut6sHsAaynA7bAxhEb8/fnDs=
@@ -13,7 +12,7 @@ matrix:
   fast_finish: true
   include:
   - php: 5.5
-    env: DB=mysql TYPO3=master INTEGRATION=master
+    env: DB=mysql TYPO3=TYPO3_6-2 INTEGRATION=master
 before_script:
 - sudo apt-get update && sudo apt-get install git
 - cd ..
