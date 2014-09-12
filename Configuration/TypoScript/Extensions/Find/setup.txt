@@ -55,15 +55,15 @@ plugin.tx_find {
 				query = {!join from=kloster_id to=id}(orden_jahr50:%s AND typ:standort-orden)
 			}
 			# corresponds to queryField 132
-			35 {
-				id = jahr50standort
-				field = jahr50
-				type = Histogram
-				query = {!join from=kloster_id to=id}(standort_jahr50:%s AND typ:standort-orden)
-				sortOrder = index
-				fetchMaximum = 10000
-				barWidth = 10
-			}
+			#35 {
+			#	id = jahr50standort
+			#	field = jahr50
+			#	type = Histogram
+			#	query = {!join from=kloster_id to=id}(standort_jahr50:%s AND typ:standort-orden)
+			#	sortOrder = index
+			#	fetchMaximum = 10000
+			#	barWidth = 10
+			#}
 		}
 		CSSPaths {
 			10 >
