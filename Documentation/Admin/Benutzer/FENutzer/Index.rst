@@ -6,17 +6,7 @@
 .. include:: ../../Includes.txt
 
 
-.. _WerkzeugmodusGS_import:
+.. _admin_benutzer_checkliste:
 
-Import
-=======
-
-Gesamter Import
----------------
-
-
-Inkrementeller Import (zur Stapelverarbeitung)
-----------------------------------------------
-
-
-
+Checkliste neue Backend-Usergroup (Redaktion eines Forschungsprojekts) anlegen
+==============================================================================

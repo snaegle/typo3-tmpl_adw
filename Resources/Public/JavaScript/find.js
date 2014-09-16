@@ -24,12 +24,19 @@ var container;
  * add jQuery chosen to select boxes in extended search
  */
 var addChosenToExtendedSearchSelects = function() {
-	// jQuery Chosen for klosterstatus
 	jQuery('.tx_find .field-status select').chosen({
 		placeholder_text_single: localise("Klosterstatus wählen")
 	})
 };
 
+
+var resetSearchFormFields = function() {
+	jQuery('.tx_find .searchForm')[0].reset();
+	jQuery('.tx_find .searchForm input[type=text]').each(function(){
+		jQuery(this).attr('value', '')
+	});
+	$('.fieldType-SelectFacet option').prop('selected', false).trigger('chosen:updated');
+}
 
 /**
  * Initialise. Set up:
@@ -39,7 +46,7 @@ var addChosenToExtendedSearchSelects = function() {
  * * event handlers
  */
 var initialise = function () {
-	jQuery(document).ready(function() {
+	jQuery(window).ready(function() {
 		container = jQuery('.tx_find');
 
 		if (jQuery.ui && jQuery.ui.autocomplete) {
@@ -75,12 +82,16 @@ var initialise = function () {
 
 		/* resets the form input field contents */
 		jQuery('.button-reset-form').click(function() {
-			jQuery('.tx_find .searchForm')[0].reset();
-			jQuery('.tx_find .searchForm input[type=text]').each(function(){
-				jQuery(this).attr('value', '')
-			});
+			resetSearchFormFields();
 			return false;
 		});
+
+		// don't show reset-form-button in basic search mode
+		if ($(".field-mode-extended").css("display") == "none") {
+			jQuery('.button-reset-form').css("display","none");
+		} else {
+			jQuery('.button-reset-form').css("display","block");
+		}
 	});
 };
 
@@ -464,11 +475,14 @@ var toggleExtendedSearch = function () {
 		jThis.text($('a.extendedSearch').attr('extendedstring'));
 		jQuery('.field-mode-extended', jForm).slideDown('fast');
 		changeURLParameterForPage(parameterName, 1);
+		jQuery('.button-reset-form').slideDown('fast');
 	}
 	else {
 		jThis.text(jQuery('a.extendedSearch').attr('simplestring'));
 		jQuery('.field-mode-extended', jForm).slideUp('fast');
 		changeURLParameterForPage(parameterName);
+		jQuery('.button-reset-form').slideUp('fast');
+		resetSearchFormFields();
 	}
 	jForm.toggleClass('search-simple').toggleClass('search-extended');
 	return false;

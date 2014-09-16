@@ -44,7 +44,13 @@ AdW Handbuch
 	Grundlagen/Index
 	Seiten/Index
 	RTE/Index
-	WerkzeugmodusGS/Index
+	Personen/Index
+	News/Index
+	Teaser/Index
+	Slider/Index
+	Panoramaviewer/Index
+	Onlinebibliographie/Index
+
 
 
 **Inhalt Style Guideline**
@@ -54,4 +60,20 @@ AdW Handbuch
 	:titlesonly:
     	:glob:
 
-    	StyleGuideline/Index
+    	StyleGuideline/Bilder/Index
+    	StyleGuideline/Dateiablage/Index
+    	StyleGuideline/Links/Index
+    	StyleGuideline/Vorhaben/Index
+    	StyleGuideline/Darstellung/Index
+
+
+**Inhalt Administratoren Handbuch**
+
+.. toctree::
+	:maxdepth: 5
+	:titlesonly:
+     	:glob:
+
+    	Admin/Template/Index
+    	Admin/Benutzer/Index
+    	WerkzeugmodusGS/Index

@@ -65,7 +65,10 @@
 							}">
 							<f:translate key="basic Search"/>
 						</f:link.action>
-						<button class="button-reset-form">Suchfelder leeren</button>
+						<button class="button-reset-form">
+							<!--<f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:button.empty"/>-->
+							Suchfelder leeren
+						</button>
 					</f:then>
 					<f:else>
 						<f:link.action
@@ -79,11 +82,15 @@
 							}">
 							<f:translate key="extended Search"/>
 						</f:link.action>
-						<button class="button-reset-form">Suchfelder leeren</button>
+						<button class="button-reset-form">
+							<!--<f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:button.empty"/>-->
+							Suchfelder leeren
+						</button>
 					</f:else>
 				</f:if>
 			</f:if>
 		</f:groupedFor>
+		<!--</div>-->
 	</div>
 
 	<f:if condition="{f:count(subject:config.sortOptions.menu)} > 1">

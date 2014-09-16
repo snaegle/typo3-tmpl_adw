@@ -6,17 +6,7 @@
   It expects coordinates.
   It defines the map, initiates it and adds the markers
 </f:comment>
-<s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.css"/>
-<s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/MarkerCluster.css"/>
-<s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/MarkerCluster.Default.css"/>
-<s:page.linkCSS file="EXT:tmpl_adw/Resources/Public/Css/germaniasacraMap.css"/>
-<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.js"></t3jquery:addJQueryAndScript>
-<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.markercluster.js"></t3jquery:addJQueryAndScript>
-<t3jquery:addJQueryAndScript jsfile="EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js">
 
-
-
-</t3jquery:addJQueryAndScript>
 <div class="facetMap-container">
 	<div class="mapContainer">
 		<div id="leafletMap_btnGroup">
@@ -60,6 +50,13 @@
 		leafletMap.language.legend = "<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.legend"/>";
 		leafletMap.language.resetView = "<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.resetView"/>";
 		leafletMap.legendPath = '<f:uri.page pageUid="{settings.legendPath}"></f:uri.page>';
+		leafletMap.values = [];
+		var sessionStorageValueString = "";
+		<f:for each="{facetData.values}" as="value" key="key">
+			leafletMap.values.push({key});
+			sessionStorageValueString += {key}+" ";
+		</f:for>
+		sessionStorage.setItem("values",sessionStorageValueString);
 
 		/* change standard header */
 		$(".facet-id-map h1").text("<f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.view"/>");
@@ -74,5 +71,8 @@
 		if (leafletMapGetMode() == "map") {
 			$("#leafletMap_btnGroup input")[1].checked = true;
 		}
+
+		leafletMapSetSize("big");
+
 	</script>
 </div>
