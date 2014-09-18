@@ -5,18 +5,8 @@
 
 .. include:: ../../Includes.txt
 
+.. _admin_template:
 
-.. _WerkzeugmodusGS_import:
-
-Import
-=======
-
-Gesamter Import
----------------
-
-
-Inkrementeller Import (zur Stapelverarbeitung)
-----------------------------------------------
-
-
+Template für Seiten einrichten
+==============================
 

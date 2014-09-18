@@ -6,17 +6,7 @@
 .. include:: ../../Includes.txt
 
 
-.. _WerkzeugmodusGS_import:
+.. _news_anzeigen:
 
-Import
-=======
-
-Gesamter Import
----------------
-
-
-Inkrementeller Import (zur Stapelverarbeitung)
-----------------------------------------------
-
-
-
+5.2 News anzeigen
+=================

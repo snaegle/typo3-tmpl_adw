@@ -6,17 +6,7 @@
 .. include:: ../../Includes.txt
 
 
-.. _WerkzeugmodusGS_import:
+.. _admin_benutzer_begruppen:
 
-Import
-=======
-
-Gesamter Import
----------------
-
-
-Inkrementeller Import (zur Stapelverarbeitung)
-----------------------------------------------
-
-
-
+Backend-Benutzergruppen
+=======================

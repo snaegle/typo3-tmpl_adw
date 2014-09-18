@@ -21,6 +21,8 @@
 			<label index="facet.resetView">Kartenansicht zurücksetzen</label>
 			<label index="facet.orden">Orden</label>
 			<label index="facet.jahr50">Zeitraum</label>
+			<label index="facet.jahr50orden">Zeitraum Orden</label>
+			<label index="facet.jahr50standort">Zeitraum Standort</label>
 			<label index="facet.bistum">Bistum</label>
 			<label index="facet.band">Germania Sacra Band</label>
 			<label index="facet.band.hat_band">Alle Bände</label>

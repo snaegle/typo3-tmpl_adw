@@ -1,28 +1,92 @@
 plugin.tx_find {
+
+
 	settings {
+
+		queryFields {
+		# germania sacra field orden @see ADWD-779
+			50 {
+				query = {!join from=kloster_id to=id}((orden:%1$s OR orden_ordo:%1$s) AND typ:standort-orden)
+			}
+			70 {
+				hidden = 1
+			}
+			72 {
+				id = zeitorden
+				type = Range
+				query = {!join from=kloster_id to=id}(orden_von_von:[* TO %2$s] AND orden_bis_bis:[%1$s TO *] AND typ:standort-orden)
+				default.0 = *
+				default.1 = *
+				noescape = 1
+				extended = 1
+			}
+			73 {
+				id = zeitstandort
+				type = Range
+				query = {!join from=kloster_id to=id}(standort_von_von:[* TO %2$s] AND orden_bis_bis:[%1$s TO *] AND typ:standort-orden)
+				default.0 = *
+				default.1 = *
+				hidden = 0
+				noescape = 1
+				extended = 1
+			}
+			# corresponds to facet 30
+			131 {
+				id = jahr50orden-facet-nojoin
+				query = (orden_jahr50:%s AND typ:standort-orden)
+			}
+			# corresponds to facet 35
+			132 {
+				id = jahr50standort-facet-nojoin
+				type = Text
+				query = (standort_jahr50:%s AND typ:standort-orden)
+				extended = 1
+				hidden = 1
+			}
+		}
+		facets {
+			10 {
+				field = id
+				fetchMaximum = 10000
+			}
+			# corresponds to queryField 131
+			30 {
+				id = jahr50orden
+				query = {!join from=kloster_id to=id}(orden_jahr50:%s AND typ:standort-orden)
+			}
+			# corresponds to queryField 132
+			#35 {
+			#	id = jahr50standort
+			#	field = jahr50
+			#	type = Histogram
+			#	query = {!join from=kloster_id to=id}(standort_jahr50:%s AND typ:standort-orden)
+			#	sortOrder = index
+			#	fetchMaximum = 10000
+			#	barWidth = 10
+			#}
+		}
 		CSSPaths {
 			10 >
 			50 = EXT:tmpl_adw/Resources/Public/Css/germania-sacra.css
 			70 >
+			75 = EXT:tmpl_adw/Resources/Public/Css/chosen.min.css
+			80 = EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.css
+			82 = EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/MarkerCluster.css
+			84 = EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/MarkerCluster.Default.css
+			86 = EXT:tmpl_adw/Resources/Public/Css/germaniasacraMap.css
 		}
 		JSPaths {
 			10 = EXT:tmpl_adw/Resources/Public/JavaScript/find.js
+			20 = EXT:tmpl_adw/Resources/Public/JavaScript/jquery.chosen/chosen.jquery.min.js
+			30 = EXT:tmpl_adw/Resources/Public/JavaScript/login.js
+			40 = EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.js
+			50 = EXT:tmpl_adw/Resources/Public/JavaScript/leaflet/leaflet.markercluster.js
+			60 = EXT:tmpl_adw/Resources/Public/JavaScript/germaniasacraMap.js
 		}
 		paging {
 			maximumPerPage = 3000
 		}
 		languageRootPath = EXT:tmpl_adw/Resources/Private/Language/GermaniaSacra/
-		facets {
-			10 {
-				fetchMaximum = 2000
-			}
-		}
-		# germania sacra field orden @see ADWD-779
-		queryFields {
-			50 {
-				query = {!join from=kloster_id to=id}((orden:%1$s OR orden_ordo:%1$s) AND typ:standort-orden)
-			}
-		}
 		# Link to legend
 		legendPath = {$plugin.tx_find.settings.legendPath}
 	}

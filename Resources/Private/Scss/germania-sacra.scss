@@ -1,6 +1,29 @@
 @import '_Includes/Settings';
 
-$formLabelWidth: 150px;
+$formLabelWidth: 200px;
+
+.ui-menu-item {
+	list-style-type: none;
+	padding-left: 0px;
+	margin-left: 0px;
+	color: $link-color-dark;
+	background-color: rgba(255, 255, 255, 0.9);
+	a {
+		text-decoration: none;
+		width: 100%;
+		cursor: pointer;
+	}
+	a:hover {
+		color: $link-color-light;
+		background-color: $button-background-dark;
+	}
+}
+.ui-autocomplete {
+	padding-left: 0px;
+	margin-left: 0px;
+	width: 300px;
+	border: $button-border;
+}
 
 .tx_find {
 
@@ -49,6 +72,9 @@ $formLabelWidth: 150px;
 			}
 
 			.inputContainer {
+				margin-left: $formLabelWidth + 5px;
+			}
+			.alternate {
 				margin-left: $formLabelWidth + 5px;
 			}
 		}
@@ -248,7 +274,7 @@ $formLabelWidth: 150px;
 		background-color: $button-background-light;
 		padding: 5px;
 		margin-bottom:5px;
-		display: block;
+		#display: block;
 		margin-top: 5px;
 	}
 
@@ -265,6 +291,15 @@ $formLabelWidth: 150px;
 	.leafletMap_info.leaflet-control {
 		background: rgba(250,250,250,0.5);
 		padding: 2px;
+	}
+
+	#leafletMap_wrapper {
+		#errorMsg {
+			margin-top: 20px;
+			border: 2px solid $button-background-dark;
+			padding: 5px;
+			text-align: center;
+		}
 	}
 
 	#leafletMap_btnGroup {

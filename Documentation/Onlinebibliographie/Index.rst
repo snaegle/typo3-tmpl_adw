@@ -6,17 +6,7 @@
 .. include:: ../../Includes.txt
 
 
-.. _WerkzeugmodusGS_import:
+.. _bib:
 
-Import
-=======
-
-Gesamter Import
----------------
-
-
-Inkrementeller Import (zur Stapelverarbeitung)
-----------------------------------------------
-
-
-
+9 Onlinebibliographie
+=====================
