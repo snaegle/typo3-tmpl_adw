@@ -130,7 +130,7 @@ var googleMapsLoader = (function() {
 var facetChosenSelect = function (event, data) {
 	var term = data.selected;
 	var jArticle = jQuery(this).parents('article');
-	var jLI = jQuery("li[value='" + term + "']");
+	var jLI = jQuery("li[label='" + term + "']");
 	if (jLI.length === 1) {
 		jQuery('a', jLI)[0].click();
 	}
