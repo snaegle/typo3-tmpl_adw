@@ -375,7 +375,7 @@ var leafletMapAddDiverseMarkers = function() {
 			queryURL += '&' + encodeURIComponent('tx_find_find[data-fields]') + '=' + encodeURIComponent(dataFields);
 			queryURL += '&' + "tx_find_find[count]=3000&tx_find_find[data-format]=raw-solr-response&tx_find_find[format]=data";
 
-			var url = document.baseURI + queryURL;
+			var url = "http://"+document.domain + "/" + queryURL;
 
 			// get information from JSON-Object
 			/* Problem:
