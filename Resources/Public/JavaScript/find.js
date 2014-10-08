@@ -87,7 +87,7 @@ var initialise = function () {
 		});
 
 		// don't show reset-form-button in basic search mode
-		if ($(".field-mode-extended").css("display") == "none") {
+		if (jQuery(".field-mode-extended").css("display") == "none") {
 			jQuery('.button-reset-form').css("display","none");
 		} else {
 			jQuery('.button-reset-form').css("display","block");
