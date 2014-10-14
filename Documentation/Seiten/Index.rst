@@ -10,7 +10,7 @@
 
 2 Seiten und Seiteninhalte
 ==========================
-
+Hier zeigen wir Ihnen einfache "Kochrezepte", wie Sie Schritt für Schritt Seiten und Seiteninhalte anlegen und bearbeiten können.
 
 
 
