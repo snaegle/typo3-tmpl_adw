@@ -29,13 +29,14 @@
 					}">
 						<f:alias map="{
 							solrQuery:'{!join from=besitzer to=id}typ:stelle AND start:[* TO {stop}] AND stop:[{start} TO *]',
-							selectedType:'{s:data.newArray(keys:\'{0:document.fields.typ}\' , values:\'{0:1}\')}'
+							selectedType:'{s:data.newArray(keys:\'{0:document.fields.typ}\' , values:\'{0:1}\')}',
+							bandseitezeile:'{stelle.bandseitezeile}'
 						}">
 							<s:data.newArray
 								name="linkArguments"
 								keys="{0:'q', 1:'sort', 2:'count', 3:'extended', 4:'facet'}"
 								values="{
-									0:'{raw:solrQuery}',
+									0:'{default:bandseitezeile}',
 									1:arguments.underlyingQuery.sort,
 									2:arguments.underlyingQuery.count,
 									3:arguments.extended,
