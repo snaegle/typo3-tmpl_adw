@@ -50,6 +50,7 @@ AdW Handbuch
 	Slider/Index
 	Panoramaviewer/Index
 	Onlinebibliographie/Index
+	Personendatenbank/Index
 
 
 

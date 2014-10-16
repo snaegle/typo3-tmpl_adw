@@ -144,7 +144,6 @@ $labelWidth: 120px;
 		}
 
 		li:target {
-			background: $backgroundActive;
 			border-radius: 7px;
 			transition: background .5s ease-in-out;
 		}
@@ -176,7 +175,7 @@ $labelWidth: 120px;
 					}
 
 					.bandseitezeile.multiple:after {
-						position: absolute;
+						float: right;
 						top: 0;
 						right: -1em;
 						content: $more;
