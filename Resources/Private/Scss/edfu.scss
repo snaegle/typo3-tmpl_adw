@@ -176,7 +176,7 @@ $labelWidth: 120px;
 					}
 
 					.bandseitezeile.multiple:after {
-						position: absolute;
+						float: right;
 						top: 0;
 						right: -1em;
 						content: $more;
