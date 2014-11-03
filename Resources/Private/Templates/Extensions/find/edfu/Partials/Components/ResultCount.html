@@ -22,12 +22,12 @@
 					<f:translate key="1 result"/>
 				</f:then>
 				<f:else>
-					<f:if condition="{results.numfound}<{settings.count}">
+					<f:if condition="{results.numfound}<{config.counterEnd}">
 						<f:then>
 							{results.numfound} <f:translate key="results"/>
 						</f:then>
 						<f:else>
-							{config.counterStart}-{config.counterEnd}
+							{config.counterStart}-{config.counterEnd} <f:translate key="results"/>
 							<f:translate key="of"/>
 							{results.numfound}
 						</f:else>

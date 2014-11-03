@@ -56,15 +56,5 @@
 
 	<article class="detail {document.fields.typ}" id="c{config.uid}-record-{document.fields.id}">
 		<f:render partial="Edfu/Detail/{document.fields.typ}" arguments="{_all}"/>
-		<a onclick="jQuery('article.fields').slideToggle(); return false;" href="#">Alle Felder</a>
-	</article>
-
-	<article class="fields" style="display:none;">
-		<hr>
-		<dl>
-			<f:for each="{document.fields}" as="value" key="fieldName">
-				<f:render partial="Display/DLField" arguments="{results:results, document:document, field:fieldName}"/>
-			</f:for>
-		</dl>
 	</article>
 </f:section>
